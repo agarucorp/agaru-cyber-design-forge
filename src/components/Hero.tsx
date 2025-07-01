@@ -1,0 +1,94 @@
+
+import { ArrowRight, Sparkles } from 'lucide-react';
+
+const Hero = () => {
+  return (
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 cyber-gradient rounded-full opacity-20 blur-3xl animate-float"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-agaru-purple-dark rounded-full opacity-10 blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center">
+          {/* Logo */}
+          <div className="flex justify-center mb-8">
+            <div className="relative">
+              <img 
+                src="/lovable-uploads/14649671-fdbf-42ad-8977-ca2ee5b241c1.png" 
+                alt="AgaruCorp Logo" 
+                className="w-32 h-32 object-contain animate-glow"
+              />
+            </div>
+          </div>
+
+          {/* Company Name */}
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 cyber-text-gradient font-altroned animate-fade-in">
+            AgaruCorp
+          </h1>
+
+          {/* Hero Title */}
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            Web Design &{' '}
+            <span className="cyber-text-gradient">Brand Strategy</span>
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            Elevating startups and small businesses through premium UX/UI design, 
+            web development, branding, and strategic marketing solutions.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <a
+              href="#services"
+              className="group cyber-gradient text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-agaru-purple/30 transition-all duration-300 flex items-center gap-2"
+            >
+              Explore Our Services
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </a>
+            
+            <a
+              href="#projects"
+              className="group glass-effect text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
+            >
+              <Sparkles className="w-5 h-5" />
+              View Our Work
+            </a>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">50+</div>
+              <div className="text-gray-400">Projects Delivered</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">100%</div>
+              <div className="text-gray-400">Client Satisfaction</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">3+</div>
+              <div className="text-gray-400">Years Experience</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">24/7</div>
+              <div className="text-gray-400">Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-agaru-purple rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-agaru-purple rounded-full mt-2 animate-pulse"></div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
