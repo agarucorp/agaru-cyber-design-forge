@@ -1,14 +1,20 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import LogoNav from './assets/Navbar/LogoNav.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(progress);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -16,12 +22,12 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
+    // { name: 'Home', href: '#home' },
     { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'How it Works?', href: '#process' },
+    { name: 'Our Work', href: '#projects' },
+    { name: 'FAQs', href: '#faq' },
+    // { name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -30,11 +36,21 @@ const Navbar = () => {
         isScrolled ? 'navbar-blur' : 'bg-transparent'
       }`}
     >
+      {/* Barra de progreso de scroll */}
+      <div
+        style={{
+          width: `${scrollProgress}%`,
+          height: '4px',
+          background: '#b0b3b8', // gris suave acorde a la paleta
+          transition: 'width 0.2s ease',
+        }}
+        className="absolute top-0 left-0 z-50 rounded-tr-full rounded-br-full"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 logo-stripes transform rotate-12 rounded-sm"></div>
+            <img src={LogoNav} alt="Logo AgaruCorp" className="w-8 h-8 object-contain" style={{ width: '80%', height: '80%' }} />
             <span className="text-2xl font-bold cyber-text-gradient font-altroned">
               AgaruCorp
             </span>
@@ -61,7 +77,7 @@ const Navbar = () => {
               href="#contact"
               className="cyber-gradient text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-agaru-purple/25 transition-all duration-300 font-medium"
             >
-              Get Started
+              Book a Call
             </a>
           </div>
 

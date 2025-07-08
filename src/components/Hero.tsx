@@ -12,21 +12,6 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
-          {/* Logo */}
-          <div className="flex justify-center mb-8">
-            <div className="relative">
-              <img 
-                src="/lovable-uploads/14649671-fdbf-42ad-8977-ca2ee5b241c1.png" 
-                alt="AgaruCorp Logo" 
-                className="w-32 h-32 object-contain animate-glow"
-              />
-            </div>
-          </div>
-
-          {/* Company Name */}
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 cyber-text-gradient font-altroned animate-fade-in">
-            AgaruCorp
-          </h1>
 
           {/* Hero Title */}
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
@@ -36,7 +21,7 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            Elevating startups and small businesses through premium UX/UI design, 
+            Elevating startups and small businesses through premium UX/UI design,
             web development, branding, and strategic marketing solutions.
           </p>
 
@@ -49,7 +34,7 @@ const Hero = () => {
               Explore Our Services
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
-            
+
             <a
               href="#projects"
               className="group glass-effect text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
@@ -78,13 +63,6 @@ const Hero = () => {
               <div className="text-gray-400">Support</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-agaru-purple rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-agaru-purple rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

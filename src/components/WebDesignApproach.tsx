@@ -42,7 +42,7 @@ const WebDesignApproach = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="relative group animate-fade-in"
+              className="relative group animate-fade-in h-full"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               {/* Connection line */}
@@ -50,18 +50,20 @@ const WebDesignApproach = () => {
                 <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-agaru-purple to-transparent z-0"></div>
               )}
               
-              <div className="cyber-card p-8 rounded-xl relative z-10">
+              <div className="cyber-card p-8 rounded-xl relative z-10 flex flex-col h-full min-h-[370px]">
                 <div className="flex items-center justify-center w-16 h-16 cyber-gradient rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                   <div className="text-white">
                     {step.icon}
                   </div>
                 </div>
                 
-                <div className="text-center">
-                  <div className="text-sm font-semibold text-agaru-purple mb-2">
-                    STEP {index + 1}
+                <div className="text-center flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="text-sm font-semibold text-agaru-purple mb-2">
+                      STEP {index + 1}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
                   <p className="text-gray-300 leading-relaxed">{step.description}</p>
                 </div>
               </div>

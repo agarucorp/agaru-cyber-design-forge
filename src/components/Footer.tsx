@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Instagram, Linkedin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import LogoNav from './assets/Navbar/LogoNav.png';
 
 const Footer = () => {
   const [formData, setFormData] = useState({
@@ -201,10 +202,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between">
             {/* Logo and Company */}
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="w-8 h-8 logo-stripes transform rotate-12 rounded-sm"></div>
-              <span className="text-2xl font-bold cyber-text-gradient font-altroned">
-                AgaruCorp
-              </span>
+              <img src={LogoNav} alt="Logo AgaruCorp" className="w-8 h-8 object-contain" style={{ width: '80%', height: '80%' }} />
             </div>
 
             {/* Copyright */}
