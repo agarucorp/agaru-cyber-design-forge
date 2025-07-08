@@ -32,7 +32,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
         { name: 'Servicios', href: '#services' },
         { name: '¿Cómo Trabajamos?', href: '#process' },
         { name: 'Proyectos', href: '#projects' },
-        { name: 'Preguntas Frecuentes', href: '#faq' },
+        { name: 'FAQs', href: '#faq' },
       ]
     : [
         { name: 'Services', href: '#services' },
@@ -62,7 +62,14 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <img src={LogoNav} alt="Logo AgaruCorp" className="w-8 h-8 object-contain" style={{ width: '80%', height: '80%' }} />
-            <span className="text-2xl font-bold cyber-text-gradient font-altroned">
+            <span
+              className="text-2xl font-bold"
+              style={{
+                fontFamily: "'Altroned Trial', sans-serif",
+                color: '#f3f4f6', // blanco/gris claro
+                letterSpacing: '0.05em'
+              }}
+            >
               AgaruCorp
             </span>
           </div>
@@ -105,7 +112,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
               href="#contact"
               className="cyber-gradient text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-agaru-purple/25 transition-all duration-300 font-medium"
             >
-              {lang === 'ES' ? 'Agenda una llamada' : 'Book a Call'}
+              {lang === 'ES' ? 'Contacto' : 'Book a Call'}
             </a>
           </div>
 
@@ -139,7 +146,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                 className="cyber-gradient text-white px-6 py-2 rounded-full text-center mt-4 font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {lang === 'ES' ? 'Agenda una llamada' : 'Book a Call'}
+                {lang === 'ES' ? 'Contacto' : 'Book a Call'}
               </a>
               {/* Switch de idioma en mobile */}
               <div className="flex items-center justify-center mt-4">

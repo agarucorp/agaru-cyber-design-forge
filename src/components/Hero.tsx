@@ -7,7 +7,10 @@ interface HeroProps {
 
 const Hero = ({ lang }: HeroProps) => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden mt-0 hero-mt-mobile" style={{ marginTop: window.innerWidth < 650 ? '4rem' : undefined }}
+    >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 cyber-gradient rounded-full opacity-20 blur-3xl animate-float"></div>
