@@ -2,62 +2,120 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-const FAQ = () => {
+interface FAQProps {
+  lang: 'ES' | 'EN';
+}
+
+const FAQ = ({ lang }: FAQProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const faqs = [
-    {
-      category: 'Web Design & Development',
-      questions: [
+  const faqs = lang === 'ES'
+    ? [
         {
-          question: 'What is your typical timeline for a web design project?',
-          answer: 'Our typical timeline ranges from 4-8 weeks depending on the complexity and scope. We start with a discovery phase (1 week), followed by design (2-3 weeks), development (2-3 weeks), and testing/launch (1 week). We provide detailed timelines during our initial consultation.'
+          category: 'Diseño y Desarrollo Web',
+          questions: [
+            {
+              question: '¿Cuál es el tiempo estimado para un proyecto web?',
+              answer: 'El tiempo típico es de 4 a 8 semanas según la complejidad. Comenzamos con una fase de descubrimiento (1 semana), luego diseño (2-3 semanas), desarrollo (2-3 semanas) y pruebas/lanzamiento (1 semana). Te damos un cronograma detallado en la consulta inicial.'
+            },
+            {
+              question: '¿Ofrecen mantenimiento y soporte continuo?',
+              answer: 'Sí, ofrecemos paquetes de mantenimiento que incluyen actualizaciones de seguridad, contenido, monitoreo de performance y soporte técnico. Los planes se adaptan a tus necesidades y presupuesto.'
+            },
+            {
+              question: '¿Mi sitio será mobile-responsive?',
+              answer: '¡Por supuesto! Todos nuestros sitios son mobile-first, asegurando óptimo rendimiento y experiencia en cualquier dispositivo. Probamos en varios dispositivos antes del lanzamiento.'
+            }
+          ]
         },
         {
-          question: 'Do you provide ongoing maintenance and support?',
-          answer: 'Yes, we offer comprehensive maintenance packages including security updates, content updates, performance monitoring, and technical support. Our support plans are tailored to your specific needs and budget.'
+          category: 'Branding y Estrategia',
+          questions: [
+            {
+              question: '¿Qué incluye su proceso de branding?',
+              answer: 'Incluye investigación de marca, análisis de competencia, diseño de logo, paleta de colores, tipografía, guía de marca y piezas de marketing. Garantizamos coherencia en todos los puntos de contacto.'
+            },
+            {
+              question: '¿Cómo desarrollan la estrategia de marketing?',
+              answer: 'Comenzamos con investigación de mercado y competencia, definimos tu audiencia, propuesta de valor, creamos estrategias de contenido y te damos un roadmap accionable. Todo es medible y basado en datos.'
+            },
+            {
+              question: '¿Pueden ayudar a rebrandear un negocio existente?',
+              answer: 'Sí, hacemos tanto branding nuevo como rebranding. Analizamos tu marca actual, detectamos oportunidades y creamos un plan estratégico para renovar tu imagen sin perder valor de marca.'
+            }
+          ]
         },
         {
-          question: 'Will my website be mobile-responsive?',
-          answer: 'Absolutely! All our websites are built with a mobile-first approach, ensuring optimal performance and user experience across all devices and screen sizes. We test thoroughly on various devices before launch.'
+          category: 'Gestión de Proyectos',
+          questions: [
+            {
+              question: '¿Cómo nos comunicamos durante el proyecto?',
+              answer: 'Mantenemos comunicación regular con reuniones semanales, herramientas de gestión y siempre estamos disponibles por email o teléfono. Tendrás un project manager dedicado como contacto principal.'
+            },
+            {
+              question: '¿Qué necesitan de nosotros para empezar?',
+              answer: 'Necesitamos información sobre tus objetivos, audiencia, estilo preferido, contenido (texto, imágenes) y requisitos específicos. Te damos un cuestionario detallado en el onboarding.'
+            },
+            {
+              question: '¿Cuáles son sus condiciones de pago?',
+              answer: 'Normalmente pedimos 50% de adelanto y 50% al finalizar. Para proyectos grandes, podemos hacer pagos por hitos. Aceptamos varios métodos y siempre hay contrato detallado.'
+            }
+          ]
         }
       ]
-    },
-    {
-      category: 'Branding & Strategy',
-      questions: [
+    : [
         {
-          question: 'What does your branding process include?',
-          answer: 'Our comprehensive branding process includes brand foundation research, competitive analysis, logo design, color palette, typography, brand guidelines, and marketing collateral. We ensure your brand identity is cohesive across all touchpoints.'
+          category: 'Web Design & Development',
+          questions: [
+            {
+              question: 'What is your typical timeline for a web design project?',
+              answer: 'Our typical timeline ranges from 4-8 weeks depending on the complexity and scope. We start with a discovery phase (1 week), followed by design (2-3 weeks), development (2-3 weeks), and testing/launch (1 week). We provide detailed timelines during our initial consultation.'
+            },
+            {
+              question: 'Do you provide ongoing maintenance and support?',
+              answer: 'Yes, we offer comprehensive maintenance packages including security updates, content updates, performance monitoring, and technical support. Our support plans are tailored to your specific needs and budget.'
+            },
+            {
+              question: 'Will my website be mobile-responsive?',
+              answer: 'Absolutely! All our websites are built with a mobile-first approach, ensuring optimal performance and user experience across all devices and screen sizes. We test thoroughly on various devices before launch.'
+            }
+          ]
         },
         {
-          question: 'How do you approach marketing strategy development?',
-          answer: 'We start with thorough market research and competitor analysis, define your target audience, develop your unique value proposition, create content strategies, and provide actionable roadmaps for implementation. Everything is data-driven and measurable.'
+          category: 'Branding & Strategy',
+          questions: [
+            {
+              question: 'What does your branding process include?',
+              answer: 'Our comprehensive branding process includes brand foundation research, competitive analysis, logo design, color palette, typography, brand guidelines, and marketing collateral. We ensure your brand identity is cohesive across all touchpoints.'
+            },
+            {
+              question: 'How do you approach marketing strategy development?',
+              answer: 'We start with thorough market research and competitor analysis, define your target audience, develop your unique value proposition, create content strategies, and provide actionable roadmaps for implementation. Everything is data-driven and measurable.'
+            },
+            {
+              question: 'Can you help with rebranding an existing business?',
+              answer: 'Yes, we specialize in both new brand creation and rebranding. We carefully analyze your current brand position, identify opportunities for improvement, and create a strategic transition plan that maintains brand equity while refreshing your image.'
+            }
+          ]
         },
         {
-          question: 'Can you help with rebranding an existing business?',
-          answer: 'Yes, we specialize in both new brand creation and rebranding. We carefully analyze your current brand position, identify opportunities for improvement, and create a strategic transition plan that maintains brand equity while refreshing your image.'
+          category: 'Project Management',
+          questions: [
+            {
+              question: 'How do we communicate during the project?',
+              answer: 'We maintain regular communication through weekly check-ins, project management tools, and are always available via email or phone. You\'ll have a dedicated project manager as your single point of contact throughout the process.'
+            },
+            {
+              question: 'What do you need from us to get started?',
+              answer: 'We need information about your business goals, target audience, preferred style/examples, content (text, images), and any specific requirements. We provide a detailed questionnaire during onboarding to gather all necessary information.'
+            },
+            {
+              question: 'What are your payment terms?',
+              answer: 'We typically work with a 50% deposit to start the project and 50% upon completion. For larger projects, we can arrange milestone-based payments. We accept various payment methods and provide detailed contracts for all work.'
+            }
+          ]
         }
-      ]
-    },
-    {
-      category: 'Project Management',
-      questions: [
-        {
-          question: 'How do we communicate during the project?',
-          answer: 'We maintain regular communication through weekly check-ins, project management tools, and are always available via email or phone. You\'ll have a dedicated project manager as your single point of contact throughout the process.'
-        },
-        {
-          question: 'What do you need from us to get started?',
-          answer: 'We need information about your business goals, target audience, preferred style/examples, content (text, images), and any specific requirements. We provide a detailed questionnaire during onboarding to gather all necessary information.'
-        },
-        {
-          question: 'What are your payment terms?',
-          answer: 'We typically work with a 50% deposit to start the project and 50% upon completion. For larger projects, we can arrange milestone-based payments. We accept various payment methods and provide detailed contracts for all work.'
-        }
-      ]
-    }
-  ];
+      ];
 
   const toggleFAQ = (categoryIndex: number, questionIndex: number) => {
     const index = categoryIndex * 100 + questionIndex;
@@ -69,10 +127,13 @@ const FAQ = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Frequently Asked <span className="cyber-text-gradient">Questions</span>
+            {lang === 'ES' ? 'Preguntas ' : 'Frequently Asked '}
+            <span className="cyber-text-gradient">{lang === 'ES' ? 'Frecuentes' : 'Questions'}</span>
           </h2>
           <p className="text-xl text-gray-300">
-            Find answers to common questions about our services and process.
+            {lang === 'ES'
+              ? 'Encontrá respuestas a las dudas más comunes sobre nuestros servicios y procesos.'
+              : 'Find answers to common questions about our services and process.'}
           </p>
         </div>
 
@@ -123,16 +184,18 @@ const FAQ = () => {
         <div className="text-center mt-16">
           <div className="glass-effect p-8 rounded-xl">
             <h3 className="text-2xl font-bold text-white mb-4">
-              Still Have Questions?
+              {lang === 'ES' ? '¿Todavía tenés dudas?' : 'Still Have Questions?'}
             </h3>
             <p className="text-gray-300 mb-6">
-              We're here to help! Reach out to us and we'll get back to you within 24 hours.
+              {lang === 'ES'
+                ? '¡Estamos para ayudarte! Escribinos y te respondemos en menos de 24 horas.'
+                : `We're here to help! Reach out to us and we'll get back to you within 24 hours.`}
             </p>
             <a
               href="#contact"
               className="cyber-gradient text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-agaru-purple/30 transition-all duration-300 inline-block"
             >
-              Contact Us
+              {lang === 'ES' ? 'Contactanos' : 'Contact Us'}
             </a>
           </div>
         </div>

@@ -1,9 +1,15 @@
 
 import { useState, useEffect } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { Menu, X } from 'lucide-react';
 import LogoNav from './assets/Navbar/LogoNav.png';
 
-const Navbar = () => {
+interface NavbarProps {
+  lang: 'ES' | 'EN';
+  setLang: Dispatch<SetStateAction<'ES' | 'EN'>>;
+}
+
+const Navbar = ({ lang, setLang }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -21,14 +27,19 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    // { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'How it Works?', href: '#process' },
-    { name: 'Our Work', href: '#projects' },
-    { name: 'FAQs', href: '#faq' },
-    // { name: 'Contact', href: '#contact' },
-  ];
+  const navItems = lang === 'ES'
+    ? [
+        { name: 'Servicios', href: '#services' },
+        { name: '¿Cómo Trabajamos?', href: '#process' },
+        { name: 'Proyectos', href: '#projects' },
+        { name: 'Preguntas Frecuentes', href: '#faq' },
+      ]
+    : [
+        { name: 'Services', href: '#services' },
+        { name: 'How it Works?', href: '#process' },
+        { name: 'Our Work', href: '#projects' },
+        { name: 'FAQs', href: '#faq' },
+      ];
 
   return (
     <nav
@@ -68,6 +79,23 @@ const Navbar = () => {
                   {item.name}
                 </a>
               ))}
+              {/* Switch de idioma */}
+              <div className="flex items-center ml-6">
+                <button
+                  onClick={() => setLang('ES')}
+                  className={`px-2 py-1 rounded-l border border-agaru-purple text-sm font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+                  aria-pressed={lang === 'ES'}
+                >
+                  ES
+                </button>
+                <button
+                  onClick={() => setLang('EN')}
+                  className={`px-2 py-1 rounded-r border border-agaru-purple border-l-0 text-sm font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+                  aria-pressed={lang === 'EN'}
+                >
+                  EN
+                </button>
+              </div>
             </div>
           </div>
 
@@ -77,7 +105,7 @@ const Navbar = () => {
               href="#contact"
               className="cyber-gradient text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-agaru-purple/25 transition-all duration-300 font-medium"
             >
-              Book a Call
+              {lang === 'ES' ? 'Agenda una llamada' : 'Book a Call'}
             </a>
           </div>
 
@@ -111,8 +139,25 @@ const Navbar = () => {
                 className="cyber-gradient text-white px-6 py-2 rounded-full text-center mt-4 font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get Started
+                {lang === 'ES' ? 'Agenda una llamada' : 'Book a Call'}
               </a>
+              {/* Switch de idioma en mobile */}
+              <div className="flex items-center justify-center mt-4">
+                <button
+                  onClick={() => setLang('ES')}
+                  className={`px-2 py-1 rounded-l border border-agaru-purple text-sm font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+                  aria-pressed={lang === 'ES'}
+                >
+                  ES
+                </button>
+                <button
+                  onClick={() => setLang('EN')}
+                  className={`px-2 py-1 rounded-r border border-agaru-purple border-l-0 text-sm font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+                  aria-pressed={lang === 'EN'}
+                >
+                  EN
+                </button>
+              </div>
             </div>
           </div>
         )}

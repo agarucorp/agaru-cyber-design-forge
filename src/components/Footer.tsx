@@ -4,7 +4,11 @@ import { Mail, Phone, MapPin, Send, Instagram, Linkedin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import LogoNav from './assets/Navbar/LogoNav.png';
 
-const Footer = () => {
+interface FooterProps {
+  lang: 'ES' | 'EN';
+}
+
+const Footer = ({ lang }: FooterProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,8 +30,8 @@ const Footer = () => {
     console.log('Form submitted:', formData);
     
     toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
+      title: lang === 'ES' ? '¡Mensaje enviado!' : 'Message Sent!',
+      description: lang === 'ES' ? 'Te responderemos en menos de 24 horas.' : "We'll get back to you within 24 hours.",
     });
 
     setFormData({ name: '', email: '', subject: '', message: '' });
@@ -40,11 +44,13 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Let's Work <span className="cyber-text-gradient">Together</span>
+              {lang === 'ES' ? 'Trabajemos ' : "Let's Work "}
+              <span className="cyber-text-gradient">{lang === 'ES' ? 'Juntos' : 'Together'}</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Ready to elevate your business? Get in touch and let's discuss how we can 
-              help you achieve your digital goals.
+              {lang === 'ES'
+                ? '¿Listo para llevar tu negocio al siguiente nivel? Escribinos y conversemos sobre cómo podemos ayudarte a lograr tus objetivos digitales.'
+                : `Ready to elevate your business? Get in touch and let's discuss how we can help you achieve your digital goals.`}
             </p>
           </div>
 
@@ -52,7 +58,7 @@ const Footer = () => {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
+                <h3 className="text-2xl font-bold text-white mb-6">{lang === 'ES' ? 'Contacto' : 'Get in Touch'}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 cyber-gradient rounded-full flex items-center justify-center">
@@ -69,7 +75,7 @@ const Footer = () => {
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="text-gray-400 text-sm">Phone</div>
+                      <div className="text-gray-400 text-sm">{lang === 'ES' ? 'Teléfono' : 'Phone'}</div>
                       <div className="text-white font-semibold">+1 (555) 123-4567</div>
                     </div>
                   </div>
@@ -79,7 +85,7 @@ const Footer = () => {
                       <MapPin className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="text-gray-400 text-sm">Location</div>
+                      <div className="text-gray-400 text-sm">{lang === 'ES' ? 'Ubicación' : 'Location'}</div>
                       <div className="text-white font-semibold">New York, NY</div>
                     </div>
                   </div>
@@ -88,7 +94,7 @@ const Footer = () => {
 
               {/* Social Links */}
               <div>
-                <h4 className="text-lg font-semibold text-white mb-4">Follow Us</h4>
+                <h4 className="text-lg font-semibold text-white mb-4">{lang === 'ES' ? 'Seguinos' : 'Follow Us'}</h4>
                 <div className="flex gap-4">
                   <a
                     href="#"
@@ -120,7 +126,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-gray-300 text-sm font-medium mb-2">
-                      Name *
+                      {lang === 'ES' ? 'Nombre *' : 'Name *'}
                     </label>
                     <input
                       type="text"
@@ -130,7 +136,7 @@ const Footer = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300"
-                      placeholder="Your name"
+                      placeholder={lang === 'ES' ? 'Tu nombre' : 'Your name'}
                     />
                   </div>
                   
@@ -146,14 +152,14 @@ const Footer = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300"
-                      placeholder="your@email.com"
+                      placeholder={lang === 'ES' ? 'tu@email.com' : 'your@email.com'}
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="subject" className="block text-gray-300 text-sm font-medium mb-2">
-                    Subject *
+                    {lang === 'ES' ? 'Asunto *' : 'Subject *'}
                   </label>
                   <input
                     type="text"
@@ -163,13 +169,13 @@ const Footer = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300"
-                    placeholder="How can we help you?"
+                    placeholder={lang === 'ES' ? '¿Cómo podemos ayudarte?' : 'How can we help you?'}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-gray-300 text-sm font-medium mb-2">
-                    Message *
+                    {lang === 'ES' ? 'Mensaje *' : 'Message *'}
                   </label>
                   <textarea
                     id="message"
@@ -179,7 +185,7 @@ const Footer = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300 resize-none"
-                    placeholder="Tell us about your project..."
+                    placeholder={lang === 'ES' ? 'Contanos sobre tu proyecto...' : 'Tell us about your project...'}
                   />
                 </div>
 
@@ -187,7 +193,7 @@ const Footer = () => {
                   type="submit"
                   className="w-full cyber-gradient text-white py-4 px-6 rounded-lg font-semibold hover:shadow-xl hover:shadow-agaru-purple/30 transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  Send Message
+                  {lang === 'ES' ? 'Enviar Mensaje' : 'Send Message'}
                   <Send className="w-5 h-5" />
                 </button>
               </form>
@@ -207,19 +213,19 @@ const Footer = () => {
 
             {/* Copyright */}
             <div className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} AgaruCorp. All rights reserved.
+              © {new Date().getFullYear()} AgaruCorp. {lang === 'ES' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
             </div>
 
             {/* Quick Links */}
             <div className="flex items-center space-x-6 mt-4 md:mt-0">
               <a href="#services" className="text-gray-400 hover:text-agaru-purple transition-colors duration-300 text-sm">
-                Services
+                {lang === 'ES' ? 'Servicios' : 'Services'}
               </a>
               <a href="#projects" className="text-gray-400 hover:text-agaru-purple transition-colors duration-300 text-sm">
-                Projects
+                {lang === 'ES' ? 'Proyectos' : 'Projects'}
               </a>
               <a href="#faq" className="text-gray-400 hover:text-agaru-purple transition-colors duration-300 text-sm">
-                FAQ
+                {lang === 'ES' ? 'Preguntas' : 'FAQ'}
               </a>
             </div>
           </div>

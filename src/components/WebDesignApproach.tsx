@@ -1,40 +1,87 @@
 
 import { Search, Lightbulb, Code, Rocket, CheckCircle } from 'lucide-react';
 
-const WebDesignApproach = () => {
-  const steps = [
-    {
-      icon: <Search className="w-8 h-8" />,
-      title: 'Discovery & Research',
-      description: 'We dive deep into understanding your business, target audience, and goals to create a strategic foundation.',
-    },
-    {
-      icon: <Lightbulb className="w-8 h-8" />,
-      title: 'Design & Prototype',
-      description: 'Creating wireframes and interactive prototypes that visualize the user experience before development.',
-    },
-    {
-      icon: <Code className="w-8 h-8" />,
-      title: 'Development',
-      description: 'Building your website with clean, scalable code using modern technologies and best practices.',
-    },
-    {
-      icon: <Rocket className="w-8 h-8" />,
-      title: 'Launch & Optimize',
-      description: 'Deploying your website and continuously optimizing for performance, SEO, and user experience.',
-    },
-  ];
+interface WebDesignApproachProps {
+  lang: 'ES' | 'EN';
+}
+
+const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
+  const steps = lang === 'ES'
+    ? [
+        {
+          icon: <Search className="w-8 h-8" />,
+          title: 'Descubrimiento e Investigación',
+          description: 'Profundizamos en tu negocio, audiencia y objetivos para crear una base estratégica sólida.',
+        },
+        {
+          icon: <Lightbulb className="w-8 h-8" />,
+          title: 'Diseño y Prototipado',
+          description: 'Creamos wireframes y prototipos interactivos que visualizan la experiencia antes del desarrollo.',
+        },
+        {
+          icon: <Code className="w-8 h-8" />,
+          title: 'Desarrollo',
+          description: 'Construimos tu web con código limpio y escalable usando tecnologías modernas y buenas prácticas.',
+        },
+        {
+          icon: <Rocket className="w-8 h-8" />,
+          title: 'Lanzamiento y Optimización',
+          description: 'Lanzamos tu web y la optimizamos continuamente para rendimiento, SEO y experiencia de usuario.',
+        },
+      ]
+    : [
+        {
+          icon: <Search className="w-8 h-8" />,
+          title: 'Discovery & Research',
+          description: 'We dive deep into understanding your business, target audience, and goals to create a strategic foundation.',
+        },
+        {
+          icon: <Lightbulb className="w-8 h-8" />,
+          title: 'Design & Prototype',
+          description: 'Creating wireframes and interactive prototypes that visualize the user experience before development.',
+        },
+        {
+          icon: <Code className="w-8 h-8" />,
+          title: 'Development',
+          description: 'Building your website with clean, scalable code using modern technologies and best practices.',
+        },
+        {
+          icon: <Rocket className="w-8 h-8" />,
+          title: 'Launch & Optimize',
+          description: 'Deploying your website and continuously optimizing for performance, SEO, and user experience.',
+        },
+      ];
+
+  const features = lang === 'ES'
+    ? [
+        'Diseño Mobile-First',
+        'Optimización de Performance',
+        'SEO Listo',
+        'Accesibilidad Cumplida',
+        'Tecnologías Modernas',
+        'Soporte Continuo'
+      ]
+    : [
+        'Mobile-First Design',
+        'Performance Optimized',
+        'SEO Ready',
+        'Accessibility Compliant',
+        'Modern Technologies',
+        'Ongoing Support'
+      ];
 
   return (
     <section id="process" className="py-20 bg-cyber-grey">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Web Design <span className="cyber-text-gradient">Approach</span>
+            {lang === 'ES' ? 'Nuestro ' : 'Web Design '}
+            <span className="cyber-text-gradient">{lang === 'ES' ? 'Enfoque' : 'Approach'}</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Our proven process ensures every website we create is not only beautiful 
-            but also functional, fast, and optimized for success.
+            {lang === 'ES'
+              ? 'Nuestro proceso probado asegura que cada web que creamos sea hermosa, funcional, rápida y optimizada para el éxito.'
+              : 'Our proven process ensures every website we create is not only beautiful but also functional, fast, and optimized for success.'}
           </p>
         </div>
 
@@ -60,7 +107,7 @@ const WebDesignApproach = () => {
                 <div className="text-center flex-1 flex flex-col justify-between">
                   <div>
                     <div className="text-sm font-semibold text-agaru-purple mb-2">
-                      STEP {index + 1}
+                      {lang === 'ES' ? 'PASO' : 'STEP'} {index + 1}
                     </div>
                     <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
                   </div>
@@ -73,14 +120,7 @@ const WebDesignApproach = () => {
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            'Mobile-First Design',
-            'Performance Optimized',
-            'SEO Ready',
-            'Accessibility Compliant',
-            'Modern Technologies',
-            'Ongoing Support'
-          ].map((feature, index) => (
+          {features.map((feature, index) => (
             <div
               key={index}
               className="flex items-center gap-3 glass-effect p-4 rounded-lg animate-fade-in"

@@ -1,7 +1,11 @@
 
 import { ArrowRight, Sparkles } from 'lucide-react';
 
-const Hero = () => {
+interface HeroProps {
+  lang: 'ES' | 'EN';
+}
+
+const Hero = ({ lang }: HeroProps) => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Animated background elements */}
@@ -15,14 +19,24 @@ const Hero = () => {
 
           {/* Hero Title */}
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Web Design &{' '}
-            <span className="cyber-text-gradient">Brand Strategy</span>
+            {lang === 'ES' ? (
+              <>
+                Diseño Web &{' '}
+                <span className="cyber-text-gradient">Estrategia de Marca</span>
+              </>
+            ) : (
+              <>
+                Web Design &{' '}
+                <span className="cyber-text-gradient">Brand Strategy</span>
+              </>
+            )}
           </h2>
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            Elevating startups and small businesses through premium UX/UI design,
-            web development, branding, and strategic marketing solutions.
+            {lang === 'ES'
+              ? 'Impulsamos startups y pequeñas empresas con diseño UX/UI premium, desarrollo web, branding y soluciones estratégicas de marketing.'
+              : 'Elevating startups and small businesses through premium UX/UI design, web development, branding, and strategic marketing solutions.'}
           </p>
 
           {/* CTA Buttons */}
@@ -31,7 +45,7 @@ const Hero = () => {
               href="#services"
               className="group cyber-gradient text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-agaru-purple/30 transition-all duration-300 flex items-center gap-2"
             >
-              Explore Our Services
+              {lang === 'ES' ? 'Ver Servicios' : 'Explore Our Services'}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
 
@@ -40,7 +54,7 @@ const Hero = () => {
               className="group glass-effect text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
             >
               <Sparkles className="w-5 h-5" />
-              View Our Work
+              {lang === 'ES' ? 'Ver Proyectos' : 'View Our Work'}
             </a>
           </div>
 
@@ -48,19 +62,19 @@ const Hero = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 animate-fade-in" style={{ animationDelay: '0.8s' }}>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">50+</div>
-              <div className="text-gray-400">Projects Delivered</div>
+              <div className="text-gray-400">{lang === 'ES' ? 'Proyectos Entregados' : 'Projects Delivered'}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">100%</div>
-              <div className="text-gray-400">Client Satisfaction</div>
+              <div className="text-gray-400">{lang === 'ES' ? 'Clientes Satisfechos' : 'Client Satisfaction'}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">3+</div>
-              <div className="text-gray-400">Years Experience</div>
+              <div className="text-gray-400">{lang === 'ES' ? 'Años de Experiencia' : 'Years Experience'}</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">24/7</div>
-              <div className="text-gray-400">Support</div>
+              <div className="text-gray-400">{lang === 'ES' ? 'Soporte' : 'Support'}</div>
             </div>
           </div>
         </div>
