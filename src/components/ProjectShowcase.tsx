@@ -199,26 +199,6 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
             </div>
           ))}
         </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="glass-effect p-8 rounded-xl max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              {lang === 'ES' ? '¿Listo para crear algo increíble?' : 'Ready to Create Something Amazing?'}
-            </h3>
-            <p className="text-gray-300 mb-6">
-              {lang === 'ES'
-                ? 'Hablemos de tu proyecto y llevemos tu visión a la realidad con nuestra experiencia.'
-                : `Let's discuss your project and bring your vision to life with our expertise.`}
-            </p>
-            <a
-              href="#contact"
-              className="cyber-gradient text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-agaru-purple/30 transition-all duration-300 inline-block"
-            >
-              {lang === 'ES' ? 'Comenzá tu proyecto' : 'Start Your Project'}
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

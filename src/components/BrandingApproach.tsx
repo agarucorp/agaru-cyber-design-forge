@@ -112,26 +112,6 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
             </div>
           ))}
         </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="glass-effect p-8 rounded-xl max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              {lang === 'ES' ? '¿Listo para construir tu marca?' : 'Ready to Build Your Brand?'}
-            </h3>
-            <p className="text-gray-300 mb-6">
-              {lang === 'ES'
-                ? 'Creamos una identidad de marca que te diferencia de la competencia y conecta con tus clientes ideales.'
-                : `Let's create a brand identity that sets you apart from the competition and connects with your ideal customers.`}
-            </p>
-            <a
-              href="#contact"
-              className="cyber-gradient text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-agaru-purple/30 transition-all duration-300 inline-block"
-            >
-              {lang === 'ES' ? 'Comenzá tu viaje de marca' : 'Start Your Brand Journey'}
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

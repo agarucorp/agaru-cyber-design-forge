@@ -179,26 +179,6 @@ const FAQ = ({ lang }: FAQProps) => {
             </div>
           ))}
         </div>
-
-        {/* Still have questions CTA */}
-        <div className="text-center mt-16">
-          <div className="glass-effect p-8 rounded-xl">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              {lang === 'ES' ? '¿Todavía tenés dudas?' : 'Still Have Questions?'}
-            </h3>
-            <p className="text-gray-300 mb-6">
-              {lang === 'ES'
-                ? '¡Estamos para ayudarte! Escribinos y te respondemos en menos de 24 horas.'
-                : `We're here to help! Reach out to us and we'll get back to you within 24 hours.`}
-            </p>
-            <a
-              href="#contact"
-              className="cyber-gradient text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-agaru-purple/30 transition-all duration-300 inline-block"
-            >
-              {lang === 'ES' ? 'Contactanos' : 'Contact Us'}
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

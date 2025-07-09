@@ -1,5 +1,5 @@
 
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, ChevronsDown } from 'lucide-react';
 
 interface HeroProps {
   lang: 'ES' | 'EN';
@@ -9,7 +9,8 @@ const Hero = ({ lang }: HeroProps) => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden mt-0 hero-mt-mobile" style={{ marginTop: window.innerWidth < 650 ? '4rem' : undefined }}
+      className="min-h-screen flex items-center justify-center relative overflow-hidden mt-0 hero-mt-mobile py-[10vh]"
+      style={{ marginTop: window.innerWidth < 650 ? '4rem' : undefined }}
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -18,10 +19,10 @@ const Hero = ({ lang }: HeroProps) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center">
+        <div className="text-center flex flex-col items-center justify-center gap-8">
 
           {/* Hero Title */}
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             {lang === 'ES' ? (
               <>
                 Diseño Web &{' '}
@@ -36,7 +37,7 @@ const Hero = ({ lang }: HeroProps) => {
           </h2>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
             {lang === 'ES'
               ? 'Impulsamos startups y pequeñas empresas con diseño UX/UI premium, desarrollo web, branding y soluciones estratégicas de marketing.'
               : 'Elevating startups and small businesses through premium UX/UI design, web development, branding, and strategic marketing solutions.'}
@@ -60,27 +61,19 @@ const Hero = ({ lang }: HeroProps) => {
               {lang === 'ES' ? 'Ver Proyectos' : 'View Our Work'}
             </a>
           </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">50+</div>
-              <div className="text-gray-400">{lang === 'ES' ? 'Proyectos Entregados' : 'Projects Delivered'}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">100%</div>
-              <div className="text-gray-400">{lang === 'ES' ? 'Clientes Satisfechos' : 'Client Satisfaction'}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">3+</div>
-              <div className="text-gray-400">{lang === 'ES' ? 'Años de Experiencia' : 'Years Experience'}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold cyber-text-gradient mb-2">24/7</div>
-              <div className="text-gray-400">{lang === 'ES' ? 'Soporte' : 'Support'}</div>
-            </div>
-          </div>
         </div>
+      </div>
+      {/* Flecha animada para scroll, centrada abajo */}
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-8 z-20 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+        <a href="#services" className="group flex flex-col items-center cursor-pointer">
+          <span className="rounded-full bg-agaru-purple/20 p-3 shadow-lg animate-bounce-slow">
+            <ChevronsDown className="w-8 h-8 text-agaru-purple group-hover:text-agaru-purple-light transition-colors duration-300" />
+          </span>
+        </a>
+        <style>{`
+          .animate-bounce-slow { animation: bounce 2.2s infinite; }
+          @keyframes bounce { 0%, 100% { transform: translateY(0);} 50% { transform: translateY(18px);} }
+        `}</style>
       </div>
     </section>
   );
