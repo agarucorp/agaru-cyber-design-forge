@@ -42,6 +42,16 @@
 
     --radius: 0.75rem;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mulish;
+  }
+  .subtitle, .section-title, .card-title {
+    @apply font-mulish;
+  }
+  p {
+    @apply font-inter;
+  }
 }
 
 @layer base {
@@ -50,7 +60,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-poppins;
+    @apply bg-background text-foreground font-inter;
     background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
   }
 

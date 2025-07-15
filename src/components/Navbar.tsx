@@ -61,13 +61,15 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img src={LogoNav} alt="Logo AgaruCorp" className="w-8 h-8 object-contain" style={{ width: '80%', height: '80%' }} />
+            <img src={LogoNav} alt="Logo AgaruCorp" className="w-[56px] h-[56px] object-contain" />
             <span
-              className="text-2xl font-bold"
+              className="font-poppins"
               style={{
                 fontFamily: "'Altroned Trial', sans-serif",
-                color: '#f3f4f6', // blanco/gris claro
-                letterSpacing: '0.05em'
+                color: '#fff',
+                letterSpacing: '0.05em',
+                fontSize: '17px',
+                fontWeight: 560
               }}
             >
               AgaruCorp
@@ -81,36 +83,36 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-300 hover:text-agaru-purple transition-colors duration-300 px-3 py-2 text-sm font-medium"
+                  className="text-white hover:text-agaru-purple transition-colors duration-300 px-3 py-2 text-[12px] font-medium"
                 >
                   {item.name}
                 </a>
               ))}
-              {/* Switch de idioma */}
-              <div className="flex items-center ml-6">
-                <button
-                  onClick={() => setLang('ES')}
-                  className={`px-2 py-1 rounded-l border border-agaru-purple text-sm font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
-                  aria-pressed={lang === 'ES'}
-                >
-                  ES
-                </button>
-                <button
-                  onClick={() => setLang('EN')}
-                  className={`px-2 py-1 rounded-r border border-agaru-purple border-l-0 text-sm font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
-                  aria-pressed={lang === 'EN'}
-                >
-                  EN
-                </button>
-              </div>
             </div>
           </div>
 
+          {/* Switch de idioma */}
+          <div className="hidden md:flex items-center ml-2">
+            <button
+              onClick={() => setLang('ES')}
+              className={`px-1 py-0.5 rounded-l border border-agaru-purple text-[9px] font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+              aria-pressed={lang === 'ES'}
+            >
+              ES
+            </button>
+            <button
+              onClick={() => setLang('EN')}
+              className={`px-1 py-0.5 rounded-r border border-agaru-purple border-l-0 text-[9px] font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+              aria-pressed={lang === 'EN'}
+            >
+              EN
+            </button>
+          </div>
           {/* Contact Button */}
           <div className="hidden md:block">
             <a
               href="#contact"
-              className="cyber-gradient text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-agaru-purple/25 transition-all duration-300 font-medium"
+              className="cyber-gradient text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-agaru-purple/25 transition-all duration-300 font-medium text-[12px]"
             >
               {lang === 'ES' ? 'Contacto' : 'Book a Call'}
             </a>
@@ -135,7 +137,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-300 hover:text-agaru-purple transition-colors duration-300 px-3 py-2 text-sm font-medium"
+                  className="text-gray-300 hover:text-agaru-purple transition-colors duration-300 px-3 py-2 text-[12px] font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -152,14 +154,14 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
               <div className="flex items-center justify-center mt-4">
                 <button
                   onClick={() => setLang('ES')}
-                  className={`px-2 py-1 rounded-l border border-agaru-purple text-sm font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+                  className={`px-2 py-1 rounded-l border border-agaru-purple text-[12px] font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
                   aria-pressed={lang === 'ES'}
                 >
                   ES
                 </button>
                 <button
                   onClick={() => setLang('EN')}
-                  className={`px-2 py-1 rounded-r border border-agaru-purple border-l-0 text-sm font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+                  className={`px-2 py-1 rounded-r border border-agaru-purple border-l-0 text-[12px] font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
                   aria-pressed={lang === 'EN'}
                 >
                   EN

@@ -86,7 +86,7 @@ const Footer = ({ lang }: FooterProps) => {
                     </div>
                     <div>
                       <div className="text-gray-400 text-sm">{lang === 'ES' ? 'Ubicación' : 'Location'}</div>
-                      <div className="text-white font-semibold">New York, NY</div>
+                      <div className="text-white font-semibold">{lang === 'ES' ? 'Buenos Aires, Argentina | Presencia global' : 'Buenos Aires, Argentina | Worldwide'}</div>
                     </div>
                   </div>
                 </div>
@@ -205,28 +205,10 @@ const Footer = ({ lang }: FooterProps) => {
       {/* Footer Bottom */}
       <div className="border-t border-gray-800 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            {/* Logo and Company */}
-            <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <img src={LogoNav} alt="Logo AgaruCorp" className="w-8 h-8 object-contain" style={{ width: '80%', height: '80%' }} />
-            </div>
-
+          <div className="flex flex-col items-center justify-center">
             {/* Copyright */}
-            <div className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} AgaruCorp. {lang === 'ES' ? 'Todos los derechos reservados.' : 'All rights reserved.'}
-            </div>
-
-            {/* Quick Links */}
-            <div className="flex items-center space-x-6 mt-4 md:mt-0">
-              <a href="#services" className="text-gray-400 hover:text-agaru-purple transition-colors duration-300 text-sm">
-                {lang === 'ES' ? 'Servicios' : 'Services'}
-              </a>
-              <a href="#projects" className="text-gray-400 hover:text-agaru-purple transition-colors duration-300 text-sm">
-                {lang === 'ES' ? 'Proyectos' : 'Projects'}
-              </a>
-              <a href="#faq" className="text-gray-400 hover:text-agaru-purple transition-colors duration-300 text-sm">
-                {lang === 'ES' ? 'Preguntas' : 'FAQ'}
-              </a>
+            <div className="text-gray-400 text-sm text-center">
+              © Powered by AgaruCorp
             </div>
           </div>
         </div>

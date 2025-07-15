@@ -63,6 +63,8 @@ export default {
 			},
 			fontFamily: {
 				'poppins': ['Poppins', 'sans-serif'],
+				'inter': ['Inter', 'sans-serif'],
+				'mulish': ['Mulish', 'sans-serif'],
 				'altroned': ['Altroned Trial', 'sans-serif'],
 			},
 			borderRadius: {
