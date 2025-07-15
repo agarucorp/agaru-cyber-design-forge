@@ -1,10 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Zap } from "lucide-react";
 
-const Hero = () => {
+const CyberHero = () => {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden pt-8">
+    <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Abstract Background */}
       <div className="absolute inset-0">
         {/* Gradient Orbs */}
@@ -61,7 +60,7 @@ const Hero = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-8 lg:py-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Side - Content */}
@@ -212,4 +211,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default CyberHero;

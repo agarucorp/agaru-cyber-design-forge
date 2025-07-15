@@ -60,6 +60,23 @@ export default {
 				'cyber-dark': '#0A0A0A',
 				'cyber-grey': '#1A1A1A',
 				'cyber-light': '#2A2A2A',
+				// CYBERPUNK COLORS
+				sidebar: {
+					DEFAULT: 'hsl(var(--sidebar-background))',
+					foreground: 'hsl(var(--sidebar-foreground))',
+					primary: 'hsl(var(--sidebar-primary))',
+					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+					accent: 'hsl(var(--sidebar-accent))',
+					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+					border: 'hsl(var(--sidebar-border))',
+					ring: 'hsl(var(--sidebar-ring))'
+				},
+				cyber: {
+					primary: 'hsl(var(--cyber-primary))',
+					secondary: 'hsl(var(--cyber-secondary))',
+					accent: 'hsl(var(--cyber-accent))',
+					glow: 'hsl(var(--cyber-glow))'
+				}
 			},
 			fontFamily: {
 				'poppins': ['Poppins', 'sans-serif'],
@@ -71,6 +88,16 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backgroundImage: {
+				'gradient-cyber': 'var(--gradient-cyber)',
+				'gradient-orb-1': 'var(--gradient-orb-1)',
+				'gradient-orb-2': 'var(--gradient-orb-2)',
+				'gradient-orb-3': 'var(--gradient-orb-3)'
+			},
+			boxShadow: {
+				'cyber': 'var(--shadow-cyber)',
+				'neon': 'var(--shadow-neon)'
 			},
 			keyframes: {
 				'accordion-down': {
@@ -111,10 +138,10 @@ export default {
 				},
 				'glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(61, 0, 199, 0.5)'
+						opacity: '0.5'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(61, 0, 199, 0.8)'
+						opacity: '1'
 					}
 				},
 				'float': {
@@ -122,7 +149,15 @@ export default {
 						transform: 'translateY(0px)'
 					},
 					'50%': {
-						transform: 'translateY(-10px)'
+						transform: 'translateY(-20px)'
+					}
+				},
+				'spin-slow': {
+					from: {
+						transform: 'rotate(0deg)'
+					},
+					to: {
+						transform: 'rotate(360deg)'
 					}
 				}
 			},
@@ -131,8 +166,9 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'slide-in-right': 'slide-in-right 0.5s ease-out',
+				'float': 'float 6s ease-in-out infinite',
 				'glow': 'glow 2s ease-in-out infinite',
-				'float': 'float 3s ease-in-out infinite',
+				'spin-slow': 'spin-slow 20s linear infinite'
 			}
 		}
 	},
