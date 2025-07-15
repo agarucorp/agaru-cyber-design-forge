@@ -70,49 +70,50 @@ const Hero = () => {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#895AF6]/30 bg-[#895AF6]/10 text-[#895AF6] text-sm font-medium">
                 <Zap className="w-4 h-4" />
-                Next-Gen UX Platform
+                Next-Gen UI Platform
               </div>
               
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                <span className="text-foreground">Build </span>
-                <span className="text-[#895AF6]">Cyberpunk</span>
-                <br />
-                <span className="text-foreground">Interfaces</span>
-                <br />
-                <span className="bg-gradient-to-r from-[#00FFFF] to-[#00FFFF] bg-clip-text text-transparent">
-                  of Tomorrow
-                </span>
+                Interfaces <span className="text-[#895AF6]">Digitales</span><br />
+                de próxima<br />
+                <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">generación</span>
               </h1>
               
               <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-                Experience the future of user interfaces with our cutting-edge platform. 
-                Create stunning, responsive apps with cyberpunk aesthetics and next-gen functionality.
+                Desarrollamos sitios web de alto impacto y estrategias de marca que eliminan fricciones, optimizan costos e impulsan el crecimiento.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="cyber" size="lg" className="group bg-[#895AF6] hover:bg-[#A259FF] shadow-neon">
-                Get Started
+              <Button
+                variant="cyber"
+                size="lg"
+                className="group bg-[#895AF6] text-white border border-[#895AF6] hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300"
+              >
+                Ver Más
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="cyber-outline" size="lg" className="group text-[#895AF6] border-[#895AF6] shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6]">
-                <Play className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                Watch Demo
+              <Button
+                variant="cyber-outline"
+                size="lg"
+                className="group text-[#895AF6] border-[#895AF6] shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6] hover:bg-transparent hover:text-[#895AF6] transition-all duration-300"
+              >
+                Contanos de tu Proyecto
               </Button>
             </div>
 
             <div className="flex items-center gap-8 pt-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-cyber-primary">50K+</div>
-                <div className="text-sm text-muted-foreground">Active Users</div>
+                <div className="text-2xl font-bold text-cyber-primary">100+</div>
+                <div className="text-sm text-muted-foreground">Proyectos Entregados</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-cyber-secondary">99.9%</div>
-                <div className="text-sm text-muted-foreground">Uptime</div>
+                <div className="text-2xl font-bold text-cyber-secondary">99%</div>
+                <div className="text-sm text-muted-foreground">Disponibilidad</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#00FFFF]">24/7</div>
-                <div className="text-sm text-muted-foreground">Support</div>
+                <div className="text-sm text-muted-foreground">Soporte</div>
               </div>
             </div>
           </div>
@@ -141,7 +142,7 @@ const Hero = () => {
                         <img src={LogoNav} alt="Logo AgaruCorp" className="w-10 h-10 object-contain" />
                       </div>
                       <h3 className="font-altroned text-foreground" style={{ fontFamily: "'Altroned Trial', sans-serif", fontSize: '0.94rem' }}>AgaruCorp</h3>
-                      <p className="text-xs text-muted-foreground">Next-Gen Platform</p>
+                      <p className="text-xs text-muted-foreground">Agencia Digital</p>
                     </div>
 
                     {/* Feature Cards */}

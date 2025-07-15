@@ -11,7 +11,7 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
         {
           icon: <Search className="w-8 h-8" />,
           title: 'Descubrimiento e Investigación',
-          description: 'Profundizamos en tu negocio, audiencia y objetivos para crear una base estratégica sólida.',
+          description: 'Creamos wireframes y prototipos interactivos que visualizan la experiencia antes del desarrollo.',
         },
         {
           icon: <Lightbulb className="w-8 h-8" />,
@@ -21,12 +21,12 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
         {
           icon: <Code className="w-8 h-8" />,
           title: 'Desarrollo',
-          description: 'Construimos tu web con código limpio y escalable usando tecnologías modernas y buenas prácticas.',
+          description: 'Creamos wireframes y prototipos interactivos que visualizan la experiencia antes del desarrollo.',
         },
         {
           icon: <Rocket className="w-8 h-8" />,
           title: 'Lanzamiento y Optimización',
-          description: 'Lanzamos tu web y la optimizamos continuamente para rendimiento, SEO y experiencia de usuario.',
+          description: 'Creamos wireframes y prototipos interactivos que visualizan la experiencia antes del desarrollo.',
         },
       ]
     : [
@@ -75,65 +75,91 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            {lang === 'ES' ? 'Nuestro ' : 'Web Design '}
-            <span className="cyber-text-gradient">{lang === 'ES' ? 'Enfoque' : 'Approach'}</span>
+            Nuestro Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño & Desarrollo Web</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            {lang === 'ES'
-              ? 'Nuestro proceso probado asegura que cada web que creamos sea hermosa, funcional, rápida y optimizada para el éxito.'
-              : 'Our proven process ensures every website we create is not only beautiful but also functional, fast, and optimized for success.'}
+            ¿Cómo funciona?
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className="relative group animate-fade-in h-full"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              {/* Connection line */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-agaru-purple to-transparent z-0"></div>
-              )}
-              
-              <div className="cyber-card p-8 rounded-xl relative z-10 flex flex-col h-full min-h-[370px]">
-                <div className="flex items-center justify-center w-16 h-16 cyber-gradient rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                  <div className="text-white">
-                    {step.icon}
+        <div className="space-y-20 max-w-5xl mx-auto">
+          {/* Card 1: icono, header y sin card de descripción */}
+          {steps[0] && (
+            <div key={0} className="relative group animate-fade-in">
+              <div className="flex flex-col md:flex-row items-start gap-4 mb-1 w-full">
+                <div className="flex flex-row items-center gap-4 flex-shrink-0">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#895AF6]/80 to-[#4DE3FF]/60 shadow-lg">
+                    <span className="text-white text-3xl">{steps[0].icon}</span>
                   </div>
+                  <h3 className="text-2xl font-bold text-white mb-0">{steps[0].title}</h3>
+                  <span className="text-sm text-[#895AF6] font-medium ml-4">{lang === 'ES' ? `Etapa 1` : `Step 1`}</span>
                 </div>
-                
-                <div className="text-center flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="text-sm font-semibold text-agaru-purple mb-2">
-                      {lang === 'ES' ? 'PASO' : 'STEP'} {index + 1}
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
+                {/* Sin card de descripción */}
+              </div>
+              {/* Línea divisoria */}
+              <div className="w-full h-px bg-gradient-to-r from-[#ffffff22] to-transparent mt-12 md:mt-16"></div>
+            </div>
+          )}
+          {/* Card 2 visible */}
+          {steps[1] && (
+            <div key={1} className="relative group animate-fade-in">
+              <div className="flex flex-col md:flex-row items-start gap-4 mb-1 w-full">
+                <div className="flex flex-row items-center gap-4 flex-shrink-0">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#895AF6]/80 to-[#4DE3FF]/60 shadow-lg">
+                    <span className="text-white text-3xl">{steps[1].icon}</span>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">{step.description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-0">{steps[1].title}</h3>
+                  <span className="text-sm text-[#895AF6] font-medium ml-4">{lang === 'ES' ? `Etapa 2` : `Step 2`}</span>
+                </div>
+                <div className="w-full md:w-[520px] bg-[#23243a] rounded-xl px-8 py-6 text-gray-300 shadow-md border border-white/5 text-base ml-0 md:ml-56 mt-4 md:mt-0">
+                  {steps[1].description}
                 </div>
               </div>
+              {/* Línea divisoria */}
+              <div className="w-full h-px bg-gradient-to-r from-[#ffffff22] to-transparent mt-12 md:mt-16"></div>
             </div>
-          ))}
+          )}
+          {/* Card 3: icono, header y sin card de descripción */}
+          {steps[2] && (
+            <div key={2} className="relative group animate-fade-in">
+              <div className="flex flex-col md:flex-row items-start gap-4 mb-1 w-full">
+                <div className="flex flex-row items-center gap-4 flex-shrink-0">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#895AF6]/80 to-[#4DE3FF]/60 shadow-lg">
+                    <span className="text-white text-3xl">{steps[2].icon}</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-0">{steps[2].title}</h3>
+                  <span className="text-sm text-[#895AF6] font-medium ml-4">{lang === 'ES' ? `Etapa 3` : `Step 3`}</span>
+                </div>
+                {/* Sin card de descripción */}
+              </div>
+              {/* Línea divisoria */}
+              <div className="w-full h-px bg-gradient-to-r from-[#ffffff22] to-transparent mt-12 md:mt-16"></div>
+            </div>
+          )}
+          {/* Card 4: icono, header y sin card de descripción */}
+          {steps[3] && (
+            <div key={3} className="relative group animate-fade-in">
+              <div className="flex flex-col md:flex-row items-start gap-4 mb-1 w-full">
+                <div className="flex flex-row items-center gap-4 flex-shrink-0">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#895AF6]/80 to-[#4DE3FF]/60 shadow-lg">
+                    <span className="text-white text-3xl">{steps[3].icon}</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-0">{steps[3].title}</h3>
+                  <span className="text-sm text-[#895AF6] font-medium ml-4">{lang === 'ES' ? `Etapa 4` : `Step 4`}</span>
+                </div>
+                {/* Sin card de descripción */}
+              </div>
+              {/* Línea divisoria */}
+              <div className="w-full h-px bg-gradient-to-r from-[#ffffff22] to-transparent mt-12 md:mt-16"></div>
+            </div>
+          )}
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-3 glass-effect p-4 rounded-lg animate-fade-in"
-              style={{ animationDelay: `${0.6 + index * 0.1}s` }}
-            >
-              <CheckCircle className="w-5 h-5 text-agaru-purple flex-shrink-0" />
-              <span className="text-gray-300">{feature}</span>
-            </div>
-          ))}
-        </div>
+        {/* Eliminar la grilla de features (diseño continuo, performance, SEO, etc.) al final de la sección */}
       </div>
     </section>
   );
 };
 
 export default WebDesignApproach;
+

@@ -1,4 +1,5 @@
 
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
 import { Code, Palette, Target, TrendingUp } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -7,59 +8,28 @@ interface ServicesProps {
 }
 
 const Services = ({ lang }: ServicesProps) => {
-  const services = lang === 'ES'
-    ? [
-        {
-          icon: <Code className="w-8 h-8" />,
-          title: 'Diseño UX/UI',
-          description: 'Creamos experiencias intuitivas y visualmente impactantes que convierten visitantes en clientes.',
-          features: ['Investigación de Usuarios', 'Wireframing', 'Prototipado', 'Diseño Visual']
-        },
-        {
-          icon: <Palette className="w-8 h-8" />,
-          title: 'Desarrollo Web',
-          description: 'Construimos sitios web rápidos, responsivos y escalables usando tecnologías modernas y buenas prácticas.',
-          features: ['React/Next.js', 'Responsive Mobile', 'SEO Optimizado', 'Enfoque en Performance']
-        },
-        {
-          icon: <TrendingUp className="w-8 h-8" />,
-          title: 'Aplicaciones Web',
-          description: 'Desarrollamos aplicaciones web robustas y escalables adaptadas a las necesidades de tu negocio.',
-          features: ['Sistemas a Medida', 'Integraciones API', 'Paneles de Control', 'Automatización']
-        },
-        {
-          icon: <Target className="w-8 h-8" />,
-          title: 'Branding',
-          description: 'Creamos identidades de marca coherentes que conectan con tu audiencia y destacan en el mercado.',
-          features: ['Diseño de Logo', 'Guía de Marca', 'Identidad Visual', 'Estrategia de Marca']
-        }
-      ]
-    : [
-        {
-          icon: <Code className="w-8 h-8" />,
-          title: 'UX/UI Design',
-          description: 'Crafting intuitive and visually stunning user experiences that convert visitors into customers.',
-          features: ['User Research', 'Wireframing', 'Prototyping', 'Visual Design']
-        },
-        {
-          icon: <Palette className="w-8 h-8" />,
-          title: 'Web Development',
-          description: 'Building fast, responsive, and scalable websites using modern technologies and best practices.',
-          features: ['React/Next.js', 'Mobile Responsive', 'SEO Optimized', 'Performance Focused']
-        },
-        {
-          icon: <TrendingUp className="w-8 h-8" />,
-          title: 'Web Applications',
-          description: 'We develop robust and scalable web applications tailored to your business needs.',
-          features: ['Custom Systems', 'API Integrations', 'Admin Panels', 'Automation']
-        },
-        {
-          icon: <Target className="w-8 h-8" />,
-          title: 'Branding',
-          description: 'Creating cohesive brand identities that resonate with your target audience and stand out.',
-          features: ['Logo Design', 'Brand Guidelines', 'Visual Identity', 'Brand Strategy']
-        }
-      ];
+  const services = [
+    {
+      title: 'Diseño UX/UI',
+      description: 'Creamos prototipos interactivos y centrados en el usuario en Figma, diseñados para evolucionar con tu proyecto. Nuestro proceso asegura una iteración rápida, retroalimentación fluida y experiencias intuitivas alineadas con tus objetivos.',
+      features: ['Investigación de Usuarios', 'Wireframing', 'Prototipado', 'Diseño Visual']
+    },
+    {
+      title: 'Desarrollo Web',
+      description: 'Diseñamos sitios web funcionales y visualmente atractivos que garantizan una navegación fluida y una experiencia de usuario cautivadora, adaptándose completamente a las últimas tendencias y tecnologías del mercado.',
+      features: ['React/Next.js', 'Responsive Mobile', 'SEO Optimizado', 'Enfoque en Performance']
+    },
+    {
+      title: 'Aplicaciones Web',
+      description: 'Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.',
+      features: ['Sistemas a Medida', 'Integraciones API', 'Paneles de Control', 'Automatización']
+    },
+    {
+      title: 'Identidad de Marca',
+      description: 'Moldeamos la base estratégica de tu marca, clarificando tu propósito, voz y posición en el mercado. A través de la investigación y la colaboración, desarrollamos una identidad única que se alinea con tus valores y conecta con tu audiencia.',
+      features: ['Diseño de Logo', 'Guía de Marca', 'Identidad Visual', 'Estrategia de Marca']
+    }
+  ];
 
   return (
     <section id="services" className="py-20 relative overflow-hidden">
@@ -67,43 +37,37 @@ const Services = ({ lang }: ServicesProps) => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {lang === 'ES' ? 'Nuestros ' : 'Our '}
-            <span className="cyber-text-gradient">{lang === 'ES' ? 'Servicios' : 'Services'}</span>
+            <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">
+              {lang === 'ES' ? 'Servicios' : 'Services'}
+            </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            {lang === 'ES'
-              ? 'Ayudamos a startups y pequeñas empresas a establecer su presencia digital con diseño de vanguardia y soluciones estratégicas.'
-              : 'We specialize in helping startups and small businesses establish their digital presence with cutting-edge design and strategic solutions.'}
+            Nos especializamos en ayudar a pequeñas/medianas empresas, startups y profesionales ambiciosos a lanzar sus marcas online
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="cyber-card p-8 rounded-xl group animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="text-[#895AF6] mb-6 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
+        <Accordion type="multiple" className="space-y-6 mt-8">
+          {services.map((service, idx) => (
+            <AccordionItem key={service.title} value={service.title}>
+              <div className="max-w-2xl mx-auto">
+                <AccordionTrigger className="text-2xl font-bold text-white mb-0 px-6 py-4 rounded-2xl border border-[#895AF6]/30 bg-gradient-to-br from-[#181A20]/80 to-[#23243a]/80 backdrop-blur-md shadow-lg transition-all duration-300 group hover:shadow-2xl hover:scale-[1.025] hover:bg-[#23243a]/90 hover:text-[#895AF6] hover:no-underline focus:outline-none">
+                  <span className="transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">{service.title}</span>
+                </AccordionTrigger>
+                <AccordionContent className="bg-[#181A20]/80 px-6 pb-6 rounded-b-2xl border-t-0 border border-[#895AF6]/10">
+                  <p className="text-gray-300 mb-6 leading-relaxed text-base">{service.description}</p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="text-gray-400 flex items-center">
+                        <div className="w-2 h-2 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
               </div>
-              
-              <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-              
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                {service.description}
-              </p>
-
-              <ul className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="text-gray-400 flex items-center">
-                    <div className="w-2 h-2 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
 
         {/* Call to Action */}
         <div className="text-center mt-16">
