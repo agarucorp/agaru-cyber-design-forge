@@ -1,16 +1,17 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Zap } from "lucide-react";
+import LogoNav from './assets/Navbar/LogoNav.svg';
 
 const Hero = () => {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden pt-8">
+    <div className="min-h-screen bg-background relative overflow-hidden pt-2">
       {/* Abstract Background */}
       <div className="absolute inset-0">
         {/* Gradient Orbs */}
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-orb-1" />
+        <div className="absolute top-0 left-0 w-full h-full" style={{ background: 'radial-gradient(ellipse 400px 300px at 0% 0%, rgba(137,90,246,0.10) 0%, transparent 100%)' }} />
         <div className="absolute bottom-0 right-0 w-full h-full bg-gradient-orb-2" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-orb-3" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full" style={{ background: 'radial-gradient(ellipse 300px 200px at 50% 50%, rgba(255,62,201,0.10) 0%, transparent 100%)' }} />
         
         {/* Floating SVG Elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -49,9 +50,9 @@ const Hero = () => {
           </svg>
 
           {/* Geometric Dots */}
-          <div className="absolute top-32 right-40 w-2 h-2 bg-cyber-accent rounded-full animate-glow" style={{ animationDelay: '2s' }} />
-          <div className="absolute bottom-40 left-60 w-1 h-1 bg-cyber-primary rounded-full animate-glow" style={{ animationDelay: '3s' }} />
-          <div className="absolute top-3/4 right-1/3 w-3 h-3 bg-cyber-secondary rounded-full animate-glow" style={{ animationDelay: '1.5s' }} />
+          <div className="absolute top-32 right-40 w-2 h-2 bg-[#00FFFF] rounded-full animate-glow" style={{ animationDelay: '2s', opacity: 0.12 }} />
+          <div className="absolute bottom-40 left-60 w-1 h-1 bg-[#895AF6] rounded-full animate-glow" style={{ animationDelay: '3s', opacity: 0.12 }} />
+          <div className="absolute top-3/4 right-1/3 w-3 h-3 bg-gradient-to-br from-[#895AF6] to-[#00FFFF] rounded-full animate-glow" style={{ animationDelay: '1.5s', opacity: 0.10 }} />
 
           {/* Rotating Elements */}
           <svg className="absolute bottom-20 right-40 animate-spin-slow" width="60" height="60" viewBox="0 0 60 60">
@@ -67,18 +68,18 @@ const Hero = () => {
           {/* Left Side - Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyber-primary/30 bg-cyber-primary/10 text-cyber-primary text-sm font-medium">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#895AF6]/30 bg-[#895AF6]/10 text-[#895AF6] text-sm font-medium">
                 <Zap className="w-4 h-4" />
                 Next-Gen UX Platform
               </div>
               
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                 <span className="text-foreground">Build </span>
-                <span className="text-cyber-primary">Cyberpunk</span>
+                <span className="text-[#895AF6]">Cyberpunk</span>
                 <br />
                 <span className="text-foreground">Interfaces</span>
                 <br />
-                <span className="bg-gradient-to-r from-cyber-primary to-cyber-secondary bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#00FFFF] to-[#00FFFF] bg-clip-text text-transparent">
                   of Tomorrow
                 </span>
               </h1>
@@ -90,11 +91,11 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="cyber" size="lg" className="group">
+              <Button variant="cyber" size="lg" className="group bg-[#895AF6] hover:bg-[#A259FF] shadow-neon">
                 Get Started
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="cyber-outline" size="lg" className="group">
+              <Button variant="cyber-outline" size="lg" className="group text-[#895AF6] border-[#895AF6] shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6]">
                 <Play className="w-4 h-4 group-hover:scale-110 transition-transform" />
                 Watch Demo
               </Button>
@@ -110,7 +111,7 @@ const Hero = () => {
                 <div className="text-sm text-muted-foreground">Uptime</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-cyber-accent">24/7</div>
+                <div className="text-2xl font-bold text-[#00FFFF]">24/7</div>
                 <div className="text-sm text-muted-foreground">Support</div>
               </div>
             </div>
@@ -120,79 +121,70 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
               {/* Phone Frame */}
-              <div className="relative w-64 h-[520px] bg-gradient-to-br from-gray-900 to-black rounded-[2.5rem] p-2 shadow-cyber">
+              <div className="relative w-64 h-[520px] bg-black rounded-[2.5rem] p-2" style={{ boxShadow: '0 0 24px 0 #895AF633' }}>
                 {/* Phone Screen */}
-                <div className="w-full h-full bg-background rounded-[2rem] overflow-hidden border border-cyber-primary/20 relative">
+                <div className="w-full h-full bg-background rounded-[2rem] overflow-hidden border border-black relative">
                   
                   {/* Screen Gradient Background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-cyber-primary/10 via-transparent to-cyber-secondary/10" />
                   
                   {/* Status Bar */}
                   <div className="flex justify-between items-center px-6 py-4 text-xs text-foreground/70">
-                    <span>9:41</span>
-                    <div className="flex gap-1">
-                      <div className="w-4 h-2 bg-cyber-primary rounded-sm" />
-                      <div className="w-4 h-2 bg-cyber-primary/60 rounded-sm" />
-                      <div className="w-4 h-2 bg-cyber-primary/30 rounded-sm" />
-                    </div>
+                    {/* Eliminado: símbolos de señal */}
                   </div>
 
                   {/* App Interface */}
-                  <div className="px-6 space-y-6">
+                  <div className="px-6 space-y-6 flex flex-col justify-center h-full -mt-3">
                     {/* Header */}
                     <div className="text-center space-y-2">
-                      <div className="w-16 h-16 bg-gradient-to-br from-cyber-primary to-cyber-secondary rounded-2xl mx-auto flex items-center justify-center shadow-neon">
-                        <Zap className="w-8 h-8 text-white" />
+                      <div className="w-16 h-16 rounded-2xl mx-auto flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)', boxShadow: '0 0 8px 1px #4DE3FF22' }}>
+                        <img src={LogoNav} alt="Logo AgaruCorp" className="w-10 h-10 object-contain" />
                       </div>
-                      <h3 className="font-semibold text-foreground">CyberApp</h3>
+                      <h3 className="font-altroned text-foreground" style={{ fontFamily: "'Altroned Trial', sans-serif", fontSize: '0.94rem' }}>AgaruCorp</h3>
                       <p className="text-xs text-muted-foreground">Next-Gen Platform</p>
                     </div>
 
                     {/* Feature Cards */}
-                    <div className="space-y-3">
-                      <div className="p-4 rounded-lg border border-cyber-primary/20 bg-cyber-primary/5">
+                    <div className="space-y-3 flex flex-col items-center">
+                      <div className="p-4 w-[218px] rounded-lg border border-cyber-primary/20 bg-cyber-primary/5">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-cyber-primary/20 rounded-lg flex items-center justify-center">
                             <div className="w-2 h-2 bg-cyber-primary rounded-full animate-glow" />
                           </div>
                           <div className="flex-1">
-                            <div className="text-sm font-medium text-foreground">Neural Interface</div>
-                            <div className="text-xs text-muted-foreground">AI-Powered Design</div>
+                            <div className="text-xs font-medium text-foreground">Desarrollo Full-Stack</div>
+                            <div className="text-xs text-muted-foreground">Node.js, React, DBs</div>
                           </div>
                         </div>
                       </div>
 
-                      <div className="p-4 rounded-lg border border-cyber-secondary/20 bg-cyber-secondary/5">
+                      <div className="p-4 w-[218px] rounded-lg border border-cyber-secondary/20 bg-cyber-secondary/5">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-cyber-secondary/20 rounded-lg flex items-center justify-center">
                             <div className="w-2 h-2 bg-cyber-secondary rounded-full animate-glow" style={{ animationDelay: '1s' }} />
                           </div>
                           <div className="flex-1">
-                            <div className="text-sm font-medium text-foreground">Quantum Sync</div>
-                            <div className="text-xs text-muted-foreground">Real-time Updates</div>
+                            <div className="text-xs font-medium text-foreground">Diseño Responsive</div>
+                            <div className="text-xs text-muted-foreground">UX/UI Multidispositivo</div>
                           </div>
                         </div>
                       </div>
 
-                      <div className="p-4 rounded-lg border border-cyber-accent/20 bg-cyber-accent/5">
+                      <div className="p-4 w-[218px] rounded-lg border border-cyber-accent/20 bg-cyber-accent/5">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-cyber-accent/20 rounded-lg flex items-center justify-center">
                             <div className="w-2 h-2 bg-cyber-accent rounded-full animate-glow" style={{ animationDelay: '2s' }} />
                           </div>
                           <div className="flex-1">
-                            <div className="text-sm font-medium text-foreground">Holo Display</div>
-                            <div className="text-xs text-muted-foreground">3D Visualization</div>
+                            <div className="text-xs font-medium text-foreground">Branding</div>
+                            <div className="text-xs text-muted-foreground">Marketing Roadmap</div>
                           </div>
                         </div>
                       </div>
                     </div>
 
                     {/* Bottom Action */}
-                    <div className="pt-4">
-                      <div className="w-full h-12 bg-gradient-to-r from-cyber-primary to-cyber-secondary rounded-lg flex items-center justify-center shadow-neon">
-                        <span className="text-white font-medium text-sm">Connect Neural Link</span>
-                      </div>
-                    </div>
+                    
                   </div>
                 </div>
 

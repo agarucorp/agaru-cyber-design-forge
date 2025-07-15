@@ -35,13 +35,13 @@
     --radius: 0.75rem;
 
     /* --- CYBERPUNK DESIGN SYSTEM --- */
-    --cyber-primary: 258 90% 66%;
-    --cyber-secondary: 180 100% 50%;
-    --cyber-accent: 340 100% 50%;
-    --cyber-glow: 258 90% 66%;
+    --cyber-primary: 276 100% 60%; /* Violeta/fucsia original */
+    --cyber-secondary: 320 100% 55%; /* Fucsia/rosado secundario */
+    --cyber-accent: 200 100% 60%; /* Celeste solo como acento */
+    --cyber-glow: 276 100% 60%;
     /* Gradients */
-    --gradient-cyber: radial-gradient(ellipse at center, hsl(var(--cyber-primary) / 0.15) 0%, transparent 50%);
-    --gradient-orb-1: radial-gradient(ellipse 400px 300px at 0% 0%, hsl(var(--cyber-primary) / 0.3), transparent);
+    --gradient-cyber: radial-gradient(ellipse at center, hsl(var(--cyber-primary) / 0.18) 0%, transparent 50%);
+    --gradient-orb-1: radial-gradient(ellipse 400px 300px at 0% 0%, hsl(var(--cyber-primary) / 0.25), transparent);
     --gradient-orb-2: radial-gradient(ellipse 400px 300px at 100% 100%, hsl(var(--cyber-secondary) / 0.2), transparent);
     --gradient-orb-3: radial-gradient(ellipse 300px 200px at 50% 50%, hsl(var(--cyber-accent) / 0.1), transparent);
     /* Shadows */
@@ -77,11 +77,11 @@
 
 @layer components {
   .cyber-gradient {
-    background: linear-gradient(135deg, #3D00C7 0%, #5A1FDE 50%, #2A0090 100%);
+    background: linear-gradient(135deg, #00BFFF 0%, #00FFFF 50%, #0099FF 100%);
   }
 
   .cyber-text-gradient {
-    background: linear-gradient(135deg, #3D00C7 0%, #5A1FDE 100%);
+    background: linear-gradient(135deg, #00BFFF 0%, #00FFFF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

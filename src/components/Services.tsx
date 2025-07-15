@@ -1,5 +1,6 @@
 
 import { Code, Palette, Target, TrendingUp } from 'lucide-react';
+import { Button } from './ui/button';
 
 interface ServicesProps {
   lang: 'ES' | 'EN';
@@ -21,16 +22,16 @@ const Services = ({ lang }: ServicesProps) => {
           features: ['React/Next.js', 'Responsive Mobile', 'SEO Optimizado', 'Enfoque en Performance']
         },
         {
+          icon: <TrendingUp className="w-8 h-8" />,
+          title: 'Aplicaciones Web',
+          description: 'Desarrollamos aplicaciones web robustas y escalables adaptadas a las necesidades de tu negocio.',
+          features: ['Sistemas a Medida', 'Integraciones API', 'Paneles de Control', 'Automatización']
+        },
+        {
           icon: <Target className="w-8 h-8" />,
           title: 'Branding',
           description: 'Creamos identidades de marca coherentes que conectan con tu audiencia y destacan en el mercado.',
           features: ['Diseño de Logo', 'Guía de Marca', 'Identidad Visual', 'Estrategia de Marca']
-        },
-        {
-          icon: <TrendingUp className="w-8 h-8" />,
-          title: 'Estrategia de Marketing',
-          description: 'Desarrollamos estrategias de marketing basadas en datos para impulsar el crecimiento y maximizar el ROI.',
-          features: ['Investigación de Mercado', 'Planificación de Campañas', 'Estrategia de Contenidos', 'Analítica de Performance']
         }
       ]
     : [
@@ -47,21 +48,21 @@ const Services = ({ lang }: ServicesProps) => {
           features: ['React/Next.js', 'Mobile Responsive', 'SEO Optimized', 'Performance Focused']
         },
         {
+          icon: <TrendingUp className="w-8 h-8" />,
+          title: 'Web Applications',
+          description: 'We develop robust and scalable web applications tailored to your business needs.',
+          features: ['Custom Systems', 'API Integrations', 'Admin Panels', 'Automation']
+        },
+        {
           icon: <Target className="w-8 h-8" />,
           title: 'Branding',
           description: 'Creating cohesive brand identities that resonate with your target audience and stand out.',
           features: ['Logo Design', 'Brand Guidelines', 'Visual Identity', 'Brand Strategy']
-        },
-        {
-          icon: <TrendingUp className="w-8 h-8" />,
-          title: 'Marketing Strategy',
-          description: 'Developing data-driven marketing strategies that drive growth and maximize ROI.',
-          features: ['Market Research', 'Campaign Planning', 'Content Strategy', 'Performance Analytics']
         }
       ];
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-b from-cyber-dark to-cyber-grey">
+    <section id="services" className="py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -82,7 +83,7 @@ const Services = ({ lang }: ServicesProps) => {
               className="cyber-card p-8 rounded-xl group animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="text-agaru-purple mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-[#895AF6] mb-6 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
               
@@ -95,7 +96,7 @@ const Services = ({ lang }: ServicesProps) => {
               <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="text-gray-400 flex items-center">
-                    <div className="w-2 h-2 cyber-gradient rounded-full mr-3"></div>
+                    <div className="w-2 h-2 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
                     {feature}
                   </li>
                 ))}
@@ -108,7 +109,7 @@ const Services = ({ lang }: ServicesProps) => {
         <div className="text-center mt-16">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 cyber-gradient text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-agaru-purple/30 transition-all duration-300"
+            className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-medium text-lg transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6] inline-flex items-center gap-2"
           >
             {lang === 'ES' ? 'Comenzá tu proyecto' : 'Start Your Project'}
           </a>

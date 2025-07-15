@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { Menu, X } from 'lucide-react';
-import LogoNav from './assets/Navbar/LogoNav.png';
+import LogoNav from './assets/Navbar/LogoNav.svg';
 
 interface NavbarProps {
   lang: 'ES' | 'EN';
@@ -112,7 +112,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           <div className="hidden md:block">
             <a
               href="#contact"
-              className="cyber-gradient text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-agaru-purple/25 transition-all duration-300 font-medium text-[12px]"
+              className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-medium text-[13px] transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6]"
             >
               {lang === 'ES' ? 'Contacto' : 'Book a Call'}
             </a>
@@ -145,7 +145,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
               ))}
               <a
                 href="#contact"
-                className="cyber-gradient text-white px-6 py-2 rounded-full text-center mt-4 font-medium"
+                className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md text-center mt-4 font-medium text-[13px] transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6]"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {lang === 'ES' ? 'Contacto' : 'Book a Call'}

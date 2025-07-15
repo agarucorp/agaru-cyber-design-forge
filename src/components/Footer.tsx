@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Instagram, Linkedin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import LogoNav from './assets/Navbar/LogoNav.png';
+import { Button } from './ui/button';
 
 interface FooterProps {
   lang: 'ES' | 'EN';
@@ -189,13 +190,15 @@ const Footer = ({ lang }: FooterProps) => {
                   />
                 </div>
 
-                <button
+                <Button
                   type="submit"
-                  className="w-full cyber-gradient text-white py-4 px-6 rounded-lg font-semibold hover:shadow-xl hover:shadow-agaru-purple/30 transition-all duration-300 flex items-center justify-center gap-2"
+                  variant="cyber"
+                  size="lg"
+                  className="w-full flex items-center justify-center gap-2"
                 >
                   {lang === 'ES' ? 'Enviar Mensaje' : 'Send Message'}
                   <Send className="w-5 h-5" />
-                </button>
+                </Button>
               </form>
             </div>
           </div>
