@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Send, Instagram, Linkedin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import LogoNav from './assets/Navbar/LogoNav.png';
 import { Button } from './ui/button';
+import emailjs from '@emailjs/browser';
 
 interface FooterProps {
   lang: 'ES' | 'EN';
@@ -13,29 +14,108 @@ const Footer = ({ lang }: FooterProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   });
   
   const { toast } = useToast();
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    phone: false,
+    subject: false,
+    message: false,
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    setTouched({
+      ...touched,
+      [e.target.name]: true
+    });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    
-    toast({
-      title: lang === 'ES' ? '¡Mensaje enviado!' : 'Message Sent!',
-      description: lang === 'ES' ? 'Te responderemos en menos de 24 horas.' : "We'll get back to you within 24 hours.",
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setTouched({
+      ...touched,
+      [e.target.name]: true
     });
+  };
 
-    setFormData({ name: '', email: '', subject: '', message: '' });
+  const getError = (field: string) => {
+    if (!touched[field]) return '';
+    switch (field) {
+      case 'name':
+        return formData.name.trim() === '' ? (lang === 'ES' ? 'El nombre es obligatorio.' : 'Name is required.') : '';
+      case 'email':
+        if (formData.email.trim() === '') return lang === 'ES' ? 'El email es obligatorio.' : 'Email is required.';
+        // Validación básica de email
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.email)) return lang === 'ES' ? 'Email inválido.' : 'Invalid email.';
+        return '';
+      case 'phone':
+        if (formData.phone.trim() === '') return lang === 'ES' ? 'El teléfono es obligatorio.' : 'Phone is required.';
+        if (formData.phone.length < 8) return lang === 'ES' ? 'El teléfono debe tener al menos 8 dígitos.' : 'Phone must be at least 8 digits.';
+        if (formData.phone.length > 13) return lang === 'ES' ? 'El teléfono no puede tener más de 13 dígitos.' : 'Phone cannot be more than 13 digits.';
+        return '';
+      case 'subject':
+        return formData.subject.trim() === '' ? (lang === 'ES' ? 'El asunto es obligatorio.' : 'Subject is required.') : '';
+      case 'message':
+        return formData.message.trim() === '' ? (lang === 'ES' ? 'El mensaje es obligatorio.' : 'Message is required.') : '';
+      default:
+        return '';
+    }
+  };
+
+  const isFormValid =
+    formData.name.trim() !== '' &&
+    formData.email.trim() !== '' &&
+    formData.phone.trim() !== '' &&
+    formData.phone.length >= 8 &&
+    formData.phone.length <= 13 &&
+    formData.subject.trim() !== '' &&
+    formData.message.trim() !== '';
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isFormValid) {
+      toast({
+        title: lang === 'ES' ? 'Campos incompletos' : 'Incomplete fields',
+        description: lang === 'ES' ? 'Por favor completá todos los campos obligatorios.' : 'Please fill in all required fields.',
+        variant: 'destructive',
+      });
+      return;
+    }
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ''
+      );
+      toast({
+        title: lang === 'ES' ? '¡Mensaje enviado!' : 'Message Sent!',
+        description: lang === 'ES' ? 'Te responderemos en menos de 24 horas.' : "We'll get back to you within 24 hours.",
+      });
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } catch (error) {
+      // Log detallado para depuración
+      console.error('EmailJS error:', error);
+      toast({
+        title: lang === 'ES' ? 'Error al enviar' : 'Error sending',
+        description: lang === 'ES' ? 'Ocurrió un error al enviar el mensaje. Intenta nuevamente.' : 'There was an error sending your message. Please try again.',
+        variant: 'destructive',
+      });
+    }
   };
 
   return (
@@ -138,12 +218,47 @@ const Footer = ({ lang }: FooterProps) => {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300"
                       placeholder={lang === 'ES' ? 'Tu nombre' : 'Your name'}
                     />
+                    {getError('name') && (
+                      <div className="text-red-500 text-xs mt-1">{getError('name')}</div>
+                    )}
                   </div>
-                  
                   <div>
+                    <label htmlFor="phone" className="block text-gray-300 text-sm font-medium mb-2">
+                      {lang === 'ES' ? 'Teléfono' : 'Phone'}
+                    </label>
+                    <input
+                      type="number"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      onBlur={handleBlur}
+                      className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300"
+                      placeholder={lang === 'ES' ? 'Tu teléfono' : 'Your phone'}
+                      style={{ MozAppearance: 'textfield' }}
+                      maxLength={13}
+                    />
+                    <style>{`
+                      /* Chrome, Safari, Edge, Opera */
+                      input[type=number]::-webkit-inner-spin-button, 
+                      input[type=number]::-webkit-outer-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                      }
+                      /* Firefox */
+                      input[type=number] {
+                        -moz-appearance: textfield;
+                      }
+                    `}</style>
+                    {getError('phone') && (
+                      <div className="text-red-500 text-xs mt-1">{getError('phone')}</div>
+                    )}
+                  </div>
+                  <div className="md:col-span-2">
                     <label htmlFor="email" className="block text-gray-300 text-sm font-medium mb-2">
                       Email *
                     </label>
@@ -154,9 +269,13 @@ const Footer = ({ lang }: FooterProps) => {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300"
                       placeholder={lang === 'ES' ? 'tu@email.com' : 'your@email.com'}
                     />
+                    {getError('email') && (
+                      <div className="text-red-500 text-xs mt-1">{getError('email')}</div>
+                    )}
                   </div>
                 </div>
 
@@ -170,6 +289,7 @@ const Footer = ({ lang }: FooterProps) => {
                     required
                     value={formData.subject}
                     onChange={handleInputChange}
+                    onBlur={handleBlur}
                     className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300"
                   >
                     <option value="" disabled>{lang === 'ES' ? 'Seleccioná una opción' : 'Select an option'}</option>
@@ -178,6 +298,9 @@ const Footer = ({ lang }: FooterProps) => {
                     <option value="Desarrollo de Web App">Desarrollo de Web App</option>
                     <option value="Estrategia e Identidad de Marca">Estrategia e Identidad de Marca</option>
                   </select>
+                  {getError('subject') && (
+                    <div className="text-red-500 text-xs mt-1">{getError('subject')}</div>
+                  )}
                 </div>
 
                 <div>
@@ -191,9 +314,13 @@ const Footer = ({ lang }: FooterProps) => {
                     rows={6}
                     value={formData.message}
                     onChange={handleInputChange}
+                    onBlur={handleBlur}
                     className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300 resize-none"
                     placeholder={lang === 'ES' ? 'Contanos sobre tu proyecto...' : 'Tell us about your project...'}
                   />
+                  {getError('message') && (
+                    <div className="text-red-500 text-xs mt-1">{getError('message')}</div>
+                  )}
                 </div>
 
                 <Button
@@ -201,6 +328,7 @@ const Footer = ({ lang }: FooterProps) => {
                   variant="cyber"
                   size="lg"
                   className="group bg-[#895AF6] text-white border border-[#895AF6] hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 w-full flex items-center justify-center gap-2"
+                  disabled={!isFormValid}
                 >
                   {lang === 'ES' ? 'Enviar Mensaje' : 'Send Message'}
                   <Send className="w-5 h-5" />

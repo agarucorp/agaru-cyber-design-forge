@@ -18,39 +18,7 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
   const dragStartX = useRef(0);
   const scrollStartX = useRef(0);
 
-  // Drag n drop handlers
-  const handleDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    dragStartX.current = e.clientX;
-    if (containerRef.current) {
-      scrollStartX.current = containerRef.current.scrollLeft;
-    }
-  };
-  const handleDragMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging || !containerRef.current) return;
-    const dx = e.clientX - dragStartX.current;
-    containerRef.current.scrollLeft = scrollStartX.current - dx;
-  };
-  const handleDragEnd = () => {
-    setIsDragging(false);
-  };
-  // Touch events para mobile
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    dragStartX.current = e.touches[0].clientX;
-    if (containerRef.current) {
-      scrollStartX.current = containerRef.current.scrollLeft;
-    }
-  };
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!isDragging || !containerRef.current) return;
-    const dx = e.touches[0].clientX - dragStartX.current;
-    containerRef.current.scrollLeft = scrollStartX.current - dx;
-  };
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
-
+  // Carousel infinito: clonar slides al inicio y final
   const steps = lang === 'ES'
     ? [
         {
@@ -117,60 +85,59 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
         }
       ];
 
-  const nextStep = () => {
-    setCurrentStep(prev => prev < steps.length - 1 ? prev + 1 : prev);
-  };
+  // Navegación clásica
+  const nextStep = () => setCurrentStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev));
+  const prevStep = () => setCurrentStep((prev) => (prev > 0 ? prev - 1 : prev));
 
-  const prevStep = () => {
-    setCurrentStep(prev => prev > 0 ? prev - 1 : prev);
-  };
-
+  // Sincroniza scroll con currentStep
   useEffect(() => {
     if (containerRef.current) {
-      const cardWidth = 400; // Ancho de cada card
-      const spacing = 32; // 8 * 4 (space-x-8 = 2rem = 32px)
+      const cardWidth = 400;
+      const spacing = 32;
       const totalCardWidth = cardWidth + spacing;
       const scrollPosition = currentStep * totalCardWidth;
       containerRef.current.scrollTo({
         left: scrollPosition,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   }, [currentStep]);
 
-  // Sincronizar currentStep con la posición del scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      if (containerRef.current) {
-        const scrollLeft = containerRef.current.scrollLeft;
-        const cardWidth = 400;
-        const spacing = 32; // 8 * 4 (space-x-8 = 2rem = 32px)
-        const totalCardWidth = cardWidth + spacing;
-        
-        // Calcular la posición más cercana
-        const newStep = Math.round(scrollLeft / totalCardWidth);
-        
-        // Asegurar que el último step se active correctamente
-        const maxStep = steps.length - 1;
-        const adjustedStep = Math.min(Math.max(newStep, 0), maxStep);
-        
-        if (adjustedStep !== currentStep) {
-          setCurrentStep(adjustedStep);
-        }
-      }
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('scroll', handleScroll);
+  // Drag n drop y touch igual que antes, pero usando currentStep
+  const handleDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    dragStartX.current = e.clientX;
+    if (containerRef.current) {
+      scrollStartX.current = containerRef.current.scrollLeft;
     }
+  };
+  const handleDragMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !containerRef.current) return;
+    const dx = e.clientX - dragStartX.current;
+    containerRef.current.scrollLeft = scrollStartX.current - dx;
+  };
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
+  // Touch events para mobile
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    dragStartX.current = e.touches[0].clientX;
+    if (containerRef.current) {
+      scrollStartX.current = containerRef.current.scrollLeft;
+    }
+  };
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging || !containerRef.current) return;
+    const dx = e.touches[0].clientX - dragStartX.current;
+    containerRef.current.scrollLeft = scrollStartX.current - dx;
+  };
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
 
-    return () => {
-      if (container) {
-        container.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, [currentStep, steps.length]);
+  // Dots y lógica visual usan currentStep
+  const currentStepVisual = currentStep;
 
   return (
     <section 
@@ -208,12 +175,32 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
                         <stop offset="1" stopColor="#4DE3FF" />
                       </linearGradient>
                     </defs>
-                    <path d="M2 12H34M34 12L28 6M34 12L28 18" stroke="url(#arrow-gradient-${idx})" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" filter="drop-shadow(0px 0px 10px #B983FFAA)" />
+                    <path d="M2 12H34M34 12L28 6M34 12L28 18" stroke={`url(#arrow-gradient-${idx})`} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" filter="drop-shadow(0px 0px 10px #B983FFAA)" />
                   </svg>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Flechas de navegación */}
+          <button
+            onClick={prevStep}
+            className="absolute left-0 z-20 top-1/2 -translate-y-1/2 bg-[#181A20]/80 hover:bg-[#23243a]/90 border border-[#895AF6]/30 rounded-full p-2 shadow-lg transition-all duration-300"
+            style={{ marginLeft: '8px' }}
+            aria-label="Anterior"
+            disabled={currentStep === 0}
+          >
+            <ChevronLeft className="w-7 h-7 text-[#895AF6]" />
+          </button>
+          <button
+            onClick={nextStep}
+            className="absolute right-0 z-20 top-1/2 -translate-y-1/2 bg-[#181A20]/80 hover:bg-[#23243a]/90 border border-[#895AF6]/30 rounded-full p-2 shadow-lg transition-all duration-300"
+            style={{ marginRight: '8px' }}
+            aria-label="Siguiente"
+            disabled={currentStep === steps.length - 1}
+          >
+            <ChevronRight className="w-7 h-7 text-[#895AF6]" />
+          </button>
 
           {/* Cards Container */}
           <div 
@@ -260,7 +247,7 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
             <div 
               className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#B983FF] via-[#895AF6] to-[#4DE3FF] rounded-full transition-all duration-500 ease-out"
               style={{ 
-                width: `${((currentStep + 1) / (steps.length - 1)) * 100}%`,
+                width: `${((currentStepVisual + 1) / (steps.length - 1)) * 100}%`,
                 boxShadow: '0 0 12px 2px #895AF6, 0 0 6px 1px #B983FF'
               }}
             ></div>
@@ -269,7 +256,7 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
               <div
                 key={index}
                 className={`absolute top-1/2 transform -translate-y-1/2 w-3 h-3 rounded-full border-2 border-white transition-all duration-300 ${
-                  index <= currentStep 
+                  index <= currentStepVisual 
                     ? 'bg-white shadow-[0_0_4px_1px_#ffffff]' 
                     : 'bg-gray-500'
                 }`}
