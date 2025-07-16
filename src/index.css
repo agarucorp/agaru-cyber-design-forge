@@ -163,6 +163,44 @@
   .animate-spin-slow { animation: spin-slow 8s linear infinite; }
 }
 
+/* Scrollbar personalizado para todo el sitio */
+::-webkit-scrollbar {
+  width: 10px;
+  background: #181A20;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%);
+  border-radius: 8px;
+  box-shadow: 0 0 8px 2px #895AF644;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #B983FF 0%, #895AF6 100%);
+}
+::-webkit-scrollbar-track {
+  background: #23243a;
+  border-radius: 8px;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #895AF6 #23243a;
+}
+
+/* Scrollbar para el carrusel de proceso de diseño web */
+#process .scrollbar-custom::-webkit-scrollbar {
+  height: 10px;
+  background: #181A20;
+}
+#process .scrollbar-custom::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%);
+  border-radius: 8px;
+}
+#process .scrollbar-custom::-webkit-scrollbar-track {
+  background: #23243a;
+  border-radius: 8px;
+}
+
 /* Scrollbar styles for process section */
 .scrollbar-hide {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */

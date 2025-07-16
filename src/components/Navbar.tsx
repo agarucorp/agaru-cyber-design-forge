@@ -9,10 +9,24 @@ interface NavbarProps {
   setLang: Dispatch<SetStateAction<'ES' | 'EN'>>;
 }
 
+// Utilidad para scrollspy
+const getSectionFromScroll = (sections) => {
+  const scrollPos = window.scrollY + 80; // 80px offset for navbar
+  let current = sections[0].id;
+  for (const section of sections) {
+    const el = document.getElementById(section.id);
+    if (el && el.offsetTop <= scrollPos) {
+      current = section.id;
+    }
+  }
+  return current;
+};
+
 const Navbar = ({ lang, setLang }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState('services');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +35,15 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setScrollProgress(progress);
+
+      // Scrollspy
+      const sections = [
+        { id: 'services' },
+        { id: 'process' },
+        { id: 'projects' },
+        { id: 'faq' },
+      ];
+      setActiveSection(getSectionFromScroll(sections));
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -79,15 +102,24 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-white hover:text-agaru-purple transition-colors duration-300 px-3 py-2 text-[12px] font-medium"
-                >
-                  {item.name}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                const sectionId = item.href.replace('#', '');
+                const isActive = activeSection === sectionId;
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={`relative text-white hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-medium
+                      ${isActive ? 'text-[#895AF6]' : ''}`}
+                  >
+                    {item.name}
+                    <span
+                      className={`absolute left-0 -bottom-1 w-full h-[3px] rounded-full transition-all duration-300
+                        ${isActive ? 'bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF]' : 'opacity-0 group-hover:opacity-100 group-hover:bg-gradient-to-r group-hover:from-[#895AF6] group-hover:via-[#B983FF] group-hover:to-[#4DE3FF]'}`}
+                    ></span>
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -137,7 +169,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-300 hover:text-agaru-purple transition-colors duration-300 px-3 py-2 text-[12px] font-medium"
+                  className="text-gray-300 hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
