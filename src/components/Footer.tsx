@@ -107,6 +107,7 @@ const Footer = ({ lang }: FooterProps) => {
         description: lang === 'ES' ? 'Te responderemos en menos de 24 horas.' : "We'll get back to you within 24 hours.",
       });
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      setTouched({ name: false, email: false, phone: false, subject: false, message: false });
     } catch (error) {
       // Log detallado para depuración
       console.error('EmailJS error:', error);
