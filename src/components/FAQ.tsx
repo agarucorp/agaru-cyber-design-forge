@@ -128,7 +128,7 @@ const FAQ = ({ lang }: FAQProps) => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {lang === 'ES' ? 'Preguntas ' : 'Frequently Asked '}
-            <span className="cyber-text-gradient">{lang === 'ES' ? 'Frecuentes' : 'Questions'}</span>
+            <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">{lang === 'ES' ? 'Frecuentes' : 'Questions'}</span>
           </h2>
           <p className="text-xl text-gray-300">
             {lang === 'ES'

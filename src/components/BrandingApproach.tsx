@@ -67,12 +67,18 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            {lang === 'ES' ? 'Enfoque de ' : 'Branding '}
-            <span className="cyber-text-gradient">{lang === 'ES' ? 'Branding' : 'Approach'}</span>
+            {lang === 'ES'
+              ? <>
+                  Proceso de <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">Branding y Marketing</span>
+                </>
+              : <>
+                  <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">Branding & Marketing</span> <span className="text-white">Process</span>
+                </>
+            }
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             {lang === 'ES'
-              ? 'Nuestro proceso integral transforma tu visión en una identidad de marca coherente y poderosa que conecta con tu audiencia ideal.'
+              ? 'Nuestro proceso integral transforma tu visión en una identidad de marca coherente que conecta con tu audiencia ideal.'
               : 'Our comprehensive branding process transforms your vision into a cohesive, powerful brand identity that resonates with your target audience.'}
           </p>
         </div>
@@ -89,12 +95,14 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
               {/* Step Number and Icon */}
               <div className="flex-shrink-0">
                 <div className="relative">
-                  <div className="w-32 h-32 cyber-gradient rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-32 h-32 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                    style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)', boxShadow: '0 0 16px 2px #895AF688' }}>
                     <div className="text-white">
                       {step.icon}
                     </div>
                   </div>
-                  <div className="absolute -top-4 -right-4 w-12 h-12 bg-agaru-purple-dark rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg border-2 border-[#895AF6] shadow-[0_0_12px_2px_#895AF6AA]"
+                    style={{ background: 'linear-gradient(135deg, #18192a 60%, #23243a 100%)' }}>
                     {index + 1}
                   </div>
                 </div>

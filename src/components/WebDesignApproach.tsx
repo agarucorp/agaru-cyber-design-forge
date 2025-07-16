@@ -1,161 +1,251 @@
 
-import { Search, Lightbulb, Code, Rocket, CheckCircle } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Icon1 from './assets/ProcessIcons/1.png';
+import Icon2 from './assets/ProcessIcons/2.png';
+import Icon3 from './assets/ProcessIcons/3.png';
+import Icon4 from './assets/ProcessIcons/4.png';
+import Icon5 from './assets/ProcessIcons/5.png';
 
 interface WebDesignApproachProps {
   lang: 'ES' | 'EN';
 }
 
 const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const steps = lang === 'ES'
     ? [
         {
-          icon: <Search className="w-8 h-8" />,
-          title: 'Descubrimiento e Investigación',
-          description: 'Creamos wireframes y prototipos interactivos que visualizan la experiencia antes del desarrollo.',
+          icon: Icon1,
+          title: 'Onboarding del Proyecto',
+          description: 'Reunión inicial con nuestro equipo de diseño. Recopilamos toda la información relevante sobre tu proyecto: tu industria, activos de marca (logotipos, colores), usuarios clave, referencias visuales y los objetivos principales de tu negocio.',
+          step: 1
         },
         {
-          icon: <Lightbulb className="w-8 h-8" />,
-          title: 'Diseño y Prototipado',
-          description: 'Creamos wireframes y prototipos interactivos que visualizan la experiencia antes del desarrollo.',
+          icon: Icon2,
+          title: 'Alineación de Diseño',
+          description: 'Presentamos el primer concepto de diseño. Recibimos tus comentarios para que podamos refinar la disposición y los elementos visuales. Esta es una etapa de previsualización, perfecta para solicitar ajustes y asegurar la alineación con tu visión.',
+          step: 2
         },
         {
-          icon: <Code className="w-8 h-8" />,
-          title: 'Desarrollo',
-          description: 'Creamos wireframes y prototipos interactivos que visualizan la experiencia antes del desarrollo.',
+          icon: Icon3,
+          title: 'Aprobación de Diseño',
+          description: 'Revisión final del diseño. Basándonos en todos los comentarios anteriores, presentamos la versión completa y pulida del diseño del sitio web. Esta es la última oportunidad para realizar cambios antes de pasar al equipo de desarrollo.',
+          step: 3
         },
         {
-          icon: <Rocket className="w-8 h-8" />,
-          title: 'Lanzamiento y Optimización',
-          description: 'Creamos wireframes y prototipos interactivos que visualizan la experiencia antes del desarrollo.',
+          icon: Icon4,
+          title: 'Ejecución',
+          description: 'Nuestro equipo de desarrollo toma el relevo. Utilizando el diseño aprobado, comenzamos a construir el sitio web. Ambos equipos, de diseño y desarrollo, colaboran para asegurar que cada detalle sea implementado con precisión.',
+          step: 4
         },
+        {
+          icon: Icon5,
+          title: 'Lanzamiento',
+          description: 'Revisión final para asegurar que cada elemento esté en su lugar. Una vez aprobado, desplegamos el sitio web en nuestro servidor, dejándolo completamente operativo y listo para tu audiencia.',
+          step: 5
+        }
       ]
     : [
         {
-          icon: <Search className="w-8 h-8" />,
-          title: 'Discovery & Research',
-          description: 'We dive deep into understanding your business, target audience, and goals to create a strategic foundation.',
+          icon: Icon1,
+          title: 'Project Onboarding',
+          description: 'Initial meeting with our design team. We gather all relevant information about your project: your industry, brand assets (logos, colors), key users, visual references and the main objectives of your business.',
+          step: 1
         },
         {
-          icon: <Lightbulb className="w-8 h-8" />,
-          title: 'Design & Prototype',
-          description: 'Creating wireframes and interactive prototypes that visualize the user experience before development.',
+          icon: Icon2,
+          title: 'Design Alignment',
+          description: 'We present the first design concept. We receive your feedback so we can refine the layout and visual elements. This is a preview stage, perfect for requesting adjustments and ensuring alignment with your vision.',
+          step: 2
         },
         {
-          icon: <Code className="w-8 h-8" />,
-          title: 'Development',
-          description: 'Building your website with clean, scalable code using modern technologies and best practices.',
+          icon: Icon3,
+          title: 'Design Approval',
+          description: 'Final design review. Based on all previous feedback, we present the complete and polished version of the website design. This is the last opportunity to make changes before moving to the development team.',
+          step: 3
         },
         {
-          icon: <Rocket className="w-8 h-8" />,
-          title: 'Launch & Optimize',
-          description: 'Deploying your website and continuously optimizing for performance, SEO, and user experience.',
+          icon: Icon4,
+          title: 'Execution',
+          description: 'Our development team takes over. Using the approved design, we begin building the website. Both design and development teams collaborate to ensure every detail is implemented with precision.',
+          step: 4
         },
+        {
+          icon: Icon5,
+          title: 'Launch',
+          description: 'Final review to ensure every element is in place. Once approved, we deploy the website on our server, leaving it fully operational and ready for your audience.',
+          step: 5
+        }
       ];
 
-  const features = lang === 'ES'
-    ? [
-        'Diseño Mobile-First',
-        'Optimización de Performance',
-        'SEO Listo',
-        'Accesibilidad Cumplida',
-        'Tecnologías Modernas',
-        'Soporte Continuo'
-      ]
-    : [
-        'Mobile-First Design',
-        'Performance Optimized',
-        'SEO Ready',
-        'Accessibility Compliant',
-        'Modern Technologies',
-        'Ongoing Support'
-      ];
+  const nextStep = () => {
+    setCurrentStep(prev => prev < steps.length - 1 ? prev + 1 : prev);
+  };
+
+  const prevStep = () => {
+    setCurrentStep(prev => prev > 0 ? prev - 1 : prev);
+  };
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const cardWidth = 400; // Ancho de cada card
+      const spacing = 32; // 8 * 4 (space-x-8 = 2rem = 32px)
+      const totalCardWidth = cardWidth + spacing;
+      const scrollPosition = currentStep * totalCardWidth;
+      containerRef.current.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, [currentStep]);
+
+  // Sincronizar currentStep con la posición del scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (containerRef.current) {
+        const scrollLeft = containerRef.current.scrollLeft;
+        const cardWidth = 400;
+        const spacing = 32; // 8 * 4 (space-x-8 = 2rem = 32px)
+        const totalCardWidth = cardWidth + spacing;
+        
+        // Calcular la posición más cercana
+        const newStep = Math.round(scrollLeft / totalCardWidth);
+        
+        // Asegurar que el último step se active correctamente
+        const maxStep = steps.length - 1;
+        const adjustedStep = Math.min(Math.max(newStep, 0), maxStep);
+        
+        if (adjustedStep !== currentStep) {
+          setCurrentStep(adjustedStep);
+        }
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [currentStep, steps.length]);
 
   return (
-    <section id="process" className="py-20 bg-cyber-grey">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section 
+      id="process" 
+      className="py-20 bg-cyber-grey flex justify-center items-center w-full min-h-screen"
+    >
+      <div className="max-w-7xl w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Nuestro Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño & Desarrollo Web</span>
+            Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño & Desarrollo Web</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             ¿Cómo funciona?
           </p>
         </div>
 
-        <div className="space-y-20 max-w-5xl mx-auto">
-          {/* Card 1: icono, header y sin card de descripción */}
-          {steps[0] && (
-            <div key={0} className="relative group animate-fade-in">
-              <div className="flex flex-col md:flex-row items-start gap-4 mb-1 w-full">
-                <div className="flex flex-row items-center gap-4 flex-shrink-0">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#895AF6]/80 to-[#4DE3FF]/60 shadow-lg">
-                    <span className="text-white text-3xl">{steps[0].icon}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-0">{steps[0].title}</h3>
-                  <span className="text-sm text-[#895AF6] font-medium ml-4">{lang === 'ES' ? `Etapa 1` : `Step 1`}</span>
+        {/* Cards Container with Navigation */}
+        <div className="relative w-full max-w-6xl mx-auto flex items-center" style={{ minHeight: '420px' }}>
+          {/* Línea premium detrás de las cards y flechas premium entre cards */}
+          <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2 z-0 flex items-center pointer-events-none" style={{ height: '2px' }}>
+            <div className="mx-24 w-[calc(100%-12rem)] h-[2px] bg-gradient-to-r from-[#B983FF] via-[#895AF6] to-[#4DE3FF] rounded-full neon-glow" style={{ position: 'relative', opacity: 0.85, boxShadow: '0 0 32px 4px #895AF6, 0 0 12px 2px #B983FF' }}>
+              {/* Flechas premium entre cards */}
+              {steps.slice(0, -1).map((_, idx) => (
+                <div
+                  key={idx}
+                  className="absolute z-10 top-1/2 left-0 transform -translate-y-1/2"
+                  style={{ left: `calc(${(idx + 1) / (steps.length)} * 100% - 18px)` }}
+                >
+                  <svg width="36" height="24" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id={`arrow-gradient-${idx}`} x1="0" y1="12" x2="36" y2="12" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#B983FF" />
+                        <stop offset="0.5" stopColor="#895AF6" />
+                        <stop offset="1" stopColor="#4DE3FF" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M2 12H34M34 12L28 6M34 12L28 18" stroke="url(#arrow-gradient-${idx})" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" filter="drop-shadow(0px 0px 10px #B983FFAA)" />
+                  </svg>
                 </div>
-                {/* Sin card de descripción */}
-              </div>
-              {/* Línea divisoria */}
-              <div className="w-full h-px bg-gradient-to-r from-[#ffffff22] to-transparent mt-12 md:mt-16"></div>
+              ))}
             </div>
-          )}
-          {/* Card 2 visible */}
-          {steps[1] && (
-            <div key={1} className="relative group animate-fade-in">
-              <div className="flex flex-col md:flex-row items-start gap-4 mb-1 w-full">
-                <div className="flex flex-row items-center gap-4 flex-shrink-0">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#895AF6]/80 to-[#4DE3FF]/60 shadow-lg">
-                    <span className="text-white text-3xl">{steps[1].icon}</span>
+          </div>
+
+          {/* Cards Container */}
+          <div 
+            ref={containerRef}
+            className="flex space-x-8 overflow-x-auto scrollbar-hide py-8 px-16 w-full z-10"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {steps.map((step, index) => (
+              <div key={index} className="flex-shrink-0">
+                {/* Card */}
+                <div className={`w-[400px] h-[384px] bg-[#23243a] rounded-2xl p-8 border border-white/5 shadow-lg transition-all duration-500 group hover:shadow-2xl hover:border-[#895AF6]/30 hover:scale-105 relative ${
+                  index === currentStep ? 'ring-2 ring-[#895AF6]/50 shadow-[0_0_30px_0_#895AF6]/20' : 'ring-1 ring-[#895AF6]/20'
+                }`}>
+                  {/* Step Number and Icon */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#895AF6]/20 to-[#4DE3FF]/20 flex items-center justify-center border border-[#895AF6]/30 z-20">
+                        <img src={step.icon} alt={`Step ${step.step}`} className="w-8 h-8" />
+                      </div>
+                      <div className="text-4xl font-bold text-[#895AF6] opacity-60">
+                        {step.step}
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-0">{steps[1].title}</h3>
-                  <span className="text-sm text-[#895AF6] font-medium ml-4">{lang === 'ES' ? `Etapa 2` : `Step 2`}</span>
-                </div>
-                <div className="w-full md:w-[520px] bg-[#23243a] rounded-xl px-8 py-6 text-gray-300 shadow-md border border-white/5 text-base ml-0 md:ml-56 mt-4 md:mt-0">
-                  {steps[1].description}
+
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#895AF6] transition-colors duration-300">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed text-base">
+                    {step.description}
+                  </p>
+
+                  {/* Hover Effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#895AF6]/5 to-[#4DE3FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
               </div>
-              {/* Línea divisoria */}
-              <div className="w-full h-px bg-gradient-to-r from-[#ffffff22] to-transparent mt-12 md:mt-16"></div>
-            </div>
-          )}
-          {/* Card 3: icono, header y sin card de descripción */}
-          {steps[2] && (
-            <div key={2} className="relative group animate-fade-in">
-              <div className="flex flex-col md:flex-row items-start gap-4 mb-1 w-full">
-                <div className="flex flex-row items-center gap-4 flex-shrink-0">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#895AF6]/80 to-[#4DE3FF]/60 shadow-lg">
-                    <span className="text-white text-3xl">{steps[2].icon}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-0">{steps[2].title}</h3>
-                  <span className="text-sm text-[#895AF6] font-medium ml-4">{lang === 'ES' ? `Etapa 3` : `Step 3`}</span>
-                </div>
-                {/* Sin card de descripción */}
-              </div>
-              {/* Línea divisoria */}
-              <div className="w-full h-px bg-gradient-to-r from-[#ffffff22] to-transparent mt-12 md:mt-16"></div>
-            </div>
-          )}
-          {/* Card 4: icono, header y sin card de descripción */}
-          {steps[3] && (
-            <div key={3} className="relative group animate-fade-in">
-              <div className="flex flex-col md:flex-row items-start gap-4 mb-1 w-full">
-                <div className="flex flex-row items-center gap-4 flex-shrink-0">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#895AF6]/80 to-[#4DE3FF]/60 shadow-lg">
-                    <span className="text-white text-3xl">{steps[3].icon}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-0">{steps[3].title}</h3>
-                  <span className="text-sm text-[#895AF6] font-medium ml-4">{lang === 'ES' ? `Etapa 4` : `Step 4`}</span>
-                </div>
-                {/* Sin card de descripción */}
-              </div>
-              {/* Línea divisoria */}
-              <div className="w-full h-px bg-gradient-to-r from-[#ffffff22] to-transparent mt-12 md:mt-16"></div>
-            </div>
-          )}
+            ))}
+          </div>
         </div>
 
-        {/* Eliminar la grilla de features (diseño continuo, performance, SEO, etc.) al final de la sección */}
+        {/* Navigation Dots - Only at bottom */}
+        <div className="flex justify-center mt-8">
+          <div className="relative w-[192px] h-2 bg-gray-700 rounded-full overflow-hidden"> {/* 192px = 48*4, pero puedes ajustar según el diseño */}
+            {/* Línea de fondo */}
+            <div className="absolute inset-0 bg-gray-700 rounded-full"></div>
+            {/* Línea de progreso con efecto neón */}
+            <div 
+              className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#B983FF] via-[#895AF6] to-[#4DE3FF] rounded-full transition-all duration-500 ease-out"
+              style={{ 
+                width: `${((currentStep + 1) / (steps.length - 1)) * 100}%`,
+                boxShadow: '0 0 12px 2px #895AF6, 0 0 6px 1px #B983FF'
+              }}
+            ></div>
+            {/* Marcadores de posición */}
+            {steps.slice(0, -1).map((_, index) => (
+              <div
+                key={index}
+                className={`absolute top-1/2 transform -translate-y-1/2 w-1 h-1 rounded-full transition-all duration-300 ${
+                  index <= currentStep 
+                    ? 'bg-white shadow-[0_0_4px_1px_#ffffff]' 
+                    : 'bg-gray-500'
+                }`}
+                style={{ left: `${(index / (steps.length - 1)) * 100}%` }}
+              ></div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

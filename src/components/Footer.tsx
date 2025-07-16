@@ -46,7 +46,7 @@ const Footer = ({ lang }: FooterProps) => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               {lang === 'ES' ? 'Trabajemos ' : "Let's Work "}
-              <span className="cyber-text-gradient">{lang === 'ES' ? 'Juntos' : 'Together'}</span>
+              <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">{lang === 'ES' ? 'Juntos' : 'Together'}</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               {lang === 'ES'
