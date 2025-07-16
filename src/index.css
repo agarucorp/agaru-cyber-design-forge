@@ -6,8 +6,9 @@
 /* Custom fonts */
 @font-face {
   font-family: 'Altroned Trial';
-  src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-  font-display: swap;
+  src: url('/fonts/ALTRONED-Trial.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @layer base {
