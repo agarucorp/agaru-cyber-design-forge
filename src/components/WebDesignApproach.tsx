@@ -14,6 +14,42 @@ interface WebDesignApproachProps {
 const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
   const [currentStep, setCurrentStep] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef(0);
+  const scrollStartX = useRef(0);
+
+  // Drag n drop handlers
+  const handleDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    dragStartX.current = e.clientX;
+    if (containerRef.current) {
+      scrollStartX.current = containerRef.current.scrollLeft;
+    }
+  };
+  const handleDragMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !containerRef.current) return;
+    const dx = e.clientX - dragStartX.current;
+    containerRef.current.scrollLeft = scrollStartX.current - dx;
+  };
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
+  // Touch events para mobile
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    dragStartX.current = e.touches[0].clientX;
+    if (containerRef.current) {
+      scrollStartX.current = containerRef.current.scrollLeft;
+    }
+  };
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging || !containerRef.current) return;
+    const dx = e.touches[0].clientX - dragStartX.current;
+    containerRef.current.scrollLeft = scrollStartX.current - dx;
+  };
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
 
   const steps = lang === 'ES'
     ? [
@@ -182,8 +218,15 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
           {/* Cards Container */}
           <div 
             ref={containerRef}
-            className="flex space-x-8 overflow-x-auto scrollbar-hide py-8 px-16 w-full z-10"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="flex space-x-8 overflow-x-auto scrollbar-hide py-8 px-16 w-full z-10 select-none"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', cursor: isDragging ? 'grabbing' : 'grab' }}
+            onMouseDown={handleDragStart}
+            onMouseMove={handleDragMove}
+            onMouseUp={handleDragEnd}
+            onMouseLeave={handleDragEnd}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {steps.map((step, index) => (
               <div key={index} className="flex-shrink-0">
@@ -197,31 +240,20 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#895AF6]/20 to-[#4DE3FF]/20 flex items-center justify-center border border-[#895AF6]/30 z-20">
                         <img src={step.icon} alt={`Step ${step.step}`} className="w-8 h-8" />
                       </div>
-                      <div className="text-4xl font-bold text-[#895AF6] opacity-60">
-                        {step.step}
-                      </div>
+                      <h3 className="text-2xl font-bold text-white">{step.title}</h3>
                     </div>
+                    <span className="text-4xl font-bold text-white">{step.step}</span>
                   </div>
-
-                  {/* Content */}
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#895AF6] transition-colors duration-300">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed text-base">
-                    {step.description}
-                  </p>
-
-                  {/* Hover Effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#895AF6]/5 to-[#4DE3FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  {/* Description */}
+                  <p className="text-lg text-gray-300 mb-8">{step.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
         {/* Navigation Dots - Only at bottom */}
         <div className="flex justify-center mt-8">
-          <div className="relative w-[192px] h-2 bg-gray-700 rounded-full overflow-hidden"> {/* 192px = 48*4, pero puedes ajustar según el diseño */}
+          <div className="relative w-[192px] h-2 bg-gray-700 rounded-full overflow-hidden">
             {/* Línea de fondo */}
             <div className="absolute inset-0 bg-gray-700 rounded-full"></div>
             {/* Línea de progreso con efecto neón */}
@@ -232,16 +264,16 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
                 boxShadow: '0 0 12px 2px #895AF6, 0 0 6px 1px #B983FF'
               }}
             ></div>
-            {/* Marcadores de posición */}
-            {steps.slice(0, -1).map((_, index) => (
+            {/* Dots interactivos */}
+            {steps.map((_, index) => (
               <div
                 key={index}
-                className={`absolute top-1/2 transform -translate-y-1/2 w-1 h-1 rounded-full transition-all duration-300 ${
+                className={`absolute top-1/2 transform -translate-y-1/2 w-3 h-3 rounded-full border-2 border-white transition-all duration-300 ${
                   index <= currentStep 
                     ? 'bg-white shadow-[0_0_4px_1px_#ffffff]' 
                     : 'bg-gray-500'
                 }`}
-                style={{ left: `${(index / (steps.length - 1)) * 100}%` }}
+                style={{ left: `${(index / (steps.length - 1)) * 100}%`, zIndex: 10 }}
               ></div>
             ))}
           </div>
@@ -252,4 +284,3 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
 };
 
 export default WebDesignApproach;
-

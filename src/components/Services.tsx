@@ -54,15 +54,49 @@ const Services = ({ lang }: ServicesProps) => {
                   <span className="transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">{service.title}</span>
                 </AccordionTrigger>
                 <AccordionContent className="bg-[#181A20]/80 px-6 pb-6 rounded-b-2xl border-t-0 border border-[#895AF6]/10">
-                  <p className="text-gray-300 mb-6 leading-relaxed text-base">{service.description}</p>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="text-gray-400 flex items-center">
-                        <div className="w-2 h-2 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  {service.title === 'Aplicaciones Web' ? (
+                    <div className="text-gray-300 mb-6 leading-relaxed text-base space-y-4">
+                      <p>Digitalizá tu operación con una web app hecha a medida</p>
+                      <p>Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.</p>
+                      <div>
+                        <strong>1. Usuarios y datos en orden</strong>
+                        <ul className="list-disc pl-6">
+                          <li>Registro y login con permisos según rol</li>
+                          <li>Gestión de bases de datos en tiempo real (clientes, turnos, pedidos)</li>
+                          <li>Subida y acceso a archivos desde la misma web app</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <strong>2. Operaciones que se mueven solas</strong>
+                        <ul className="list-disc pl-6">
+                          <li>Mensajes automáticos por WhatsApp (recordatorios, confirmaciones, respuestas)</li>
+                          <li>Automatización de tareas como agendado, cobros y seguimiento</li>
+                          <li>Reglas de negocio personalizadas para cada flujo</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <strong>3. Todo bajo control, en un solo lugar</strong>
+                        <ul className="list-disc pl-6">
+                          <li>Paneles simples para ver y gestionar tu operación en tiempo real</li>
+                          <li>Accesos diferenciados por perfil (ej. admin vs cliente)</li>
+                          <li>Reportes claros y conexión con otras herramientas</li>
+                        </ul>
+                      </div>
+                      <p>Lanzamos rápido, con foco en que funcione desde el día uno y pueda crecer con vos.</p>
+                    </div>
+                  ) : (
+                    <>
+                      <p className="text-gray-300 mb-6 leading-relaxed text-base">{service.description}</p>
+                      <ul className="space-y-2">
+                        {service.features.map((feature, i) => (
+                          <li key={i} className="text-gray-400 flex items-center">
+                            <div className="w-2 h-2 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
                 </AccordionContent>
               </div>
             </AccordionItem>

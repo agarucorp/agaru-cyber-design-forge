@@ -19,7 +19,7 @@ const Footer = ({ lang }: FooterProps) => {
   
   const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -50,7 +50,7 @@ const Footer = ({ lang }: FooterProps) => {
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               {lang === 'ES'
-                ? '¿Listo para llevar tu negocio al siguiente nivel? Escribinos y conversemos sobre cómo podemos ayudarte a lograr tus objetivos digitales.'
+                ? '¿Listo para llevar tu negocio al siguiente nivel? Escribinos y conversemos sobre cómo podemos ayudarte a lograr tus objetivos comerciales.'
                 : `Ready to elevate your business? Get in touch and let's discuss how we can help you achieve your digital goals.`}
             </p>
           </div>
@@ -62,7 +62,7 @@ const Footer = ({ lang }: FooterProps) => {
                 <h3 className="text-2xl font-bold text-white mb-6">{lang === 'ES' ? 'Contacto' : 'Get in Touch'}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 cyber-gradient rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6]">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -72,7 +72,7 @@ const Footer = ({ lang }: FooterProps) => {
                   </div>
                   
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 cyber-gradient rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6]">
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -82,7 +82,7 @@ const Footer = ({ lang }: FooterProps) => {
                   </div>
                   
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 cyber-gradient rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6]">
                       <MapPin className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -104,7 +104,9 @@ const Footer = ({ lang }: FooterProps) => {
                     <Instagram className="w-6 h-6 text-gray-400 group-hover:text-agaru-purple transition-colors duration-300" />
                   </a>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/company/agarucorp/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-agaru-purple/20 transition-colors duration-300 group"
                   >
                     <Linkedin className="w-6 h-6 text-gray-400 group-hover:text-agaru-purple transition-colors duration-300" />
@@ -162,16 +164,20 @@ const Footer = ({ lang }: FooterProps) => {
                   <label htmlFor="subject" className="block text-gray-300 text-sm font-medium mb-2">
                     {lang === 'ES' ? 'Asunto *' : 'Subject *'}
                   </label>
-                  <input
-                    type="text"
+                  <select
                     id="subject"
                     name="subject"
                     required
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300"
-                    placeholder={lang === 'ES' ? '¿Cómo podemos ayudarte?' : 'How can we help you?'}
-                  />
+                    className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300"
+                  >
+                    <option value="" disabled>{lang === 'ES' ? 'Seleccioná una opción' : 'Select an option'}</option>
+                    <option value="Diseño UI">Diseño UI</option>
+                    <option value="Diseño Web">Diseño Web</option>
+                    <option value="Desarrollo de Web App">Desarrollo de Web App</option>
+                    <option value="Estrategia e Identidad de Marca">Estrategia e Identidad de Marca</option>
+                  </select>
                 </div>
 
                 <div>
@@ -194,7 +200,7 @@ const Footer = ({ lang }: FooterProps) => {
                   type="submit"
                   variant="cyber"
                   size="lg"
-                  className="w-full flex items-center justify-center gap-2"
+                  className="group bg-[#895AF6] text-white border border-[#895AF6] hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 w-full flex items-center justify-center gap-2"
                 >
                   {lang === 'ES' ? 'Enviar Mensaje' : 'Send Message'}
                   <Send className="w-5 h-5" />

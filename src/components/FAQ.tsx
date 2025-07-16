@@ -44,23 +44,6 @@ const FAQ = ({ lang }: FAQProps) => {
               answer: 'Sí, hacemos tanto branding nuevo como rebranding. Analizamos tu marca actual, detectamos oportunidades y creamos un plan estratégico para renovar tu imagen sin perder valor de marca.'
             }
           ]
-        },
-        {
-          category: 'Gestión de Proyectos',
-          questions: [
-            {
-              question: '¿Cómo nos comunicamos durante el proyecto?',
-              answer: 'Mantenemos comunicación regular con reuniones semanales, herramientas de gestión y siempre estamos disponibles por email o teléfono. Tendrás un project manager dedicado como contacto principal.'
-            },
-            {
-              question: '¿Qué necesitan de nosotros para empezar?',
-              answer: 'Necesitamos información sobre tus objetivos, audiencia, estilo preferido, contenido (texto, imágenes) y requisitos específicos. Te damos un cuestionario detallado en el onboarding.'
-            },
-            {
-              question: '¿Cuáles son sus condiciones de pago?',
-              answer: 'Normalmente pedimos 50% de adelanto y 50% al finalizar. Para proyectos grandes, podemos hacer pagos por hitos. Aceptamos varios métodos y siempre hay contrato detallado.'
-            }
-          ]
         }
       ]
     : [
@@ -95,23 +78,6 @@ const FAQ = ({ lang }: FAQProps) => {
             {
               question: 'Can you help with rebranding an existing business?',
               answer: 'Yes, we specialize in both new brand creation and rebranding. We carefully analyze your current brand position, identify opportunities for improvement, and create a strategic transition plan that maintains brand equity while refreshing your image.'
-            }
-          ]
-        },
-        {
-          category: 'Project Management',
-          questions: [
-            {
-              question: 'How do we communicate during the project?',
-              answer: 'We maintain regular communication through weekly check-ins, project management tools, and are always available via email or phone. You\'ll have a dedicated project manager as your single point of contact throughout the process.'
-            },
-            {
-              question: 'What do you need from us to get started?',
-              answer: 'We need information about your business goals, target audience, preferred style/examples, content (text, images), and any specific requirements. We provide a detailed questionnaire during onboarding to gather all necessary information.'
-            },
-            {
-              question: 'What are your payment terms?',
-              answer: 'We typically work with a 50% deposit to start the project and 50% upon completion. For larger projects, we can arrange milestone-based payments. We accept various payment methods and provide detailed contracts for all work.'
             }
           ]
         }
