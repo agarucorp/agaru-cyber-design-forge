@@ -2,7 +2,7 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
-import WebDesignApproach from '../components/WebDesignApproach';
+import WebProcessStepper from '../components/WebProcessStepper';
 import BrandingApproach from '../components/BrandingApproach';
 import ProjectShowcase from '../components/ProjectShowcase';
 import FAQ from '../components/FAQ';
@@ -14,9 +14,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-cyber-dark">
       <Navbar lang={lang} setLang={setLang} />
-      <Hero lang={lang} />
+      <Hero />
       <Services lang={lang} />
-      <WebDesignApproach lang={lang} />
+      <WebProcessStepper />
       <BrandingApproach lang={lang} />
       <ProjectShowcase lang={lang} />
       <FAQ lang={lang} />

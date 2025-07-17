@@ -21,7 +21,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
         {
           icon: <Palette className="w-8 h-8" />,
           title: 'Identidad de Marca',
-          description: 'En colaboración contigo, creamos contenido y diseño que reflejan tu identidad única: desde el logo hasta la misión y los textos web.',
+          description: 'En colaboración, creamos el contenido y el diseño que capturan tu identidad única, desde el logo hasta la misión y los mensajes clave de tu comunicación digital.',
         },
         {
           icon: <Calendar className="w-8 h-8" />,

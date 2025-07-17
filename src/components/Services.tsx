@@ -86,7 +86,7 @@ const Services = ({ lang }: ServicesProps) => {
                     </div>
                     <br />
                     <div>
-                      <strong>2Operaciones que se mueven solas</strong>
+                      <strong>2. Operaciones que se mueven solas</strong>
                       <ul className="space-y-2">
                         <li className="text-gray-400 flex items-center">
                           <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
