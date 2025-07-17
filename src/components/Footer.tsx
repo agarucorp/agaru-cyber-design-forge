@@ -131,8 +131,8 @@ const Footer = ({ lang }: FooterProps) => {
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               {lang === 'ES'
-                ? '¿Listo para llevar tu negocio al siguiente nivel? Escribinos y conversemos sobre cómo podemos ayudarte a lograr tus objetivos comerciales.'
-                : `Ready to elevate your business? Get in touch and let's discuss how we can help you achieve your digital goals.`}
+                ? '¿Listo para llevar tu negocio al siguiente nivel? Escribinos y conversemos sobre cómo podemos ayudarte a lograr tus objetivos comerciales'
+                : `Ready to elevate your business? Get in touch and let's discuss how we can help you achieve your digital goals`}
             </p>
           </div>
 

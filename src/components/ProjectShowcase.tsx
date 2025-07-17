@@ -149,10 +149,10 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
             {lang === 'ES' ? 'Proyectos ' : 'Featured '}
             <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">{lang === 'ES' ? 'Destacados' : 'Projects'}</span>
           </h2>
-          <p className="text-xl text-gray-300 whitespace-nowrap">
+          <p className="text-xl text-gray-300 text-center">
             {lang === 'ES'
               ? 'Descubrí cómo ayudamos a startups y negocios a transformar su presencia digital'
-              : `Discover how we've helped startups and small businesses transform their digital presence and achieve remarkable growth.`}
+              : `Discover how we've helped startups and small businesses transform their digital presence and achieve remarkable growth`}
           </p>
         </div>
 

@@ -5,10 +5,72 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import React from "react";
 
 const queryClient = new QueryClient();
 
 function App() {
+  // Efecto estela táctil tipo haz de neón para mobile
+  React.useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (!isMobile) return;
+    let lastTime = 0;
+    let lastX = null;
+    let lastY = null;
+    const minInterval = 32; // ms entre estelas
+    const createNeonTrail = (x, y, angle) => {
+      const ripple = document.createElement('div');
+      ripple.style.position = 'fixed';
+      ripple.style.left = `${x - 4}px`;
+      ripple.style.top = `${y - 32}px`;
+      ripple.style.width = '8px';
+      ripple.style.height = '64px';
+      ripple.style.pointerEvents = 'none';
+      ripple.style.zIndex = '9999';
+      ripple.style.background = 'linear-gradient(180deg, #00fff7 0%, #895AF6 100%)';
+      ripple.style.opacity = '0.18'; // intensidad muy baja
+      ripple.style.borderRadius = '16px';
+      ripple.style.boxShadow = '0 0 4px 1px #00fff766, 0 0 8px 2px #895AF633';
+      ripple.style.filter = 'blur(1.8px)';
+      ripple.style.transition = 'opacity 0.5s linear';
+      ripple.style.transform = `rotate(${angle}deg)`;
+      document.body.appendChild(ripple);
+      setTimeout(() => {
+        ripple.style.opacity = '0';
+        setTimeout(() => ripple.remove(), 500);
+      }, 80);
+    };
+    const handleTouchMove = (e) => {
+      const now = Date.now();
+      if (now - lastTime < minInterval) return;
+      lastTime = now;
+      if (e.touches && e.touches.length > 0) {
+        const touch = e.touches[0];
+        const x = touch.clientX;
+        const y = touch.clientY;
+        let angle = 0;
+        if (lastX !== null && lastY !== null) {
+          const dx = x - lastX;
+          const dy = y - lastY;
+          angle = Math.atan2(dy, dx) * 180 / Math.PI + 90; // +90 para que la estela siga el dedo
+        }
+        createNeonTrail(x, y, angle);
+        lastX = x;
+        lastY = y;
+      }
+    };
+    const handleTouchEnd = () => {
+      lastX = null;
+      lastY = null;
+    };
+    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('touchend', handleTouchEnd);
+    return () => {
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, []);
+
   return (
     <>
       <div className="site-bg">

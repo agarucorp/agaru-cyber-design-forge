@@ -98,7 +98,7 @@ const FAQ = ({ lang }: FAQProps) => {
           </h2>
           <p className="text-xl text-gray-300">
             {lang === 'ES'
-              ? 'Encontrá respuestas a las dudas más comunes sobre nuestros servicios y procesos.'
+              ? 'Encontrá respuestas a las dudas más comunes sobre nuestros servicios y procesos'
               : 'Find answers to common questions about our services and process.'}
           </p>
         </div>
