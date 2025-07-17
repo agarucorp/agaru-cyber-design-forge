@@ -39,6 +39,9 @@ const Services = ({ lang }: ServicesProps) => {
     }
   ];
 
+  // Utilidad para detectar desktop (igual que en Hero y Navbar)
+  const isDesktop = () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
+
   return (
     <section id="services" className="py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -226,8 +229,16 @@ const Services = ({ lang }: ServicesProps) => {
           <a
             href="#contact"
             className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-medium text-lg transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6] inline-flex items-center gap-2"
+            onClick={e => {
+              if (isDesktop()) {
+                e.preventDefault();
+                window.location.hash = 'contact';
+              }
+            }}
+            onAuxClick={e => { if (isDesktop()) e.preventDefault(); }}
+            onContextMenu={e => { if (isDesktop()) e.preventDefault(); }}
           >
-            {lang === 'ES' ? 'Comenzá tu proyecto' : 'Start Your Project'}
+            {lang === 'ES' ? 'Comenzá tu Proyecto' : 'Start Your Project'}
           </a>
         </div>
       </div>

@@ -12,19 +12,20 @@ if (typeof window !== 'undefined') {
     const ripple = document.createElement('span');
     ripple.style.position = 'fixed';
     ripple.style.left = `${touch.clientX - 20}px`;
-    ripple.style.top = `${touch.clientY - 4}px`;
+    ripple.style.top = `${touch.clientY - 3}px`;
     ripple.style.width = '40px';
-    ripple.style.height = '8px';
-    ripple.style.borderRadius = '8px/4px';
+    ripple.style.height = '6px';
+    ripple.style.borderRadius = '8px/3px';
+    ripple.style.filter = 'none';
     ripple.style.pointerEvents = 'none';
     ripple.style.zIndex = '9999';
     ripple.style.background = 'linear-gradient(90deg, #895AF6 0%, #4DE3FF 100%)';
-    ripple.style.opacity = '0.12';
+    ripple.style.opacity = '0.18';
     ripple.style.transform = 'scaleX(0.7)';
     ripple.style.transition = 'transform 0.3s cubic-bezier(.4,2,.6,1), opacity 0.3s';
     document.body.appendChild(ripple);
     requestAnimationFrame(() => {
-      ripple.style.transform = 'scaleX(1.5)';
+      ripple.style.transform = 'scaleX(1.15)';
       ripple.style.opacity = '0';
     });
     setTimeout(() => {

@@ -22,6 +22,9 @@ const getSectionFromScroll = (sections) => {
   return current;
 };
 
+// Utilidad para detectar desktop (igual que en Hero)
+const isDesktop = () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
+
 const Navbar = ({ lang, setLang }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -145,6 +148,14 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
             <a
               href="#contact"
               className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-medium text-[13px] transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6]"
+              onClick={e => {
+                if (isDesktop()) {
+                  e.preventDefault();
+                  window.location.hash = 'contact';
+                }
+              }}
+              onAuxClick={e => { if (isDesktop()) e.preventDefault(); }}
+              onContextMenu={e => { if (isDesktop()) e.preventDefault(); }}
             >
               {lang === 'ES' ? 'Contacto' : 'Book a Call'}
             </a>
