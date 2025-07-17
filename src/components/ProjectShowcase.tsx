@@ -1,12 +1,18 @@
 
 import { ExternalLink, Github } from 'lucide-react';
 import mockupCalena from './assets/ProcessIcons/mockupcalena.png';
+import { useState, useEffect } from 'react';
+import { useIsMobile } from '../hooks/use-mobile';
 
 interface ProjectShowcaseProps {
   lang: 'ES' | 'EN';
 }
 
 const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
+  const isMobile = useIsMobile();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const projectsPerPage = 3;
   const projects = lang === 'ES'
     ? [
         {
@@ -121,6 +127,20 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
         }
       ];
 
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+  const startIndex = (currentPage - 1) * projectsPerPage;
+  const endIndex = startIndex + projectsPerPage;
+  const currentProjects = projects.slice(startIndex, endIndex);
+
+  // Carousel automático para mobile
+  useEffect(() => {
+    if (!isMobile) return;
+    const interval = setInterval(() => {
+      setCarouselIndex((prev) => (prev + 1) % projects.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isMobile, projects.length]);
+
   return (
     <section id="projects" className="py-20 bg-cyber-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -136,58 +156,130 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        {/* Web/Desktop: paginación */}
+        <div className="hidden md:block">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {currentProjects.map((project, index) => (
+              <div
+                key={startIndex + index}
+                className="group cyber-card rounded-xl overflow-hidden animate-fade-in transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:border-[#895AF6]/40 border border-white/5"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Project Image */}
+                <div className="relative overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-4 left-4 flex gap-2">
+                      <a
+                        href={project.link}
+                        className="w-10 h-10 bg-agaru-purple rounded-full flex items-center justify-center hover:bg-agaru-purple-light transition-colors duration-300"
+                      >
+                        <ExternalLink className="w-5 h-5 text-white" />
+                      </a>
+                      <a
+                        href={project.github}
+                        className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors duration-300"
+                      >
+                        <Github className="w-5 h-5 text-white" />
+                      </a>
+                    </div>
+                  </div>
+                  {/* Category Badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="text-white text-xs font-semibold px-3 py-1 rounded-full" style={{ background: '#4B267A' }}>
+                      {project.category}
+                    </span>
+                  </div>
+                </div>
+                {/* Project Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-agaru-purple transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-300 mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="text-xs bg-cyber-grey text-gray-300 px-2 py-1 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Paginación */}
+          <div className="flex justify-center mt-8 gap-2">
+            {[...Array(totalPages)].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i + 1)}
+                className={`w-10 h-10 rounded-full flex items-center justify-center font-bold border transition-colors duration-200 ${currentPage === i + 1 ? 'bg-agaru-purple text-white border-agaru-purple' : 'bg-cyber-grey text-gray-300 border-gray-600 hover:bg-agaru-purple/60 hover:text-white'}`}
+                aria-label={`Página ${i + 1}`}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile: carousel slider */}
+        <div className="block md:hidden">
+          <div className="flex justify-center">
             <div
-              key={index}
-              className="group cyber-card rounded-xl overflow-hidden animate-fade-in transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:border-[#895AF6]/40 border border-white/5"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group cyber-card rounded-xl overflow-hidden animate-fade-in transition-all duration-300 w-full max-w-xs border border-white/5"
             >
               {/* Project Image */}
               <div className="relative overflow-hidden">
                 <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                  src={projects[carouselIndex].image}
+                  alt={projects[carouselIndex].title}
+                  className="w-full h-48 object-cover transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 flex gap-2">
                     <a
-                      href={project.link}
+                      href={projects[carouselIndex].link}
                       className="w-10 h-10 bg-agaru-purple rounded-full flex items-center justify-center hover:bg-agaru-purple-light transition-colors duration-300"
                     >
                       <ExternalLink className="w-5 h-5 text-white" />
                     </a>
                     <a
-                      href={project.github}
+                      href={projects[carouselIndex].github}
                       className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors duration-300"
                     >
                       <Github className="w-5 h-5 text-white" />
                     </a>
                   </div>
                 </div>
-                
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
                   <span className="text-white text-xs font-semibold px-3 py-1 rounded-full" style={{ background: '#4B267A' }}>
-                    {project.category}
+                    {projects[carouselIndex].category}
                   </span>
                 </div>
               </div>
-
               {/* Project Content */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-agaru-purple transition-colors duration-300">
-                  {project.title}
+                  {projects[carouselIndex].title}
                 </h3>
-                
                 <p className="text-gray-300 mb-4 leading-relaxed">
-                  {project.description}
+                  {projects[carouselIndex].description}
                 </p>
-
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
+                  {projects[carouselIndex].tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
                       className="text-xs bg-cyber-grey text-gray-300 px-2 py-1 rounded-full"
@@ -198,7 +290,18 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+          {/* Indicadores del carousel */}
+          <div className="flex justify-center mt-4 gap-2">
+            {projects.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCarouselIndex(i)}
+                className={`w-3 h-3 rounded-full border transition-colors duration-200 ${carouselIndex === i ? 'bg-agaru-purple border-agaru-purple' : 'bg-cyber-grey border-gray-600'}`}
+                aria-label={`Proyecto ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
