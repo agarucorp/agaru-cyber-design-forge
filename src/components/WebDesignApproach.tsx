@@ -151,7 +151,7 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
             Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño & Desarrollo Web</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            ¿Cómo funciona?
+            Etapas de desarrollo
           </p>
         </div>
 

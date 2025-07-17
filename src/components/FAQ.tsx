@@ -16,11 +16,11 @@ const FAQ = ({ lang }: FAQProps) => {
           questions: [
             {
               question: '¿Cuál es el tiempo estimado para un proyecto web?',
-              answer: 'El tiempo típico es de 4 a 8 semanas según la complejidad. Comenzamos con una fase de descubrimiento (1 semana), luego diseño (2-3 semanas), desarrollo (2-3 semanas) y pruebas/lanzamiento (1 semana). Te damos un cronograma detallado en la consulta inicial.'
+              answer: 'El tiempo de entrega varía según la complejidad del proyecto. Para sitios web estáticos o landing pages, estimamos entre 1 y 2 semanas. Las aplicaciones web, debido a su mayor complejidad y funcionalidades interactivas, suelen requerir 3 semanas o más. Una vez definidos los requisitos específicos, te proporcionaremos un cronograma detallado.'
             },
             {
               question: '¿Ofrecen mantenimiento y soporte continuo?',
-              answer: 'Sí, ofrecemos paquetes de mantenimiento que incluyen actualizaciones de seguridad, contenido, monitoreo de performance y soporte técnico. Los planes se adaptan a tus necesidades y presupuesto.'
+              answer: 'Sí, contamos con planes de mantenimiento mensual diseñados para asegurar el óptimo funcionamiento de tu sitio. Estos paquetes incluyen actualizaciones de seguridad, gestión de alojamiento y dominio, monitoreo de rendimiento y soporte técnico continuo.'
             },
             {
               question: '¿Mi sitio será mobile-responsive?',
@@ -32,12 +32,12 @@ const FAQ = ({ lang }: FAQProps) => {
           category: 'Branding y Estrategia',
           questions: [
             {
-              question: '¿Qué incluye su proceso de branding?',
-              answer: 'Incluye investigación de marca, análisis de competencia, diseño de logo, paleta de colores, tipografía, guía de marca y piezas de marketing. Garantizamos coherencia en todos los puntos de contacto.'
+              question: '¿Cúal es la diferencia entre branding y marketing?',
+              answer: 'El Branding construye la identidad de tu marca: quién sos, qué representás y cómo te perciben. El Marketing son las acciones para comunicar esa identidad y promocionar tus productos o servicios. En resumen, el branding es quién sos, y el marketing es cómo lo comunicas.'
             },
             {
-              question: '¿Cómo desarrollan la estrategia de marketing?',
-              answer: 'Comenzamos con investigación de mercado y competencia, definimos tu audiencia, propuesta de valor, creamos estrategias de contenido y te damos un roadmap accionable. Todo es medible y basado en datos.'
+              question: '¿Puede mi marca evolucionar con el tiempo?',
+              answer: 'Absolutamente. Una marca sólida es flexible y adaptable. A medida que tu negocio o el mercado evolucionan, tu marca puede y debe ajustarse, manteniendo siempre la esencia que te hace único.'
             },
             {
               question: '¿Pueden ayudar a rebrandear un negocio existente?',
@@ -120,12 +120,12 @@ const FAQ = ({ lang }: FAQProps) => {
                     <div key={questionIndex} className="cyber-card rounded-xl overflow-hidden">
                       <button
                         onClick={() => toggleFAQ(categoryIndex, questionIndex)}
-                        className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors duration-300"
+                        className="w-full p-6 text-left flex items-center justify-between transition-all duration-300 group hover:shadow-2xl hover:scale-[1.025] hover:bg-[#23243a]/90 hover:text-[#895AF6] focus:outline-none"
                       >
-                        <span className="text-lg font-semibold text-white pr-8">
+                        <span className="text-xl font-bold text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
                           {faq.question}
                         </span>
-                        <div className="text-agaru-purple flex-shrink-0">
+                        <div className="text-white flex-shrink-0 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
                           {isOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
                         </div>
                       </button>

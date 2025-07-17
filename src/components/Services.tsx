@@ -2,12 +2,20 @@
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
 import { Code, Palette, Target, TrendingUp } from 'lucide-react';
 import { Button } from './ui/button';
+import FAQCard from './FAQCard'; // Added import for FAQCard
+import { useState } from 'react';
 
 interface ServicesProps {
   lang: 'ES' | 'EN';
 }
 
 const Services = ({ lang }: ServicesProps) => {
+  const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
+
+  const handleFAQToggle = (index: number) => {
+    setOpenFAQIndex(openFAQIndex === index ? null : index);
+  };
+
   const services = [
     {
       title: 'Diseño UX/UI',
@@ -46,62 +54,172 @@ const Services = ({ lang }: ServicesProps) => {
           </p>
         </div>
 
-        <Accordion type="multiple" className="space-y-6 mt-8">
-          {services.map((service, idx) => (
-            <AccordionItem key={service.title} value={service.title}>
-              <div className="max-w-2xl mx-auto">
-                <AccordionTrigger className="text-2xl font-bold text-white mb-0 px-6 py-4 rounded-2xl border border-[#895AF6]/30 bg-gradient-to-br from-[#181A20]/80 to-[#23243a]/80 backdrop-blur-md shadow-lg transition-all duration-300 group hover:shadow-2xl hover:scale-[1.025] hover:bg-[#23243a]/90 hover:text-[#895AF6] hover:no-underline focus:outline-none">
-                  <span className="transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">{service.title}</span>
-                </AccordionTrigger>
-                <AccordionContent className="bg-[#181A20]/80 px-6 pb-6 rounded-b-2xl border-t-0 border border-[#895AF6]/10">
-                  {service.title === 'Aplicaciones Web' ? (
-                    <div className="text-gray-300 mb-6 leading-relaxed text-base space-y-4">
-                      <p>Digitalizá tu operación con una web app hecha a medida</p>
-                      <p>Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.</p>
-                      <div>
-                        <strong>1. Usuarios y datos en orden</strong>
-                        <ul className="list-disc pl-6">
-                          <li>Registro y login con permisos según rol</li>
-                          <li>Gestión de bases de datos en tiempo real (clientes, turnos, pedidos)</li>
-                          <li>Subida y acceso a archivos desde la misma web app</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <strong>2. Operaciones que se mueven solas</strong>
-                        <ul className="list-disc pl-6">
-                          <li>Mensajes automáticos por WhatsApp (recordatorios, confirmaciones, respuestas)</li>
-                          <li>Automatización de tareas como agendado, cobros y seguimiento</li>
-                          <li>Reglas de negocio personalizadas para cada flujo</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <strong>3. Todo bajo control, en un solo lugar</strong>
-                        <ul className="list-disc pl-6">
-                          <li>Paneles simples para ver y gestionar tu operación en tiempo real</li>
-                          <li>Accesos diferenciados por perfil (ej. admin vs cliente)</li>
-                          <li>Reportes claros y conexión con otras herramientas</li>
-                        </ul>
-                      </div>
-                      <p>Lanzamos rápido, con foco en que funcione desde el día uno y pueda crecer con vos.</p>
-                    </div>
-                  ) : (
-                    <>
-                      <p className="text-gray-300 mb-6 leading-relaxed text-base">{service.description}</p>
+        {/* Elimino el acordeón de servicios original */}
+        {/* Cards de FAQ debajo de los servicios */}
+        <div className="mt-12 space-y-6">
+          <div className="flex justify-center">
+            <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
+              <FAQCard
+                question="Aplicaciones Web"
+                answer={
+                  <>
+                    <p>Digitalizá tu operación con una web app hecha a medida</p>
+                    <br />
+                    <p>Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.</p>
+                    <br />
+                    <div>
+                      <strong>1. Usuarios y datos en orden</strong>
                       <ul className="space-y-2">
-                        {service.features.map((feature, i) => (
-                          <li key={i} className="text-gray-400 flex items-center">
-                            <div className="w-2 h-2 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                            {feature}
-                          </li>
-                        ))}
+                        <li className="text-gray-400 flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                          Registro y login con permisos según rol
+                        </li>
+                        <li className="text-gray-400 flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                          Gestión de bases de datos en tiempo real (clientes, turnos, pedidos)
+                        </li>
+                        <li className="text-gray-400 flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                          Subida y acceso a archivos desde la misma web app
+                        </li>
                       </ul>
-                    </>
-                  )}
-                </AccordionContent>
-              </div>
-            </AccordionItem>
-          ))}
-        </Accordion>
+                    </div>
+                    <br />
+                    <div>
+                      <strong>2Operaciones que se mueven solas</strong>
+                      <ul className="space-y-2">
+                        <li className="text-gray-400 flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                          Mensajes automáticos por WhatsApp (recordatorios, confirmaciones, respuestas)
+                        </li>
+                        <li className="text-gray-400 flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                          Automatización de tareas como agendado, cobros y seguimiento
+                        </li>
+                        <li className="text-gray-400 flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                          Reglas de negocio personalizadas para cada flujo
+                        </li>
+                      </ul>
+                    </div>
+                    <br />
+                    <div>
+                      <strong>3. Todo bajo control, en un solo lugar</strong>
+                      <ul className="space-y-2">
+                        <li className="text-gray-400 flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                          Paneles simples para ver y gestionar tu operación en tiempo real
+                        </li>
+                        <li className="text-gray-400 flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                          Accesos diferenciados por perfil (ej. admin vs cliente)
+                        </li>
+                        <li className="text-gray-400 flex items-center">
+                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                          Reportes claros y conexión con otras herramientas
+                        </li>
+                      </ul>
+                    </div>
+                    <br />
+                    <p>Lanzamos rápido, con foco en que funcione desde el día uno y pueda crecer con vos.</p>
+                  </>
+                }
+                isOpen={openFAQIndex === 0}
+                onToggle={() => handleFAQToggle(0)}
+              />
+            </div>
+          </div>
+          
+          <div className="flex justify-center">
+            <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
+              <FAQCard
+                question="Desarrollo y Diseño Web"
+                answer={
+                  <>
+                    <p>Desarrollamos soluciones web optimizadas para una presencia digital de alto rendimiento y navegación intuitiva. Nos enfocamos en construir sitios rápidos y seguros, diseñados para ofrecer una experiencia de usuario fluida y adaptable.</p>
+                    <br />
+                    <ul className="space-y-4">
+                      <li className="text-gray-400 flex items-start">
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                        Utilizamos React y Next.js para construir sitios dinámicos, responsivos y con alta capacidad de respuesta.
+                      </li>
+                      <li className="text-gray-400 flex items-start">
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                        Realizamos el despliegue en Vercel, asegurando un rendimiento global eficiente y una gestión simplificada del proyecto.
+                      </li>
+                      <li className="text-gray-400 flex items-start">
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                        Su sitio se ajustará y funcionará correctamente en cualquier dispositivo, garantizando una experiencia consistente para todos los usuarios.
+                      </li>
+                    </ul>
+                  </>
+                }
+                isOpen={openFAQIndex === 1}
+                onToggle={() => handleFAQToggle(1)}
+              />
+            </div>
+          </div>
+          
+          <div className="flex justify-center">
+            <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
+              <FAQCard
+                question="Diseño UX/UI"
+                answer={
+                  <>
+                    <p>Desarrollamos interfaces que facilitan la interacción del usuario y cumplen los objetivos del proyecto. Nuestro enfoque se centra en la visualización precisa y la navegación intuitiva, asegurando que cada componente sea útil y coherente.</p>
+                    <br />
+                    <ul className="space-y-4">
+                      <li className="text-gray-400 flex items-start">
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                        Creamos wireframes en Figma para previsualizar la estructura y el flujo, facilitando la revisión y aprobación antes del desarrollo.
+                      </li>
+                      <li className="text-gray-400 flex items-start">
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                        Ofrecemos servicios de diseño UI específicos para landing pages, sitios web completos o wireframes detallados.
+                      </li>
+                      <li className="text-gray-400 flex items-start">
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                        La aplicación de metodologías de usabilidad (UX) es fundamental en cada diseño que realizamos, optimizando la interacción del usuario.
+                      </li>
+                    </ul>
+                  </>
+                }
+                isOpen={openFAQIndex === 2}
+                onToggle={() => handleFAQToggle(2)}
+              />
+            </div>
+          </div>
+          
+          <div className="flex justify-center">
+            <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
+              <FAQCard
+                question="Estrategia e Identidad de Marca"
+                answer={
+                  <>
+                    <p>Vamos más allá del diseño visual para forjar la base estratégica de tu marca. Trabajamos en la voz y la identidad que te diferenciarán, creando una conexión auténtica con tu audiencia y guiando tu crecimiento futuro.</p>
+                    <br />
+                    <ul className="space-y-4">
+                      <li className="text-gray-400 flex items-start">
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                        Definimos la personalidad y el mensaje único de tu marca, asegurando una comunicación coherente y distintiva.
+                      </li>
+                      <li className="text-gray-400 flex items-start">
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                        Diseñamos logos que encapsulan la esencia de tu negocio, reflejando profesionalismo y reconocimiento.
+                      </li>
+                      <li className="text-gray-400 flex items-start">
+                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                        Te proporcionamos una guía estratégica para tus futuras acciones de marketing y posicionamiento, asegurando un camino claro para el desarrollo de tu marca.
+                      </li>
+                    </ul>
+                  </>
+                }
+                isOpen={openFAQIndex === 3}
+                onToggle={() => handleFAQToggle(3)}
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Call to Action */}
         <div className="text-center mt-16">

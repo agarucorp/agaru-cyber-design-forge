@@ -78,7 +78,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             {lang === 'ES'
-              ? 'Nuestro proceso integral transforma tu visión en una identidad de marca coherente que conecta con tu audiencia ideal.'
+              ? '¿Cómo funciona?'
               : 'Our comprehensive branding process transforms your vision into a cohesive, powerful brand identity that resonates with your target audience.'}
           </p>
         </div>
@@ -109,7 +109,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
               </div>
 
               {/* Content */}
-              <div className="flex-1 cyber-card p-8 rounded-xl">
+              <div className="flex-1 cyber-card p-8 rounded-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:border-[#895AF6]/40 border border-white/5">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   {step.title}
                 </h3>

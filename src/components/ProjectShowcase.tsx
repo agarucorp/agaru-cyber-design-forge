@@ -1,5 +1,6 @@
 
 import { ExternalLink, Github } from 'lucide-react';
+import mockupCalena from './assets/ProcessIcons/mockupcalena.png';
 
 interface ProjectShowcaseProps {
   lang: 'ES' | 'EN';
@@ -9,10 +10,10 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   const projects = lang === 'ES'
     ? [
         {
-          title: 'Dashboard TechStartup',
-          category: 'Diseño UX/UI',
+          title: 'Somos Calena',
+          category: 'Web App',
           description: 'Dashboard SaaS moderno con analíticas avanzadas y gestión de usuarios.',
-          image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop',
+          image: mockupCalena,
           tags: ['React', 'TypeScript', 'Tailwind CSS'],
           link: '#',
           github: '#'
@@ -128,7 +129,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
             {lang === 'ES' ? 'Proyectos ' : 'Featured '}
             <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">{lang === 'ES' ? 'Destacados' : 'Projects'}</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 whitespace-nowrap">
             {lang === 'ES'
               ? 'Descubrí cómo ayudamos a startups y negocios a transformar su presencia digital'
               : `Discover how we've helped startups and small businesses transform their digital presence and achieve remarkable growth.`}
@@ -139,7 +140,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group cyber-card rounded-xl overflow-hidden animate-fade-in"
+              className="group cyber-card rounded-xl overflow-hidden animate-fade-in transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:border-[#895AF6]/40 border border-white/5"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Project Image */}
@@ -168,7 +169,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
                 
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
-                  <span className="cyber-gradient text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="text-white text-xs font-semibold px-3 py-1 rounded-full" style={{ background: '#4B267A' }}>
                     {project.category}
                   </span>
                 </div>
