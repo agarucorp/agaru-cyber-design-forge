@@ -252,65 +252,39 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
           </div>
         </div>
 
-        {/* Mobile: carousel slider */}
-        <div className="block md:hidden">
-          <div className="flex justify-center">
+        {/* Mobile: Carrusel automático con fade */}
+        <div className="md:hidden flex justify-center items-center relative min-h-[420px]">
+          {projects.map((project, idx) => (
             <div
-              className="group cyber-card rounded-xl overflow-hidden animate-fade-in transition-all duration-300 w-full max-w-xs border border-white/5"
+              key={project.title}
+              className={`absolute left-0 right-0 transition-opacity duration-700 ease-in-out ${carouselIndex === idx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
             >
-              {/* Project Image */}
-              <div className="relative overflow-hidden">
-                <img
-                  src={projects[carouselIndex].image}
-                  alt={projects[carouselIndex].title}
-                  className="w-full h-48 object-cover transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 flex gap-2">
-                    <a
-                      href={projects[carouselIndex].link}
-                      className="w-10 h-10 bg-agaru-purple rounded-full flex items-center justify-center hover:bg-agaru-purple-light transition-colors duration-300"
-                    >
-                      <ExternalLink className="w-5 h-5 text-white" />
-                    </a>
-                    <a
-                      href={projects[carouselIndex].github}
-                      className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors duration-300"
-                    >
-                      <Github className="w-5 h-5 text-white" />
-                    </a>
-                  </div>
+              <div className="group cyber-card rounded-xl overflow-hidden border border-white/5 relative h-[420px] w-[90vw] max-w-xs mx-auto flex flex-col">
+                <div className="w-full h-48 bg-gray-900 flex items-center justify-center overflow-hidden">
+                  <img src={project.image} alt={project.title} className="object-cover w-full h-full" />
                 </div>
-                {/* Category Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="text-white text-xs font-semibold px-3 py-1 rounded-full" style={{ background: '#4B267A' }}>
-                    {projects[carouselIndex].category}
-                  </span>
+                <div className="flex-1 flex flex-col items-center justify-center p-4">
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#4B267A] text-white mb-2" style={{ fontSize: '0.75rem' }}>{project.category}</span>
+                  <h3 className="text-lg font-bold text-white mb-2 text-center drop-shadow-lg">{project.title}</h3>
+                  <p className="text-base text-white mb-4 text-center drop-shadow-lg">{project.description}</p>
+                  <a href={project.link} className="w-12 h-12 bg-agaru-purple rounded-full flex items-center justify-center hover:bg-agaru-purple-light transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-6 h-6 text-white" />
+                  </a>
                 </div>
-              </div>
-              {/* Project Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-agaru-purple transition-colors duration-300">
-                  {projects[carouselIndex].title}
-                </h3>
-                <p className="text-gray-300 mb-4 leading-relaxed">
-                  {projects[carouselIndex].description}
-                </p>
-                {/* Tags eliminados en mobile */}
               </div>
             </div>
-          </div>
-          {/* Indicadores del carousel */}
-          <div className="flex justify-center mt-4 gap-2">
-            {projects.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCarouselIndex(i)}
-                className={`w-3 h-3 rounded-full border transition-colors duration-200 ${carouselIndex === i ? 'bg-agaru-purple border-agaru-purple' : 'bg-cyber-grey border-gray-600'}`}
-                aria-label={`Proyecto ${i + 1}`}
-              />
-            ))}
-          </div>
+          ))}
+        </div>
+        {/* Indicadores del carousel */}
+        <div className="flex justify-center mt-4 gap-2">
+          {projects.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCarouselIndex(i)}
+              className={`w-3 h-3 rounded-full border transition-colors duration-200 ${carouselIndex === i ? 'bg-agaru-purple border-agaru-purple' : 'bg-cyber-grey border-gray-600'}`}
+              aria-label={`Proyecto ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
