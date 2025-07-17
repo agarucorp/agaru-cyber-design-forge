@@ -154,9 +154,24 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-300 hover:text-agaru-purple transition-colors duration-300"
+              className={`h-10 w-10 flex items-center justify-center text-gray-300 hover:text-agaru-purple transition-colors duration-300 focus:outline-none ${!isMobileMenuOpen ? 'animate-bounce-burger' : ''}`}
+              aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? (
+                <X size={28} />
+              ) : (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="burger-gradient" x1="0" y1="0" x2="32" y2="0" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#895AF6" />
+                      <stop offset="1" stopColor="#4DE3FF" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="4" y="8" width="20" height="2" rx="0.5" fill="url(#burger-gradient)" className="transition-all duration-300" />
+                  <rect x="8" y="15" width="12" height="2" rx="0.5" fill="url(#burger-gradient)" className="transition-all duration-300" />
+                  <rect x="10" y="22" width="16" height="2" rx="0.5" fill="url(#burger-gradient)" className="transition-all duration-300" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
@@ -203,6 +218,20 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           </div>
         )}
       </div>
+      {/* Animación burger bounce */}
+      <style>{`
+      @keyframes bounce-burger {
+        0% { transform: scale(1); }
+        20% { transform: scale(1.15, 0.85); }
+        40% { transform: scale(0.95, 1.05); }
+        60% { transform: scale(1.05, 0.95); }
+        80% { transform: scale(0.98, 1.02); }
+        100% { transform: scale(1); }
+      }
+      .animate-bounce-burger:active svg {
+        animation: bounce-burger 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+      }
+      `}</style>
     </nav>
   );
 };

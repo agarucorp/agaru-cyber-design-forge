@@ -1,11 +1,14 @@
 
 import { Building, TrendingUp, Palette, Calendar, FileText } from 'lucide-react';
+import { useState, useRef } from 'react';
 
 interface BrandingApproachProps {
   lang: 'ES' | 'EN';
 }
 
 const BrandingApproach = ({ lang }: BrandingApproachProps) => {
+  const [current, setCurrent] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const steps = lang === 'ES'
     ? [
         {
@@ -62,9 +65,28 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
         },
       ];
 
+  // Detectar la card centrada al hacer scroll táctil
+  const handleScroll = () => {
+    if (!carouselRef.current) return;
+    const children = Array.from(carouselRef.current.children);
+    const scrollLeft = carouselRef.current.scrollLeft;
+    const cardWidth = carouselRef.current.offsetWidth;
+    let minDiff = Infinity;
+    let activeIdx = 0;
+    children.forEach((child, idx) => {
+      const el = child as HTMLElement;
+      const diff = Math.abs(el.offsetLeft - scrollLeft);
+      if (diff < minDiff) {
+        minDiff = diff;
+        activeIdx = idx;
+      }
+    });
+    setCurrent(activeIdx);
+  };
+
   return (
-    <section className="py-20 bg-gradient-to-b from-cyber-grey to-cyber-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gradient-to-b from-cyber-grey to-cyber-dark md:overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:overflow-x-hidden">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {lang === 'ES'
@@ -76,14 +98,15 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
                 </>
             }
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4 md:mb-0">
             {lang === 'ES'
               ? '¿Cómo funciona?'
               : 'Our comprehensive branding process transforms your vision into a cohesive, powerful brand identity that resonates with your target audience.'}
           </p>
         </div>
 
-        <div className="space-y-8">
+        {/* Desktop: cards en columna o fila */}
+        <div className="hidden md:block space-y-8">
           {steps.map((step, index) => (
             <div
               key={index}
@@ -119,6 +142,59 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Mobile: carrusel táctil scroll-x, sin oscurecer cards */}
+        <div className="md:hidden w-full overflow-x-hidden">
+          <div className="relative z-10 overflow-visible">
+            <div className="w-full flex flex-col items-center pt-12">
+              <div
+                className="w-full overflow-x-auto flex snap-x snap-mandatory gap-6 pb-2 pl-[5vw] pr-[5vw]"
+                style={{ scrollbarWidth: 'none' }}
+                ref={carouselRef}
+                onScroll={handleScroll}
+              >
+                {steps.map((step, idx) => (
+                  <div
+                    key={idx}
+                    className="snap-center flex flex-col items-center group transition-transform duration-300 min-w-[90vw] max-w-xs mx-auto"
+                  >
+                    <div className="flex flex-col items-center mb-4 relative pt-0">
+                      <div className="w-20 h-20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                        style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)', boxShadow: '0 0 16px 2px #895AF688' }}>
+                        <div className="text-white">
+                          {step.icon}
+                        </div>
+                      </div>
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg border-2 border-[#895AF6] shadow-[0_0_12px_2px_#895AF6AA]"
+                        style={{ background: 'linear-gradient(135deg, #18192a 60%, #23243a 100%)' }}>
+                        {idx + 1}
+                      </div>
+                    </div>
+                    <div className="w-full min-h-[220px] cyber-card p-6 rounded-xl border border-white/5 flex flex-col items-center">
+                      <h3 className="text-xl font-bold text-white mb-4 text-center">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-300 text-base text-center leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* Indicadores debajo de la card */}
+              <div className="flex gap-2 mt-4">
+                {steps.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`w-2.5 h-2.5 rounded-full border transition-colors duration-200 ${current === i ? 'bg-agaru-purple border-agaru-purple' : 'bg-cyber-grey border-gray-600'}`}
+                    onClick={() => setCurrent(i)}
+                    aria-label={`Paso ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

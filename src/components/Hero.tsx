@@ -62,7 +62,7 @@ const Hero = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-8 lg:py-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-8 mt-8 lg:mt-0 lg:py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Side - Content */}
@@ -85,11 +85,11 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#services" className="group bg-[#895AF6] text-white border border-[#895AF6] hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 flex items-center gap-2 px-5 py-2 rounded-md font-medium text-base" style={{ fontSize: '0.8rem' }}>
-                Ver Más
+              <a href="#services" className="group bg-[#895AF6] text-white border border-[#895AF6] hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 flex items-center justify-center gap-2 px-5 py-2 rounded-md font-medium text-base text-center sm:justify-start sm:text-left">
+                Empezar
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="#contact" className="group text-[#895AF6] border-[#895AF6] shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6] hover:bg-transparent hover:text-[#895AF6] transition-all duration-300 flex items-center gap-1.5 px-5 py-2 rounded-md font-medium text-base" style={{ fontSize: '0.8rem' }}>
+              <a href="#contact" className="group text-[#895AF6] border-[#895AF6] shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6] hover:bg-transparent hover:text-[#895AF6] transition-all duration-300 flex flex-col items-center justify-center gap-1.5 px-5 py-2 rounded-md font-medium text-base text-center sm:flex-row sm:items-center sm:justify-start sm:text-left">
                 Contanos de tu Proyecto
               </a>
             </div>
