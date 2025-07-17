@@ -21,37 +21,46 @@ const Services = ({ lang }: ServicesProps) => {
     {
       title: lang === 'ES' ? 'Aplicaciones Web' : 'Web Apps',
       description: lang === 'ES'
-        ? 'Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.'
+        ? 'Digitalizá tu operación con una Web App a medida.\nCreamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.'
         : 'Digitize Your Operations with a Custom Web App\nWe build applications that allow you to automate tasks, centralize data, and scale your business seamlessly.',
       features: lang === 'ES'
         ? [
             'Usuarios y datos en orden',
-            'Registro y login con permisos según rol.',
-            'Gestión de bases de datos en tiempo real (clientes, turnos, pedidos).',
-            'Subida y acceso a archivos desde la misma web app.',
+            '- Registro y login con permisos según rol.',
+            '- Gestión de bases de datos en tiempo real (clientes, turnos, pedidos).',
+            '- Subida y acceso a archivos desde la misma web app.',
             'Operaciones automatizadas',
-            'Mensajes automáticos por WhatsApp (recordatorios, confirmaciones, respuestas).',
-            'Automatización de tareas como agendado, cobros y seguimiento.',
-            'Reglas de negocio personalizadas para cada flujo.',
+            '- Mensajes automáticos por WhatsApp (recordatorios, confirmaciones, respuestas).',
+            '- Automatización de tareas como agendado, cobros y seguimiento.',
+            '- Reglas de negocio personalizadas para cada flujo.',
             'Todo bajo control, en un solo lugar',
-            'Paneles simples para ver y gestionar tu operación en tiempo real.',
-            'Accesos diferenciados por perfil (ej. admin vs cliente).',
-            'Reportes claros y conexión con otras herramientas.',
+            '- Paneles simples para ver y gestionar tu operación en tiempo real.',
+            '- Accesos diferenciados por perfil (ej. admin vs cliente).',
+            '- Reportes claros y conexión con otras herramientas.',
             'Lanzamos rápido, con foco en que funcione desde el día uno y pueda crecer con vos.'
           ]
         : [
-            'Organized Users and Data',
+            'Digitize Your Operations with a Custom Web App',
+            'We build applications that allow you to automate tasks, centralize data, and scale your business seamlessly.',
+            '',
+            '1. Organized Users and Data',
+            '',
             'Role-based user registration and login.',
             'Real-time database management (clients, appointments, orders).',
             'Upload and access files directly within the web app.',
-            'Automated Operations',
+            '',
+            '2. Automated Operations',
+            '',
             'Automated WhatsApp messages (reminders, confirmations, replies).',
             'Task automation for scheduling, payments, and follow-ups.',
             'Custom business rules tailored for each workflow.',
-            'Everything Under Control, in One Place',
+            '',
+            '3. Everything Under Control, in One Place',
+            '',
             'Intuitive dashboards to view and manage your operations in real-time.',
             'Differentiated access by user profile (e.g., admin vs. client).',
             'Clear reports and integration with other tools.',
+            '',
             'We launch fast, focusing on day-one functionality and the ability to grow with your business.'
           ]
     },
@@ -142,18 +151,72 @@ const Services = ({ lang }: ServicesProps) => {
                 <FAQCard
                   question={service.title}
                   answer={
-                    <>
-                      <p>{service.description.split('\n').map((str, i) => <span key={i}>{str}<br /></span>)}</p>
-                      <br />
-                      <ul className="space-y-4">
-                        {service.features.map((feature, i) => (
-                          <li className="text-gray-400 flex items-start" key={i}>
-                            <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </>
+                    lang === 'ES' && idx === 0 ? (
+                      <div>
+                        <p className="text-gray-400">Digitalizá tu operación con una Web App a medida.</p>
+                        <p className="text-gray-400">Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.</p>
+                        <br />
+                        <p className="text-white font-semibold">1. Usuarios y datos en orden</p>
+                        <div className="mb-4 ml-6 space-y-2">
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Registro y login con permisos según rol.</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Gestión de bases de datos en tiempo real (clientes, turnos, pedidos).</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Subida y acceso a archivos desde la misma web app.</span></div>
+                        </div>
+                        <p className="text-white font-semibold">2. Operaciones automatizadas</p>
+                        <div className="mb-4 ml-6 space-y-2">
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Mensajes automáticos por WhatsApp (recordatorios, confirmaciones, respuestas).</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Automatización de tareas como agendado, cobros y seguimiento.</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Reglas de negocio personalizadas para cada flujo.</span></div>
+                        </div>
+                        <p className="text-white font-semibold">3. Todo bajo control, en un solo lugar</p>
+                        <div className="mb-4 ml-6 space-y-2">
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Paneles simples para ver y gestionar tu operación en tiempo real.</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Accesos diferenciados por perfil (ej. admin vs cliente).</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Reportes claros y conexión con otras herramientas.</span></div>
+                        </div>
+                        <p className="text-gray-400">Lanzamos rápido, con foco en que funcione desde el día uno y pueda crecer con vos.</p>
+                      </div>
+                    ) : (
+                      lang === 'EN' && idx === 0 ? (
+                        <div>
+                          <p className="text-gray-400">Digitize Your Operations with a Custom Web App</p>
+                          <p className="text-gray-400">We build applications that allow you to automate tasks, centralize data, and scale your business seamlessly.</p>
+                          <br />
+                          <p className="text-white font-semibold">1. Organized Users and Data</p>
+                          <div className="mb-4 ml-6 space-y-2">
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Role-based user registration and login.</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Real-time database management (clients, appointments, orders).</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Upload and access files directly within the web app.</span></div>
+                          </div>
+                          <p className="text-white font-semibold">2. Automated Operations</p>
+                          <div className="mb-4 ml-6 space-y-2">
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Automated WhatsApp messages (reminders, confirmations, replies).</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Task automation for scheduling, payments, and follow-ups.</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Custom business rules tailored for each workflow.</span></div>
+                          </div>
+                          <p className="text-white font-semibold">3. Everything Under Control, in One Place</p>
+                          <div className="mb-4 ml-6 space-y-2">
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Intuitive dashboards to view and manage your operations in real-time.</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Differentiated access by user profile (e.g., admin vs. client).</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Clear reports and integration with other tools.</span></div>
+                          </div>
+                          <p className="text-gray-400">We launch fast, focusing on day-one functionality and the ability to grow with your business.</p>
+                        </div>
+                      ) : (
+                        <>
+                          <p>{service.description.split('\n').map((str, i) => <span key={i}>{str}<br /></span>)}</p>
+                          <br />
+                          <ul className="space-y-4">
+                            {service.features.map((feature, i) => (
+                              <li className="text-gray-400 flex items-start" key={i}>
+                                <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )
+                    )
                   }
                   isOpen={openFAQIndex === idx}
                   onToggle={() => handleFAQToggle(idx)}
