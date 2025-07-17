@@ -1,5 +1,5 @@
 
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import mockupCalena from './assets/ProcessIcons/mockupcalena.png';
 import { useState, useEffect } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
@@ -218,15 +218,37 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
             ))}
           </div>
           {/* Paginación */}
-          <div className="flex justify-center mt-8 gap-2">
+          <div className="flex justify-center mt-8 gap-0.5 items-center">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+              disabled={currentPage === 1}
+              className={`w-6 h-6 flex items-center justify-center rounded-full border border-gray-600 bg-cyber-grey text-gray-300 hover:bg-agaru-purple/20 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xs`}
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="w-3 h-3" />
+            </button>
             {[...Array(totalPages)].map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentPage(i + 1)}
-                className={`w-3 h-3 rounded-full border transition-colors duration-200 ${currentPage === i + 1 ? 'bg-agaru-purple border-agaru-purple' : 'bg-cyber-grey border-gray-600'}`}
+                className={`w-6 h-6 flex items-center justify-center rounded-full border font-bold transition-all duration-200 text-xs
+                  ${currentPage === i + 1
+                    ? 'border-[#895AF6] bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] text-white shadow-md'
+                    : 'border-gray-600 bg-cyber-grey text-gray-300 hover:bg-gradient-to-r hover:from-[#895AF6] hover:via-[#B983FF] hover:to-[#4DE3FF] hover:text-white'}
+                `}
                 aria-label={`Página ${i + 1}`}
-              />
+              >
+                {i + 1}
+              </button>
             ))}
+            <button
+              onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
+              disabled={currentPage === totalPages}
+              className={`w-6 h-6 flex items-center justify-center rounded-full border border-gray-600 bg-cyber-grey text-gray-300 hover:bg-agaru-purple/20 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xs`}
+              aria-label="Siguiente"
+            >
+              <ChevronRight className="w-3 h-3" />
+            </button>
           </div>
         </div>
 
