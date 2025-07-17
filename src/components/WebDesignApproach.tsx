@@ -65,32 +65,38 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
         {
           icon: Icon1,
           title: 'Project Onboarding',
-          description: 'Initial meeting with our design team. We gather all relevant information about your project: your industry, brand assets (logos, colors), key users, visual references and the main objectives of your business.',
+          description: 'We gather all relevant information about your project: your industry, brand assets (logos, colors), key users, visual references, and your main business objectives.',
           step: 1
         },
         {
           icon: Icon2,
           title: 'Design Alignment',
-          description: 'We present the first design concept. We receive your feedback so we can refine the layout and visual elements. This is a preview stage, perfect for requesting adjustments and ensuring alignment with your vision.',
+          description: 'We present the first design concept. We receive your feedback so we can refine the layout and visual elements. This is a preview stage, perfect for requesting adjustments.',
           step: 2
         },
         {
           icon: Icon3,
           title: 'Design Approval',
-          description: 'Final design review. Based on all previous feedback, we present the complete and polished version of the website design. This is the last opportunity to make changes before moving to the development team.',
+          description: `We conduct the final design review. Based on all previous feedback, we present the complete and polished version of the website's design. This is the last opportunity for changes before moving to the development team.`,
           step: 3
         },
         {
           icon: Icon4,
           title: 'Execution',
-          description: 'Our development team takes over. Using the approved design, we begin building the website. Both design and development teams collaborate to ensure every detail is implemented with precision.',
+          description: 'Our development team takes over. Using the approved design, we begin building the website. Both the design and development teams collaborate to ensure every detail is implemented with precision.',
           step: 4
         },
         {
           icon: Icon5,
-          title: 'Launch',
-          description: 'Final review to ensure every element is in place. Once approved, we deploy the website on our server, leaving it fully operational and ready for your audience.',
+          title: 'Deployment',
+          description: 'We perform a final review to ensure every element is in place. Once approved, we deploy the website to our server, making it fully operational and ready for your audience.',
           step: 5
+        },
+        {
+          icon: Icon5,
+          title: 'Support and Maintenance',
+          description: 'Launching your website is just the beginning. This stage ensures your platform stays online, optimized, and secure over time.',
+          step: 6
         }
       ];
 
@@ -166,10 +172,18 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño & Desarrollo Web</span>
+            {lang === 'ES' ? (
+              <>
+                Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño & Desarrollo Web</span>
+              </>
+            ) : (
+              <>
+                Web <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Design & Development Process</span>
+              </>
+            )}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Etapas de desarrollo
+            {lang === 'ES' ? 'Etapas de desarrollo' : ''}
           </p>
         </div>
 
@@ -193,13 +207,17 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
                 {/* Título */}
                 <h3 className="text-xl font-bold text-white mb-3 text-center drop-shadow">{step.title}</h3>
                 {/* Descripción */}
-                {step.title === 'Mantenimiento' ? (
+                {((lang === 'ES' && step.title === 'Mantenimiento') || (lang === 'EN' && step.title === 'Support and Maintenance')) ? (
                   <>
-                    <p className="text-base text-gray-300 mb-3 text-left">Esta etapa asegura que tu plataforma se mantenga en línea, optimizada y segura a lo largo del tiempo.</p>
+                    <p className="text-base text-gray-300 mb-3 text-left">
+                      {lang === 'ES'
+                        ? 'Esta etapa asegura que tu plataforma se mantenga en línea, optimizada y segura a lo largo del tiempo.'
+                        : 'This stage ensures your platform stays online, optimized, and secure over time.'}
+                    </p>
                     <ul className="list-disc pl-5 text-base text-gray-300 space-y-1 mb-2 text-left">
-                      <li>Soporte técnico</li>
-                      <li>Actualizaciones de seguridad</li>
-                      <li>Optimización de rendimiento</li>
+                      <li>{lang === 'ES' ? 'Soporte técnico' : 'Technical support'}</li>
+                      <li>{lang === 'ES' ? 'Actualizaciones de seguridad' : 'Security updates'}</li>
+                      <li>{lang === 'ES' ? 'Optimización de rendimiento' : 'Performance optimization'}</li>
                     </ul>
                   </>
                 ) : (
@@ -226,13 +244,17 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
                   {steps[carouselIndex].title}
                 </h3>
               </div>
-              {steps[carouselIndex].title === 'Mantenimiento' ? (
+              {((lang === 'ES' && steps[carouselIndex].title === 'Mantenimiento') || (lang === 'EN' && steps[carouselIndex].title === 'Support and Maintenance')) ? (
                 <>
-                  <p className="text-base text-gray-300 mb-4 text-left">Esta etapa asegura que tu plataforma se mantenga en línea, optimizada y segura a lo largo del tiempo.</p>
+                  <p className="text-base text-gray-300 mb-4 text-left">
+                    {lang === 'ES'
+                      ? 'Esta etapa asegura que tu plataforma se mantenga en línea, optimizada y segura a lo largo del tiempo.'
+                      : 'This stage ensures your platform stays online, optimized, and secure over time.'}
+                  </p>
                   <ul className="list-disc pl-6 text-base text-gray-300 space-y-1 mb-4 text-left">
-                    <li>Soporte técnico</li>
-                    <li>Actualizaciones de seguridad</li>
-                    <li>Optimización de rendimiento</li>
+                    <li>{lang === 'ES' ? 'Soporte técnico' : 'Technical support'}</li>
+                    <li>{lang === 'ES' ? 'Actualizaciones de seguridad' : 'Security updates'}</li>
+                    <li>{lang === 'ES' ? 'Optimización de rendimiento' : 'Performance optimization'}</li>
                   </ul>
                 </>
               ) : (

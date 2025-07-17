@@ -14,9 +14,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-cyber-dark">
       <Navbar lang={lang} setLang={setLang} />
-      <Hero />
+      <Hero lang={lang} />
       <Services lang={lang} />
-      <WebProcessStepper />
+      <WebProcessStepper lang={lang} />
       <BrandingApproach lang={lang} />
       <ProjectShowcase lang={lang} />
       <FAQ lang={lang} />

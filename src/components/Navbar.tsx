@@ -63,7 +63,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
     : [
         { name: 'Services', href: '#services' },
         { name: 'How it Works?', href: '#process' },
-        { name: 'Our Work', href: '#projects' },
+        { name: 'Projects', href: '#projects' },
         { name: 'FAQs', href: '#faq' },
       ];
 

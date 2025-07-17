@@ -19,7 +19,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
         {
           icon: <TrendingUp className="w-8 h-8" />,
           title: 'Estrategia de Marketing',
-          description: 'Nuestros estrategas digitales investigan tendencias, comportamientos y competencia para identificar las mejores oportunidades de crecimiento.',
+          description: 'Nuestros estrategas investigan tendencias, comportamientos y competencia para identificar las mejores oportunidades de crecimiento.',
         },
         {
           icon: <Palette className="w-8 h-8" />,
@@ -46,7 +46,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
         {
           icon: <TrendingUp className="w-8 h-8" />,
           title: 'Marketing Strategy',
-          description: 'Our digital strategists execute comprehensive research across market trends, consumer behaviors, and competitor landscapes. This meticulous process yields actionable insights, helping us identify and target the most promising areas for your growth.',
+          description: 'Our strategists execute comprehensive research across market trends, consumer behaviors, and competitor landscapes. This meticulous process yields actionable insights, helping us identify and target the most promising areas for your growth.',
         },
         {
           icon: <Palette className="w-8 h-8" />,
@@ -106,7 +106,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
         </div>
 
         {/* Desktop: cards en columna o fila */}
-        <div className="hidden md:block space-y-8">
+        <div className="hidden md:block space-y-8 overflow-x-hidden">
           {steps.map((step, index) => (
             <div
               key={index}

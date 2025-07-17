@@ -6,7 +6,11 @@ import Icon5 from './assets/ProcessIcons/5.png';
 import Icon6 from './assets/ProcessIcons/6.svg';
 import { useState, useRef } from 'react';
 
-const steps = [
+interface WebProcessStepperProps {
+  lang: 'ES' | 'EN';
+}
+
+const stepsES = [
   {
     icon: Icon1,
     title: 'Onboarding del Proyecto',
@@ -17,7 +21,7 @@ const steps = [
     icon: Icon2,
     title: 'Alineación de Diseño',
     description:
-      'Presentamos el primer concepto de diseño. Recibimos tus comentarios para que podamos refinar la disposición y los elementos visuales. Esta es una etapa de previsualización, perfecta para solicitar ajustes',
+      'Presentamos el primer concepto de diseño. Recibimos tus comentarios para que podamos refinar la disposición y los elementos visuales. Esta es una etapa de previsualización, perfecta para solicitar ajustes.',
   },
   {
     icon: Icon3,
@@ -45,7 +49,40 @@ const steps = [
   },
 ];
 
-export default function WebProcessStepper() {
+const stepsEN = [
+  {
+    icon: Icon1,
+    title: 'Project Onboarding',
+    description: 'We gather all relevant information about your project: your industry, brand assets (logos, colors), key users, visual references, and your main business objectives.',
+  },
+  {
+    icon: Icon2,
+    title: 'Design Alignment',
+    description: 'We present the first design concept. We receive your feedback so we can refine the layout and visual elements. This is a preview stage, perfect for requesting adjustments.',
+  },
+  {
+    icon: Icon3,
+    title: 'Design Approval',
+    description: `We conduct the final design review. Based on all previous feedback, we present the complete and polished version of the website's design. This is the last opportunity for changes before moving to the development team.`,
+  },
+  {
+    icon: Icon4,
+    title: 'Execution',
+    description: 'Our development team takes over. Using the approved design, we begin building the website. Both the design and development teams collaborate to ensure every detail is implemented with precision.',
+  },
+  {
+    icon: Icon5,
+    title: 'Deployment',
+    description: 'We perform a final review to ensure every element is in place. Once approved, we deploy the website to our server, making it fully operational and ready for your audience.',
+  },
+  {
+    icon: Icon6,
+    title: 'Support and Maintenance',
+    description: 'Launching your website is just the beginning. This stage ensures your platform stays online, optimized, and secure over time.',
+  },
+];
+
+export default function WebProcessStepper({ lang }: WebProcessStepperProps) {
   const [current, setCurrent] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -67,14 +104,19 @@ export default function WebProcessStepper() {
     setCurrent(activeIdx);
   };
 
+  const steps = lang === 'EN' ? stepsEN : stepsES;
   return (
     <section className="py-20 bg-cyber-grey flex justify-center items-center w-full">
       <div className="max-w-5xl w-full flex flex-col items-center px-2">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
-          Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño & Desarrollo Web</span>
+          {lang === 'EN' ? (
+            <>Web <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Design & Development Process</span></>
+          ) : (
+            <>Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño & Desarrollo Web</span></>
+          )}
         </h2>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8 text-center">
-          Etapas de desarrollo
+          {lang === 'EN' ? '' : 'Etapas de desarrollo'}
         </p>
         {/* Desktop: vertical steps */}
         <div className="hidden md:flex relative w-full flex-col items-center">

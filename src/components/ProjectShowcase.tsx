@@ -152,7 +152,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
           <p className="text-xl text-gray-300 text-center">
             {lang === 'ES'
               ? 'Descubrí cómo ayudamos a startups y negocios a transformar su presencia digital'
-              : `Discover how we've helped startups and small businesses transform their digital presence and achieve remarkable growth`}
+              : `Discover how we've helped startups and different businesses transform their digital presence and achieve remarkable growth`}
           </p>
         </div>
 

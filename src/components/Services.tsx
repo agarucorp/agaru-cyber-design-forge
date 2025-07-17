@@ -17,25 +17,99 @@ const Services = ({ lang }: ServicesProps) => {
   };
 
   const services = [
+    // Card 1: Web Apps
     {
-      title: 'Diseño UX/UI',
-      description: 'Creamos prototipos interactivos y centrados en el usuario en Figma, diseñados para evolucionar con tu proyecto. Nuestro proceso asegura una iteración rápida, retroalimentación fluida y experiencias intuitivas alineadas con tus objetivos.',
-      features: ['Investigación de Usuarios', 'Wireframing', 'Prototipado', 'Diseño Visual']
+      title: lang === 'ES' ? 'Aplicaciones Web' : 'Web Apps',
+      description: lang === 'ES'
+        ? 'Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.'
+        : 'Digitize Your Operations with a Custom Web App\nWe build applications that allow you to automate tasks, centralize data, and scale your business seamlessly.',
+      features: lang === 'ES'
+        ? [
+            'Usuarios y datos en orden',
+            'Registro y login con permisos según rol.',
+            'Gestión de bases de datos en tiempo real (clientes, turnos, pedidos).',
+            'Subida y acceso a archivos desde la misma web app.',
+            'Operaciones automatizadas',
+            'Mensajes automáticos por WhatsApp (recordatorios, confirmaciones, respuestas).',
+            'Automatización de tareas como agendado, cobros y seguimiento.',
+            'Reglas de negocio personalizadas para cada flujo.',
+            'Todo bajo control, en un solo lugar',
+            'Paneles simples para ver y gestionar tu operación en tiempo real.',
+            'Accesos diferenciados por perfil (ej. admin vs cliente).',
+            'Reportes claros y conexión con otras herramientas.',
+            'Lanzamos rápido, con foco en que funcione desde el día uno y pueda crecer con vos.'
+          ]
+        : [
+            'Organized Users and Data',
+            'Role-based user registration and login.',
+            'Real-time database management (clients, appointments, orders).',
+            'Upload and access files directly within the web app.',
+            'Automated Operations',
+            'Automated WhatsApp messages (reminders, confirmations, replies).',
+            'Task automation for scheduling, payments, and follow-ups.',
+            'Custom business rules tailored for each workflow.',
+            'Everything Under Control, in One Place',
+            'Intuitive dashboards to view and manage your operations in real-time.',
+            'Differentiated access by user profile (e.g., admin vs. client).',
+            'Clear reports and integration with other tools.',
+            'We launch fast, focusing on day-one functionality and the ability to grow with your business.'
+          ]
     },
+    // Card 2: Web Design & Development
     {
-      title: 'Desarrollo Web',
-      description: 'Diseñamos sitios web funcionales y visualmente atractivos que garantizan una navegación fluida y una experiencia de usuario cautivadora, adaptándose completamente a las últimas tendencias y tecnologías del mercado.',
-      features: ['React/Next.js', 'Responsive Mobile', 'SEO Optimizado', 'Enfoque en Performance']
+      title: lang === 'ES' ? 'Desarrollo Web' : 'Web Design & Development',
+      description: lang === 'ES'
+        ? 'Diseñamos sitios web funcionales y visualmente atractivos que garantizan una navegación fluida y una experiencia de usuario cautivadora, adaptándose completamente a las últimas tendencias y tecnologías del mercado.'
+        : 'We develop web solutions optimized for a high-performance digital presence and intuitive navigation. We focus on building fast and secure websites, designed to offer a fluid and adaptable user experience.',
+      features: lang === 'ES'
+        ? [
+            'React/Next.js',
+            'Responsive Mobile',
+            'SEO Optimizado',
+            'Enfoque en Performance'
+          ]
+        : [
+            'We use React and Next.js to build dynamic, responsive, and highly performant sites.',
+            'We deploy on Vercel, ensuring efficient global performance and simplified project management.',
+            'Your site will adjust and function correctly on any device, guaranteeing a consistent experience for all users.'
+          ]
     },
+    // Card 3: UX/UI Design
     {
-      title: 'Aplicaciones Web',
-      description: 'Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.',
-      features: ['Sistemas a Medida', 'Integraciones API', 'Paneles de Control', 'Automatización']
+      title: lang === 'ES' ? 'Diseño UX/UI' : 'UX/UI Design',
+      description: lang === 'ES'
+        ? 'Creamos prototipos interactivos y centrados en el usuario en Figma, diseñados para evolucionar con tu proyecto. Nuestro proceso asegura una iteración rápida, retroalimentación fluida y experiencias intuitivas alineadas con tus objetivos.'
+        : 'We develop interfaces that facilitate user interaction and meet project objectives. Our approach focuses on precise visualization and intuitive navigation, ensuring every component is useful and cohesive.',
+      features: lang === 'ES'
+        ? [
+            'Investigación de Usuarios',
+            'Wireframing',
+            'Prototipado',
+            'Diseño Visual'
+          ]
+        : [
+            'We create wireframes in Figma to preview structure and flow, streamlining review and approval before development.',
+            'We offer specific UI design services for landing pages, complete websites, or detailed wireframes.',
+            'The application of usability (UX) methodologies is fundamental to every design we create, optimizing user interaction.'
+          ]
     },
+    // Card 4: Brand Strategy & Identity
     {
-      title: 'Identidad de Marca',
-      description: 'Moldeamos la base estratégica de tu marca, clarificando tu propósito, voz y posición en el mercado. A través de la investigación y la colaboración, desarrollamos una identidad única que se alinea con tus valores y conecta con tu audiencia.',
-      features: ['Diseño de Logo', 'Guía de Marca', 'Identidad Visual', 'Estrategia de Marca']
+      title: lang === 'ES' ? 'Estrategia e Identidad de Marca' : 'Brand Strategy & Identity',
+      description: lang === 'ES'
+        ? 'Vamos más allá del diseño visual para forjar la base estratégica de tu marca. Trabajamos en la voz y la identidad que te diferenciarán, creando una conexión auténtica con tu audiencia y guiando tu crecimiento futuro.'
+        : `We go beyond visual design to forge your brand's strategic foundation. We work on the voice and identity that will differentiate you, creating an authentic connection with your audience and guiding your future growth.`,
+      features: lang === 'ES'
+        ? [
+            'Definimos la personalidad y el mensaje único de tu marca, asegurando una comunicación coherente y distintiva.',
+            'Diseñamos logos que encapsulan la esencia de tu negocio, reflejando profesionalismo y reconocimiento.',
+            'Te proporcionamos una guía estratégica para tus futuras acciones de marketing y posicionamiento, asegurando un camino claro para el desarrollo de tu marca.'
+          ]
+        : [
+            `We define your brand's unique personality and message, ensuring coherent and distinctive communication.`,
+            `We design logos that encapsulate your business's essence, reflecting professionalism and recognition.`,
+            `We provide you with a strategic guide for your future marketing and positioning efforts, ensuring a clear path for your brand's development.`
+          ]
     }
   ];
 
@@ -53,175 +127,40 @@ const Services = ({ lang }: ServicesProps) => {
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Nos especializamos en ayudar a pequeñas/medianas empresas, startups y profesionales ambiciosos a lanzar sus marcas online
+            {lang === 'ES'
+              ? 'Nos especializamos en ayudar a pequeñas/medianas empresas, startups y profesionales ambiciosos a lanzar sus marcas online'
+              : 'We specialize in helping small/medium businesses, startups, and ambitious professionals to launch and establish their brands online'}
           </p>
         </div>
 
         {/* Elimino el acordeón de servicios original */}
         {/* Cards de FAQ debajo de los servicios */}
         <div className="mt-12 space-y-6">
-          <div className="flex justify-center">
-            <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
-              <FAQCard
-                question="Aplicaciones Web"
-                answer={
-                  <>
-                    <p>Digitalizá tu operación con una web app hecha a medida</p>
-                    <br />
-                    <p>Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.</p>
-                    <br />
-                    <div>
-                      <strong>1. Usuarios y datos en orden</strong>
-                      <ul className="space-y-2">
-                        <li className="text-gray-400 flex items-center">
-                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                          Registro y login con permisos según rol
-                        </li>
-                        <li className="text-gray-400 flex items-center">
-                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                          Gestión de bases de datos en tiempo real (clientes, turnos, pedidos)
-                        </li>
-                        <li className="text-gray-400 flex items-center">
-                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                          Subida y acceso a archivos desde la misma web app
-                        </li>
+          {services.map((service, idx) => (
+            <div className="flex justify-center" key={service.title}>
+              <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
+                <FAQCard
+                  question={service.title}
+                  answer={
+                    <>
+                      <p>{service.description.split('\n').map((str, i) => <span key={i}>{str}<br /></span>)}</p>
+                      <br />
+                      <ul className="space-y-4">
+                        {service.features.map((feature, i) => (
+                          <li className="text-gray-400 flex items-start" key={i}>
+                            <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                            {feature}
+                          </li>
+                        ))}
                       </ul>
-                    </div>
-                    <br />
-                    <div>
-                      <strong>2. Operaciones que se mueven solas</strong>
-                      <ul className="space-y-2">
-                        <li className="text-gray-400 flex items-center">
-                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                          Mensajes automáticos por WhatsApp (recordatorios, confirmaciones, respuestas)
-                        </li>
-                        <li className="text-gray-400 flex items-center">
-                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                          Automatización de tareas como agendado, cobros y seguimiento
-                        </li>
-                        <li className="text-gray-400 flex items-center">
-                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                          Reglas de negocio personalizadas para cada flujo
-                        </li>
-                      </ul>
-                    </div>
-                    <br />
-                    <div>
-                      <strong>3. Todo bajo control, en un solo lugar</strong>
-                      <ul className="space-y-2">
-                        <li className="text-gray-400 flex items-center">
-                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                          Paneles simples para ver y gestionar tu operación en tiempo real
-                        </li>
-                        <li className="text-gray-400 flex items-center">
-                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                          Accesos diferenciados por perfil (ej. admin vs cliente)
-                        </li>
-                        <li className="text-gray-400 flex items-center">
-                          <div className="w-1.5 h-1.5 rounded-full mr-3" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                          Reportes claros y conexión con otras herramientas
-                        </li>
-                      </ul>
-                    </div>
-                    <br />
-                    <p>Lanzamos rápido, con foco en que funcione desde el día uno y pueda crecer con vos.</p>
-                  </>
-                }
-                isOpen={openFAQIndex === 0}
-                onToggle={() => handleFAQToggle(0)}
-              />
+                    </>
+                  }
+                  isOpen={openFAQIndex === idx}
+                  onToggle={() => handleFAQToggle(idx)}
+                />
+              </div>
             </div>
-          </div>
-          
-          <div className="flex justify-center">
-            <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
-              <FAQCard
-                question="Desarrollo y Diseño Web"
-                answer={
-                  <>
-                    <p>Desarrollamos soluciones web optimizadas para una presencia digital de alto rendimiento y navegación intuitiva. Nos enfocamos en construir sitios rápidos y seguros, diseñados para ofrecer una experiencia de usuario fluida y adaptable.</p>
-                    <br />
-                    <ul className="space-y-4">
-                      <li className="text-gray-400 flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                        Utilizamos React y Next.js para construir sitios dinámicos, responsivos y con alta capacidad de respuesta.
-                      </li>
-                      <li className="text-gray-400 flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                        Realizamos el despliegue en Vercel, asegurando un rendimiento global eficiente y una gestión simplificada del proyecto.
-                      </li>
-                      <li className="text-gray-400 flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                        Su sitio se ajustará y funcionará correctamente en cualquier dispositivo, garantizando una experiencia consistente para todos los usuarios.
-                      </li>
-                    </ul>
-                  </>
-                }
-                isOpen={openFAQIndex === 1}
-                onToggle={() => handleFAQToggle(1)}
-              />
-            </div>
-          </div>
-          
-          <div className="flex justify-center">
-            <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
-              <FAQCard
-                question="Diseño UX/UI"
-                answer={
-                  <>
-                    <p>Desarrollamos interfaces que facilitan la interacción del usuario y cumplen los objetivos del proyecto. Nuestro enfoque se centra en la visualización precisa y la navegación intuitiva, asegurando que cada componente sea útil y coherente.</p>
-                    <br />
-                    <ul className="space-y-4">
-                      <li className="text-gray-400 flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                        Creamos wireframes en Figma para previsualizar la estructura y el flujo, facilitando la revisión y aprobación antes del desarrollo.
-                      </li>
-                      <li className="text-gray-400 flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                        Ofrecemos servicios de diseño UI específicos para landing pages, sitios web completos o wireframes detallados.
-                      </li>
-                      <li className="text-gray-400 flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                        La aplicación de metodologías de usabilidad (UX) es fundamental en cada diseño que realizamos, optimizando la interacción del usuario.
-                      </li>
-                    </ul>
-                  </>
-                }
-                isOpen={openFAQIndex === 2}
-                onToggle={() => handleFAQToggle(2)}
-              />
-            </div>
-          </div>
-          
-          <div className="flex justify-center">
-            <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
-              <FAQCard
-                question="Estrategia e Identidad de Marca"
-                answer={
-                  <>
-                    <p>Vamos más allá del diseño visual para forjar la base estratégica de tu marca. Trabajamos en la voz y la identidad que te diferenciarán, creando una conexión auténtica con tu audiencia y guiando tu crecimiento futuro.</p>
-                    <br />
-                    <ul className="space-y-4">
-                      <li className="text-gray-400 flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                        Definimos la personalidad y el mensaje único de tu marca, asegurando una comunicación coherente y distintiva.
-                      </li>
-                      <li className="text-gray-400 flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                        Diseñamos logos que encapsulan la esencia de tu negocio, reflejando profesionalismo y reconocimiento.
-                      </li>
-                      <li className="text-gray-400 flex items-start">
-                        <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                        Te proporcionamos una guía estratégica para tus futuras acciones de marketing y posicionamiento, asegurando un camino claro para el desarrollo de tu marca.
-                      </li>
-                    </ul>
-                  </>
-                }
-                isOpen={openFAQIndex === 3}
-                onToggle={() => handleFAQToggle(3)}
-              />
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Call to Action */}
