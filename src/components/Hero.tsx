@@ -69,7 +69,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Side - Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 lg:space-y-6 lg:mt-0 lg:pl-[1.25%] lg:flex lg:flex-col lg:justify-center lg:h-full">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#895AF6]/30 bg-[#895AF6]/10 text-[#895AF6] text-sm font-medium">
                 <Zap className="w-4 h-4" />
@@ -78,8 +78,8 @@ const Hero = () => {
               
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                 Interfaces <span className="text-[#895AF6]">Digitales</span><br />
-                de próxima<br />
-                <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">generación</span>
+                de <span>Próxima</span><br />
+                <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Generación</span>
               </h1>
               
               <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
@@ -126,28 +126,13 @@ const Hero = () => {
                 Contanos de tu Proyecto
               </a>
             </div>
-
-            <div className="flex items-center gap-8 pt-4">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-cyber-primary">100+</div>
-                <div className="text-sm text-muted-foreground">Proyectos Entregados</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-cyber-secondary">99%</div>
-                <div className="text-sm text-muted-foreground">Disponibilidad</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#00FFFF]">24/7</div>
-                <div className="text-sm text-muted-foreground">Soporte</div>
-              </div>
-            </div>
           </div>
 
           {/* Right Side - Smartphone Mockup */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end lg:pr-[1.25%]">
             <div className="relative">
               {/* Phone Frame */}
-              <div className="relative w-64 h-[520px] bg-black rounded-[2.5rem] p-2" style={{ boxShadow: '0 0 24px 0 #895AF633' }}>
+              <div className="relative w-64 h-[480px] bg-black rounded-[2.5rem] p-2" style={{ boxShadow: '0 0 24px 0 #895AF633' }}>
                 {/* Phone Screen */}
                 <div className="w-full h-full bg-background rounded-[2rem] overflow-hidden border border-black relative">
                   

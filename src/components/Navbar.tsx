@@ -114,6 +114,14 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                     href={item.href}
                     className={`relative text-white hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-medium
                       ${isActive ? 'text-[#895AF6]' : ''}`}
+                    onClick={e => {
+                      if (isDesktop()) {
+                        e.preventDefault();
+                        window.location.hash = item.href.replace('#', '');
+                      }
+                    }}
+                    onAuxClick={e => { if (isDesktop()) e.preventDefault(); }}
+                    onContextMenu={e => { if (isDesktop()) e.preventDefault(); }}
                   >
                     {item.name}
                     <span
@@ -196,7 +204,15 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                   key={item.name}
                   href={item.href}
                   className="text-gray-300 hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={e => {
+                    setIsMobileMenuOpen(false);
+                    if (isDesktop()) {
+                      e.preventDefault();
+                      window.location.hash = item.href.replace('#', '');
+                    }
+                  }}
+                  onAuxClick={e => { if (isDesktop()) e.preventDefault(); }}
+                  onContextMenu={e => { if (isDesktop()) e.preventDefault(); }}
                 >
                   {item.name}
                 </a>
