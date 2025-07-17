@@ -127,12 +127,12 @@ const Footer = ({ lang }: FooterProps) => {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               {lang === 'ES' ? 'Trabajemos ' : "Let's Work "}
-              <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">{lang === 'ES' ? 'Juntos' : 'Together'}</span>
+              <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">{lang === 'ES' ? 'Juntos' : 'Together'}</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               {lang === 'ES'
                 ? '¿Listo para llevar tu negocio al siguiente nivel? Escribinos y conversemos sobre cómo podemos ayudarte a lograr tus objetivos comerciales'
-                : `Ready to elevate your business? Get in touch and let's discuss how we can help you achieve your digital goals`}
+                : `Ready to elevate your business? Get in touch and let's discuss how we can help you achieve your goals`}
             </p>
           </div>
 
@@ -148,7 +148,7 @@ const Footer = ({ lang }: FooterProps) => {
                     </div>
                     <div>
                       <div className="text-gray-400 text-sm">Email</div>
-                      <div className="text-white font-semibold">hello@agarucorp.com</div>
+                      <div className="text-white font-semibold">agaru.corp@gmail.com</div>
                     </div>
                   </div>
                   
@@ -191,14 +191,6 @@ const Footer = ({ lang }: FooterProps) => {
                     className="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-agaru-purple/20 transition-colors duration-300 group"
                   >
                     <Linkedin className="w-6 h-6 text-gray-400 group-hover:text-agaru-purple transition-colors duration-300" />
-                  </a>
-                  <a
-                    href="#"
-                    className="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-agaru-purple/20 transition-colors duration-300 group"
-                  >
-                    <div className="w-6 h-6 text-gray-400 group-hover:text-agaru-purple transition-colors duration-300 font-bold text-sm flex items-center justify-center">
-                      Be
-                    </div>
                   </a>
                 </div>
               </div>
@@ -294,10 +286,10 @@ const Footer = ({ lang }: FooterProps) => {
                     className="w-full px-4 py-3 bg-cyber-grey border border-gray-600 rounded-lg text-white focus:border-agaru-purple focus:ring-2 focus:ring-agaru-purple/20 transition-colors duration-300"
                   >
                     <option value="" disabled>{lang === 'ES' ? 'Seleccioná una opción' : 'Select an option'}</option>
-                    <option value="Diseño UI">Diseño UI</option>
-                    <option value="Diseño Web">Diseño Web</option>
-                    <option value="Desarrollo de Web App">Desarrollo de Web App</option>
-                    <option value="Estrategia e Identidad de Marca">Estrategia e Identidad de Marca</option>
+                    <option value={lang === 'ES' ? 'Diseño UI' : 'UI Design'}>{lang === 'ES' ? 'Diseño UI' : 'UI Design'}</option>
+                    <option value={lang === 'ES' ? 'Diseño Web' : 'Web Design'}>{lang === 'ES' ? 'Diseño Web' : 'Web Design'}</option>
+                    <option value={lang === 'ES' ? 'Desarrollo de Web App' : 'Web App'}>{lang === 'ES' ? 'Desarrollo de Web App' : 'Web App'}</option>
+                    <option value={lang === 'ES' ? 'Estrategia e Identidad de Marca' : 'Branding'}>{lang === 'ES' ? 'Estrategia e Identidad de Marca' : 'Branding'}</option>
                   </select>
                   {getError('subject') && (
                     <div className="text-red-500 text-xs mt-1">{getError('subject')}</div>

@@ -24,7 +24,7 @@ const FAQ = ({ lang }: FAQProps) => {
             },
             {
               question: '¿Mi sitio será mobile-responsive?',
-              answer: '¡Por supuesto! Todos nuestros sitios son mobile-first, asegurando óptimo rendimiento y experiencia en cualquier dispositivo. Probamos en varios dispositivos antes del lanzamiento.'
+              answer: '¡Claro! Todos nuestros sitios son mobile-first, asegurando óptimo rendimiento y experiencia en cualquier dispositivo. Probamos en varios dispositivos antes del lanzamiento.'
             }
           ]
         },
@@ -52,15 +52,15 @@ const FAQ = ({ lang }: FAQProps) => {
           questions: [
             {
               question: 'What is your typical timeline for a web design project?',
-              answer: 'Our typical timeline ranges from 4-8 weeks depending on the complexity and scope. We start with a discovery phase (1 week), followed by design (2-3 weeks), development (2-3 weeks), and testing/launch (1 week). We provide detailed timelines during our initial consultation.'
+              answer: 'Delivery time varies based on project complexity. For static websites or landing pages, we estimate 1 to 2 weeks. Web applications, due to their higher complexity and interactive functionalities, typically require 3 weeks or more. Once specific requirements are defined, we\'ll provide a detailed timeline.'
             },
             {
               question: 'Do you provide ongoing maintenance and support?',
-              answer: 'Yes, we offer comprehensive maintenance packages including security updates, content updates, performance monitoring, and technical support. Our support plans are tailored to your specific needs and budget.'
+              answer: 'Yes, we offer monthly maintenance plans designed to ensure your site\'s optimal performance. These packages include security updates, hosting and domain management, performance monitoring, and continuous technical support.'
             },
             {
               question: 'Will my website be mobile-responsive?',
-              answer: 'Absolutely! All our websites are built with a mobile-first approach, ensuring optimal performance and user experience across all devices and screen sizes. We test thoroughly on various devices before launch.'
+              answer: 'Absolutely! All our websites are mobile-first, ensuring optimal performance and experience on any device. We test across various devices before launch to guarantee seamless responsiveness.'
             }
           ]
         },
@@ -68,16 +68,18 @@ const FAQ = ({ lang }: FAQProps) => {
           category: 'Branding & Strategy',
           questions: [
             {
-              question: 'What does your branding process include?',
-              answer: 'Our comprehensive branding process includes brand foundation research, competitive analysis, logo design, color palette, typography, brand guidelines, and marketing collateral. We ensure your brand identity is cohesive across all touchpoints.'
+              question: 
+                "Branding vs. Marketing: What's the core difference?",
+              answer: 
+                "Branding builds your brand's identity: who you are, what you represent, and how you're perceived. Marketing involves the actions you take to communicate that identity and promote your products or services. In essence, branding is who you are, and marketing is how you communicate it."
             },
             {
-              question: 'How do you approach marketing strategy development?',
-              answer: 'We start with thorough market research and competitor analysis, define your target audience, develop your unique value proposition, create content strategies, and provide actionable roadmaps for implementation. Everything is data-driven and measurable.'
+              question: 'Can My Brand Evolve Over Time?',
+              answer: 'Absolutely. A strong brand is flexible and adaptable. As your business or the market evolves, your brand can and should adjust, always maintaining the core essence that makes you unique.'
             },
             {
-              question: 'Can you help with rebranding an existing business?',
-              answer: 'Yes, we specialize in both new brand creation and rebranding. We carefully analyze your current brand position, identify opportunities for improvement, and create a strategic transition plan that maintains brand equity while refreshing your image.'
+              question: 'Can You Help Rebrand an Existing Business?',
+              answer: 'Yes, we handle both new branding and rebranding projects. We analyze your current brand, identify opportunities, and create a strategic plan to refresh your image without losing brand equity.'
             }
           ]
         }
@@ -94,7 +96,7 @@ const FAQ = ({ lang }: FAQProps) => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {lang === 'ES' ? 'Preguntas ' : 'Frequently Asked '}
-            <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">{lang === 'ES' ? 'Frecuentes' : 'Questions'}</span>
+            <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">{lang === 'ES' ? 'Frecuentes' : 'Questions'}</span>
           </h2>
           <p className="text-xl text-gray-300">
             {lang === 'ES'

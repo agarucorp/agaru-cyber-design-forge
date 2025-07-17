@@ -110,13 +110,13 @@ export default function WebProcessStepper({ lang }: WebProcessStepperProps) {
       <div className="max-w-5xl w-full flex flex-col items-center px-2">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
           {lang === 'EN' ? (
-            <>Web <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Design & Development Process</span></>
+            <><span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Web Design</span> Process</>
           ) : (
-            <>Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño & Desarrollo Web</span></>
+            <>Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño Web</span></>
           )}
         </h2>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8 text-center">
-          {lang === 'EN' ? '' : 'Etapas de desarrollo'}
+          {lang === 'EN' ? 'Development stages' : 'Etapas de desarrollo'}
         </p>
         {/* Desktop: vertical steps */}
         <div className="hidden md:flex relative w-full flex-col items-center">

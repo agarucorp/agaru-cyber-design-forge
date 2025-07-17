@@ -174,11 +174,11 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {lang === 'ES' ? (
               <>
-                Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño & Desarrollo Web</span>
+                Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño Web</span>
               </>
             ) : (
               <>
-                Web <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Design & Development Process</span>
+                <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Web Design</span> Process
               </>
             )}
           </h2>

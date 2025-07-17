@@ -13,119 +13,124 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const projectsPerPage = 3;
-  const projects = lang === 'ES'
+  const projectsData = [
+    {
+      image: mockupCalena,
+      tags: ['React', 'TypeScript', 'Tailwind CSS'],
+      link: '#',
+      github: '#',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop',
+      tags: ['Next.js', 'Stripe', 'PostgreSQL'],
+      link: '#',
+      github: '#',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=800&h=600&fit=crop',
+      tags: ['Diseño de Logo', 'Guía de Marca', 'Marketing'],
+      link: '#',
+      github: '#',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop',
+      tags: ['Branding', 'Diseño Web', 'Marketing'],
+      link: '#',
+      github: '#',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop',
+      tags: ['Diseño Mobile', 'Prototipado', 'Investigación de Usuarios'],
+      link: '#',
+      github: '#',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop',
+      tags: ['Estrategia', 'Analítica', 'Marketing de Contenidos'],
+      link: '#',
+      github: '#',
+    },
+  ];
+
+  const categories = [
+    'Web App',
+    'Desarrollo Web',
+    'Branding',
+    'Full Package',
+    'Diseño UX/UI',
+    'Estrategia de Marketing',
+  ];
+
+  const projectCommon = [
+    {
+      title: 'Somos Calena',
+      link: 'https://www.somoscalena.com/',
+    },
+    {
+      title: 'Plataforma E-Commerce',
+      link: '#',
+    },
+    {
+      title: 'Sistema de Identidad de Marca',
+      link: '#',
+    },
+    {
+      title: 'Sitio Agencia Digital',
+      link: '#',
+    },
+    {
+      title: 'Diseño App Móvil',
+      link: '#',
+    },
+    {
+      title: 'Campaña de Marketing',
+      link: '#',
+    },
+  ];
+
+  const projects = (lang === 'ES'
     ? [
-      {
-        title: 'Somos Calena',
-        category: 'Web App',
-        description: 'Dashboard SaaS moderno con analíticas avanzadas y gestión de usuarios.',
-        image: mockupCalena,
-        tags: ['React', 'TypeScript', 'Tailwind CSS'],
-        link: '#',
-        github: '#'
-      },
-      {
-        title: 'Plataforma E-Commerce',
-        category: 'Desarrollo Web',
-        description: 'Solución e-commerce full-stack con integración de pagos.',
-        image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop',
-        tags: ['Next.js', 'Stripe', 'PostgreSQL'],
-        link: '#',
-        github: '#'
-      },
-      {
-        title: 'Sistema de Identidad de Marca',
-        category: 'Branding',
-        description: 'Identidad de marca completa para fintech, incluyendo logo y manual de marca.',
-        image: 'https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=800&h=600&fit=crop',
-        tags: ['Diseño de Logo', 'Guía de Marca', 'Marketing'],
-        link: '#',
-        github: '#'
-      },
-      {
-        title: 'Sitio Agencia Digital',
-        category: 'Full Package',
-        description: 'Rediseño web completo con branding y estrategia de marketing.',
-        image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop',
-        tags: ['Branding', 'Diseño Web', 'Marketing'],
-        link: '#',
-        github: '#'
-      },
-      {
-        title: 'Diseño App Móvil',
-        category: 'Diseño UX/UI',
-        description: 'Diseño intuitivo de app móvil para plataforma de salud y bienestar.',
-        image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop',
-        tags: ['Diseño Mobile', 'Prototipado', 'Investigación de Usuarios'],
-        link: '#',
-        github: '#'
-      },
-      {
-        title: 'Campaña de Marketing',
-        category: 'Estrategia de Marketing',
-        description: 'Estrategia digital integral que aumentó el ROI un 300%.',
-        image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop',
-        tags: ['Estrategia', 'Analítica', 'Marketing de Contenidos'],
-        link: '#',
-        github: '#'
-      }
-    ]
+        {
+          description: 'Web app para gestión de psicólogos y conexión con pacientes.',
+        },
+        {
+          description: 'Solución e-commerce full-stack con integración de pagos.',
+        },
+        {
+          description: 'Identidad de marca completa para fintech, incluyendo logo y manual de marca.',
+        },
+        {
+          description: 'Rediseño web completo con branding y estrategia de marketing.',
+        },
+        {
+          description: 'Diseño intuitivo de app móvil para plataforma de salud y bienestar.',
+        },
+        {
+          description: 'Estrategia digital integral que aumentó el ROI un 300%.',
+        },
+      ]
     : [
-      {
-        title: 'TechStartup Dashboard',
-        category: 'UX/UI Design',
-        description: 'Modern SaaS dashboard with advanced analytics and user management.',
-        image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop',
-        tags: ['React', 'TypeScript', 'Tailwind CSS'],
-        link: '#',
-        github: '#'
-      },
-      {
-        title: 'E-Commerce Platform',
-        category: 'Web Development',
-        description: 'Full-stack e-commerce solution with payment integration.',
-        image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop',
-        tags: ['Next.js', 'Stripe', 'PostgreSQL'],
-        link: '#',
-        github: '#'
-      },
-      {
-        title: 'Brand Identity System',
-        category: 'Branding',
-        description: 'Complete brand identity for a fintech startup including logo and guidelines.',
-        image: 'https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=800&h=600&fit=crop',
-        tags: ['Logo Design', 'Brand Guidelines', 'Marketing'],
-        link: '#',
-        github: '#'
-      },
-      {
-        title: 'Digital Agency Website',
-        category: 'Full Package',
-        description: 'Complete website redesign with branding and marketing strategy.',
-        image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop',
-        tags: ['Branding', 'Web Design', 'Marketing'],
-        link: '#',
-        github: '#'
-      },
-      {
-        title: 'Mobile App Design',
-        category: 'UX/UI Design',
-        description: 'Intuitive mobile app design for a health and wellness platform.',
-        image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop',
-        tags: ['Mobile Design', 'Prototyping', 'User Research'],
-        link: '#',
-        github: '#'
-      },
-      {
-        title: 'Marketing Campaign',
-        category: 'Marketing Strategy',
-        description: 'Comprehensive digital marketing strategy that increased ROI by 300%.',
-        image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop',
-        tags: ['Strategy', 'Analytics', 'Content Marketing'],
-        link: '#',
-        github: '#'
-      }
-    ];
+        {
+          description: 
+            "Web app for psychologists' management and patient connection.",
+        },
+        {
+          description: 'Full-stack e-commerce solution with payment integration.',
+        },
+        {
+          description: 'Complete brand identity for a fintech startup including logo and guidelines.',
+        },
+        {
+          description: 'Complete website redesign with branding and marketing strategy.',
+        },
+        {
+          description: 'Intuitive mobile app design for a health and wellness platform.',
+        },
+        {
+          description: 'Comprehensive digital marketing strategy that increased ROI by 300%.',
+        },
+      ]
+  ).map((proj, i) => ({ ...proj, ...projectsData[i], category: categories[i], title: projectCommon[i].title, link: projectCommon[i].link }));
 
   const totalPages = Math.ceil(projects.length / projectsPerPage);
   const startIndex = (currentPage - 1) * projectsPerPage;
@@ -147,7 +152,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {lang === 'ES' ? 'Proyectos ' : 'Featured '}
-            <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">{lang === 'ES' ? 'Destacados' : 'Projects'}</span>
+            <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">{lang === 'ES' ? 'Destacados' : 'Projects'}</span>
           </h2>
           <p className="text-xl text-gray-300 text-center">
             {lang === 'ES'
@@ -275,8 +280,8 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
             </div>
           ))}
         </div>
-        {/* Indicadores del carousel */}
-        <div className="flex justify-center mt-4 gap-2">
+        {/* Indicadores del carousel solo en mobile */}
+        <div className="md:hidden flex justify-center mt-4 gap-2">
           {projects.map((_, i) => (
             <button
               key={i}

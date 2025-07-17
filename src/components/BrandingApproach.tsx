@@ -14,7 +14,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
         {
           icon: <Building className="w-8 h-8" />,
           title: 'Fundamentos de Marca',
-          description: 'Comenzamos entendiendo profundamente los valores, misión, oferta, audiencia y objetivos de tu negocio. Esta base guía todo el proceso y asegura que cada acción esté alineada a tus necesidades.',
+          description: 'Comenzamos entendiendo los valores, misión, audiencia y objetivos de tu negocio. Esta base guía todo el proceso y asegura que cada acción esté alineada a tus necesidades.',
         },
         {
           icon: <TrendingUp className="w-8 h-8" />,
@@ -86,22 +86,22 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
 
   return (
     <section className="py-20 bg-gradient-to-b from-cyber-grey to-cyber-dark md:overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:overflow-x-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 md:overflow-x-hidden">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {lang === 'ES'
               ? <>
-                  Proceso de <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">Branding y Marketing</span>
+                  Proceso de <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">Branding y Marketing</span>
                 </>
               : <>
-                  <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent drop-shadow-[0_0_16px_#895AF6]">Branding & Marketing</span> <span className="text-white">Process</span>
+                  <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">Branding & Marketing</span> <span className="text-white">Process</span>
                 </>
             }
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4 md:mb-0">
             {lang === 'ES'
               ? '¿Cómo funciona?'
-              : 'Our comprehensive branding process transforms your vision into a cohesive, powerful brand identity that resonates with your target audience.'}
+              : 'How it works?'}
           </p>
         </div>
 
@@ -110,7 +110,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className={`flex flex-col lg:flex-row items-center gap-8 animate-fade-in ${
+              className={`flex flex-col lg:flex-row items-center gap-8 animate-fade-in mx-auto max-w-4xl ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}
               style={{ animationDelay: `${index * 0.2}s` }}
@@ -118,13 +118,13 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
               {/* Step Number and Icon */}
               <div className="flex-shrink-0">
                 <div className="relative">
-                  <div className="w-32 h-32 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
                     style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)', boxShadow: '0 0 16px 2px #895AF688' }}>
                     <div className="text-white">
                       {step.icon}
                     </div>
                   </div>
-                  <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg border-2 border-[#895AF6] shadow-[0_0_12px_2px_#895AF6AA]"
+                  <div className="absolute -top-4 -right-4 w-7 h-7 rounded-full flex items-center justify-center text-white font-bold text-xs border-2 border-[#895AF6] shadow-[0_0_12px_2px_#895AF6AA]"
                     style={{ background: 'linear-gradient(135deg, #18192a 60%, #23243a 100%)' }}>
                     {index + 1}
                   </div>
@@ -132,14 +132,21 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
               </div>
 
               {/* Content */}
-              <div className="flex-1 cyber-card p-8 rounded-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:border-[#895AF6]/40 border border-white/5">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  {step.title}
-                </h3>
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
+              {index === 0 ? (
+                <div className="flex-1 bg-[#262626] rounded-2xl p-5 border border-white/10 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:border-[#895AF6]/40 flex flex-col justify-center min-h-[90px] max-w-4xl group">
+                  <h3 className="text-xl font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] group-hover:drop-shadow-[0_0_8px_#B983FF99] text-white">{step.title}</h3>
+                  <p className="text-gray-300 text-base leading-relaxed">{step.description}</p>
+                </div>
+              ) : (
+                <div className="flex-1 bg-[#262626] p-5 rounded-2xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:border-[#895AF6]/40 border border-white/5 min-h-[90px] max-w-4xl group">
+                  <h3 className="text-xl font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] group-hover:drop-shadow-[0_0_8px_#B983FF99] text-white">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-300 text-base leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              )}
             </div>
           ))}
         </div>
