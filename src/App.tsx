@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import React from "react";
+import whatsappIcon from './components/assets/ProjectShowcase/whatsapp.png';
 
 const queryClient = new QueryClient();
 
@@ -93,6 +94,16 @@ function App() {
           <circle cx="30" cy="30" r="25" fill="none" stroke="#fff" strokeWidth="1" opacity="0.08" strokeDasharray="10,5" />
         </svg>
       </div>
+      {/* Botón flotante de WhatsApp */}
+      <a
+        href="https://wa.me/5491130509316"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 50 }}
+        className="shadow-lg rounded-full hover:scale-110 transition-transform duration-200"
+      >
+        <img src={whatsappIcon} alt="WhatsApp" style={{ width: 56, height: 56 }} />
+      </a>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />

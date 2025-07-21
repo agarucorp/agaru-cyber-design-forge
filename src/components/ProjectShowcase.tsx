@@ -55,8 +55,8 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
 
   const categories = [
     'Web App',
-    'Salud',
-    'Branding',
+    'Landing Page',
+    'Landing Page',
     'Full Package',
     'Diseño UX/UI',
     'Estrategia de Marketing',
@@ -69,11 +69,11 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     },
     {
       title: 'Odontología Lucia Piccardo',
-      link: 'https://lucia-piccardo-smile-design.vercel.app/',
+      link: 'https://www.lpodontologia.com/',
     },
     {
-      title: 'Sistema de Identidad de Marca',
-      link: '#',
+      title: 'Tony Ruiz Hair Studio',
+      link: 'https://tonyruizhairstudio.com/',
     },
     {
       title: 'Sitio Agencia Digital',
@@ -95,10 +95,10 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
           description: 'Web app para gestión de psicólogos y conexión con pacientes.',
         },
         {
-          description: 'Sitio web para consultorio odontológico.',
+          description: 'Servicios odontológicos integrales.',
         },
         {
-          description: 'Identidad de marca completa para fintech, incluyendo logo y manual de marca.',
+          description: 'Especialistas en coloración y alisados.',
         },
         {
           description: 'Rediseño web completo con branding y estrategia de marketing.',
@@ -116,10 +116,10 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
             "Web app for psychologists' management and patient connection.",
         },
         {
-          description: 'Mobile website for a dental office.',
+          description: 'Comprehensive dental services.',
         },
         {
-          description: 'Complete brand identity for a fintech startup including logo and guidelines.',
+          description: 'Specialists in coloring and smoothing.',
         },
         {
           description: 'Complete website redesign with branding and marketing strategy.',
@@ -184,7 +184,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className={`w-full h-full ${project.image === paginaLuMobile ? 'object-contain' : 'object-cover'}`}
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   {/* Back Side */}
@@ -267,7 +267,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
             >
               <div className="group cyber-card rounded-xl overflow-hidden border border-white/5 relative h-[420px] w-[90vw] max-w-xs mx-auto flex flex-col">
                 <div className="w-full h-48 bg-gray-900 flex items-center justify-center overflow-hidden">
-                  <img src={project.image} alt={project.title} className={`w-full h-full ${project.image === paginaLuMobile ? 'object-contain' : 'object-cover'}`} />
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center p-4">
                   <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#4B267A] text-white mb-2" style={{ fontSize: '0.75rem' }}>{project.category}</span>

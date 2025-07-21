@@ -87,7 +87,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
   return (
     <section className="py-20 bg-gradient-to-b from-cyber-grey to-cyber-dark md:overflow-x-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 md:overflow-x-hidden">
-        <div className="text-center mb-16">
+        <div className="text-center mb-4">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {lang === 'ES'
               ? <>
@@ -178,7 +178,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
                         {idx + 1}
                       </div>
                     </div>
-                    <div className="w-full min-h-[220px] cyber-card p-6 rounded-xl border border-white/5 flex flex-col items-center">
+                    <div className="w-full min-h-[220px] cyber-card p-6 rounded-xl border border-white/5 flex flex-col items-center pt-8">
                       <h3 className="text-xl font-bold text-white mb-4 text-center">
                         {step.title}
                       </h3>

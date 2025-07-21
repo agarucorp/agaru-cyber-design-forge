@@ -158,7 +158,14 @@ const Footer = ({ lang }: FooterProps) => {
                     </div>
                     <div>
                       <div className="text-gray-400 text-sm">{lang === 'ES' ? 'Teléfono' : 'Phone'}</div>
-                      <div className="text-white font-semibold">+1 (555) 123-4567</div>
+                      <a
+                        href="https://wa.me/5491130509316"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white font-semibold hover:text-agaru-purple transition-colors duration-200"
+                      >
+                        +54 9 11 3050 9316
+                      </a>
                     </div>
                   </div>
                   
