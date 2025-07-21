@@ -154,7 +154,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
         {/* Mobile: carrusel táctil scroll-x, sin oscurecer cards */}
         <div className="md:hidden w-full overflow-x-hidden">
           <div className="relative z-10 overflow-visible">
-            <div className="w-full flex flex-col items-center pt-12">
+            <div className="w-full flex flex-col items-center pt-4">
               <div
                 className="w-full overflow-x-auto flex snap-x snap-mandatory gap-6 pb-2 pl-[5vw] pr-[5vw]"
                 style={{ scrollbarWidth: 'none' }}
@@ -164,7 +164,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
                 {steps.map((step, idx) => (
                   <div
                     key={idx}
-                    className="snap-center flex flex-col items-center group transition-transform duration-300 min-w-[90vw] max-w-xs mx-auto"
+                    className="snap-center flex flex-col items-center group transition-transform duration-300 min-w-[90vw] max-w-xs mx-auto pt-8"
                   >
                     <div className="flex flex-col items-center mb-4 relative pt-0">
                       <div className="w-20 h-20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"

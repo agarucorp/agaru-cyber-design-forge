@@ -1,6 +1,7 @@
 
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import mockupCalena from './assets/ProcessIcons/mockupcalena.png';
+import paginaLuMobile from './assets/ProjectShowcase/paginaLuMobile.png';
 import { useState, useEffect } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 
@@ -21,7 +22,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       github: '#',
     },
     {
-      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=600&fit=crop',
+      image: paginaLuMobile,
       tags: ['Next.js', 'Stripe', 'PostgreSQL'],
       link: '#',
       github: '#',
@@ -54,7 +55,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
 
   const categories = [
     'Web App',
-    'Desarrollo Web',
+    'Salud',
     'Branding',
     'Full Package',
     'Diseño UX/UI',
@@ -64,11 +65,11 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   const projectCommon = [
     {
       title: 'Somos Calena',
-      link: 'https://www.somoscalena.com/',
+      link: 'https://terapeutas.somoscalena.com/',
     },
     {
-      title: 'Plataforma E-Commerce',
-      link: '#',
+      title: 'Odontología Lucia Piccardo',
+      link: 'https://lucia-piccardo-smile-design.vercel.app/',
     },
     {
       title: 'Sistema de Identidad de Marca',
@@ -94,7 +95,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
           description: 'Web app para gestión de psicólogos y conexión con pacientes.',
         },
         {
-          description: 'Solución e-commerce full-stack con integración de pagos.',
+          description: 'Sitio web para consultorio odontológico.',
         },
         {
           description: 'Identidad de marca completa para fintech, incluyendo logo y manual de marca.',
@@ -115,7 +116,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
             "Web app for psychologists' management and patient connection.",
         },
         {
-          description: 'Full-stack e-commerce solution with payment integration.',
+          description: 'Mobile website for a dental office.',
         },
         {
           description: 'Complete brand identity for a fintech startup including logo and guidelines.',
@@ -183,7 +184,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full ${project.image === paginaLuMobile ? 'object-contain' : 'object-cover'}`}
                     />
                   </div>
                   {/* Back Side */}
@@ -266,7 +267,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
             >
               <div className="group cyber-card rounded-xl overflow-hidden border border-white/5 relative h-[420px] w-[90vw] max-w-xs mx-auto flex flex-col">
                 <div className="w-full h-48 bg-gray-900 flex items-center justify-center overflow-hidden">
-                  <img src={project.image} alt={project.title} className="object-cover w-full h-full" />
+                  <img src={project.image} alt={project.title} className={`w-full h-full ${project.image === paginaLuMobile ? 'object-contain' : 'object-cover'}`} />
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center p-4">
                   <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#4B267A] text-white mb-2" style={{ fontSize: '0.75rem' }}>{project.category}</span>
