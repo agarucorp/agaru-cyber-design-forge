@@ -69,7 +69,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     },
     {
       title: 'Odontología Lucia Piccardo',
-      link: 'https://www.lpodontologia.com/',
+      link: 'https://lpodontologia.com/',
     },
     {
       title: 'Tony Ruiz Hair Studio',
