@@ -66,7 +66,7 @@ const Services = ({ lang }: ServicesProps) => {
     },
     // Card 2: Web Design & Development
     {
-      title: lang === 'ES' ? 'Desarrollo Web' : 'Web Design & Development',
+      title: lang === 'ES' ? 'Diseño Web' : 'Web Design',
       description: lang === 'ES'
         ? 'Diseñamos sitios web funcionales y visualmente atractivos que garantizan una navegación fluida y una experiencia de usuario cautivadora, adaptándose completamente a las últimas tendencias y tecnologías del mercado.'
         : 'We develop web solutions optimized for a high-performance digital presence and intuitive navigation. We focus on building fast and secure websites, designed to offer a fluid and adaptable user experience.',
@@ -104,7 +104,7 @@ const Services = ({ lang }: ServicesProps) => {
     },
     // Card 4: Brand Strategy & Identity
     {
-      title: lang === 'ES' ? 'Estrategia e Identidad de Marca' : 'Brand Strategy & Identity',
+      title: lang === 'ES' ? 'Estrategia de Marca' : 'Brand Strategy',
       description: lang === 'ES'
         ? 'Vamos más allá del diseño visual para forjar la base estratégica de tu marca. Trabajamos en la voz y la identidad que te diferenciarán, creando una conexión auténtica con tu audiencia y guiando tu crecimiento futuro.'
         : `We go beyond visual design to forge your brand's strategic foundation. We work on the voice and identity that will differentiate you, creating an authentic connection with your audience and guiding your future growth.`,

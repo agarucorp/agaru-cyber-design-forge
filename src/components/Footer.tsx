@@ -185,12 +185,14 @@ const Footer = ({ lang }: FooterProps) => {
               <div>
                 <h4 className="text-lg font-semibold text-white mb-4">{lang === 'ES' ? 'Seguinos' : 'Follow Us'}</h4>
                 <div className="flex gap-4">
+                  {/* Instagram icon hidden for now
                   <a
                     href="#"
                     className="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-agaru-purple/20 transition-colors duration-300 group"
                   >
                     <Instagram className="w-6 h-6 text-gray-400 group-hover:text-agaru-purple transition-colors duration-300" />
                   </a>
+                  */}
                   <a
                     href="https://www.linkedin.com/company/agarucorp/"
                     target="_blank"

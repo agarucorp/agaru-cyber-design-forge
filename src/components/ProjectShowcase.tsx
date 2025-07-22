@@ -2,6 +2,9 @@
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import mockupCalena from './assets/ProcessIcons/mockupcalena.png';
 import paginaLuMobile from './assets/ProjectShowcase/paginaLuMobile.png';
+import mockuptr from './assets/ProjectShowcase/mockuptr.png';
+import silande from './assets/ProjectShowcase/silande.png';
+import logocannlabs1 from './assets/ProjectShowcase/Logocannlabs1.png';
 import { useState, useEffect } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 
@@ -28,19 +31,19 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       github: '#',
     },
     {
-      image: 'https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=800&h=600&fit=crop',
+      image: mockuptr,
       tags: ['Diseño de Logo', 'Guía de Marca', 'Marketing'],
       link: '#',
       github: '#',
     },
     {
-      image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop',
+      image: silande,
       tags: ['Branding', 'Diseño Web', 'Marketing'],
       link: '#',
       github: '#',
     },
     {
-      image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop',
+      image: logocannlabs1,
       tags: ['Diseño Mobile', 'Prototipado', 'Investigación de Usuarios'],
       link: '#',
       github: '#',
@@ -55,11 +58,11 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
 
   const categories = [
     'Web App',
-    'Landing Page',
-    'Landing Page',
-    'Full Package',
-    'Diseño UX/UI',
-    'Estrategia de Marketing',
+    'Website',
+    'Website',
+    'Website',
+    'Website',
+    'Website',
   ];
 
   const projectCommon = [
@@ -76,11 +79,11 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       link: 'https://tonyruizhairstudio.com/',
     },
     {
-      title: 'Sitio Agencia Digital',
-      link: '#',
+      title: 'SILANDE',
+      link: 'https://silandeargentina.com/',
     },
     {
-      title: 'Diseño App Móvil',
+      title: 'CannLabs',
       link: '#',
     },
     {
@@ -89,49 +92,31 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     },
   ];
 
-  const projects = (lang === 'ES'
+  const descriptions = lang === 'ES'
     ? [
-        {
-          description: 'Web app para gestión de psicólogos y conexión con pacientes.',
-        },
-        {
-          description: 'Servicios odontológicos integrales.',
-        },
-        {
-          description: 'Especialistas en coloración y alisados.',
-        },
-        {
-          description: 'Rediseño web completo con branding y estrategia de marketing.',
-        },
-        {
-          description: 'Diseño intuitivo de app móvil para plataforma de salud y bienestar.',
-        },
-        {
-          description: 'Estrategia digital integral que aumentó el ROI un 300%.',
-        },
+        'Web app para gestión de psicólogos y conexión con pacientes.',
+        'Sitio web para consultorio de servicios odontológicos.',
+        'Sitio web para salón de peluquería',
+        'Catálogo online para empresa de productos industriales',
+        'Sitio web para empresa productora de extracto de yerba mate, stevia y té.',
+        'Estrategia digital integral que aumentó el ROI un 300%.',
       ]
     : [
-        {
-          description: 
-            "Web app for psychologists' management and patient connection.",
-        },
-        {
-          description: 'Comprehensive dental services.',
-        },
-        {
-          description: 'Specialists in coloring and smoothing.',
-        },
-        {
-          description: 'Complete website redesign with branding and marketing strategy.',
-        },
-        {
-          description: 'Intuitive mobile app design for a health and wellness platform.',
-        },
-        {
-          description: 'Comprehensive digital marketing strategy that increased ROI by 300%.',
-        },
-      ]
-  ).map((proj, i) => ({ ...proj, ...projectsData[i], category: categories[i], title: projectCommon[i].title, link: projectCommon[i].link }));
+        "Web app for psychologists' management and patient connection.",
+        'Comprehensive dental services website',
+        'Hair salon website',
+        'Online industrial products catalog',
+        'Yerba mate, stevia, and tea extract manufacturer website',
+        'Comprehensive digital marketing strategy that increased ROI by 300%.',
+      ];
+
+  const projects = descriptions.map((description, i) => ({
+    description,
+    ...projectsData[i],
+    category: categories[i],
+    title: projectCommon[i].title,
+    link: projectCommon[i].link,
+  }));
 
   const totalPages = Math.ceil(projects.length / projectsPerPage);
   const startIndex = (currentPage - 1) * projectsPerPage;
@@ -165,7 +150,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
         {/* Web/Desktop: paginación */}
         <div className="hidden md:block">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {currentProjects.map((project, index) => (
+            {currentProjects.slice(0, 3).map((project, index) => (
               <div
                 key={startIndex + index}
                 className="group cyber-card rounded-xl overflow-hidden animate-fade-in transition-all duration-300 border border-white/5 relative h-96"
@@ -260,7 +245,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
 
         {/* Mobile: Carrusel automático con fade */}
         <div className="md:hidden flex justify-center items-center relative min-h-[420px]">
-          {projects.map((project, idx) => (
+          {projects.slice(0, 3).map((project, idx) => (
             <div
               key={project.title}
               className={`absolute left-0 right-0 transition-opacity duration-700 ease-in-out ${carouselIndex === idx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
