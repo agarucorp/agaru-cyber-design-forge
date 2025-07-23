@@ -147,7 +147,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
           </p>
         </div>
 
-        {/* Web/Desktop: paginación */}
+        {/* Desktop: Grilla paginada de 3 en 3 con paginación */}
         <div className="hidden md:block">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentProjects.slice(0, 3).map((project, index) => (
@@ -165,7 +165,6 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
                         {project.category}
                       </span>
                     </div>
-                    {/* Título eliminado del frente */}
                     <img
                       src={project.image}
                       alt={project.title}
@@ -243,12 +242,13 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
           </div>
         </div>
 
-        {/* Mobile: Carrusel automático con fade */}
+        {/* Mobile: Carrusel lateral, solo una card visible a la vez */}
         <div className="md:hidden flex justify-center items-center relative min-h-[420px]">
-          {projects.slice(0, 3).map((project, idx) => (
+          {projects.map((project, idx) => (
             <div
               key={project.title}
-              className={`absolute left-0 right-0 transition-opacity duration-700 ease-in-out ${carouselIndex === idx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+              className={`absolute left-0 right-0 transition-transform duration-700 ease-in-out ${carouselIndex === idx ? 'translate-x-0 opacity-100 z-10' : carouselIndex < idx ? 'translate-x-full opacity-0 z-0 pointer-events-none' : '-translate-x-full opacity-0 z-0 pointer-events-none'}`}
+              style={{ willChange: 'transform, opacity' }}
             >
               <div className="group cyber-card rounded-xl overflow-hidden border border-white/5 relative h-[420px] w-[90vw] max-w-xs mx-auto flex flex-col">
                 <div className="w-full h-48 bg-gray-900 flex items-center justify-center overflow-hidden">
