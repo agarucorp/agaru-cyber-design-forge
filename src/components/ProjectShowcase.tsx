@@ -4,6 +4,7 @@ import mockupCalena from './assets/ProcessIcons/mockupcalena.png';
 import paginaLuMobile from './assets/ProjectShowcase/paginaLuMobile.png';
 import mockuptr from './assets/ProjectShowcase/mockuptr.png';
 import silande from './assets/ProjectShowcase/silande.png';
+import silande1 from './assets/ProjectShowcase/silande1.png';
 import logocannlabs1 from './assets/ProjectShowcase/Logocannlabs1.png';
 import { useState, useEffect } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
@@ -37,7 +38,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       github: '#',
     },
     {
-      image: silande,
+      image: silande1, // Usar silande1.png para la card 4
       tags: ['Branding', 'Diseño Web', 'Marketing'],
       link: '#',
       github: '#',
@@ -57,12 +58,12 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   ];
 
   const categories = [
-    'Web App',
-    'Website',
-    'Website',
-    'Website',
-    'Website',
-    'Website',
+    'Web App',      // 1
+    'Web Design',   // 2
+    'Web Design',   // 3
+    'Web Catalog',  // 4
+    'Web Design',   // 5
+    'Web Design',   // 6
   ];
 
   const projectCommon = [
@@ -84,7 +85,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     },
     {
       title: 'CannLabs',
-      link: '#',
+      link: 'https://www.canadiannlabs.com', // Actualizado
     },
     {
       title: 'Campaña de Marketing',
