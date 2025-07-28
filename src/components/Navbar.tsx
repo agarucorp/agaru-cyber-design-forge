@@ -115,13 +115,13 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                     className={`relative text-white hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-medium
                       ${isActive ? 'text-[#895AF6]' : ''}`}
                     onClick={e => {
-                      if (isDesktop()) {
+                      if (isDesktop() && item.href.startsWith('#')) {
                         e.preventDefault();
                         window.location.hash = item.href.replace('#', '');
                       }
                     }}
-                    onAuxClick={e => { if (isDesktop()) e.preventDefault(); }}
-                    onContextMenu={e => { if (isDesktop()) e.preventDefault(); }}
+                    onAuxClick={e => { if (isDesktop() && item.href.startsWith('#')) e.preventDefault(); }}
+                    onContextMenu={e => { if (isDesktop() && item.href.startsWith('#')) e.preventDefault(); }}
                   >
                     {item.name}
                     <span
