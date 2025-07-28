@@ -82,14 +82,14 @@ const FixesForm = ({ lang, setLang }: FixesFormProps) => {
       }
     }
 
-    // Validación de URL en tiempo real
+    // Validación de URL - acepta cualquier formato
     if (field === 'projectUrl') {
       if (value.trim() === '') {
         setUrlError('');
       } else {
-        // Validación muy simple de URL - solo verifica que tenga un punto
+        // Validación simple: debe tener al menos un punto y caracteres válidos
         const hasDot = value.includes('.');
-        const hasValidChars = /^[a-zA-Z0-9.-]+$/.test(value.replace(/https?:\/\//, '').replace(/www\./, ''));
+        const hasValidChars = /^[a-zA-Z0-9.-/:]+$/.test(value);
         if (!hasDot || !hasValidChars) {
           setUrlError(lang === 'ES' ? 'Formato de URL inválido' : 'Invalid URL format');
         } else {
@@ -161,16 +161,15 @@ const FixesForm = ({ lang, setLang }: FixesFormProps) => {
     // Validación de URL (si se ingresó)
     if (formData.projectUrl.trim() !== '') {
       const hasDot = formData.projectUrl.includes('.');
-      const hasValidChars = /^[a-zA-Z0-9.-]+$/.test(formData.projectUrl.replace(/https?:\/\//, '').replace(/www\./, ''));
-      console.log('Validating URL:', formData.projectUrl, 'Has dot:', hasDot, 'Valid chars:', hasValidChars);
+      const hasValidChars = /^[a-zA-Z0-9.-/:]+$/.test(formData.projectUrl);
       if (!hasDot || !hasValidChars) {
         setShowErrors(true);
         setUrlError(lang === 'ES' ? 'Formato de URL inválido' : 'Invalid URL format');
         toast({
           title: lang === 'ES' ? 'URL inválida' : 'Invalid URL',
           description: lang === 'ES' 
-            ? 'Por favor ingresá una URL válida.'
-            : 'Please enter a valid URL.',
+            ? 'Por favor ingresá una URL válida'
+            : 'Please enter a valid URL',
           variant: 'destructive',
         });
         return;
@@ -298,15 +297,21 @@ const FixesForm = ({ lang, setLang }: FixesFormProps) => {
   const isFormComplete = () => {
     const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
     const phoneDigits = formData.clientPhone.replace(/\D/g, '');
-    const isPhoneValid = formData.clientPhone.trim() === '' || (phoneDigits.length >= 8 && phoneDigits.length <= 13);
+    const isPhoneValid = phoneDigits.length >= 8 && phoneDigits.length <= 13;
+    const hasDot = formData.projectUrl.includes('.');
+    const hasValidChars = /^[a-zA-Z0-9.-/:]+$/.test(formData.projectUrl);
+    const isUrlValid = formData.projectUrl.trim() === '' || (hasDot && hasValidChars);
     
     return (
       formData.clientName.trim() !== '' &&
       formData.clientEmail.trim() !== '' &&
       emailRegex.test(formData.clientEmail) &&
+      formData.clientPhone.trim() !== '' &&
+      isPhoneValid &&
       formData.projectName.trim() !== '' &&
-      formData.issuesDescription.trim() !== '' &&
-      isPhoneValid // El teléfono es opcional, pero si se ingresa debe ser válido
+      formData.projectUrl.trim() !== '' &&
+      isUrlValid &&
+      formData.issuesDescription.trim() !== ''
     );
   };
 
@@ -314,15 +319,22 @@ const FixesForm = ({ lang, setLang }: FixesFormProps) => {
   const getCompletedFieldsCount = () => {
     let count = 0;
     const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    const phoneDigits = formData.clientPhone.replace(/\D/g, '');
+    const isPhoneValid = phoneDigits.length >= 8 && phoneDigits.length <= 13;
+    const hasDot = formData.projectUrl.includes('.');
+    const hasValidChars = /^[a-zA-Z0-9.-/:]+$/.test(formData.projectUrl);
+    const isUrlValid = formData.projectUrl.trim() === '' || (hasDot && hasValidChars);
     
     if (formData.clientName.trim() !== '') count++;
     if (formData.clientEmail.trim() !== '' && emailRegex.test(formData.clientEmail)) count++;
+    if (formData.clientPhone.trim() !== '' && isPhoneValid) count++;
     if (formData.projectName.trim() !== '') count++;
+    if (formData.projectUrl.trim() !== '' && isUrlValid) count++;
     if (formData.issuesDescription.trim() !== '') count++;
     return count;
   };
 
-  const totalRequiredFields = 4;
+  const totalRequiredFields = 6;
   const completedFields = getCompletedFieldsCount();
 
   return (
@@ -459,7 +471,7 @@ const FixesForm = ({ lang, setLang }: FixesFormProps) => {
               </div>
               <div>
                 <label className="text-sm font-medium mb-2 block">
-                  {lang === 'ES' ? 'Teléfono' : 'Phone'}
+                  {lang === 'ES' ? 'Teléfono' : 'Phone'} *
                 </label>
                 <Input
                   type="tel"
@@ -540,10 +552,10 @@ const FixesForm = ({ lang, setLang }: FixesFormProps) => {
               </div>
               <div>
                 <label className="text-sm font-medium mb-2 block">
-                  {lang === 'ES' ? 'URL del proyecto' : 'Project URL'}
+                  {lang === 'ES' ? 'URL del proyecto' : 'Project URL'} *
                 </label>
                 <Input
-                  type="url"
+                  type="text"
                   value={formData.projectUrl}
                   onChange={(e) => handleInputChange('projectUrl', e.target.value)}
                   placeholder="https://www.misitio.com"
