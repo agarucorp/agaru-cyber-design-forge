@@ -29,7 +29,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeSection, setActiveSection] = useState('services');
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +46,13 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
         { id: 'projects' },
         { id: 'faq' },
       ];
-      setActiveSection(getSectionFromScroll(sections));
+      // Solo marcar sección si el usuario ha pasado el primer offset (por ejemplo, 120px)
+      const currentSection = getSectionFromScroll(sections);
+      if (window.scrollY < 120) {
+        setActiveSection(null);
+      } else {
+        setActiveSection(currentSection);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -78,7 +84,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
         style={{
           width: `${scrollProgress}%`,
           height: '4px',
-          background: '#b0b3b8', // gris suave acorde a la paleta
+          background: 'linear-gradient(90deg, #895AF6 0%, #4DE3FF 100%)',
           transition: 'width 0.2s ease',
         }}
         className="absolute top-0 left-0 z-50 rounded-tr-full rounded-br-full"
@@ -126,7 +132,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                     {item.name}
                     <span
                       className={`absolute left-0 -bottom-1 w-full h-[3px] rounded-full transition-all duration-300
-                        ${isActive ? 'bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF]' : 'opacity-0 group-hover:opacity-100 group-hover:bg-gradient-to-r group-hover:from-[#895AF6] group-hover:via-[#B983FF] group-hover:to-[#4DE3FF]'}`}
+                        ${isActive ? 'bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF]' : 'opacity-0'}`}
                     ></span>
                   </a>
                 );

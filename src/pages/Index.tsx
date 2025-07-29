@@ -40,8 +40,10 @@ const Index = () => {
         <Navbar lang={lang} setLang={setLang} />
         <Hero lang={lang} />
         <Services lang={lang} />
-        <WebProcessStepper lang={lang} />
-        <BrandingApproach lang={lang} />
+        <section id="process">
+          <WebProcessStepper lang={lang} />
+          <BrandingApproach lang={lang} />
+        </section>
         <ProjectShowcase lang={lang} />
         <FAQ lang={lang} />
         <Footer lang={lang} />
