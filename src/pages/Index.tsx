@@ -30,7 +30,7 @@ const Index = () => {
     <>
       {/* Helmet gestiona las etiquetas <title> y <meta> para SEO, cambiando según el idioma */}
       <Helmet>
-        <title>{seo[lang].title}</title>
+        <title>AgaruCorp</title>
         <meta name="description" content={seo[lang].description} />
         {/* URL canónica para SEO */}
         <link rel="canonical" href="https://www.agarucorp.com{lang === 'EN' ? '/en' : '/'}" />
