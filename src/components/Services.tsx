@@ -68,14 +68,13 @@ const Services = ({ lang }: ServicesProps) => {
     {
       title: lang === 'ES' ? 'Diseño Web' : 'Web Design',
       description: lang === 'ES'
-        ? 'Diseñamos sitios web funcionales y visualmente atractivos que garantizan una navegación fluida y una experiencia de usuario cautivadora, adaptándose completamente a las últimas tendencias y tecnologías del mercado.'
+        ? 'Desarrollamos soluciones web optimizadas para una presencia digital de alto rendimiento y una navegación intuitiva. Nos centramos en construir sitios web rápidos y seguros, diseñados para ofrecer una experiencia de usuario fluida y adaptable.'
         : 'We develop web solutions optimized for a high-performance digital presence and intuitive navigation. We focus on building fast and secure websites, designed to offer a fluid and adaptable user experience.',
       features: lang === 'ES'
         ? [
-            'React/Next.js',
-            'Responsive Mobile',
-            'SEO Optimizado',
-            'Enfoque en Performance'
+            'Utilizamos React y Next.js para construir sitios dinámicos, responsivos y de alto rendimiento.',
+            'Implementamos en Vercel, lo que asegura un rendimiento global eficiente y una gestión de proyectos simplificada.',
+            'Tu sitio se ajustará y funcionará correctamente en cualquier dispositivo, garantizando una experiencia consistente para todos los usuarios.'
           ]
         : [
             'We use React and Next.js to build dynamic, responsive, and highly performant sites.',
@@ -87,14 +86,13 @@ const Services = ({ lang }: ServicesProps) => {
     {
       title: lang === 'ES' ? 'Diseño UX/UI' : 'UX/UI Design',
       description: lang === 'ES'
-        ? 'Creamos prototipos interactivos y centrados en el usuario en Figma, diseñados para evolucionar con tu proyecto. Nuestro proceso asegura una iteración rápida, retroalimentación fluida y experiencias intuitivas alineadas con tus objetivos.'
+        ? 'Desarrollamos interfaces que facilitan la interacción del usuario y cumplen con los objetivos del proyecto. Nuestro enfoque se centra en una visualización precisa y una navegación intuitiva, asegurando que cada componente sea útil y coherente.'
         : 'We develop interfaces that facilitate user interaction and meet project objectives. Our approach focuses on precise visualization and intuitive navigation, ensuring every component is useful and cohesive.',
       features: lang === 'ES'
         ? [
-            'Investigación de Usuarios',
-            'Wireframing',
-            'Prototipado',
-            'Diseño Visual'
+            'Creamos wireframes en Figma para previsualizar la estructura y el flujo, agilizando la revisión y aprobación antes del desarrollo.',
+            'Ofrecemos servicios específicos de diseño de UI para landing pages, sitios web completos o wireframes detallados.',
+            'La aplicación de metodologías de usabilidad (UX) es fundamental en cada diseño que creamos, optimizando la interacción del usuario.'
           ]
         : [
             'We create wireframes in Figma to preview structure and flow, streamlining review and approval before development.',
