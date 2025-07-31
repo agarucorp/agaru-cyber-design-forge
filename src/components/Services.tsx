@@ -3,7 +3,8 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./
 import { Code, Palette, Target, TrendingUp } from 'lucide-react';
 import { Button } from './ui/button';
 import FAQCard from './FAQCard'; // Added import for FAQCard
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useIsMobile } from '../hooks/use-mobile';
 
 interface ServicesProps {
   lang: 'ES' | 'EN';
@@ -11,9 +12,32 @@ interface ServicesProps {
 
 const Services = ({ lang }: ServicesProps) => {
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
+  const isMobile = useIsMobile();
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const handleFAQToggle = (index: number) => {
-    setOpenFAQIndex(openFAQIndex === index ? null : index);
+    const wasOpen = openFAQIndex === index;
+    const newOpenIndex = wasOpen ? null : index;
+    
+    setOpenFAQIndex(newOpenIndex);
+    
+    // Si estamos en móvil y se está abriendo una card (no cerrando)
+    if (isMobile && !wasOpen && newOpenIndex !== null) {
+      // Usar setTimeout para asegurar que el DOM se actualice antes del scroll
+      setTimeout(() => {
+        const cardElement = cardRefs.current[newOpenIndex];
+        if (cardElement) {
+          const rect = cardElement.getBoundingClientRect();
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const targetScrollTop = scrollTop + rect.top - 100; // 100px de offset desde arriba
+          
+          window.scrollTo({
+            top: targetScrollTop,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
   };
 
   const services = [
@@ -120,6 +144,11 @@ const Services = ({ lang }: ServicesProps) => {
     }
   ];
 
+  // Inicializar el array de refs con la longitud correcta
+  useEffect(() => {
+    cardRefs.current = cardRefs.current.slice(0, services.length);
+  }, [services.length]);
+
   // Utilidad para detectar desktop (igual que en Hero y Navbar)
   const isDesktop = () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
 
@@ -144,7 +173,13 @@ const Services = ({ lang }: ServicesProps) => {
         {/* Cards de FAQ debajo de los servicios */}
         <div className="mt-12 space-y-6">
           {services.map((service, idx) => (
-            <div className="flex justify-center" key={service.title}>
+            <div 
+              className="flex justify-center" 
+              key={service.title}
+              ref={(el) => {
+                cardRefs.current[idx] = el;
+              }}
+            >
               <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
                 <FAQCard
                   question={service.title}
