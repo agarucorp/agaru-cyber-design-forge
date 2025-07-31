@@ -155,22 +155,22 @@ const Services = ({ lang }: ServicesProps) => {
                         <p className="text-gray-400">Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.</p>
                         <br />
                         <p className="text-white font-semibold">1. Usuarios y datos en orden</p>
-                        <div className="mb-4 ml-6 space-y-2">
-                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Registro y login con permisos según rol.</span></div>
-                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Gestión de bases de datos en tiempo real (clientes, turnos, pedidos).</span></div>
-                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Subida y acceso a archivos desde la misma web app.</span></div>
+                        <div className="mb-4 ml-6 space-y-2 pl-2">
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Registro y login con permisos según rol.</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Gestión de bases de datos en tiempo real (clientes, turnos, pedidos).</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Subida y acceso a archivos desde la misma web app.</span></div>
                         </div>
                         <p className="text-white font-semibold">2. Operaciones automatizadas</p>
-                        <div className="mb-4 ml-6 space-y-2">
-                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Mensajes automáticos por WhatsApp (recordatorios, confirmaciones, respuestas).</span></div>
-                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Automatización de tareas como agendado, cobros y seguimiento.</span></div>
-                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Reglas de negocio personalizadas para cada flujo.</span></div>
+                        <div className="mb-4 ml-6 space-y-2 pl-2">
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Mensajes automáticos por WhatsApp (recordatorios, confirmaciones, respuestas).</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Automatización de tareas como agendado, cobros y seguimiento.</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Reglas de negocio personalizadas para cada flujo.</span></div>
                         </div>
                         <p className="text-white font-semibold">3. Todo bajo control, en un solo lugar</p>
-                        <div className="mb-4 ml-6 space-y-2">
-                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Paneles simples para ver y gestionar tu operación en tiempo real.</span></div>
-                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Accesos diferenciados por perfil (ej. admin vs cliente).</span></div>
-                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Reportes claros y conexión con otras herramientas.</span></div>
+                        <div className="mb-4 ml-6 space-y-2 pl-2">
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Paneles simples para ver y gestionar tu operación en tiempo real.</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Accesos diferenciados por perfil (ej. admin vs cliente).</span></div>
+                          <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Reportes claros y conexión con otras herramientas.</span></div>
                         </div>
                         <p className="text-gray-400">Lanzamos rápido, con foco en que funcione desde el día uno y pueda crecer con vos.</p>
                       </div>
@@ -181,22 +181,22 @@ const Services = ({ lang }: ServicesProps) => {
                           <p className="text-gray-400">We build applications that allow you to automate tasks, centralize data, and scale your business seamlessly.</p>
                           <br />
                           <p className="text-white font-semibold">1. Organized Users and Data</p>
-                          <div className="mb-4 ml-6 space-y-2">
-                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Role-based user registration and login.</span></div>
-                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Real-time database management (clients, appointments, orders).</span></div>
-                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Upload and access files directly within the web app.</span></div>
+                          <div className="mb-4 ml-6 space-y-2 pl-2">
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Role-based user registration and login.</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Real-time database management (clients, appointments, orders).</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Upload and access files directly within the web app.</span></div>
                           </div>
                           <p className="text-white font-semibold">2. Automated Operations</p>
-                          <div className="mb-4 ml-6 space-y-2">
-                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Automated WhatsApp messages (reminders, confirmations, replies).</span></div>
-                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Task automation for scheduling, payments, and follow-ups.</span></div>
-                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Custom business rules tailored for each workflow.</span></div>
+                          <div className="mb-4 ml-6 space-y-2 pl-2">
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Automated WhatsApp messages (reminders, confirmations, replies).</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Task automation for scheduling, payments, and follow-ups.</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Custom business rules tailored for each workflow.</span></div>
                           </div>
                           <p className="text-white font-semibold">3. Everything Under Control, in One Place</p>
-                          <div className="mb-4 ml-6 space-y-2">
-                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Intuitive dashboards to view and manage your operations in real-time.</span></div>
-                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Differentiated access by user profile (e.g., admin vs. client).</span></div>
-                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Clear reports and integration with other tools.</span></div>
+                          <div className="mb-4 ml-6 space-y-2 pl-2">
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Intuitive dashboards to view and manage your operations in real-time.</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Differentiated access by user profile (e.g., admin vs. client).</span></div>
+                            <div className="flex items-start"><div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Clear reports and integration with other tools.</span></div>
                           </div>
                           <p className="text-gray-400">We launch fast, focusing on day-one functionality and the ability to grow with your business.</p>
                         </div>
@@ -204,10 +204,10 @@ const Services = ({ lang }: ServicesProps) => {
                         <>
                           <p>{service.description.split('\n').map((str, i) => <span key={i}>{str}<br /></span>)}</p>
                           <br />
-                          <ul className="space-y-4">
+                          <ul className="space-y-4 pl-2">
                             {service.features.map((feature, i) => (
                               <li className="text-gray-400 flex items-start" key={i}>
-                                <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
                                 {feature}
                               </li>
                             ))}
