@@ -1,6 +1,7 @@
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useIsMobile } from '../hooks/use-mobile';
 
 interface FAQProps {
   lang: 'ES' | 'EN';
@@ -8,6 +9,8 @@ interface FAQProps {
 
 const FAQ = ({ lang }: FAQProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const isMobile = useIsMobile();
+  const faqRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const faqs = lang === 'ES'
     ? [
@@ -85,9 +88,36 @@ const FAQ = ({ lang }: FAQProps) => {
         }
       ];
 
+  // Inicializar el array de refs con la longitud correcta
+  useEffect(() => {
+    const totalFAQs = faqs.reduce((total, category) => total + category.questions.length, 0);
+    faqRefs.current = faqRefs.current.slice(0, totalFAQs);
+  }, [faqs]);
+
   const toggleFAQ = (categoryIndex: number, questionIndex: number) => {
     const index = categoryIndex * 100 + questionIndex;
-    setOpenIndex(openIndex === index ? null : index);
+    const wasOpen = openIndex === index;
+    const newOpenIndex = wasOpen ? null : index;
+    
+    setOpenIndex(newOpenIndex);
+    
+    // Si estamos en móvil y se está abriendo una FAQ (no cerrando)
+    if (isMobile && !wasOpen && newOpenIndex !== null) {
+      // Usar setTimeout para asegurar que el DOM se actualice antes del scroll
+      setTimeout(() => {
+        const faqElement = faqRefs.current[newOpenIndex];
+        if (faqElement) {
+          const rect = faqElement.getBoundingClientRect();
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const targetScrollTop = scrollTop + rect.top - 100; // 100px de offset desde arriba
+          
+          window.scrollTo({
+            top: targetScrollTop,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
   };
 
   return (
@@ -119,7 +149,13 @@ const FAQ = ({ lang }: FAQProps) => {
                   const isOpen = openIndex === index;
                   
                   return (
-                    <div key={questionIndex} className="cyber-card rounded-xl overflow-hidden">
+                    <div 
+                      key={questionIndex} 
+                      className="cyber-card rounded-xl overflow-hidden"
+                      ref={(el) => {
+                        faqRefs.current[index] = el;
+                      }}
+                    >
                       <button
                         onClick={() => toggleFAQ(categoryIndex, questionIndex)}
                         className="w-full p-6 text-left flex items-center justify-between transition-all duration-300 group hover:shadow-2xl hover:scale-[1.025] hover:bg-[#23243a]/90 hover:text-[#895AF6] focus:outline-none"
