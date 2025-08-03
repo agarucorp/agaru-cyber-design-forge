@@ -25,7 +25,9 @@ const FAQCard = ({ question, answer, isOpen, onToggle }: FAQCardProps) => {
       {isOpen && (
         <div className="px-6 pb-6 animate-fade-in">
           <div className="h-px bg-gradient-to-r from-agaru-purple to-transparent mb-4"></div>
-          {answer}
+          <div className="pr-2">
+            {answer}
+          </div>
         </div>
       )}
     </div>
