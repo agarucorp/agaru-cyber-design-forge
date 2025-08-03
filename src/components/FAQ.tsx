@@ -24,7 +24,7 @@ const FAQ = ({ lang }: FAQProps) => {
             },
             {
               question: '¿Mi sitio será mobile-responsive?',
-              answer: '¡Claro! Todos nuestros sitios son mobile-first, asegurando óptimo rendimiento y experiencia en cualquier dispositivo. Probamos en varios dispositivos antes del lanzamiento.'
+              answer: 'Todos nuestros sitios son mobile-first, asegurando óptimo rendimiento y experiencia en cualquier dispositivo. Probamos en varias interfaces antes del lanzamiento.'
             }
           ]
         },
