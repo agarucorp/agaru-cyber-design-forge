@@ -1,0 +1,61 @@
+/* Logo Frame Gradient Styles */
+.logo-frame {
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%);
+  box-shadow: 0 0 8px 1px #4DE3FF22;
+  transition: all 0.3s ease;
+}
+
+.logo-frame:hover {
+  box-shadow: 0 0 12px 2px #4DE3FF33;
+  transform: scale(1.05);
+}
+
+/* Size variants */
+.logo-frame-sm {
+  width: 48px;
+  height: 48px;
+}
+
+.logo-frame-md {
+  width: 64px;
+  height: 64px;
+}
+
+.logo-frame-lg {
+  width: 80px;
+  height: 80px;
+}
+
+.logo-frame-xl {
+  width: 96px;
+  height: 96px;
+}
+
+/* Logo image styles */
+.logo-frame img {
+  object-fit: contain;
+}
+
+.logo-frame-sm img {
+  width: 32px;
+  height: 32px;
+}
+
+.logo-frame-md img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-frame-lg img {
+  width: 48px;
+  height: 48px;
+}
+
+.logo-frame-xl img {
+  width: 56px;
+  height: 56px;
+} 
