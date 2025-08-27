@@ -1,11 +1,14 @@
 
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
-import mockupCalena from './assets/ProcessIcons/mockupcalena.png';
+import mockupCalena from './assets/ProjectShowcase/calenacard.png';
 import paginaLuMobile from './assets/ProjectShowcase/paginaLuMobile.png';
 import mockuptr from './assets/ProjectShowcase/mockuptr.png';
 import silande from './assets/ProjectShowcase/silande.png';
 import silande1 from './assets/ProjectShowcase/silande1.png';
 import logocannlabs1 from './assets/ProjectShowcase/Logocannlabs1.png';
+import group18 from './assets/ProjectShowcase/Group 18.png';
+import cardtr from './assets/ProjectShowcase/cardtr.png';
+import cardmaxtech from './assets/ProjectShowcase/cardmaxtech.png';
 import { useState, useEffect } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 
@@ -26,13 +29,13 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       github: '#',
     },
     {
-      image: paginaLuMobile,
+      image: group18,
       tags: ['Next.js', 'Stripe', 'PostgreSQL'],
       link: '#',
       github: '#',
     },
     {
-      image: mockuptr,
+      image: cardtr,
       tags: ['Diseño de Logo', 'Guía de Marca', 'Marketing'],
       link: '#',
       github: '#',
@@ -50,7 +53,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       github: '#',
     },
     {
-      image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop',
+      image: cardmaxtech,
       tags: ['Estrategia', 'Analítica', 'Marketing de Contenidos'],
       link: '#',
       github: '#',
@@ -63,7 +66,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     'Web Design',   // 3
     'Web Catalog',  // 4
     'Web Design',   // 5
-    'Web Design',   // 6
+    'Web Catalog',  // 6
   ];
 
   const projectCommon = [
@@ -88,7 +91,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       link: 'https://www.canadiannlabs.com', // Actualizado
     },
     {
-      title: 'Campaña de Marketing',
+      title: 'Maxtech Latam',
       link: '#',
     },
   ];
@@ -98,9 +101,9 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
         'Web app para gestión de psicólogos y conexión con pacientes.',
         'Sitio web para consultorio de servicios odontológicos.',
         'Sitio web para salón de peluquería',
-        'Catálogo online para empresa de productos industriales',
+        'Catálogo online para empresa de productos industriales.',
         'Sitio web para empresa productora de extracto de yerba mate, stevia y té.',
-        'Estrategia digital integral que aumentó el ROI un 300%.',
+        'Catálogo online de insumos industriales para construcción.',
       ]
     : [
         "Web app for psychologists' management and patient connection.",
@@ -108,7 +111,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
         'Hair salon website',
         'Online industrial products catalog',
         'Yerba mate, stevia, and tea extract manufacturer website',
-        'Comprehensive digital marketing strategy that increased ROI by 300%.',
+        'Online catalog of industrial supplies for construction.',
       ];
 
   const projects = descriptions.map((description, i) => ({

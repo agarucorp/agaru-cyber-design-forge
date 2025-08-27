@@ -5,6 +5,8 @@ import { Button } from './ui/button';
 import FAQCard from './FAQCard'; // Added import for FAQCard
 import { useState, useRef, useEffect } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
+import calenacard from './assets/ProjectShowcase/calenacard.png';
+import cardmaxtech from './assets/ProjectShowcase/cardmaxtech.png';
 
 interface ServicesProps {
   lang: 'ES' | 'EN';
