@@ -1,5 +1,5 @@
 
-import { Building, TrendingUp, Palette, Calendar, FileText } from 'lucide-react';
+import { Target, TrendingUp, Fingerprint, Calendar, FileText } from 'lucide-react';
 import { useState, useRef } from 'react';
 
 interface BrandingApproachProps {
@@ -12,7 +12,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
   const steps = lang === 'ES'
     ? [
         {
-          icon: <Building className="w-8 h-8" />,
+          icon: <Target className="w-8 h-8" />,
           title: 'Fundamentos de Marca',
           description: 'Comenzamos entendiendo los valores, misión, audiencia y objetivos de tu negocio. Esta base guía todo el proceso y asegura que cada acción esté alineada a tus necesidades.',
         },
@@ -22,7 +22,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
           description: 'Nuestros estrategas investigan tendencias, comportamientos y competencia para identificar las mejores oportunidades de crecimiento.',
         },
         {
-          icon: <Palette className="w-8 h-8" />,
+          icon: <Fingerprint className="w-8 h-8" />,
           title: 'Identidad de Marca',
           description: 'En colaboración, creamos el contenido y el diseño que capturan tu identidad única, desde el logo hasta la misión y los mensajes clave de tu comunicación digital.',
         },
@@ -39,7 +39,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
       ]
     : [
         {
-          icon: <Building className="w-8 h-8" />,
+          icon: <Target className="w-8 h-8" />,
           title: 'Brand Foundation',
           description: 'We begin by deeply understanding your business values, core mission, key offerings, target audience, and primary objectives. This foundational insight then serves as our guiding principle, ensuring everything we do is precisely tailored to your specific needs.',
         },
@@ -49,7 +49,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
           description: 'Our strategists execute comprehensive research across market trends, consumer behaviors, and competitor landscapes. This meticulous process yields actionable insights, helping us identify and target the most promising areas for your growth.',
         },
         {
-          icon: <Palette className="w-8 h-8" />,
+          icon: <Fingerprint className="w-8 h-8" />,
           title: 'Brand Identity Design',
           description: 'Through continuous collaboration with your key stakeholders, we meticulously craft content that truly embodies your unique identity. We cover every detail, from designing your logo to developing your mission statements and all web content.',
         },
@@ -121,11 +121,9 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
               {/* Step Number and Icon */}
               <div className="flex-shrink-0">
                 <div className="relative">
-                  <div className={`w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${
-                    index === steps.length - 1 ? 'pb-2' : ''
-                  }`}
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
                     style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)', boxShadow: '0 0 16px 2px #895AF688' }}>
-                    <div className="text-white">
+                    <div className="text-white flex items-center justify-center w-full h-full" style={{ lineHeight: 0 }}>
                       {step.icon}
                     </div>
                   </div>
@@ -174,7 +172,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
                     <div className="flex flex-col items-center mb-4 relative pt-0">
                       <div className="w-20 h-20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
                         style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)', boxShadow: '0 0 16px 2px #895AF688' }}>
-                        <div className="text-white">
+                        <div className="text-white flex items-center justify-center w-full h-full">
                           {step.icon}
                         </div>
                       </div>
