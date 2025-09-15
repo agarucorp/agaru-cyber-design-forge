@@ -159,10 +159,15 @@ const Services = ({ lang }: ServicesProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            {lang === 'ES' ? 'Nuestros ' : 'Our '}
-            <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">
-              {lang === 'ES' ? 'Servicios' : 'Services'}
-            </span>
+            {lang === 'ES' ? (
+              <>
+                <span className="sr-only">AgaruCorp - </span>Nuestros <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Servicios</span> de Diseño Web y Desarrollo
+              </>
+            ) : (
+              <>
+                <span className="sr-only">AgaruCorp - </span>Our <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Services</span> for Web Design & Development
+              </>
+            )}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             {lang === 'ES'

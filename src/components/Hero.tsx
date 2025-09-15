@@ -61,12 +61,14 @@ const Hero = ({ lang = 'ES' }) => {
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                 {lang === 'ES' ? (
                   <>
-                    Interfaces <span className="text-[#895AF6]">Digitales</span><br />
+                    <span className="sr-only">AgaruCorp - </span>Interfaces <span className="text-[#895AF6]">Digitales</span><br />
                     de <span>Próxima</span><br />
                     <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Generación</span>
                   </>
                 ) : (
-                  <>Build <span className="text-[#895AF6]">Digital Interfaces</span><br />of <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Tomorrow</span></>
+                  <>
+                    <span className="sr-only">AgaruCorp - </span>Build <span className="text-[#895AF6]">Digital Interfaces</span><br />of <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Tomorrow</span>
+                  </>
                 )}
               </h1>
               

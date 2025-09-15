@@ -17,12 +17,12 @@ const Index = () => {
   // Definición de títulos y descripciones SEO por idioma
   const seo = {
     ES: {
-      title: 'AgaruCorp | Diseño Web y Branding',
-      description: 'AgaruCorp crea páginas web, aplicaciones y estrategias de marca para tu negocio. ¿Necesitás un sitio web o potenciar tu presencia digital? ¡Contactanos y hablemos de tu proyecto!'
+      title: 'AgaruCorp | Diseño Web & Estrategia de Marca',
+      description: 'Diseñamos experiencias digitales completas para pequeñas y medianas empresas, desde la creación de tu sitio o aplicación web hasta una identidad de marca que conecte con tus clientes.'
     },
     EN: {
-      title: 'AgaruCorp | Web Design & Branding',
-      description: 'AgaruCorp crafts stunning websites, web applications, and powerful brand strategies for your business. Need a new website or want to boost your digital presence? Contact us to discuss your project!'
+      title: 'AgaruCorp | Web Design & Brand Strategy',
+      description: 'We design complete digital experiences for small and medium businesses, from creating your website or web application to a brand identity that connects with your customers.'
     }
   };
 
@@ -30,10 +30,21 @@ const Index = () => {
     <>
       {/* Helmet gestiona las etiquetas <title> y <meta> para SEO, cambiando según el idioma */}
       <Helmet>
-        <title>AgaruCorp</title>
+        <title>{seo[lang].title}</title>
         <meta name="description" content={seo[lang].description} />
+        <meta name="keywords" content={lang === 'ES' 
+          ? "diseño web, diseño de pagina web, sitio web, landing page, desarrollo de sitio web, sitio web para pyme, sitio web startup, sitio web empresa, diseño web argentina, diseño web buenos aires, branding, estrategia de marca, diseño UX/UI, React, Next.js, Vercel, JavaScript, TypeScript, sitios web responsivos, identidad corporativa, agencia digital, desarrollo web, aplicaciones web, AgaruCorp"
+          : "web design, website design, website, landing page, website development, website for small business, startup website, company website, web design argentina, web design buenos aires, branding, brand strategy, UX/UI design, React, Next.js, Vercel, JavaScript, TypeScript, responsive websites, corporate identity, digital agency, web development, web applications, AgaruCorp"
+        } />
         {/* URL canónica para SEO */}
         <link rel="canonical" href="https://www.agarucorp.com{lang === 'EN' ? '/en' : '/'}" />
+        {/* Open Graph dinámico */}
+        <meta property="og:title" content={seo[lang].title} />
+        <meta property="og:description" content={seo[lang].description} />
+        <meta property="og:locale" content={lang === 'ES' ? 'es_AR' : 'en_US'} />
+        {/* Twitter Cards dinámicas */}
+        <meta name="twitter:title" content={seo[lang].title} />
+        <meta name="twitter:description" content={seo[lang].description} />
       </Helmet>
       {/* Fin configuración SEO dinámica */}
       <div className="min-h-screen bg-cyber-dark">

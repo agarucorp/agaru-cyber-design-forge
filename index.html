@@ -4,16 +4,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AgaruCorp | Diseño Web y Estrategia de Marca</title>
-    <meta name="description" content="Diseño de sitios web, aplicaciones web y branding." />
+    <title>AgaruCorp | Diseño Web & Estrategia de Marca</title>
+    <meta name="description" content="Diseñamos experiencias digitales completas para pequeñas y medianas empresas, desde la creación de tu sitio o aplicación web hasta una identidad de marca que conecte con tus clientes." />
+    <meta name="keywords" content="diseño web, diseño de pagina web, sitio web, landing page, desarrollo de sitio web, sitio web para pyme, sitio web startup, sitio web empresa, diseño web argentina, diseño web buenos aires, branding, estrategia de marca, diseño UX/UI, React, Next.js, Vercel, JavaScript, TypeScript, sitios web responsivos, identidad corporativa, agencia digital, desarrollo web, aplicaciones web" />
     <meta name="author" content="AgaruCorp" />
     <meta name="language" content="es" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 
     <!-- SEO internacional: hreflang para español e inglés -->
     <link rel="alternate" href="https://www.agarucorp.com/" hreflang="es" />
     <link rel="alternate" href="https://www.agarucorp.com/en" hreflang="en" />
     <link rel="alternate" href="https://www.agarucorp.com/" hreflang="x-default" />
+    
+    <!-- Sitelinks para Google (enlaces adicionales que aparecen en búsquedas) -->
+    <link rel="canonical" href="https://www.agarucorp.com/" />
+    <link rel="alternate" href="https://www.agarucorp.com/#services" title="Diseño Web" />
+    <link rel="alternate" href="https://www.agarucorp.com/#services" title="Diseño UX/UI" />
+    <link rel="alternate" href="https://www.agarucorp.com/#services" title="Branding" />
+    <link rel="alternate" href="https://www.agarucorp.com/#projects" title="Proyectos" />
 
     <!-- Favicons para navegadores y motores de búsqueda (SEO) -->
     <!-- El mismo favicon se usará para todos los idiomas -->
@@ -24,31 +35,143 @@
     <link rel="icon" type="image/png" href="/faviconagaru1.png" sizes="16x16" />
 
     <!-- Fonts -->
+    <!-- Preconnect para optimización de carga -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="//wa.me">
+    <link rel="dns-prefetch" href="//www.linkedin.com">
     
-    <meta property="og:title" content="AgaruCorp | Diseño Web y Estrategia de Marca" />
+    <!-- Fonts con preload para mejor performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mulish:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Fallback para navegadores que no soportan preload -->
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
+    </noscript>
+    
+    <meta property="og:title" content="AgaruCorp | Diseño Web & Estrategia de Marca" />
+    <meta property="og:description" content="Diseñamos experiencias digitales completas para pequeñas y medianas empresas, desde la creación de tu sitio o aplicación web hasta una identidad de marca que conecte con tus clientes." />
     <meta property="og:url" content="https://www.agarucorp.com" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AgaruCorp" />
-    <meta property="og:image" content="/faviconagaru1.png" />
-    <meta property="og:image:width" content="32" />
-    <meta property="og:image:height" content="32" />
+    <meta property="og:image" content="https://www.agarucorp.com/agarucorp-og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AgaruCorp - Agencia Digital de Diseño Web y Branding" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:locale:alternate" content="en_US" />
 
     <!-- Meta tags para versión en inglés -->
     <meta property="og:title:en" content="AgaruCorp | Web Design & Brand Strategy" />
     <meta name="twitter:title:en" content="AgaruCorp | Web Design & Brand Strategy" />
 
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="AgaruCorp | Diseño Web y Estrategia de Marca" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AgaruCorp | Diseño Web & Estrategia de Marca" />
+    <meta name="twitter:description" content="Diseñamos experiencias digitales completas para pequeñas y medianas empresas, desde la creación de tu sitio o aplicación web hasta una identidad de marca que conecte con tus clientes." />
     <meta name="twitter:site" content="@agarucorp" />
-    <meta name="twitter:image" content="/faviconagaru1.png" />
+    <meta name="twitter:creator" content="@agarucorp" />
+    <meta name="twitter:image" content="https://www.agarucorp.com/agarucorp-og-image.jpg" />
+    <meta name="twitter:image:alt" content="AgaruCorp - Diseño Web, UX/UI y Branding para PyMEs y Startups" />
+    
+    <!-- Meta tags adicionales para mejor SEO -->
+    <meta name="theme-color" content="#895AF6" />
+    <meta name="msapplication-TileColor" content="#895AF6" />
+    <meta name="apple-mobile-web-app-title" content="AgaruCorp" />
+    <meta name="application-name" content="AgaruCorp" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Rich Snippets para mejor presentación en Google -->
+    <meta name="rating" content="5" />
+    <meta name="distribution" content="global" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="target" content="all" />
+    <meta name="audience" content="all" />
   </head>
 
   <body>
+    <!-- Datos estructurados JSON-LD para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AgaruCorp",
+      "alternateName": "Agaru Corp",
+      "description": "Diseñamos experiencias digitales completas para pequeñas y medianas empresas, desde la creación de tu sitio o aplicación web hasta una identidad de marca que conecte con tus clientes",
+      "url": "https://www.agarucorp.com",
+      "logo": "https://www.agarucorp.com/faviconagaru1.png",
+      "image": "https://www.agarucorp.com/agarucorp-og-image.jpg",
+      "foundingDate": "2024",
+      "founder": {
+        "@type": "Person",
+        "name": "AgaruCorp Team"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Buenos Aires",
+        "addressCountry": "AR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+54-9-11-3050-9316",
+        "contactType": "customer service",
+        "email": "agaru.corp@gmail.com",
+        "availableLanguage": ["Spanish", "English"]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/agarucorp/",
+        "https://wa.me/5491130509316"
+      ],
+      "serviceArea": {
+        "@type": "Country",
+        "name": "Argentina"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios Digitales",
+        "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Diseño Web",
+                "description": "Diseño de páginas web, sitios web y landing pages para PyMEs y startups"
+              }
+            },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Desarrollo de Aplicaciones Web",
+              "description": "Aplicaciones web personalizadas para automatizar procesos de negocio"
+            }
+          },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Diseño UX/UI",
+                "description": "Diseño de interfaces de usuario intuitivas y experiencias digitales optimizadas para empresas"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Branding",
+                "description": "Estrategia de marca e identidad corporativa para PyMEs y startups"
+              }
+            }
+        ]
+      }
+    }
+    </script>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

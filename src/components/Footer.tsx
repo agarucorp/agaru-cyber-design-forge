@@ -126,8 +126,15 @@ const Footer = ({ lang }: FooterProps) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {lang === 'ES' ? 'Trabajemos ' : "Let's Work "}
-              <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">{lang === 'ES' ? 'Juntos' : 'Together'}</span>
+              {lang === 'ES' ? (
+                <>
+                  <span className="sr-only">AgaruCorp - </span>Trabajemos <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">Juntos</span> en tu Proyecto
+                </>
+              ) : (
+                <>
+                  <span className="sr-only">AgaruCorp - </span>Let's Work <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">Together</span> on Your Project
+                </>
+              )}
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               {lang === 'ES'
@@ -140,7 +147,7 @@ const Footer = ({ lang }: FooterProps) => {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-6">{lang === 'ES' ? 'Contacto' : 'Get in Touch'}</h3>
+                <h3 className="text-2xl font-bold text-white mb-6">{lang === 'ES' ? 'Información de Contacto' : 'Contact Information'}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6]">
@@ -183,7 +190,7 @@ const Footer = ({ lang }: FooterProps) => {
 
               {/* Social Links */}
               <div>
-                <h4 className="text-lg font-semibold text-white mb-4">{lang === 'ES' ? 'Seguinos' : 'Follow Us'}</h4>
+                <h4 className="text-lg font-semibold text-white mb-4">{lang === 'ES' ? 'Síguenos en Redes Sociales' : 'Follow Us on Social Media'}</h4>
                 <div className="flex gap-4">
                   {/* Instagram icon hidden for now
                   <a
