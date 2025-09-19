@@ -17,11 +17,11 @@ const Index = () => {
   // Definición de títulos y descripciones SEO por idioma
   const seo = {
     ES: {
-      title: 'AgaruCorp | Diseño Web & Estrategia de Marca',
+      title: 'AgaruCorp Design',
       description: 'Diseñamos experiencias digitales completas para pequeñas y medianas empresas, desde la creación de tu sitio o aplicación web hasta una identidad de marca que conecte con tus clientes.'
     },
     EN: {
-      title: 'AgaruCorp | Web Design & Brand Strategy',
+      title: 'AgaruCorp Design',
       description: 'We design complete digital experiences for small and medium businesses, from creating your website or web application to a brand identity that connects with your customers.'
     }
   };

@@ -161,11 +161,11 @@ const Services = ({ lang }: ServicesProps) => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {lang === 'ES' ? (
               <>
-                <span className="sr-only">AgaruCorp - </span>Nuestros <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Servicios</span> de Diseño Web y Desarrollo
+                <span className="sr-only">AgaruCorp - </span>Nuestros <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Servicios</span>
               </>
             ) : (
               <>
-                <span className="sr-only">AgaruCorp - </span>Our <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Services</span> for Web Design & Development
+                <span className="sr-only">AgaruCorp - </span>Our <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Services</span>
               </>
             )}
           </h2>
