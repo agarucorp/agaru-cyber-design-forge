@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Instagram, Linkedin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import LogoNav from './assets/Navbar/LogoNav.png';
+import LogoNav from '/lovable-uploads/agarumayusmixed.png';
 import { Button } from './ui/button';
 import emailjs from '@emailjs/browser';
 

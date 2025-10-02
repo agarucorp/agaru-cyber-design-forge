@@ -112,18 +112,26 @@ const Services = ({ lang }: ServicesProps) => {
     {
       title: lang === 'ES' ? 'Diseño UX/UI' : 'UX/UI Design',
       description: lang === 'ES'
-        ? 'Desarrollamos interfaces que facilitan la interacción del usuario y cumplen con los objetivos del proyecto. Nuestro enfoque se centra en una visualización precisa y una navegación intuitiva, asegurando que cada componente sea útil y coherente.'
-        : 'We develop interfaces that facilitate user interaction and meet project objectives. Our approach focuses on precise visualization and intuitive navigation, ensuring every component is useful and cohesive.',
+        ? 'Comenzamos cada proyecto con una investigación UX (experiencia de usuario) profunda. Este proceso no es opcional: es la base estratégica para entender el comportamiento y las necesidades de tu audiencia, permitiéndonos optimizar la arquitectura de la información y la navegación del sitio.\n\nUna vez analizados los datos, pasamos al Diseño UI (Interfaz de Usuario). Utilizamos Figma para construir prototipos que son visualmente atractivos, intuitivos y totalmente funcionales. Cada diseño que entregamos incluye de forma integral: un UX Writing optimizado, una colorimetría estratégica, tipografía seleccionada bajo criterios de legibilidad y la aplicación de guidelines de diseño universal.'
+        : 'We start each project with deep UX (user experience) research. This process is not optional: it is the strategic foundation to understand your audience\'s behavior and needs, allowing us to optimize information architecture and site navigation.\n\nOnce data is analyzed, we move to UI (User Interface) Design. We use Figma to build prototypes that are visually appealing, intuitive and fully functional. Every design we deliver includes integrally: optimized UX Writing, strategic colorimetry, typography selected under readability criteria and the application of universal design guidelines.',
       features: lang === 'ES'
         ? [
-            'Creamos wireframes en Figma para previsualizar la estructura y el flujo, agilizando la revisión y aprobación antes del desarrollo.',
-            'Ofrecemos servicios específicos de diseño de UI para landing pages, sitios web completos o wireframes detallados.',
-            'La aplicación de metodologías de usabilidad (UX) es fundamental en cada diseño que creamos, optimizando la interacción del usuario.'
+            'Nuestra Oferta de Servicios de Diseño UI',
+            '',
+            'Dentro de nuestra especialización en diseño de interfaces, ofrecemos los siguientes servicios, disponibles de forma conjunta o por separado:',
+            '',
+            '• Wireframes: diseño de bocetos de alta fidelidad en Figma para landing pages o sitios completos.',
+            '• Mockups: visualización de los elementos de diseño representados en dispositivos, soportes digitales o material impreso para una demostración realista del producto final.',
+            '• Material Gráfico: diseño de flyers o posters (listos para redes sociales o impresión) que complementan tu estrategia de marketing digital.'
           ]
         : [
-            'We create wireframes in Figma to preview structure and flow, streamlining review and approval before development.',
-            'We offer specific UI design services for landing pages, complete websites, or detailed wireframes.',
-            'The application of usability (UX) methodologies is fundamental to every design we create, optimizing user interaction.'
+            'Our UI Design Services Offer',
+            '',
+            'Within our interface design specialization, we offer the following services, available together or separately:',
+            '',
+            '• Wireframes: high-fidelity sketch design in Figma for landing pages or complete sites.',
+            '• Mockups: visualization of design elements represented on devices, digital media or printed material for a realistic demonstration of the final product.',
+            '• Graphic Material: flyer or poster design (ready for social media or printing) that complements your digital marketing strategy.'
           ]
     },
     // Card 4: Brand Strategy & Identity
@@ -243,18 +251,190 @@ const Services = ({ lang }: ServicesProps) => {
                           <p className="text-gray-400">We launch fast, focusing on day-one functionality and the ability to grow with your business.</p>
                         </div>
                       ) : (
-                        <>
-                          <p>{service.description.split('\n').map((str, i) => <span key={i}>{str}<br /></span>)}</p>
-                          <br />
-                          <ul className="space-y-4 pl-2">
-                            {service.features.map((feature, i) => (
-                              <li className="text-gray-400 flex items-start" key={i}>
-                                <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
-                                {feature}
-                              </li>
-                            ))}
-                          </ul>
-                        </>
+                        lang === 'ES' && idx === 1 ? (
+                          <div>
+                            <p className="text-gray-400 mb-6">Desarrollamos sitios web personalizados que combinan alto rendimiento y una experiencia de usuario (UX) fluida. Nos especializamos en construir sitios rápidos, seguros y con una navegación intuitiva, garantizando la adaptabilidad total a cualquier dispositivo. Nuestro objetivo es desplegar una plataforma optimizada que impulse la conversión y la confiabilidad de tu marca.</p>
+                            <div className="border-t border-gray-600 pt-4">
+                              <p className="text-white font-semibold mb-4">Nuestro Paquete Integral de Diseño y Despliegue Web</p>
+                              <p className="text-gray-400 mb-4">Ofrecemos un servicio completo que va desde la conceptualización hasta la puesta en línea y el soporte continuo:</p>
+                              <div className="space-y-3">
+                                <div className="flex items-start">
+                                  <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                  <div>
+                                    <span className="text-white font-medium">Dominio:</span>
+                                    <span className="text-gray-400"> gestión de su dominio de preferencia a través de Hostinger, asegurando la máxima fiabilidad. Incluye la configuración de una casilla de correo profesional personalizada (ejemplo@tunegocio.com)</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start">
+                                  <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                  <div>
+                                    <span className="text-white font-medium">Seguridad:</span>
+                                    <span className="text-gray-400"> despliegue de un sitio HTTPS completamente seguro mediante certificados SSL/TLS, garantizando la encriptación de datos.</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start">
+                                  <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                  <div>
+                                    <span className="text-white font-medium">Integración de contacto:</span>
+                                    <span className="text-gray-400"> Inclusión de formulario de contacto (si se requiere) y botones directos a WhatsApp y plataformas de redes sociales.</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start">
+                                  <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                  <div>
+                                    <span className="text-white font-medium">Hosting:</span>
+                                    <span className="text-gray-400"> utilizamos la plataforma Vercel para el alojamiento de tu página, asegurando un rendimiento óptimo 24/7, escalabilidad y tiempos de carga rápidos.</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start">
+                                  <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                  <div>
+                                    <span className="text-white font-medium">Mantenimiento:</span>
+                                    <span className="text-gray-400"> garantizamos la operatividad continua del sitio. Incluimos gestión de dominio y hosting, soporte técnico ante fallas y hasta 1 hora semanal de desarrollo para ajustes y cambios adicionales.</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start">
+                                  <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                  <div>
+                                    <span className="text-white font-medium">Tipos de proyecto:</span>
+                                    <span className="text-gray-400"> desarrollamos landing pages, portfolios personales, sitios web corporativos y catálogos online (consultar por e-commerce).</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : lang === 'ES' && idx === 2 ? (
+                          <div>
+                            <p className="text-gray-400 mb-4">Comenzamos cada proyecto con una investigación UX (experiencia de usuario) profunda. Este proceso no es opcional: es la base estratégica para entender el comportamiento y las necesidades de tu audiencia, permitiéndonos optimizar la arquitectura de la información y la navegación del sitio.</p>
+                            <p className="text-gray-400 mb-6">Una vez analizados los datos, pasamos al Diseño UI (Interfaz de Usuario). Utilizamos Figma para construir prototipos que son visualmente atractivos, intuitivos y totalmente funcionales. Cada diseño que entregamos incluye de forma integral: un UX Writing optimizado, una colorimetría estratégica, tipografía seleccionada bajo criterios de legibilidad y la aplicación de guidelines de diseño universal.</p>
+                            <div className="border-t border-gray-600 pt-4">
+                              <p className="text-white font-semibold mb-4">Nuestra Oferta de Servicios de Diseño UI</p>
+                              <p className="text-gray-400 mb-4">Dentro de nuestra especialización en diseño de interfaces, ofrecemos los siguientes servicios, disponibles de forma conjunta o por separado:</p>
+                              <div className="space-y-3">
+                                <div className="flex items-start">
+                                  <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                  <div>
+                                    <span className="text-white font-medium">Wireframes:</span>
+                                    <span className="text-gray-400"> diseño de bocetos de alta fidelidad en Figma para landing pages o sitios completos.</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start">
+                                  <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                  <div>
+                                    <span className="text-white font-medium">Mockups:</span>
+                                    <span className="text-gray-400"> visualización de los elementos de diseño representados en dispositivos, soportes digitales o material impreso para una demostración realista del producto final.</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start">
+                                  <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                  <div>
+                                    <span className="text-white font-medium">Material Gráfico:</span>
+                                    <span className="text-gray-400"> diseño de flyers o posters (listos para redes sociales o impresión) que complementan tu estrategia de marketing digital.</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          lang === 'EN' && idx === 1 ? (
+                            <div>
+                              <p className="text-gray-400 mb-6">We develop customized websites that combine high performance with a smooth user experience (UX). We specialize in building fast, secure sites with intuitive navigation, ensuring total adaptability (responsive design) to any device. Our goal is to deploy an optimized platform that drives conversion and brand reliability.</p>
+                              <div className="border-t border-gray-600 pt-4">
+                                <p className="text-white font-semibold mb-4">Our Comprehensive Web Design and Deployment Package</p>
+                                <p className="text-gray-400 mb-4">We offer an end-to-end service, from conceptualization through to launch and ongoing support:</p>
+                                <div className="space-y-3">
+                                  <div className="flex items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                    <div>
+                                      <span className="text-white font-medium">Domain:</span>
+                                      <span className="text-gray-400"> management of your preferred domain through Hostinger, ensuring maximum reliability. Includes the setup of a personalized professional email account (e.g., example@yourbusiness.com).</span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                    <div>
+                                      <span className="text-white font-medium">Security:</span>
+                                      <span className="text-gray-400"> deployment of a completely secure HTTPS website using SSL/TLS certificates, guaranteeing data encryption.</span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                    <div>
+                                      <span className="text-white font-medium">Communication:</span>
+                                      <span className="text-gray-400"> Inclusion of a contact form (if required) and direct buttons to WhatsApp and social media platforms.</span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                    <div>
+                                      <span className="text-white font-medium">Hosting:</span>
+                                      <span className="text-gray-400"> we use Vercel software for your site's hosting, ensuring optimal 24/7 performance, scalability, and fast loading times.</span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                    <div>
+                                      <span className="text-white font-medium">Maintenance:</span>
+                                      <span className="text-gray-400"> we guarantee the site's continuous operation. This includes domain and hosting management, technical support for failures, and up to 1 hour of weekly development for additional adjustments and changes.</span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                    <div>
+                                      <span className="text-white font-medium">Project types:</span>
+                                      <span className="text-gray-400"> we develop landing pages, personal portfolios, corporate websites, and online catalogs (inquire about e-commerce).</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ) : lang === 'EN' && idx === 2 ? (
+                            <div>
+                              <p className="text-gray-400 mb-4">We initiate every project with in-depth UX research (user experience). This process is non-negotiable: it serves as the strategic foundation for understanding your audience's behavior and needs, enabling us to optimize the site's information architecture and navigation.</p>
+                              <p className="text-gray-400 mb-6">Once the data is analyzed, we transition to UI Design (user interface). We use Figma to build prototypes that are visually attractive, intuitive, and fully functional. Every design we deliver comprehensively includes: optimized UX writing, strategic colorimetry, selected typography based on legibility criteria, and the application of universal design guidelines.</p>
+                              <div className="border-t border-gray-600 pt-4">
+                                <p className="text-white font-semibold mb-4">Our UI Design Service Offering</p>
+                                <p className="text-gray-400 mb-4">Within our specialization in interface design, we offer the following services, available as comprehensive packages or modular deliverables:</p>
+                                <div className="space-y-3">
+                                  <div className="flex items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                    <div>
+                                      <span className="text-white font-medium">Wireframes:</span>
+                                      <span className="text-gray-400"> High-fidelity sketch design in Figma for landing pages or complete websites.</span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                    <div>
+                                      <span className="text-white font-medium">Mockups:</span>
+                                      <span className="text-gray-400"> Visualization of design elements represented on devices, digital supports, or print material for a realistic demonstration of the final product.</span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                    <div>
+                                      <span className="text-white font-medium">Graphic Material:</span>
+                                      <span className="text-gray-400"> Designing flyers or posters (ready for social media or print) that complement your digital marketing strategy.</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <>
+                              <p>{service.description.split('\n').map((str, i) => <span key={i}>{str}<br /></span>)}</p>
+                              <br />
+                              <ul className="space-y-4 pl-2">
+                                {service.features.map((feature, i) => (
+                                  <li className="text-gray-400 flex items-start" key={i}>
+                                    <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                    {feature}
+                                  </li>
+                                ))}
+                              </ul>
+                            </>
+                          )
+                        )
                       )
                     )
                   }

@@ -1,4 +1,4 @@
-import LogoNav from './assets/Navbar/LogoNav.png';
+import LogoNav from '/lovable-uploads/agarumayusmixed.png';
 
 interface LogoFrameProps {
   size?: 'sm' | 'md' | 'lg';

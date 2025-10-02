@@ -21,16 +21,16 @@ const LogoFrameExample = () => {
         <h3 className="text-lg font-semibold text-white">CSS Only Usage:</h3>
         <div className="flex items-center gap-4">
           <div className="logo-frame logo-frame-sm">
-            <img src="/src/components/assets/Navbar/LogoNav.png" alt="Logo AgaruCorp" />
+            <img src="/lovable-uploads/agarumayusmixed.png" alt="Logo AgaruCorp" />
           </div>
           <div className="logo-frame logo-frame-md">
-            <img src="/src/components/assets/Navbar/LogoNav.png" alt="Logo AgaruCorp" />
+            <img src="/lovable-uploads/agarumayusmixed.png" alt="Logo AgaruCorp" />
           </div>
           <div className="logo-frame logo-frame-lg">
-            <img src="/src/components/assets/Navbar/LogoNav.png" alt="Logo AgaruCorp" />
+            <img src="/lovable-uploads/agarumayusmixed.png" alt="Logo AgaruCorp" />
           </div>
           <div className="logo-frame logo-frame-xl">
-            <img src="/src/components/assets/Navbar/LogoNav.png" alt="Logo AgaruCorp" />
+            <img src="/lovable-uploads/agarumayusmixed.png" alt="Logo AgaruCorp" />
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@ const LogoFrameExample = () => {
           <h4 className="text-white font-medium mb-2">CSS Only:</h4>
           <pre className="text-sm text-gray-300">
 {`<div className="logo-frame logo-frame-md">
-  <img src="/path/to/LogoNav.png" alt="Logo AgaruCorp" />
+  <img src="/lovable-uploads/agarumayusmixed.png" alt="Logo AgaruCorp" />
 </div>`}
           </pre>
         </div>

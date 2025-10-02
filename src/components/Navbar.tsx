@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { Menu, X } from 'lucide-react';
-import LogoNav from './assets/Navbar/LogoNav.svg';
+import LogoNav from '/lovable-uploads/agarumayusmixed.png';
 
 interface NavbarProps {
   lang: 'ES' | 'EN';
@@ -92,20 +92,8 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <img src={LogoNav} alt="Logo AgaruCorp" className="w-[56px] h-[56px] object-contain" />
-            <span
-              className="font-poppins"
-              style={{
-                fontFamily: "'Altroned Trial', sans-serif",
-                color: '#fff',
-                letterSpacing: '0.05em',
-                fontSize: '17px',
-                fontWeight: 560
-              }}
-            >
-              AgaruCorp
-            </span>
+          <div className="flex items-center justify-center flex-1 md:flex-none">
+            <img src={LogoNav} alt="AgaruCorp Design" className="w-[156px] h-[73px] md:w-[187px] md:h-[88px] object-contain" />
           </div>
 
           {/* Desktop Navigation */}
