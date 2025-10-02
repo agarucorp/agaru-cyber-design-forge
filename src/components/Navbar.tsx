@@ -90,10 +90,10 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
         className="absolute top-0 left-0 z-50 rounded-tr-full rounded-br-full"
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center justify-center flex-1 md:flex-none">
-            <img src={LogoNav} alt="AgaruCorp Design" className="w-[156px] h-[73px] md:w-[187px] md:h-[88px] object-contain" />
+        <div className="flex items-center justify-between h-16 relative">
+          {/* Logo - Centrado en mobile */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:transform-none md:flex-none">
+            <img src={LogoNav} alt="AgaruCorp Design" className="w-[187px] h-[88px] md:w-[187px] md:h-[88px] object-contain" />
           </div>
 
           {/* Desktop Navigation */}
@@ -163,6 +163,9 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
             </a>
           </div>
 
+          {/* Spacer para balance en mobile */}
+          <div className="md:hidden w-10"></div>
+          
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
