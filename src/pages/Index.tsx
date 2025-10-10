@@ -14,37 +14,28 @@ const Index = () => {
   // Comentario: Configuración SEO dinámica según el idioma seleccionado
   const [lang, setLang] = useState<'ES' | 'EN'>('ES');
 
-  // Definición de títulos y descripciones SEO por idioma
+  // SEO optimizado para español únicamente
   const seo = {
-    ES: {
-      title: 'AgaruCorp Design',
-      description: 'Diseñamos experiencias digitales completas para pequeñas y medianas empresas, desde la creación de tu sitio o aplicación web hasta una identidad de marca que conecte con tus clientes.'
-    },
-    EN: {
-      title: 'AgaruCorp Design',
-      description: 'We design complete digital experiences for small and medium businesses, from creating your website or web application to a brand identity that connects with your customers.'
-    }
+    title: 'AgaruCorp | Diseño Web y Estrategia de Marca',
+    description: 'Creamos landing pages, sitios web, catálogos digitales y estrategia de marca para impulsar tu crecimiento online.'
   };
 
   return (
     <>
-      {/* Helmet gestiona las etiquetas <title> y <meta> para SEO, cambiando según el idioma */}
+      {/* Helmet gestiona las etiquetas <title> y <meta> para SEO optimizado */}
       <Helmet>
-        <title>{seo[lang].title}</title>
-        <meta name="description" content={seo[lang].description} />
-        <meta name="keywords" content={lang === 'ES' 
-          ? "diseño web, diseño de pagina web, sitio web, landing page, desarrollo de sitio web, sitio web para pyme, sitio web startup, sitio web empresa, diseño web argentina, diseño web buenos aires, branding, estrategia de marca, diseño UX/UI, React, Next.js, Vercel, JavaScript, TypeScript, sitios web responsivos, identidad corporativa, agencia digital, desarrollo web, aplicaciones web, AgaruCorp"
-          : "web design, website design, website, landing page, website development, website for small business, startup website, company website, web design argentina, web design buenos aires, branding, brand strategy, UX/UI design, React, Next.js, Vercel, JavaScript, TypeScript, responsive websites, corporate identity, digital agency, web development, web applications, AgaruCorp"
-        } />
-        {/* URL canónica para SEO */}
-        <link rel="canonical" href="https://www.agarucorp.com{lang === 'EN' ? '/en' : '/'}" />
-        {/* Open Graph dinámico */}
-        <meta property="og:title" content={seo[lang].title} />
-        <meta property="og:description" content={seo[lang].description} />
-        <meta property="og:locale" content={lang === 'ES' ? 'es_AR' : 'en_US'} />
-        {/* Twitter Cards dinámicas */}
-        <meta name="twitter:title" content={seo[lang].title} />
-        <meta name="twitter:description" content={seo[lang].description} />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="keywords" content="diseño web, diseño de pagina web, sitio web, landing page, desarrollo de sitio web, sitio web para pyme, sitio web startup, sitio web empresa, diseño web argentina, diseño web buenos aires, branding, estrategia de marca, diseño UX/UI, React, Next.js, Vercel, JavaScript, TypeScript, sitios web responsivos, identidad corporativa, agencia digital, desarrollo web, aplicaciones web, AgaruCorp" />
+        {/* URL canónica fija para SEO */}
+        <link rel="canonical" href="https://www.agarucorp.com/" />
+        {/* Open Graph optimizado */}
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:locale" content="es_AR" />
+        {/* Twitter Cards optimizadas */}
+        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:description" content={seo.description} />
       </Helmet>
       {/* Fin configuración SEO dinámica */}
       <div className="min-h-screen bg-cyber-dark">

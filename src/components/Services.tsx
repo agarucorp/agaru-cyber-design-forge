@@ -179,8 +179,8 @@ const Services = ({ lang }: ServicesProps) => {
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             {lang === 'ES'
-              ? 'Nos especializamos en ayudar a pequeñas/medianas empresas, startups y profesionales ambiciosos a lanzar sus marcas online'
-              : 'We specialize in helping small/medium businesses, startups, and ambitious professionals to launch and establish their brands online'}
+              ? 'Nos especializamos en ayudar a PyMEs, startups y profesionales ambiciosos a lanzar sus marcas online'
+              : 'We specialize in helping SMEs, startups, and ambitious professionals to launch and establish their brands online'}
           </p>
         </div>
 
@@ -449,18 +449,10 @@ const Services = ({ lang }: ServicesProps) => {
         {/* Call to Action */}
         <div className="text-center mt-16">
           <a
-            href="#contact"
+            href="/contacto"
             className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-medium text-lg transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6] inline-flex items-center gap-2"
-            onClick={e => {
-              if (isDesktop()) {
-                e.preventDefault();
-                window.location.hash = 'contact';
-              }
-            }}
-            onAuxClick={e => { if (isDesktop()) e.preventDefault(); }}
-            onContextMenu={e => { if (isDesktop()) e.preventDefault(); }}
           >
-            {lang === 'ES' ? 'Comenzá tu Proyecto' : 'Start Your Project'}
+            {lang === 'ES' ? 'Comenzá tu Proyecto de Diseño Web' : 'Start Your Web Design Project'}
           </a>
         </div>
       </div>

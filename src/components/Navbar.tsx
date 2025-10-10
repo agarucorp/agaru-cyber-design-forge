@@ -61,15 +61,15 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
 
   const navItems = lang === 'ES'
     ? [
-        { name: 'Servicios', href: '#services' },
-        { name: '¿Cómo Trabajamos?', href: '#process' },
-        { name: 'Proyectos', href: '#projects' },
+        { name: 'Servicios', href: '/servicios' },
+        { name: '¿Cómo Trabajamos?', href: '/proceso' },
+        { name: 'Proyectos', href: '/proyectos' },
         { name: 'FAQs', href: '#faq' },
       ]
     : [
-        { name: 'Services', href: '#services' },
-        { name: 'How it Works?', href: '#process' },
-        { name: 'Projects', href: '#projects' },
+        { name: 'Services', href: '/servicios' },
+        { name: 'How it Works?', href: '/proceso' },
+        { name: 'Projects', href: '/proyectos' },
         { name: 'FAQs', href: '#faq' },
       ];
 
@@ -114,8 +114,6 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                         window.location.hash = item.href.replace('#', '');
                       }
                     }}
-                    onAuxClick={e => { if (isDesktop() && item.href.startsWith('#')) e.preventDefault(); }}
-                    onContextMenu={e => { if (isDesktop() && item.href.startsWith('#')) e.preventDefault(); }}
                   >
                     {item.name}
                     <span
