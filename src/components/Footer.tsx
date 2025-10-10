@@ -304,8 +304,8 @@ const Footer = ({ lang }: FooterProps) => {
                     <option value="" disabled>{lang === 'ES' ? 'Seleccioná una opción' : 'Select an option'}</option>
                     <option value={lang === 'ES' ? 'Diseño UI' : 'UI Design'}>{lang === 'ES' ? 'Diseño UI' : 'UI Design'}</option>
                     <option value={lang === 'ES' ? 'Diseño Web' : 'Web Design'}>{lang === 'ES' ? 'Diseño Web' : 'Web Design'}</option>
-                    <option value={lang === 'ES' ? 'Desarrollo de Web App' : 'Web App'}>{lang === 'ES' ? 'Desarrollo de Web App' : 'Web App'}</option>
-                    <option value={lang === 'ES' ? 'Estrategia e Identidad de Marca' : 'Branding'}>{lang === 'ES' ? 'Estrategia e Identidad de Marca' : 'Branding'}</option>
+                    <option value={lang === 'ES' ? 'Desarrollo Web' : 'Web Development'}>{lang === 'ES' ? 'Desarrollo Web' : 'Web Development'}</option>
+                    <option value={lang === 'ES' ? 'Branding' : 'Branding'}>{lang === 'ES' ? 'Branding' : 'Branding'}</option>
                   </select>
                   {getError('subject') && (
                     <div className="text-red-500 text-xs mt-1">{getError('subject')}</div>

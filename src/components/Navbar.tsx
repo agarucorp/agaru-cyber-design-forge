@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { Menu, X } from 'lucide-react';
 import LogoNav from '/lovable-uploads/agarumayusmixed.png';
+import LogoNavMobile from '/LogoNav.png';
 
 interface NavbarProps {
   lang: 'ES' | 'EN';
@@ -91,9 +92,12 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 relative">
-          {/* Logo - Centrado en mobile */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-auto md:transform-none md:flex-none">
-            <img src={LogoNav} alt="AgaruCorp Design" className="w-[187px] h-[88px] md:w-[187px] md:h-[88px] object-contain" />
+          {/* Logo - Alineado a la izquierda en mobile, centrado en desktop */}
+          <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:flex-none">
+            {/* Logo para mobile - alineado a la izquierda */}
+            <img src={LogoNavMobile} alt="AgaruCorp Design" className="w-auto h-10 md:hidden object-contain" />
+            {/* Logo para desktop - centrado */}
+            <img src={LogoNav} alt="AgaruCorp Design" className="hidden md:block w-[187px] h-[88px] object-contain" />
           </div>
 
           {/* Desktop Navigation */}

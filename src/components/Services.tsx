@@ -45,7 +45,7 @@ const Services = ({ lang }: ServicesProps) => {
   const services = [
     // Card 1: Web Apps
     {
-      title: lang === 'ES' ? 'Aplicaciones Web' : 'Web Apps',
+      title: lang === 'ES' ? 'Desarrollo Web' : 'Web Development',
       description: lang === 'ES'
         ? 'Digitalizá tu operación con una Web App a medida.\nCreamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.'
         : 'Digitize Your Operations with a Custom Web App\nWe build applications that allow you to automate tasks, centralize data, and scale your business seamlessly.',
@@ -136,7 +136,7 @@ const Services = ({ lang }: ServicesProps) => {
     },
     // Card 4: Brand Strategy & Identity
     {
-      title: lang === 'ES' ? 'Estrategia de Marca' : 'Brand Strategy',
+      title: lang === 'ES' ? 'Branding' : 'Branding',
       description: lang === 'ES'
         ? 'Vamos más allá del diseño visual para forjar la base estratégica de tu marca. Trabajamos en la voz y la identidad que te diferenciarán, creando una conexión auténtica con tu audiencia y guiando tu crecimiento futuro.'
         : `We go beyond visual design to forge your brand's strategic foundation. We work on the voice and identity that will differentiate you, creating an authentic connection with your audience and guiding your future growth.`,
