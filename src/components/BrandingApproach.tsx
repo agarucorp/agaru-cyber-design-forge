@@ -91,7 +91,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
             {lang === 'ES'
               ? <>
                   Proceso de <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">Branding y Marketing</span>
@@ -101,7 +101,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
                 </>
             }
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4 md:mb-0">
+          <p className="text-[16px] md:text-xl text-gray-300 max-w-3xl mx-auto mb-4 md:mb-0">
             {lang === 'ES'
               ? '¿Cómo funciona?'
               : 'How it works?'}
@@ -137,12 +137,12 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
               {/* Content */}
               {index === 0 ? (
                 <div className="flex-1 bg-[#262626] rounded-2xl p-5 border border-white/10 transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:border-[#895AF6]/40 hover:ring-2 hover:ring-[#895AF6]/30 flex flex-col justify-center min-h-[90px] max-w-4xl group">
-                  <h3 className="text-xl font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">{step.title}</h3>
+                  <h3 className="text-[16px] md:text-xl font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">{step.title}</h3>
                   <p className="text-gray-300 text-base leading-relaxed group-hover:text-white/90 transition-colors duration-300">{step.description}</p>
                 </div>
               ) : (
                 <div className="flex-1 bg-[#262626] p-5 rounded-2xl transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:border-[#895AF6]/40 hover:ring-2 hover:ring-[#895AF6]/30 border border-white/5 min-h-[90px] max-w-4xl group">
-                  <h3 className="text-xl font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">
+                  <h3 className="text-[16px] md:text-xl font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">
                     {step.title}
                   </h3>
                   <p className="text-gray-300 text-base leading-relaxed group-hover:text-white/90 transition-colors duration-300">
@@ -182,7 +182,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
                       </div>
                     </div>
                     <div className="w-full min-h-[220px] cyber-card p-6 rounded-xl border border-white/5 flex flex-col items-center pt-8">
-                      <h3 className="text-xl font-bold text-white mb-4 text-center">
+                      <h3 className="text-[16px] md:text-xl font-bold text-white mb-4 text-center">
                         {step.title}
                       </h3>
                       <p className="text-gray-300 text-base text-center leading-relaxed">

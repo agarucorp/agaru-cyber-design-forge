@@ -125,7 +125,7 @@ const Footer = ({ lang }: FooterProps) => {
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
               {lang === 'ES' ? (
                 <>
                   <span className="sr-only">AgaruCorp - </span>Trabajemos <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">Juntos</span> en tu Proyecto
@@ -136,10 +136,10 @@ const Footer = ({ lang }: FooterProps) => {
                 </>
               )}
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-[16px] md:text-xl text-gray-300 max-w-3xl mx-auto">
               {lang === 'ES'
-                ? '¿Listo para llevar tu negocio al siguiente nivel? Escribinos y conversemos sobre cómo podemos ayudarte a lograr tus objetivos comerciales'
-                : `Ready to elevate your business? Get in touch and let's discuss how we can help you achieve your goals`}
+                ? 'Tengamos una charla. Contanos sobre tu negocio y veamos cómo podemos ayudarte a crecer en el mundo digital.'
+                : `Let's have a chat. Tell us about your business and let's see how we can help you grow online.`}
             </p>
           </div>
 
@@ -190,16 +190,16 @@ const Footer = ({ lang }: FooterProps) => {
 
               {/* Social Links */}
               <div>
-                <h4 className="text-lg font-semibold text-white mb-4">{lang === 'ES' ? 'Síguenos en Redes Sociales' : 'Follow Us on Social Media'}</h4>
+                <h4 className="text-[16px] md:text-lg font-semibold text-white mb-4">{lang === 'ES' ? 'Seguinos en nuestras redes' : 'Follow Us on Social Media'}</h4>
                 <div className="flex gap-4">
-                  {/* Instagram icon hidden for now
                   <a
-                    href="#"
+                    href="https://www.instagram.com/agarucorp"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-agaru-purple/20 transition-colors duration-300 group"
                   >
                     <Instagram className="w-6 h-6 text-gray-400 group-hover:text-agaru-purple transition-colors duration-300" />
                   </a>
-                  */}
                   <a
                     href="https://www.linkedin.com/company/agarucorp/"
                     target="_blank"

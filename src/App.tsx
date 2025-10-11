@@ -6,10 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Fixes from "./pages/Fixes";
-import Servicios from "./pages/Servicios";
-import Proyectos from "./pages/Proyectos";
-import Proceso from "./pages/Proceso";
-import Contacto from "./pages/Contacto";
 import React from "react";
 import whatsappIcon from './components/assets/ProjectShowcase/whatsapp.png';
 
@@ -117,10 +113,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/fixes" element={<Fixes />} />
-              <Route path="/servicios" element={<Servicios />} />
-              <Route path="/proyectos" element={<Proyectos />} />
-              <Route path="/proceso" element={<Proceso />} />
-              <Route path="/contacto" element={<Contacto />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

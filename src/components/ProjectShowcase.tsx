@@ -140,11 +140,11 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     <section id="projects" className="py-20 bg-cyber-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
             {lang === 'ES' ? 'Proyectos ' : 'Featured '}
             <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">{lang === 'ES' ? 'Destacados' : 'Projects'}</span>
           </h2>
-          <p className="text-xl text-gray-300 text-center">
+          <p className="text-[16px] md:text-xl text-gray-300 text-center">
             {lang === 'ES'
               ? 'Descubrí cómo ayudamos a startups y negocios a transformar su presencia digital'
               : `Discover how we've helped startups and different businesses transform their digital presence and achieve remarkable growth`}
@@ -260,7 +260,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center p-4">
                   <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#4B267A] text-white mb-2" style={{ fontSize: '0.75rem' }}>{project.category}</span>
-                  <h3 className="text-lg font-bold text-white mb-2 text-center drop-shadow-lg">{project.title}</h3>
+                  <h3 className="text-[16px] md:text-lg font-bold text-white mb-2 text-center drop-shadow-lg">{project.title}</h3>
                   <p className="text-base text-white mb-4 text-center drop-shadow-lg">{project.description}</p>
                   <a href={project.link} className="w-12 h-12 bg-agaru-purple rounded-full flex items-center justify-center hover:bg-agaru-purple-light transition-colors duration-300" target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-6 h-6 text-white" />

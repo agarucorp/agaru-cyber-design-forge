@@ -160,13 +160,22 @@ const Services = ({ lang }: ServicesProps) => {
   }, [services.length]);
 
   // Utilidad para detectar desktop (igual que en Hero y Navbar)
-  const isDesktop = () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
+// Función mejorada para scroll suave a secciones
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+};
 
   return (
     <section id="services" className="py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
             {lang === 'ES' ? (
               <>
                 <span className="sr-only">AgaruCorp - </span>Nuestros <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Servicios</span>
@@ -177,7 +186,7 @@ const Services = ({ lang }: ServicesProps) => {
               </>
             )}
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-[16px] md:text-xl text-gray-300 max-w-3xl mx-auto">
             {lang === 'ES'
               ? 'Nos especializamos en ayudar a PyMEs, startups y profesionales ambiciosos a lanzar sus marcas online'
               : 'We specialize in helping SMEs, startups, and ambitious professionals to launch and establish their brands online'}
@@ -449,10 +458,14 @@ const Services = ({ lang }: ServicesProps) => {
         {/* Call to Action */}
         <div className="text-center mt-16">
           <a
-            href="/contacto"
-            className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-medium text-lg transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6] inline-flex items-center gap-2"
+            href="#contact"
+            className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-medium text-[14px] md:text-lg transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6] inline-flex items-center gap-2"
+            onClick={e => {
+              e.preventDefault();
+              scrollToSection('contact');
+            }}
           >
-            {lang === 'ES' ? 'Comenzá tu Proyecto de Diseño Web' : 'Start Your Web Design Project'}
+            {lang === 'ES' ? 'Comenzá tu Proyecto' : 'Start Your Project'}
           </a>
         </div>
       </div>

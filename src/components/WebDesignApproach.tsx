@@ -171,7 +171,7 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
       <div className="max-w-7xl w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
             {lang === 'ES' ? (
               <>
                 Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño Web</span>
@@ -182,7 +182,7 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
               </>
             )}
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-[16px] md:text-xl text-gray-300 max-w-3xl mx-auto">
             {lang === 'ES' ? 'Etapas de desarrollo' : ''}
           </p>
         </div>
@@ -205,7 +205,7 @@ const WebDesignApproach = ({ lang }: WebDesignApproachProps) => {
                   </span>
                 </div>
                 {/* Título */}
-                <h3 className="text-xl font-bold text-white mb-3 text-center drop-shadow">{step.title}</h3>
+                <h3 className="text-[16px] md:text-xl font-bold text-white mb-3 text-center drop-shadow">{step.title}</h3>
                 {/* Descripción */}
                 {((lang === 'ES' && step.title === 'Mantenimiento') || (lang === 'EN' && step.title === 'Support and Maintenance')) ? (
                   <>

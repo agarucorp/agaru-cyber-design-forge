@@ -26,7 +26,7 @@ const FAQCard = ({ question, answer, isOpen, onToggle, image }: FAQCardProps) =>
               />
             </div>
           )}
-          <span className="text-xl font-bold text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
+          <span className="text-[16px] md:text-xl font-bold text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
             {question}
           </span>
         </div>

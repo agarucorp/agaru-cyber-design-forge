@@ -108,14 +108,14 @@ export default function WebProcessStepper({ lang }: WebProcessStepperProps) {
   return (
     <section className="py-20 bg-cyber-grey flex justify-center items-center w-full">
       <div className="max-w-5xl w-full flex flex-col items-center px-2">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
+        <h2 className="text-[24px] md:text-5xl font-bold text-white mb-4 text-center">
           {lang === 'EN' ? (
             <><span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Web Design</span> Process</>
           ) : (
             <>Proceso de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Diseño Web</span></>
           )}
         </h2>
-        <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8 text-center">
+        <p className="text-[16px] md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 text-center">
           {lang === 'EN' ? 'Development stages' : 'Etapas de desarrollo'}
         </p>
         {/* Desktop: vertical steps */}
@@ -138,7 +138,7 @@ export default function WebProcessStepper({ lang }: WebProcessStepperProps) {
                 </div>
                 {/* Card glassmorphism */}
                 <div className="flex-1 w-full rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl px-5 py-5 flex flex-col items-start transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:border-[#895AF6]/40 hover:ring-2 hover:ring-[#895AF6]/30">
-                  <h3 className="text-base md:text-lg font-semibold text-white mb-2 text-left drop-shadow group-hover:text-[#B983FF] transition-colors duration-300">
+                  <h3 className="text-[14px] md:text-lg font-semibold text-white mb-2 text-left drop-shadow group-hover:text-[#B983FF] transition-colors duration-300">
                     {step.title}
                   </h3>
                   <p className="text-gray-300 text-sm md:text-base text-left leading-snug group-hover:text-white/90 transition-colors duration-300">
@@ -172,7 +172,7 @@ export default function WebProcessStepper({ lang }: WebProcessStepperProps) {
                     </span>
                   </div>
                   <div className="w-full min-h-[220px] cyber-card p-6 rounded-xl border border-white/5 flex flex-col items-center">
-                    <h3 className="text-xl font-bold text-white mb-4 text-center">
+                    <h3 className="text-[16px] md:text-xl font-bold text-white mb-4 text-center">
                       {step.title}
                     </h3>
                     <p className="text-gray-300 text-base text-center leading-relaxed">

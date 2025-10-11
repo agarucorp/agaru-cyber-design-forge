@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { Menu, X } from 'lucide-react';
 import LogoNav from '/lovable-uploads/agarumayusmixed.png';
-import LogoNavMobile from '/LogoNav.png';
 
 interface NavbarProps {
   lang: 'ES' | 'EN';
@@ -23,8 +22,16 @@ const getSectionFromScroll = (sections) => {
   return current;
 };
 
-// Utilidad para detectar desktop (igual que en Hero)
-const isDesktop = () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
+// Función mejorada para scroll suave a secciones
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+};
 
 const Navbar = ({ lang, setLang }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,15 +69,15 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
 
   const navItems = lang === 'ES'
     ? [
-        { name: 'Servicios', href: '/servicios' },
-        { name: '¿Cómo Trabajamos?', href: '/proceso' },
-        { name: 'Proyectos', href: '/proyectos' },
+        { name: 'Servicios', href: '#services' },
+        { name: '¿Cómo Trabajamos?', href: '#process' },
+        { name: 'Proyectos', href: '#projects' },
         { name: 'FAQs', href: '#faq' },
       ]
     : [
-        { name: 'Services', href: '/servicios' },
-        { name: 'How it Works?', href: '/proceso' },
-        { name: 'Projects', href: '/proyectos' },
+        { name: 'Services', href: '#services' },
+        { name: 'How it Works?', href: '#process' },
+        { name: 'Projects', href: '#projects' },
         { name: 'FAQs', href: '#faq' },
       ];
 
@@ -92,11 +99,11 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 relative">
-          {/* Logo - Alineado a la izquierda en mobile, centrado en desktop */}
-          <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:flex-none">
+          {/* Logo - Alineado a la izquierda en mobile y desktop */}
+          <div className="flex-none">
             {/* Logo para mobile - alineado a la izquierda */}
-            <img src={LogoNavMobile} alt="AgaruCorp Design" className="w-auto h-10 md:hidden object-contain" />
-            {/* Logo para desktop - centrado */}
+            <img src={LogoNav} alt="AgaruCorp Design" className="w-auto h-[17px] md:hidden object-contain" />
+            {/* Logo para desktop - alineado a la izquierda */}
             <img src={LogoNav} alt="AgaruCorp Design" className="hidden md:block w-[187px] h-[88px] object-contain" />
           </div>
 
@@ -113,9 +120,9 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                     className={`relative text-white hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-medium
                       ${isActive ? 'text-[#895AF6]' : ''}`}
                     onClick={e => {
-                      if (isDesktop() && item.href.startsWith('#')) {
+                      if (item.href.startsWith('#')) {
                         e.preventDefault();
-                        window.location.hash = item.href.replace('#', '');
+                        scrollToSection(item.href.replace('#', ''));
                       }
                     }}
                   >
@@ -153,13 +160,9 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
               href="#contact"
               className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-medium text-[13px] transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6]"
               onClick={e => {
-                if (isDesktop()) {
-                  e.preventDefault();
-                  window.location.hash = 'contact';
-                }
+                e.preventDefault();
+                scrollToSection('contact');
               }}
-              onAuxClick={e => { if (isDesktop()) e.preventDefault(); }}
-              onContextMenu={e => { if (isDesktop()) e.preventDefault(); }}
             >
               {lang === 'ES' ? 'Contacto' : 'Book a Call'}
             </a>
@@ -205,13 +208,11 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                   className="text-gray-300 hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-medium"
                   onClick={e => {
                     setIsMobileMenuOpen(false);
-                    if (isDesktop()) {
+                    if (item.href.startsWith('#')) {
                       e.preventDefault();
-                      window.location.hash = item.href.replace('#', '');
+                      scrollToSection(item.href.replace('#', ''));
                     }
                   }}
-                  onAuxClick={e => { if (isDesktop()) e.preventDefault(); }}
-                  onContextMenu={e => { if (isDesktop()) e.preventDefault(); }}
                 >
                   {item.name}
                 </a>
@@ -219,7 +220,11 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
               <a
                 href="#contact"
                 className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md text-center mt-4 font-medium text-[13px] transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6]"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={e => {
+                  setIsMobileMenuOpen(false);
+                  e.preventDefault();
+                  scrollToSection('contact');
+                }}
               >
                 {lang === 'ES' ? 'Contacto' : 'Book a Call'}
               </a>

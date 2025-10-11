@@ -124,11 +124,11 @@ const FAQ = ({ lang }: FAQProps) => {
     <section id="faq" className="py-20 bg-cyber-grey">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
             {lang === 'ES' ? 'Preguntas ' : 'Frequently Asked '}
             <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">{lang === 'ES' ? 'Frecuentes' : 'Questions'}</span>
           </h2>
-          <p className="text-xl text-gray-300">
+          <p className="text-[16px] md:text-xl text-gray-300">
             {lang === 'ES'
               ? 'Encontrá respuestas a las dudas más comunes sobre nuestros servicios y procesos'
               : 'Find answers to common questions about our services and process.'}
@@ -160,7 +160,7 @@ const FAQ = ({ lang }: FAQProps) => {
                         onClick={() => toggleFAQ(categoryIndex, questionIndex)}
                         className="w-full p-6 text-left flex items-center justify-between transition-all duration-300 group hover:shadow-2xl hover:scale-[1.025] hover:bg-[#23243a]/90 hover:text-[#895AF6] focus:outline-none"
                       >
-                        <span className="text-xl font-bold text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
+                        <span className="text-[16px] md:text-xl font-bold text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
                           {faq.question}
                         </span>
                         <div className="text-white flex-shrink-0 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">

@@ -381,7 +381,7 @@ const FixesForm = ({ lang, setLang }: FixesFormProps) => {
             {lang === 'ES' ? 'Reporte de Ajustes' : 'Fixes Report'}
           </div>
           
-          <h1 className="text-4xl lg:text-5xl font-bold mb-4">
+          <h1 className="text-[24px] lg:text-5xl font-bold mb-4">
             {lang === 'ES' ? (
               <>
                 <span className="text-cyber-primary">Ajustes</span> y{' '}
@@ -395,7 +395,7 @@ const FixesForm = ({ lang, setLang }: FixesFormProps) => {
             )}
           </h1>
           
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-[16px] lg:text-lg text-muted-foreground max-w-2xl mx-auto">
             {lang === 'ES' 
               ? 'Ayúdanos a mejorar tu proyecto. Reporta lo que está funcionando bien y lo que necesita ajustes.'
               : 'Help us improve your project. Report what is working well and what needs adjustments.'}
@@ -759,7 +759,7 @@ const FixesForm = ({ lang, setLang }: FixesFormProps) => {
               size="lg"
               variant="cyber"
               disabled={isSubmitting || !isFormComplete()}
-              className={`px-8 py-3 text-lg ${!isFormComplete() ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`px-8 py-3 text-[14px] lg:text-lg ${!isFormComplete() ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               {isSubmitting ? (
                 <div className="flex items-center gap-2">
