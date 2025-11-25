@@ -8,7 +8,6 @@ import silande1 from './assets/ProjectShowcase/silande1.png';
 import logocannlabs1 from './assets/ProjectShowcase/Logocannlabs1.png';
 import group18 from './assets/ProjectShowcase/Group 18.png';
 import cardtr from './assets/ProjectShowcase/cardtr.png';
-import cardmaxtech from './assets/ProjectShowcase/cardmaxtech.png';
 import { useState, useEffect } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 
@@ -52,12 +51,6 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       link: '#',
       github: '#',
     },
-    {
-      image: cardmaxtech,
-      tags: ['Estrategia', 'Analítica', 'Marketing de Contenidos'],
-      link: '#',
-      github: '#',
-    },
   ];
 
   const categories = [
@@ -66,7 +59,6 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     'Web Design',   // 3
     'Web Catalog',  // 4
     'Web Design',   // 5
-    'Web Catalog',  // 6
   ];
 
   const projectCommon = [
@@ -90,10 +82,6 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       title: 'CannLabs',
       link: 'https://www.canadiannlabs.com', // Actualizado
     },
-    {
-      title: 'Maxtech Latam',
-      link: '#',
-    },
   ];
 
   const descriptions = lang === 'ES'
@@ -103,7 +91,6 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
         'Sitio web para salón de peluquería',
         'Catálogo online para empresa de productos industriales.',
         'Sitio web para empresa productora de extracto de yerba mate, stevia y té.',
-        'Catálogo online de insumos industriales para construcción.',
       ]
     : [
         "Web app for psychologists' management and patient connection.",
@@ -111,7 +98,6 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
         'Hair salon website',
         'Online industrial products catalog',
         'Yerba mate, stevia, and tea extract manufacturer website',
-        'Online catalog of industrial supplies for construction.',
       ];
 
   const projects = descriptions.map((description, i) => ({

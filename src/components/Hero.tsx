@@ -70,8 +70,8 @@ const Hero = ({ lang = 'ES' }) => {
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                 {lang === 'ES' ? (
                   <>
-                    <span className="sr-only">AgaruCorp - </span>Interfaces <span className="text-[#895AF6]">Digitales</span><br />
-                    de <span>Próxima</span><br />
+                    <span className="sr-only">AgaruCorp - </span><span className="text-[#895AF6]">Interfaces</span> <span className="text-[#895AF6]">Digitales</span><br />
+                    de <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Próxima</span><br />
                     <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Generación</span>
                   </>
                 ) : (
