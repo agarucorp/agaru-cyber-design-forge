@@ -20,7 +20,7 @@ interface ProjectShowcaseProps {
 const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   const isMobile = useIsMobile();
   const [currentPage, setCurrentPage] = useState(1);
-  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
   const projectsPerPage = 3;
   const projectsData = [
     {
@@ -128,14 +128,17 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   const endIndex = startIndex + projectsPerPage;
   const currentProjects = projects.slice(startIndex, endIndex);
 
-  // Carousel automático para mobile
-  useEffect(() => {
-    if (!isMobile) return;
-    const interval = setInterval(() => {
-      setCarouselIndex((prev) => (prev + 1) % projects.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isMobile, projects.length]);
+  const handleFlip = (index: number) => {
+    setFlippedCards(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
 
   return (
     <section id="projects" className="py-20 w-full overflow-x-hidden" style={{ backgroundColor: '#171619' }}>
@@ -233,40 +236,83 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
           </div>
         </div>
 
-        {/* Mobile: Carrusel lateral, solo una card visible a la vez */}
-        <div className="md:hidden flex justify-center items-center relative min-h-[420px]">
-          {projects.map((project, idx) => (
-            <div
-              key={project.title}
-              className={`absolute left-0 right-0 transition-transform duration-700 ease-in-out ${carouselIndex === idx ? 'translate-x-0 opacity-100 z-10' : carouselIndex < idx ? 'translate-x-full opacity-0 z-0 pointer-events-none' : '-translate-x-full opacity-0 z-0 pointer-events-none'}`}
-              style={{ willChange: 'transform, opacity' }}
-            >
-              <div className="group cyber-card rounded-xl overflow-hidden border border-white/5 relative h-[420px] w-[90vw] max-w-xs mx-auto flex flex-col" style={{ maxWidth: 'calc(100vw - 2rem)' }}>
-                <div className="w-full h-48 bg-gray-900 flex items-center justify-center overflow-hidden">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                </div>
-                <div className="flex-1 flex flex-col items-center justify-center p-4">
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#4B267A] text-white mb-2" style={{ fontSize: '0.75rem' }}>{project.category}</span>
-                  <h3 className="text-[16px] md:text-lg font-manrope font-bold text-white mb-2 text-center drop-shadow-lg capitalize">{project.title}</h3>
-                  <p className="text-base text-white mb-4 text-center drop-shadow-lg">{project.description}</p>
-                  <a href={project.link} className="w-12 h-12 bg-agaru-purple rounded-full flex items-center justify-center hover:bg-agaru-purple-light transition-colors duration-300" target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-6 h-6 text-white" />
-                  </a>
+        {/* Mobile: Flip Cards apiladas verticalmente */}
+        <div className="md:hidden space-y-6">
+          {projects.map((project, idx) => {
+            const isFlipped = flippedCards.has(idx);
+            return (
+              <div
+                key={project.title}
+                className="w-full max-w-sm mx-auto"
+                style={{ perspective: '1000px' }}
+              >
+                <div
+                  className="relative h-96 cursor-pointer"
+                  onClick={() => handleFlip(idx)}
+                >
+                  <div
+                    className="relative w-full h-full transition-transform duration-700"
+                    style={{
+                      transformStyle: 'preserve-3d',
+                      transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                    }}
+                  >
+                    {/* Front Side - Imagen */}
+                    <div
+                      className="absolute inset-0 w-full h-full rounded-xl overflow-hidden"
+                      style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                    >
+                      <div className="relative w-full h-full">
+                        <div className="absolute top-4 left-4 z-20">
+                          <span className="text-white text-xs font-semibold px-3 py-1 rounded-full bg-[#4B267A]">
+                            {project.category}
+                          </span>
+                        </div>
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+                          <p className="text-white text-xs font-manrope text-center bg-black/50 px-3 py-1 rounded-full">
+                            {lang === 'ES' ? 'Toca para ver más' : 'Tap to see more'}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Back Side - Información */}
+                    <div
+                      className="absolute inset-0 w-full h-full rounded-xl overflow-hidden"
+                      style={{ 
+                        backfaceVisibility: 'hidden', 
+                        WebkitBackfaceVisibility: 'hidden',
+                        transform: 'rotateY(180deg)'
+                      }}
+                    >
+                      <div className="w-full h-full bg-[#262626] border border-[#895AF6]/30 rounded-xl p-6 flex flex-col items-center justify-center">
+                        <h3 className="text-xl font-manrope font-bold text-white mb-4 text-center">
+                          {project.title}
+                        </h3>
+                        <p className="text-gray-300 text-sm font-manrope text-center mb-6 leading-relaxed">
+                          {project.description}
+                        </p>
+                        <a
+                          href={project.link}
+                          className="w-12 h-12 bg-[#895AF6] rounded-full flex items-center justify-center hover:bg-[#A37EFA] transition-colors duration-300"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <ExternalLink className="w-6 h-6 text-white" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-        {/* Indicadores del carousel solo en mobile */}
-        <div className="md:hidden flex justify-center mt-4 gap-2">
-          {projects.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCarouselIndex(i)}
-              className={`w-3 h-3 rounded-full border transition-colors duration-200 ${carouselIndex === i ? 'bg-agaru-purple border-agaru-purple' : 'bg-cyber-grey border-gray-600'}`}
-              aria-label={`Proyecto ${i + 1}`}
-            />
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
