@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
+import { ScrollAnimate } from './ScrollAnimate';
 
 interface FAQProps {
   lang: 'ES' | 'EN';
@@ -15,11 +16,11 @@ const FAQ = ({ lang }: FAQProps) => {
   const faqs = lang === 'ES'
     ? [
         {
-          category: 'Diseño y Desarrollo Web',
+          category: 'Diseño & desarrollo web',
           questions: [
             {
               question: '¿Cuál es el tiempo estimado para un proyecto web?',
-              answer: 'El tiempo de entrega varía según la complejidad del proyecto. Para sitios web estáticos o landing pages, estimamos entre 1 y 2 semanas. Las aplicaciones web, debido a su mayor complejidad y funcionalidades interactivas, suelen requerir 3 semanas o más. Una vez definidos los requisitos específicos, te proporcionaremos un cronograma detallado.'
+              answer: 'El tiempo de entrega varía según la complejidad del proyecto. Para páginas simples menos de 5 días y sitios web 1/2 semanas. Las aplicaciones web suelen requerir de 1 a 3 meses. Una vez definidos los requisitos específicos, te proporcionaremos un cronograma detallado.'
             },
             {
               question: '¿Ofrecen mantenimiento y soporte continuo?',
@@ -32,7 +33,7 @@ const FAQ = ({ lang }: FAQProps) => {
           ]
         },
         {
-          category: 'Branding y Estrategia',
+          category: 'Marca',
           questions: [
             {
               question: '¿Cúal es la diferencia entre branding y marketing?',
@@ -40,7 +41,7 @@ const FAQ = ({ lang }: FAQProps) => {
             },
             {
               question: '¿Puede mi marca evolucionar con el tiempo?',
-              answer: 'Absolutamente. Una marca sólida es flexible y adaptable. A medida que tu negocio o el mercado evolucionan, tu marca puede y debe ajustarse, manteniendo siempre la esencia que te hace único.'
+              answer: 'Una marca sólida es flexible y adaptable. A medida que tu negocio o el mercado evolucionan, tu marca puede y debe ajustarse, manteniendo siempre la esencia que te hace único.'
             },
             {
               question: '¿Pueden ayudar a rebrandear un negocio existente?',
@@ -121,24 +122,19 @@ const FAQ = ({ lang }: FAQProps) => {
   };
 
   return (
-    <section id="faq" className="py-20 bg-cyber-grey">
+    <section id="faq" className="py-20 bg-black w-full overflow-x-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-6">
             {lang === 'ES' ? 'Preguntas ' : 'Frequently Asked '}
-            <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">{lang === 'ES' ? 'Frecuentes' : 'Questions'}</span>
+            <span className="text-[#895AF6]">{lang === 'ES' ? 'frecuentes' : 'Questions'}</span>
           </h2>
-          <p className="text-[16px] md:text-xl text-gray-300">
-            {lang === 'ES'
-              ? 'Encontrá respuestas a las dudas más comunes sobre nuestros servicios y procesos'
-              : 'Find answers to common questions about our services and process.'}
-          </p>
         </div>
 
         <div className="space-y-8">
           {faqs.map((category, categoryIndex) => (
             <div key={categoryIndex} className="animate-fade-in" style={{ animationDelay: `${categoryIndex * 0.1}s` }}>
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+              <h3 className="text-2xl font-bold text-white mb-6 flex items-center capitalize">
                 <div className="w-1 h-8 cyber-gradient rounded-full mr-4"></div>
                 {category.category}
               </h3>
@@ -160,7 +156,7 @@ const FAQ = ({ lang }: FAQProps) => {
                         onClick={() => toggleFAQ(categoryIndex, questionIndex)}
                         className="w-full p-6 text-left flex items-center justify-between transition-all duration-300 group hover:shadow-2xl hover:scale-[1.025] hover:bg-[#23243a]/90 hover:text-[#895AF6] focus:outline-none"
                       >
-                        <span className="text-[16px] md:text-xl font-bold text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
+                        <span className="text-[16px] md:text-xl font-light text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
                           {faq.question}
                         </span>
                         <div className="text-white flex-shrink-0 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">

@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import FAQCard from './FAQCard'; // Added import for FAQCard
 import { useState, useRef, useEffect } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
+import { ScrollAnimate } from './ScrollAnimate';
 import calenacard from './assets/ProjectShowcase/calenacard.png';
 import cardmaxtech from './assets/ProjectShowcase/cardmaxtech.png';
 
@@ -172,23 +173,23 @@ const scrollToSection = (sectionId: string) => {
 };
 
   return (
-    <section id="services" className="py-20 relative overflow-hidden">
+    <section id="services" className="py-20 relative overflow-hidden bg-black w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-6">
             {lang === 'ES' ? (
               <>
-                <span className="sr-only">AgaruCorp - </span>Nuestros <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Servicios</span>
+                <span className="sr-only">AgaruCorp - </span>Nuestros <span className="text-[#895AF6]">servicios</span>
               </>
             ) : (
               <>
-                <span className="sr-only">AgaruCorp - </span>Our <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent">Services</span>
+                <span className="sr-only">AgaruCorp - </span>Our <span className="text-[#895AF6]">Services</span>
               </>
             )}
           </h2>
-          <p className="text-[16px] md:text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto font-manrope font-light">
             {lang === 'ES'
-              ? 'Nos especializamos en ayudar a PyMEs, startups y profesionales ambiciosos a lanzar sus marcas online'
+              ? 'Nos especializamos en ayudar a PyMEs, startups y profesionales a lanzar sus marcas online'
               : 'We specialize in helping SMEs, startups, and ambitious professionals to launch and establish their brands online'}
           </p>
         </div>
@@ -262,9 +263,8 @@ const scrollToSection = (sectionId: string) => {
                       ) : (
                         lang === 'ES' && idx === 1 ? (
                           <div>
-                            <p className="text-gray-400 mb-6">Desarrollamos sitios web personalizados que combinan alto rendimiento y una experiencia de usuario (UX) fluida. Nos especializamos en construir sitios rápidos, seguros y con una navegación intuitiva, garantizando la adaptabilidad total a cualquier dispositivo. Nuestro objetivo es desplegar una plataforma optimizada que impulse la conversión y la confiabilidad de tu marca.</p>
-                            <div className="border-t border-gray-600 pt-4">
-                              <p className="text-white font-semibold mb-4">Nuestro Paquete Integral de Diseño y Despliegue Web</p>
+                            <div>
+                              <p className="text-white font-semibold mb-4">Nuestro paquete integral de diseño y despliegue web</p>
                               <p className="text-gray-400 mb-4">Ofrecemos un servicio completo que va desde la conceptualización hasta la puesta en línea y el soporte continuo:</p>
                               <div className="space-y-3">
                                 <div className="flex items-start">
@@ -284,8 +284,8 @@ const scrollToSection = (sectionId: string) => {
                                 <div className="flex items-start">
                                   <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
                                   <div>
-                                    <span className="text-white font-medium">Integración de contacto:</span>
-                                    <span className="text-gray-400"> Inclusión de formulario de contacto (si se requiere) y botones directos a WhatsApp y plataformas de redes sociales.</span>
+                                    <span className="text-white font-medium">Contacto:</span>
+                                    <span className="text-gray-400"> Formulario de contacto, botones de WhatsApp y redes sociales.</span>
                                   </div>
                                 </div>
                                 <div className="flex items-start">
@@ -306,7 +306,7 @@ const scrollToSection = (sectionId: string) => {
                                   <div className="w-1.5 h-1.5 rounded-full mr-3 mt-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
                                   <div>
                                     <span className="text-white font-medium">Tipos de proyecto:</span>
-                                    <span className="text-gray-400"> desarrollamos landing pages, portfolios personales, sitios web corporativos y catálogos online (consultar por e-commerce).</span>
+                                    <span className="text-gray-400"> landing pages, portfolios personales, sitios web corporativos y catálogos online (consultar por e-commerce).</span>
                                   </div>
                                 </div>
                               </div>
@@ -455,19 +455,6 @@ const scrollToSection = (sectionId: string) => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <a
-            href="#contact"
-            className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-medium text-[14px] md:text-lg transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6] inline-flex items-center gap-2"
-            onClick={e => {
-              e.preventDefault();
-              scrollToSection('contact');
-            }}
-          >
-            {lang === 'ES' ? 'Comenzá tu Proyecto' : 'Start Your Project'}
-          </a>
-        </div>
       </div>
     </section>
   );

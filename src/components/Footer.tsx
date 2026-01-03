@@ -5,6 +5,7 @@ import { useToast } from '@/hooks/use-toast';
 import LogoNav from '/lovable-uploads/agarumayusmixed.png';
 import { Button } from './ui/button';
 import emailjs from '@emailjs/browser';
+import { ScrollAnimate } from './ScrollAnimate';
 
 interface FooterProps {
   lang: 'ES' | 'EN';
@@ -120,25 +121,25 @@ const Footer = ({ lang }: FooterProps) => {
   };
 
   return (
-    <footer id="contact" className="bg-gradient-to-b from-cyber-dark to-black">
+    <footer id="contact" className="bg-black w-full overflow-x-hidden">
       {/* Contact Form Section */}
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-6">
               {lang === 'ES' ? (
                 <>
-                  <span className="sr-only">AgaruCorp - </span>Trabajemos <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">Juntos</span> en tu Proyecto
+                  <span className="sr-only">AgaruCorp - </span>Trabajemos <span className="text-[#895AF6]">juntos</span>
                 </>
               ) : (
                 <>
-                  <span className="sr-only">AgaruCorp - </span>Let's Work <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">Together</span> on Your Project
+                  <span className="sr-only">AgaruCorp - </span>Let's Work <span className="text-[#895AF6]">Together</span> on Your Project
                 </>
               )}
             </h2>
-            <p className="text-[16px] md:text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-[16px] md:text-xl text-gray-300 max-w-3xl mx-auto font-manrope font-light">
               {lang === 'ES'
-                ? 'Tengamos una charla. Contanos sobre tu negocio y veamos cómo podemos ayudarte a crecer en el mundo digital.'
+                ? 'Contanos sobre tu negocio y veamos cómo podemos ayudarte a crecer en el mundo digital.'
                 : `Let's have a chat. Tell us about your business and let's see how we can help you grow online.`}
             </p>
           </div>
@@ -147,7 +148,7 @@ const Footer = ({ lang }: FooterProps) => {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-6">{lang === 'ES' ? 'Información de Contacto' : 'Contact Information'}</h3>
+                <h3 className="text-2xl font-bold text-white mb-6 capitalize">{lang === 'ES' ? 'Información de Contacto' : 'Contact Information'}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6]">

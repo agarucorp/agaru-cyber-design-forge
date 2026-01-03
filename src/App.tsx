@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Fixes from "./pages/Fixes";
+import AnimationPreview from "./pages/AnimationPreview";
 import React from "react";
 import whatsappIcon from './components/assets/ProjectShowcase/whatsapp.png';
 
@@ -113,6 +114,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/fixes" element={<Fixes />} />
+              <Route path="/animation-preview" element={<AnimationPreview />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

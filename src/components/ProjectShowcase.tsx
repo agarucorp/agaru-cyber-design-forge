@@ -1,5 +1,5 @@
 
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 import mockupCalena from './assets/ProjectShowcase/calenacard.png';
 import paginaLuMobile from './assets/ProjectShowcase/paginaLuMobile.png';
 import mockuptr from './assets/ProjectShowcase/mockuptr.png';
@@ -8,8 +8,10 @@ import silande1 from './assets/ProjectShowcase/silande1.png';
 import logocannlabs1 from './assets/ProjectShowcase/Logocannlabs1.png';
 import group18 from './assets/ProjectShowcase/Group 18.png';
 import cardtr from './assets/ProjectShowcase/cardtr.png';
+import cardmaxtech from './assets/ProjectShowcase/cardmaxtech.png';
 import { useState, useEffect } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
+import { ScrollAnimate } from './ScrollAnimate';
 
 interface ProjectShowcaseProps {
   lang: 'ES' | 'EN';
@@ -24,12 +26,6 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     {
       image: mockupCalena,
       tags: ['React', 'TypeScript', 'Tailwind CSS'],
-      link: '#',
-      github: '#',
-    },
-    {
-      image: group18,
-      tags: ['Next.js', 'Stripe', 'PostgreSQL'],
       link: '#',
       github: '#',
     },
@@ -51,24 +47,33 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       link: '#',
       github: '#',
     },
+    {
+      image: cardmaxtech,
+      tags: ['Branding', 'Diseño de Logo', 'Identidad Visual'],
+      link: '#',
+      github: '#',
+    },
+    {
+      image: group18,
+      tags: ['Next.js', 'Stripe', 'PostgreSQL'],
+      link: '#',
+      github: '#',
+    },
   ];
 
   const categories = [
     'Web App',      // 1
     'Web Design',   // 2
-    'Web Design',   // 3
-    'Web Catalog',  // 4
-    'Web Design',   // 5
+    'Web Catalog',  // 3
+    'Web Design',   // 4
+    'Web Catalog',  // 5
+    'Web Design',   // 6
   ];
 
   const projectCommon = [
     {
       title: 'Somos Calena',
-      link: 'https://terapeutas.somoscalena.com/',
-    },
-    {
-      title: 'Odontología Lucia Piccardo',
-      link: 'https://lpodontologia.com/',
+      link: 'https://www.calena.la',
     },
     {
       title: 'Tony Ruiz Hair Studio',
@@ -82,22 +87,32 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       title: 'CannLabs',
       link: 'https://www.canadiannlabs.com', // Actualizado
     },
+    {
+      title: 'Maxtech Latam',
+      link: 'https://www.maxtechlatam.com',
+    },
+    {
+      title: 'Odontología Lucia Piccardo',
+      link: 'https://lpodontologia.com/',
+    },
   ];
 
   const descriptions = lang === 'ES'
     ? [
         'Web app para gestión de psicólogos y conexión con pacientes.',
-        'Sitio web para consultorio de servicios odontológicos.',
-        'Sitio web para salón de peluquería',
+        'Landing page + ecommerce para estudio de peluquería',
         'Catálogo online para empresa de productos industriales.',
         'Sitio web para empresa productora de extracto de yerba mate, stevia y té.',
+        'Catálogo para importadora de insumos industriales.',
+        'Landing page para consultorio odontológico',
       ]
     : [
         "Web app for psychologists' management and patient connection.",
-        'Comprehensive dental services website',
-        'Hair salon website',
+        'Landing page + ecommerce for hair salon',
         'Online industrial products catalog',
         'Yerba mate, stevia, and tea extract manufacturer website',
+        'Catalog for industrial supplies importer.',
+        'Comprehensive dental services website',
       ];
 
   const projects = descriptions.map((description, i) => ({
@@ -123,14 +138,14 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   }, [isMobile, projects.length]);
 
   return (
-    <section id="projects" className="py-20 bg-cyber-dark">
+    <section id="projects" className="py-20 bg-black w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-6">
             {lang === 'ES' ? 'Proyectos ' : 'Featured '}
-            <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">{lang === 'ES' ? 'Destacados' : 'Projects'}</span>
+            <span className="text-[#895AF6]">{lang === 'ES' ? 'destacados' : 'Projects'}</span>
           </h2>
-          <p className="text-[16px] md:text-xl text-gray-300 text-center">
+          <p className="text-[16px] md:text-xl text-gray-300 text-center font-manrope font-light">
             {lang === 'ES'
               ? 'Descubrí cómo ayudamos a startups y negocios a transformar su presencia digital'
               : `Discover how we've helped startups and different businesses transform their digital presence and achieve remarkable growth`}
@@ -165,7 +180,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
                   <div className="flip-back absolute inset-0 w-full h-full flex flex-col items-center justify-center rounded-xl z-20" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
                     <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent rounded-xl" />
                     <div className="flex flex-col items-center justify-center w-full h-full relative z-10">
-                      <h3 className="text-2xl font-bold text-white mb-6 text-center drop-shadow-lg">{project.title}</h3>
+                      <h3 className="text-2xl font-manrope font-bold text-white mb-6 text-center drop-shadow-lg capitalize">{project.title}</h3>
                       <p className="text-base text-white mb-6 text-center drop-shadow-lg">
                         {project.description}
                       </p>
@@ -198,37 +213,23 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
             ))}
           </div>
           {/* Paginación */}
-          <div className="flex justify-center mt-8 gap-0.5 items-center">
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
-              disabled={currentPage === 1}
-              className={`w-6 h-6 flex items-center justify-center rounded-full border border-gray-600 bg-cyber-grey text-gray-300 hover:bg-agaru-purple/20 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xs`}
-              aria-label="Anterior"
-            >
-              <ChevronLeft className="w-3 h-3" />
-            </button>
+          <div className="flex justify-center mt-8 gap-4 items-center">
             {[...Array(totalPages)].map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentPage(i + 1)}
-                className={`w-6 h-6 flex items-center justify-center rounded-full border font-bold transition-all duration-200 text-xs
-                  ${currentPage === i + 1
-                    ? 'border-[#895AF6] bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] text-white shadow-md'
-                    : 'border-gray-600 bg-cyber-grey text-gray-300 hover:bg-gradient-to-r hover:from-[#895AF6] hover:via-[#B983FF] hover:to-[#4DE3FF] hover:text-white'}
-                `}
+                className="focus:outline-none"
                 aria-label={`Página ${i + 1}`}
               >
-                {i + 1}
+                <span
+                  className={`block w-12 h-[4px] rounded-full transition-all duration-300 ${
+                    currentPage === i + 1
+                      ? 'bg-[#895AF6]'
+                      : 'bg-[#895AF6]/30 hover:bg-[#895AF6]/50'
+                  }`}
+                ></span>
               </button>
             ))}
-            <button
-              onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
-              disabled={currentPage === totalPages}
-              className={`w-6 h-6 flex items-center justify-center rounded-full border border-gray-600 bg-cyber-grey text-gray-300 hover:bg-agaru-purple/20 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xs`}
-              aria-label="Siguiente"
-            >
-              <ChevronRight className="w-3 h-3" />
-            </button>
           </div>
         </div>
 
@@ -240,13 +241,13 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
               className={`absolute left-0 right-0 transition-transform duration-700 ease-in-out ${carouselIndex === idx ? 'translate-x-0 opacity-100 z-10' : carouselIndex < idx ? 'translate-x-full opacity-0 z-0 pointer-events-none' : '-translate-x-full opacity-0 z-0 pointer-events-none'}`}
               style={{ willChange: 'transform, opacity' }}
             >
-              <div className="group cyber-card rounded-xl overflow-hidden border border-white/5 relative h-[420px] w-[90vw] max-w-xs mx-auto flex flex-col">
+              <div className="group cyber-card rounded-xl overflow-hidden border border-white/5 relative h-[420px] w-[90vw] max-w-xs mx-auto flex flex-col" style={{ maxWidth: 'calc(100vw - 2rem)' }}>
                 <div className="w-full h-48 bg-gray-900 flex items-center justify-center overflow-hidden">
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center p-4">
                   <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#4B267A] text-white mb-2" style={{ fontSize: '0.75rem' }}>{project.category}</span>
-                  <h3 className="text-[16px] md:text-lg font-bold text-white mb-2 text-center drop-shadow-lg">{project.title}</h3>
+                  <h3 className="text-[16px] md:text-lg font-manrope font-bold text-white mb-2 text-center drop-shadow-lg capitalize">{project.title}</h3>
                   <p className="text-base text-white mb-4 text-center drop-shadow-lg">{project.description}</p>
                   <a href={project.link} className="w-12 h-12 bg-agaru-purple rounded-full flex items-center justify-center hover:bg-agaru-purple-light transition-colors duration-300" target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-6 h-6 text-white" />

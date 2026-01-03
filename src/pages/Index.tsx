@@ -16,7 +16,8 @@ const Index = () => {
 
   // SEO optimizado para español únicamente
   const seo = {
-    title: 'AgaruCorp | Diseño Web y Estrategia de Marca',
+    title: 'AgaruCorp Design', // Título para la pestaña del navegador
+    titleForSharing: 'AgaruCorp | Diseño Web y Estrategia de Marca', // Título para compartir en redes sociales
     description: 'Creamos landing pages, sitios web, catálogos digitales y estrategia de marca para impulsar tu crecimiento online.'
   };
 
@@ -30,15 +31,15 @@ const Index = () => {
         {/* URL canónica fija para SEO */}
         <link rel="canonical" href="https://www.agarucorp.com/" />
         {/* Open Graph optimizado */}
-        <meta property="og:title" content={seo.title} />
+        <meta property="og:title" content={seo.titleForSharing} />
         <meta property="og:description" content={seo.description} />
         <meta property="og:locale" content="es_AR" />
         {/* Twitter Cards optimizadas */}
-        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:title" content={seo.titleForSharing} />
         <meta name="twitter:description" content={seo.description} />
       </Helmet>
       {/* Fin configuración SEO dinámica */}
-      <div className="min-h-screen bg-cyber-dark">
+      <div className="min-h-screen bg-black w-full overflow-x-hidden">
         <Navbar lang={lang} setLang={setLang} />
         <Hero lang={lang} />
         <Services lang={lang} />

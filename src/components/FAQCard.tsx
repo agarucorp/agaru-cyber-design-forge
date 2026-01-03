@@ -26,7 +26,7 @@ const FAQCard = ({ question, answer, isOpen, onToggle, image }: FAQCardProps) =>
               />
             </div>
           )}
-          <span className="text-[16px] md:text-xl font-bold text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
+          <span className="text-[16px] md:text-xl font-onest font-light text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6] capitalize">
             {question}
           </span>
         </div>
@@ -37,7 +37,7 @@ const FAQCard = ({ question, answer, isOpen, onToggle, image }: FAQCardProps) =>
       {isOpen && (
         <div className="px-6 pb-6 animate-fade-in">
           <div className="h-px bg-gradient-to-r from-agaru-purple to-transparent mb-4"></div>
-          <div className="pr-2">
+          <div className="pr-2 font-manrope font-light">
             {answer}
           </div>
         </div>

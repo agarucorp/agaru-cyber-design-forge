@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AgaruCorp | Diseño Web y Estrategia de Marca</title>
+    <title>AgaruCorp Design</title>
     <meta name="description" content="Creamos landing pages, sitios web, catálogos digitales y estrategia de marca para impulsar tu crecimiento online." />
     <meta name="keywords" content="diseño web, diseño de pagina web, sitio web, landing page, desarrollo de sitio web, sitio web para pyme, sitio web startup, sitio web empresa, diseño web argentina, diseño web buenos aires, branding, estrategia de marca, diseño UX/UI, React, Next.js, Vercel, JavaScript, TypeScript, sitios web responsivos, identidad corporativa, agencia digital, desarrollo web, aplicaciones web" />
     <meta name="author" content="AgaruCorp" />
@@ -21,13 +21,12 @@
     <!-- URL canónica para SEO - solo versión en español -->
     <link rel="canonical" href="https://www.agarucorp.com/" />
 
-    <!-- Favicons para navegadores y motores de búsqueda (SEO) -->
-    <!-- El mismo favicon se usará para todos los idiomas -->
-    <link rel="icon" type="image/png" href="/faviconagaru1.png" sizes="any" />
-    <link rel="shortcut icon" href="/faviconagaru1.png" />
+    <!-- Favicon para la pestaña del navegador (solo visualización) -->
+    <link rel="icon" type="image/svg+xml" href="/faviconagarucorp.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="/faviconagarucorp.svg" />
+    
+    <!-- Favicons para SEO y meta tags (mantener PNG para compatibilidad) -->
     <link rel="apple-touch-icon" href="/faviconagaru1.png" />
-    <link rel="icon" type="image/png" href="/faviconagaru1.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/faviconagaru1.png" sizes="16x16" />
 
     <!-- Fonts -->
     <!-- Preconnect para optimización de carga -->
@@ -40,12 +39,16 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mulish:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
     <!-- Fallback para navegadores que no soportan preload -->
     <noscript>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet" />
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     </noscript>
     
     <meta property="og:title" content="AgaruCorp | Diseño Web y Estrategia de Marca" />
@@ -168,6 +171,8 @@
     </script>
     
     <div id="root"></div>
+    <!-- GSAP para animaciones -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

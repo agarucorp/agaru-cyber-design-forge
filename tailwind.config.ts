@@ -83,6 +83,8 @@ export default {
 				'inter': ['Inter', 'sans-serif'],
 				'mulish': ['Mulish', 'sans-serif'],
 				'altroned': ['Altroned Trial', 'sans-serif'],
+				'onest': ['Onest', 'sans-serif'],
+				'manrope': ['Manrope', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

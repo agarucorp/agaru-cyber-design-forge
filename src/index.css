@@ -68,7 +68,7 @@
 
   body {
     @apply bg-background text-foreground font-inter;
-    background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+    background: #000000;
   }
 
   html {
@@ -76,6 +76,10 @@
   }
   body, html {
     overflow-x: hidden;
+  }
+  
+  .first-letter-uppercase::first-letter {
+    text-transform: uppercase;
   }
 }
 

@@ -1,6 +1,7 @@
 
 import { Target, TrendingUp, Fingerprint, Calendar, FileText } from 'lucide-react';
 import { useState, useRef } from 'react';
+import { ScrollAnimate } from './ScrollAnimate';
 
 interface BrandingApproachProps {
   lang: 'ES' | 'EN';
@@ -13,27 +14,27 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
     ? [
         {
           icon: <Target className="w-8 h-8" />,
-          title: 'Fundamentos de Marca',
+          title: 'Fundamentos de marca',
           description: 'Comenzamos entendiendo los valores, misión, audiencia y objetivos de tu negocio. Esta base guía todo el proceso y asegura que cada acción esté alineada a tus necesidades.',
         },
         {
           icon: <TrendingUp className="w-8 h-8" />,
-          title: 'Estrategia de Marketing',
+          title: 'Estrategia de marketing',
           description: 'Nuestros estrategas investigan tendencias, comportamientos y competencia para identificar las mejores oportunidades de crecimiento.',
         },
         {
           icon: <Fingerprint className="w-8 h-8" />,
-          title: 'Identidad de Marca',
+          title: 'Identidad de marca',
           description: 'En colaboración, creamos el contenido y el diseño que capturan tu identidad única, desde el logo hasta la misión y los mensajes clave de tu comunicación digital.',
         },
         {
           icon: <Calendar className="w-8 h-8" />,
-          title: 'Planificación de Campañas',
+          title: 'Planificación de campañas',
           description: 'Desarrollamos una estrategia de marketing personalizada, definiendo propuesta de valor, canales y mensajes clave para tus campañas.',
         },
         {
           icon: <FileText className="w-8 h-8" />,
-          title: 'Hoja de Ruta',
+          title: 'Hoja de ruta',
           description: 'Compilamos todo en un Marketing Brief claro y accionable para que tu equipo o partners puedan lanzar y gestionar campañas efectivas.',
         },
       ]
@@ -45,22 +46,22 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
         },
         {
           icon: <TrendingUp className="w-8 h-8" />,
-          title: 'Marketing Strategy',
+          title: 'Marketing strategy',
           description: 'Our strategists execute comprehensive research across market trends, consumer behaviors, and competitor landscapes. This meticulous process yields actionable insights, helping us identify and target the most promising areas for your growth.',
         },
         {
           icon: <Fingerprint className="w-8 h-8" />,
-          title: 'Brand Identity Design',
+          title: 'Brand identity design',
           description: 'Through continuous collaboration with your key stakeholders, we meticulously craft content that truly embodies your unique identity. We cover every detail, from designing your logo to developing your mission statements and all web content.',
         },
         {
           icon: <Calendar className="w-8 h-8" />,
-          title: 'Campaign Planning',
+          title: 'Campaign planning',
           description: 'Building on our insights, we develop a tailored marketing strategy. This involves defining your unique value proposition, identifying optimal channels, and outlining key messages that will resonate with your audience, forming the backbone for future campaigns.',
         },
         {
           icon: <FileText className="w-8 h-8" />,
-          title: 'Marketing Roadmap',
+          title: 'Marketing roadmap',
           description: 'We compile all gathered insights, strategies, and identity guidelines into a clear, actionable Marketing Brief. This document empowers your team or partners to effectively launch and manage future campaigns, ensuring consistency and impact.',
         },
       ];
@@ -87,25 +88,20 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
   return (
     <section
       id="branding-approach"
-      className="py-20 bg-gradient-to-b from-cyber-grey to-cyber-dark overflow-y-hidden md:overflow-y-hidden"
+      className="py-20 bg-black overflow-y-hidden md:overflow-y-hidden overflow-x-hidden w-full"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-4">
-          <h2 className="text-[24px] md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-6">
             {lang === 'ES'
               ? <>
-                  Proceso de <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">Branding y Marketing</span>
+                  Proceso de <span className="text-[#895AF6]">branding y marketing</span>
                 </>
               : <>
-                  <span className="bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF] bg-clip-text text-transparent">Branding & Marketing</span> <span className="text-white">Process</span>
+                  <span className="text-[#895AF6]">Branding & Marketing</span> <span className="text-white">Process</span>
                 </>
             }
           </h2>
-          <p className="text-[16px] md:text-xl text-gray-300 max-w-3xl mx-auto mb-4 md:mb-0">
-            {lang === 'ES'
-              ? '¿Cómo funciona?'
-              : 'How it works?'}
-          </p>
         </div>
 
         {/* Desktop: cards en columna o fila */}
@@ -118,34 +114,19 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
               } ${index === 0 ? 'mt-4' : ''} ${index === 4 ? '!mb-4' : ''}`}
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              {/* Step Number and Icon */}
-              <div className="flex-shrink-0">
-                <div className="relative">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                    style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)', boxShadow: '0 0 16px 2px #895AF688' }}>
-                    <div className="text-white flex items-center justify-center w-full h-full" style={{ lineHeight: 0 }}>
-                      {step.icon}
-                    </div>
-                  </div>
-                  <div className="absolute -top-4 -right-4 w-7 h-7 rounded-full flex items-center justify-center text-white font-bold text-xs border-2 border-[#895AF6] shadow-[0_0_12px_2px_#895AF6AA]"
-                    style={{ background: 'linear-gradient(135deg, #18192a 60%, #23243a 100%)' }}>
-                    {index + 1}
-                  </div>
-                </div>
-              </div>
 
               {/* Content */}
               {index === 0 ? (
                 <div className="flex-1 bg-[#262626] rounded-2xl p-5 border border-white/10 transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:border-[#895AF6]/40 hover:ring-2 hover:ring-[#895AF6]/30 flex flex-col justify-center min-h-[90px] max-w-4xl group">
-                  <h3 className="text-[16px] md:text-xl font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">{step.title}</h3>
-                  <p className="text-gray-300 text-base leading-relaxed group-hover:text-white/90 transition-colors duration-300">{step.description}</p>
+                  <h3 className="text-[16px] md:text-xl font-manrope font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">{step.title}</h3>
+                  <p className="text-gray-300 text-base font-manrope leading-relaxed group-hover:text-white/90 transition-colors duration-300">{step.description}</p>
                 </div>
               ) : (
                 <div className="flex-1 bg-[#262626] p-5 rounded-2xl transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:border-[#895AF6]/40 hover:ring-2 hover:ring-[#895AF6]/30 border border-white/5 min-h-[90px] max-w-4xl group">
-                  <h3 className="text-[16px] md:text-xl font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">
+                  <h3 className="text-[16px] md:text-xl font-manrope font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">
                     {step.title}
                   </h3>
-                  <p className="text-gray-300 text-base leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                  <p className="text-gray-300 text-base font-manrope leading-relaxed group-hover:text-white/90 transition-colors duration-300">
                     {step.description}
                   </p>
                 </div>
@@ -159,7 +140,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
           <div className="relative z-10 overflow-visible">
             <div className="w-full flex flex-col items-center pt-4">
               <div
-                className="w-full overflow-x-auto flex snap-x snap-mandatory gap-6 pb-2 pl-[5vw] pr-[5vw]"
+                className="w-full overflow-x-auto flex snap-x snap-mandatory gap-6 pb-2 pl-4 pr-4"
                 style={{ scrollbarWidth: 'none' }}
                 ref={carouselRef}
                 onScroll={handleScroll}
@@ -169,23 +150,11 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
                     key={idx}
                     className="snap-center flex flex-col items-center group transition-transform duration-300 min-w-[90vw] max-w-xs mx-auto pt-8"
                   >
-                    <div className="flex flex-col items-center mb-4 relative pt-0">
-                      <div className="w-20 h-20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                        style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)', boxShadow: '0 0 16px 2px #895AF688' }}>
-                        <div className="text-white flex items-center justify-center w-full h-full">
-                          {step.icon}
-                        </div>
-                      </div>
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg border-2 border-[#895AF6] shadow-[0_0_12px_2px_#895AF6AA]"
-                        style={{ background: 'linear-gradient(135deg, #18192a 60%, #23243a 100%)' }}>
-                        {idx + 1}
-                      </div>
-                    </div>
-                    <div className="w-full min-h-[220px] cyber-card p-6 rounded-xl border border-white/5 flex flex-col items-center pt-8">
-                      <h3 className="text-[16px] md:text-xl font-bold text-white mb-4 text-center">
+                    <div className="w-full min-h-[220px] cyber-card p-6 rounded-xl border border-white/5 flex flex-col items-center pt-6">
+                      <h3 className="text-[16px] md:text-xl font-manrope font-bold text-white mb-4 text-center">
                         {step.title}
                       </h3>
-                      <p className="text-gray-300 text-base text-center leading-relaxed">
+                      <p className="text-gray-300 text-base font-manrope text-center leading-relaxed">
                         {step.description}
                       </p>
                     </div>

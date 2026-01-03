@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { Menu, X } from 'lucide-react';
-import LogoNav from '/lovable-uploads/agarumayusmixed.png';
+import LogoNav from './assets/Navbar/Group 47268.svg';
 
 interface NavbarProps {
   lang: 'ES' | 'EN';
@@ -36,16 +36,11 @@ const scrollToSection = (sectionId: string) => {
 const Navbar = ({ lang, setLang }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrollProgress(progress);
 
       // Scrollspy
       const sections = [
@@ -87,24 +82,16 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
         isScrolled ? 'navbar-blur' : 'bg-transparent'
       }`}
     >
-      {/* Barra de progreso de scroll */}
-      <div
-        style={{
-          width: `${scrollProgress}%`,
-          height: '4px',
-          background: 'linear-gradient(90deg, #895AF6 0%, #4DE3FF 100%)',
-          transition: 'width 0.2s ease',
-        }}
-        className="absolute top-0 left-0 z-50 rounded-tr-full rounded-br-full"
-      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 relative">
           {/* Logo - Alineado a la izquierda en mobile y desktop */}
           <div className="flex-none">
-            {/* Logo para mobile - alineado a la izquierda */}
-            <img src={LogoNav} alt="AgaruCorp Design" className="w-auto h-[17px] md:hidden object-contain" />
-            {/* Logo para desktop - alineado a la izquierda */}
-            <img src={LogoNav} alt="AgaruCorp Design" className="hidden md:block w-[187px] h-[88px] object-contain" />
+            <a href="/" className="flex items-center">
+              {/* Logo para mobile - alineado a la izquierda */}
+              <img src={LogoNav} alt="AgaruCorp Design" className="w-auto h-[5.1px] md:hidden object-contain" />
+              {/* Logo para desktop - alineado a la izquierda */}
+              <img src={LogoNav} alt="AgaruCorp Design" className="hidden md:block w-auto h-[16.5px] object-contain" />
+            </a>
           </div>
 
           {/* Desktop Navigation */}
@@ -117,7 +104,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`relative text-white hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-medium
+                    className={`relative text-white hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-manrope font-light
                       ${isActive ? 'text-[#895AF6]' : ''}`}
                     onClick={e => {
                       if (item.href.startsWith('#')) {
@@ -128,8 +115,8 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                   >
                     {item.name}
                     <span
-                      className={`absolute left-0 -bottom-1 w-full h-[3px] rounded-full transition-all duration-300
-                        ${isActive ? 'bg-gradient-to-r from-[#895AF6] via-[#B983FF] to-[#4DE3FF]' : 'opacity-0'}`}
+                      className={`absolute left-0 -bottom-1 w-full h-[2px] rounded-full transition-all duration-300
+                        ${isActive ? 'bg-[#895AF6]' : 'opacity-0'}`}
                     ></span>
                   </a>
                 );
@@ -141,14 +128,14 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           <div className="hidden md:flex items-center ml-2">
             <button
               onClick={() => setLang('ES')}
-              className={`px-1 py-0.5 rounded-l border border-agaru-purple text-[9px] font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+              className={`px-1 py-0.5 rounded-l border border-agaru-purple text-[9px] font-onest font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
               aria-pressed={lang === 'ES'}
             >
               ES
             </button>
             <button
               onClick={() => setLang('EN')}
-              className={`px-1 py-0.5 rounded-r border border-agaru-purple border-l-0 text-[9px] font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+              className={`px-1 py-0.5 rounded-r border border-agaru-purple border-l-0 text-[9px] font-onest font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
               aria-pressed={lang === 'EN'}
             >
               EN
@@ -158,7 +145,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           <div className="hidden md:block">
             <a
               href="#contact"
-              className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-medium text-[13px] transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6]"
+              className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-onest font-medium text-[13px] transition-all duration-300 hover:border-white hover:text-white"
               onClick={e => {
                 e.preventDefault();
                 scrollToSection('contact');
@@ -205,7 +192,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-300 hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-medium"
+                  className="text-gray-300 hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-manrope font-light"
                   onClick={e => {
                     setIsMobileMenuOpen(false);
                     if (item.href.startsWith('#')) {
@@ -219,7 +206,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
               ))}
               <a
                 href="#contact"
-                className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md text-center mt-4 font-medium text-[13px] transition-all duration-300 shadow-[0_0_20px_0_#895AF6] hover:shadow-[0_0_30px_0_#895AF6]"
+                className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md text-center mt-4 font-onest font-medium text-[13px] transition-all duration-300 hover:border-white hover:text-white"
                 onClick={e => {
                   setIsMobileMenuOpen(false);
                   e.preventDefault();
@@ -232,14 +219,14 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
               <div className="flex items-center justify-center mt-4">
                 <button
                   onClick={() => setLang('ES')}
-                  className={`px-2 py-1 rounded-l border border-agaru-purple text-[12px] font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+                  className={`px-2 py-1 rounded-l border border-agaru-purple text-[12px] font-onest font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
                   aria-pressed={lang === 'ES'}
                 >
                   ES
                 </button>
                 <button
                   onClick={() => setLang('EN')}
-                  className={`px-2 py-1 rounded-r border border-agaru-purple border-l-0 text-[12px] font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+                  className={`px-2 py-1 rounded-r border border-agaru-purple border-l-0 text-[12px] font-onest font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
                   aria-pressed={lang === 'EN'}
                 >
                   EN
