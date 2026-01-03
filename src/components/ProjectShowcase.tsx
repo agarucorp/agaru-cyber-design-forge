@@ -138,7 +138,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   }, [isMobile, projects.length]);
 
   return (
-    <section id="projects" className="py-20 bg-black w-full overflow-x-hidden">
+    <section id="projects" className="py-20 w-full overflow-x-hidden" style={{ backgroundColor: '#171619' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-6">

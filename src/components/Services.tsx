@@ -15,6 +15,7 @@ interface ServicesProps {
 
 const Services = ({ lang }: ServicesProps) => {
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
   const isMobile = useIsMobile();
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -43,10 +44,26 @@ const Services = ({ lang }: ServicesProps) => {
     }
   };
 
+  const handleFlip = (index: number) => {
+    setFlippedCards(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
+  // Iconos para cada servicio
+  const serviceIcons = [Code, Palette, Palette, Target];
+  
   const services = [
     // Card 1: Web Apps
     {
       title: lang === 'ES' ? 'Desarrollo Web' : 'Web Development',
+      icon: Code,
       description: lang === 'ES'
         ? 'Digitalizá tu operación con una Web App a medida.\nCreamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.'
         : 'Digitize Your Operations with a Custom Web App\nWe build applications that allow you to automate tasks, centralize data, and scale your business seamlessly.',
@@ -94,6 +111,7 @@ const Services = ({ lang }: ServicesProps) => {
     // Card 2: Web Design & Development
     {
       title: lang === 'ES' ? 'Diseño Web' : 'Web Design',
+      icon: Palette,
       description: lang === 'ES'
         ? 'Desarrollamos soluciones web optimizadas para una presencia digital de alto rendimiento y una navegación intuitiva. Nos centramos en construir sitios web rápidos y seguros, diseñados para ofrecer una experiencia de usuario fluida y adaptable.'
         : 'We develop web solutions optimized for a high-performance digital presence and intuitive navigation. We focus on building fast and secure websites, designed to offer a fluid and adaptable user experience.',
@@ -112,6 +130,7 @@ const Services = ({ lang }: ServicesProps) => {
     // Card 3: UX/UI Design
     {
       title: lang === 'ES' ? 'Diseño UX/UI' : 'UX/UI Design',
+      icon: Palette,
       description: lang === 'ES'
         ? 'Comenzamos cada proyecto con una investigación UX (experiencia de usuario) profunda. Este proceso no es opcional: es la base estratégica para entender el comportamiento y las necesidades de tu audiencia, permitiéndonos optimizar la arquitectura de la información y la navegación del sitio.\n\nUna vez analizados los datos, pasamos al Diseño UI (Interfaz de Usuario). Utilizamos Figma para construir prototipos que son visualmente atractivos, intuitivos y totalmente funcionales. Cada diseño que entregamos incluye de forma integral: un UX Writing optimizado, una colorimetría estratégica, tipografía seleccionada bajo criterios de legibilidad y la aplicación de guidelines de diseño universal.'
         : 'We start each project with deep UX (user experience) research. This process is not optional: it is the strategic foundation to understand your audience\'s behavior and needs, allowing us to optimize information architecture and site navigation.\n\nOnce data is analyzed, we move to UI (User Interface) Design. We use Figma to build prototypes that are visually appealing, intuitive and fully functional. Every design we deliver includes integrally: optimized UX Writing, strategic colorimetry, typography selected under readability criteria and the application of universal design guidelines.',
@@ -138,6 +157,7 @@ const Services = ({ lang }: ServicesProps) => {
     // Card 4: Brand Strategy & Identity
     {
       title: lang === 'ES' ? 'Branding' : 'Branding',
+      icon: Target,
       description: lang === 'ES'
         ? 'Vamos más allá del diseño visual para forjar la base estratégica de tu marca. Trabajamos en la voz y la identidad que te diferenciarán, creando una conexión auténtica con tu audiencia y guiando tu crecimiento futuro.'
         : `We go beyond visual design to forge your brand's strategic foundation. We work on the voice and identity that will differentiate you, creating an authentic connection with your audience and guiding your future growth.`,
@@ -173,7 +193,7 @@ const scrollToSection = (sectionId: string) => {
 };
 
   return (
-    <section id="services" className="py-20 relative overflow-hidden bg-black w-full">
+    <section id="services" className="py-20 relative overflow-hidden w-full" style={{ backgroundColor: '#171619' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-6">
@@ -194,21 +214,112 @@ const scrollToSection = (sectionId: string) => {
           </p>
         </div>
 
-        {/* Elimino el acordeón de servicios original */}
-        {/* Cards de FAQ debajo de los servicios */}
+        {/* Cards de servicios */}
         <div className="mt-12 space-y-6">
-          {services.map((service, idx) => (
-            <div 
-              className="flex justify-center" 
-              key={service.title}
-              ref={(el) => {
-                cardRefs.current[idx] = el;
-              }}
-            >
-              <div className="cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
-                <FAQCard
-                  question={service.title}
-                  answer={
+          {services.map((service, idx) => {
+            const ServiceIcon = service.icon;
+            const isFlipped = flippedCards.has(idx);
+            
+            return (
+              <div 
+                className="flex justify-center" 
+                key={service.title}
+                ref={(el) => {
+                  cardRefs.current[idx] = el;
+                }}
+              >
+                {/* Mobile: Flip Cards */}
+                <div className="md:hidden w-full max-w-sm">
+                  <div 
+                    className="relative h-80 cursor-pointer"
+                    style={{ perspective: '1000px' }}
+                    onClick={() => handleFlip(idx)}
+                  >
+                    <div
+                      className="relative w-full h-full transition-transform duration-700"
+                      style={{
+                        transformStyle: 'preserve-3d',
+                        transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                      }}
+                    >
+                      {/* Front Side - Imagen/Icono */}
+                      <div
+                        className="absolute inset-0 w-full h-full rounded-xl overflow-hidden"
+                        style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                      >
+                        <div className="w-full h-full bg-gradient-to-br from-[#895AF6]/20 to-[#4DE3FF]/10 flex flex-col items-center justify-center p-8 border border-[#895AF6]/30 rounded-xl">
+                          <ServiceIcon className="w-20 h-20 text-[#895AF6] mb-4" />
+                          <h3 className="text-xl font-onest font-bold text-white text-center mb-2">
+                            {service.title}
+                          </h3>
+                          <p className="text-gray-400 text-sm font-manrope text-center">
+                            {lang === 'ES' ? 'Toca para ver más' : 'Tap to see more'}
+                          </p>
+                        </div>
+                      </div>
+                      
+                      {/* Back Side - Información */}
+                      <div
+                        className="absolute inset-0 w-full h-full rounded-xl overflow-y-auto"
+                        style={{ 
+                          backfaceVisibility: 'hidden', 
+                          WebkitBackfaceVisibility: 'hidden',
+                          transform: 'rotateY(180deg)'
+                        }}
+                      >
+                        <div className="w-full h-full bg-[#262626] p-6 border border-[#895AF6]/30 rounded-xl overflow-y-auto">
+                          <div className="font-manrope font-light text-white text-sm">
+                            {(() => {
+                              // Reutilizar el mismo contenido que se usa en desktop
+                              if (lang === 'ES' && idx === 0) {
+                                return (
+                                  <div>
+                                    <p className="text-gray-400 mb-2">Digitalizá tu operación con una Web App a medida.</p>
+                                    <p className="text-gray-400 mb-4">Creamos aplicaciones que te permiten automatizar tareas, centralizar datos y escalar tu negocio sin fricción.</p>
+                                    <p className="text-white font-semibold mb-2 text-xs">1. Usuarios y datos en orden</p>
+                                    <div className="mb-4 ml-4 space-y-1.5 text-xs">
+                                      <div className="flex items-start"><div className="w-1 h-1 rounded-full mr-2 mt-1.5 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Registro y login con permisos según rol.</span></div>
+                                      <div className="flex items-start"><div className="w-1 h-1 rounded-full mr-2 mt-1.5 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Gestión de bases de datos en tiempo real.</span></div>
+                                      <div className="flex items-start"><div className="w-1 h-1 rounded-full mr-2 mt-1.5 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Subida y acceso a archivos.</span></div>
+                                    </div>
+                                    <p className="text-white font-semibold mb-2 text-xs">2. Operaciones automatizadas</p>
+                                    <div className="mb-4 ml-4 space-y-1.5 text-xs">
+                                      <div className="flex items-start"><div className="w-1 h-1 rounded-full mr-2 mt-1.5 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Mensajes automáticos por WhatsApp.</span></div>
+                                      <div className="flex items-start"><div className="w-1 h-1 rounded-full mr-2 mt-1.5 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div><span className="text-gray-400">Automatización de tareas.</span></div>
+                                    </div>
+                                    <p className="text-gray-400 text-xs">Lanzamos rápido, con foco en que funcione desde el día uno.</p>
+                                  </div>
+                                );
+                              }
+                              // Para otras cards, mostrar descripción y características principales
+                              return (
+                                <div className="space-y-3">
+                                  <p className="text-gray-400 text-xs leading-relaxed">{service.description.split('\n')[0]}</p>
+                                  {service.features && service.features.length > 0 && (
+                                    <ul className="space-y-2">
+                                      {service.features.filter(f => f && !f.startsWith('-') && f.trim() !== '').slice(0, 4).map((feature, i) => (
+                                        <li key={i} className="text-gray-400 flex items-start text-xs">
+                                          <div className="w-1 h-1 rounded-full mr-2 mt-1.5 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #895AF6 0%, #4DE3FF 100%)' }}></div>
+                                          <span>{feature.replace(/^[-•]\s*/, '')}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </div>
+                              );
+                            })()}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Desktop: FAQ Cards (comportamiento actual) */}
+                <div className="hidden md:block cyber-card rounded-xl overflow-hidden max-w-4xl w-full">
+                  <FAQCard
+                    question={service.title}
+                    answer={
                     lang === 'ES' && idx === 0 ? (
                       <div>
                         <p className="text-gray-400">Digitalizá tu operación con una Web App a medida.</p>
@@ -446,13 +557,14 @@ const scrollToSection = (sectionId: string) => {
                         )
                       )
                     )
-                  }
-                  isOpen={openFAQIndex === idx}
-                  onToggle={() => handleFAQToggle(idx)}
-                />
+                    }
+                    isOpen={openFAQIndex === idx}
+                    onToggle={() => handleFAQToggle(idx)}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>

@@ -45,7 +45,7 @@ const Index = () => {
         <meta name="twitter:image:alt" content="AgaruCorp - Diseño Web y Estrategia de Marca" />
       </Helmet>
       {/* Fin configuración SEO dinámica */}
-      <div className="min-h-screen bg-black w-full overflow-x-hidden">
+      <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: '#171619' }}>
         <Navbar lang={lang} setLang={setLang} />
         <Hero lang={lang} />
         <Services lang={lang} />

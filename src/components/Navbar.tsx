@@ -87,7 +87,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           <div className="flex-none md:flex-none">
             <a href="/" className="flex items-center">
               {/* Logo para mobile - centrado */}
-              <img src="/logonavbar.svg" alt="AgaruCorp Design" className="w-auto h-[17.92px] md:hidden object-contain absolute left-1/2 transform -translate-x-1/2" />
+              <img src="/logonavbar.svg" alt="AgaruCorp Design" className="w-auto h-[15.232px] md:hidden object-contain absolute left-1/2 transform -translate-x-1/2" />
               {/* Logo para desktop - alineado a la izquierda */}
               <img src="/logonavbar.svg" alt="AgaruCorp Design" className="hidden md:block w-auto h-[18.75px] object-contain" />
             </a>

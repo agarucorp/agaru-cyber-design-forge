@@ -121,7 +121,7 @@ const Footer = ({ lang }: FooterProps) => {
   };
 
   return (
-    <footer id="contact" className="bg-black w-full overflow-x-hidden">
+    <footer id="contact" className="w-full overflow-x-hidden" style={{ backgroundColor: '#171619' }}>
       {/* Contact Form Section */}
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

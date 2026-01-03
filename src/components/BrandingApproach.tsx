@@ -88,7 +88,8 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
   return (
     <section
       id="branding-approach"
-      className="pt-20 pb-20 bg-black overflow-y-hidden md:overflow-y-hidden overflow-x-hidden w-full"
+      className="pt-20 pb-20 overflow-y-hidden md:overflow-y-hidden overflow-x-hidden w-full"
+      style={{ backgroundColor: '#171619' }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-4">
@@ -222,7 +223,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
         <div className="md:hidden w-full overflow-x-hidden">
           <div className="relative w-full px-4 py-8">
             {/* SVG para líneas curvas en mobile */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ overflow: 'visible', height: '100%' }}>
+            <svg className="absolute inset-0 w-full pointer-events-none z-0" style={{ overflow: 'visible', height: '100%', minHeight: '800px' }}>
               <defs>
                 <linearGradient id="mobileLineGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#895AF6" stopOpacity="0.3" />
@@ -242,31 +243,10 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
                 </linearGradient>
               </defs>
               
-              {/* Líneas curvas verticales que conectan las cards */}
+              {/* Línea vertical continua que conecta todas las cards - desde el UI icon de la card 1 hasta el final de la card 5 */}
               <path
-                d="M 40 80 Q 50 120, 40 160"
+                d="M 34 56 Q 44 120, 34 184 Q 44 248, 34 312 Q 44 376, 34 440 Q 44 504, 34 568 Q 44 632, 34 696 Q 44 720, 34 750"
                 stroke="url(#mobileLineGradient1)"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="6,4"
-              />
-              <path
-                d="M 40 160 Q 50 200, 40 240"
-                stroke="url(#mobileLineGradient2)"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="6,4"
-              />
-              <path
-                d="M 40 240 Q 50 280, 40 320"
-                stroke="url(#mobileLineGradient3)"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="6,4"
-              />
-              <path
-                d="M 40 320 Q 50 360, 40 400"
-                stroke="url(#mobileLineGradient4)"
                 strokeWidth="2"
                 fill="none"
                 strokeDasharray="6,4"
