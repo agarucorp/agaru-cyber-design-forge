@@ -88,7 +88,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
   return (
     <section
       id="branding-approach"
-      className="py-20 bg-black overflow-y-hidden md:overflow-y-hidden overflow-x-hidden w-full"
+      className="pt-20 pb-20 bg-black overflow-y-hidden md:overflow-y-hidden overflow-x-hidden w-full"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-4">
@@ -105,7 +105,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
         </div>
 
         {/* Desktop: Mapa orgánico con líneas curvas fluidas */}
-        <div className="hidden md:flex relative w-full min-h-[1200px] items-start justify-center mt-12 mb-12">
+        <div className="hidden md:flex relative w-full items-start justify-center mt-0 mb-0 pt-0" style={{ minHeight: '520px', paddingTop: '0', marginTop: '0' }}>
           {/* SVG para las líneas curvas orgánicas de conexión */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ overflow: 'visible' }}>
             <defs>

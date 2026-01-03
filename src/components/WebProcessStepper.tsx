@@ -106,7 +106,7 @@ export default function WebProcessStepper({ lang }: WebProcessStepperProps) {
 
   const steps = lang === 'EN' ? stepsEN : stepsES;
   return (
-    <section className="py-20 bg-black flex justify-center items-center w-full overflow-x-hidden">
+    <section className="pt-20 pb-20 bg-black flex justify-center items-center w-full overflow-x-hidden">
       <div className="max-w-5xl w-full flex flex-col items-center px-2">
         <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-4 text-center">
           {lang === 'EN' ? (
@@ -116,7 +116,7 @@ export default function WebProcessStepper({ lang }: WebProcessStepperProps) {
           )}
         </h2>
         {/* Desktop: Mapa de proceso con líneas de conexión */}
-        <div className="hidden md:flex relative w-full min-h-[1400px] items-start justify-center mt-12 mb-12">
+        <div className="hidden md:flex relative w-full items-start justify-center mt-8 mb-0 pb-0" style={{ minHeight: '640px', paddingBottom: '0' }}>
           {/* Contenedor de cards con posicionamiento */}
           <div className="relative w-full max-w-6xl z-10">
             {steps.map((step, idx) => {

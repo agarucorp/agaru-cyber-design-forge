@@ -102,7 +102,7 @@
   }
 
   .navbar-blur {
-    background: rgba(10, 10, 10, 0.8);
+    background: #1F1D24;
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(61, 0, 199, 0.2);
   }

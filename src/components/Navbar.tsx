@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { Menu, X } from 'lucide-react';
-import LogoNav from './assets/Navbar/cleanlogo.svg';
 
 interface NavbarProps {
   lang: 'ES' | 'EN';
@@ -84,13 +83,13 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 relative">
-          {/* Logo - Alineado a la izquierda en mobile y desktop */}
-          <div className="flex-none">
+          {/* Logo - Centrado en mobile, alineado a la izquierda en desktop */}
+          <div className="flex-none md:flex-none">
             <a href="/" className="flex items-center">
-              {/* Logo para mobile - alineado a la izquierda */}
-              <img src={LogoNav} alt="AgaruCorp Design" className="w-auto h-[16px] md:hidden object-contain" />
+              {/* Logo para mobile - centrado */}
+              <img src="/logonavbar.svg" alt="AgaruCorp Design" className="w-auto h-[17.92px] md:hidden object-contain absolute left-1/2 transform -translate-x-1/2" />
               {/* Logo para desktop - alineado a la izquierda */}
-              <img src={LogoNav} alt="AgaruCorp Design" className="hidden md:block w-auto h-[25px] object-contain" />
+              <img src="/logonavbar.svg" alt="AgaruCorp Design" className="hidden md:block w-auto h-[18.75px] object-contain" />
             </a>
           </div>
 
