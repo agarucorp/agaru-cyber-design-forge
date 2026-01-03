@@ -187,7 +187,7 @@ const scrollToSection = (sectionId: string) => {
               </>
             )}
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto font-manrope font-light">
+          <p className="text-[16px] md:text-xl text-gray-300 max-w-3xl mx-auto font-manrope font-light">
             {lang === 'ES'
               ? 'Nos especializamos en ayudar a PyMEs, startups y profesionales a lanzar sus marcas online'
               : 'We specialize in helping SMEs, startups, and ambitious professionals to launch and establish their brands online'}

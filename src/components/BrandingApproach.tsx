@@ -104,74 +104,200 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
           </h2>
         </div>
 
-        {/* Desktop: cards en columna o fila */}
-        <div className="hidden md:block space-y-8 overflow-x-hidden overflow-y-hidden">
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className={`flex flex-col lg:flex-row items-center gap-8 animate-fade-in mx-auto max-w-4xl group ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              } ${index === 0 ? 'mt-4' : ''} ${index === 4 ? '!mb-4' : ''}`}
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
+        {/* Desktop: Mapa orgánico con líneas curvas fluidas */}
+        <div className="hidden md:flex relative w-full min-h-[1200px] items-start justify-center mt-12 mb-12">
+          {/* SVG para las líneas curvas orgánicas de conexión */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ overflow: 'visible' }}>
+            <defs>
+              <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#895AF6" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#895AF6" stopOpacity="0.2" />
+              </linearGradient>
+              <linearGradient id="lineGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#895AF6" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#895AF6" stopOpacity="0.2" />
+              </linearGradient>
+              <linearGradient id="lineGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#895AF6" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#895AF6" stopOpacity="0.2" />
+              </linearGradient>
+              <linearGradient id="lineGradient4" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#895AF6" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#895AF6" stopOpacity="0.2" />
+              </linearGradient>
+            </defs>
+            
+            {/* Línea curva orgánica 1 -> 2 (arco suave horizontal) */}
+            <path
+              d="M 200 80 Q 400 60, 600 80"
+              stroke="url(#lineGradient1)"
+              strokeWidth="2.5"
+              fill="none"
+              strokeDasharray="10,6"
+              className="animate-pulse"
+              style={{ animationDuration: '3s' }}
+            />
+            
+            {/* Línea curva orgánica 2 -> 3 (arco descendente diagonal) */}
+            <path
+              d="M 600 80 Q 450 200, 200 240"
+              stroke="url(#lineGradient2)"
+              strokeWidth="2.5"
+              fill="none"
+              strokeDasharray="10,6"
+              className="animate-pulse"
+              style={{ animationDuration: '3.5s', animationDelay: '0.3s' }}
+            />
+            
+            {/* Línea curva orgánica 3 -> 4 (arco horizontal) */}
+            <path
+              d="M 200 240 Q 400 260, 600 240"
+              stroke="url(#lineGradient3)"
+              strokeWidth="2.5"
+              fill="none"
+              strokeDasharray="10,6"
+              className="animate-pulse"
+              style={{ animationDuration: '3s', animationDelay: '0.6s' }}
+            />
+            
+            {/* Línea curva orgánica 4 -> 5 (arco descendente final) */}
+            <path
+              d="M 600 240 Q 450 360, 200 400"
+              stroke="url(#lineGradient4)"
+              strokeWidth="2.5"
+              fill="none"
+              strokeDasharray="10,6"
+              className="animate-pulse"
+              style={{ animationDuration: '3.5s', animationDelay: '0.9s' }}
+            />
+          </svg>
 
-              {/* Content */}
-              {index === 0 ? (
-                <div className="flex-1 bg-[#262626] rounded-2xl p-5 border border-white/10 transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:border-[#895AF6]/40 hover:ring-2 hover:ring-[#895AF6]/30 flex flex-col justify-center min-h-[90px] max-w-4xl group">
-                  <h3 className="text-[16px] md:text-xl font-manrope font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">{step.title}</h3>
-                  <p className="text-gray-300 text-base font-manrope leading-relaxed group-hover:text-white/90 transition-colors duration-300">{step.description}</p>
+          {/* Contenedor de cards con posicionamiento orgánico */}
+          <div className="relative w-full max-w-6xl z-10">
+            {steps.map((step, idx) => {
+              // Posiciones orgánicas para cada card (patrón tipo S fluido) - Espaciado aumentado
+              const positions = [
+                { left: '8%', top: '0px' },        // Card 1: Izquierda arriba
+                { left: '52%', top: '0px' },      // Card 2: Derecha arriba
+                { left: '8%', top: '160px' },     // Card 3: Izquierda medio
+                { left: '52%', top: '160px' },    // Card 4: Derecha medio
+                { left: '8%', top: '320px' },     // Card 5: Izquierda abajo
+              ];
+
+              const position = positions[idx];
+
+              return (
+                <div
+                  key={idx}
+                  className="absolute group"
+                  style={{
+                    left: position.left,
+                    top: position.top,
+                    width: '42%',
+                  }}
+                >
+                  {/* Card con efecto glassmorphism mejorado */}
+                  <div className="relative w-full rounded-2xl bg-[#262626] shadow-xl px-5 py-5 flex flex-col items-start transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-2xl hover:ring-2 hover:ring-[#895AF6]/30">
+                    {/* Indicador decorativo sutil en el borde superior izquierdo */}
+                    <div className="absolute -left-1 -top-1 w-4 h-4">
+                      <div className="w-full h-full rounded-full bg-[#895AF6]/30 border border-[#895AF6]/50 flex items-center justify-center">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#895AF6] animate-pulse" style={{ animationDuration: '2s' }}></div>
+                      </div>
+                    </div>
+
+                    <h3 className="text-[16px] md:text-xl font-manrope font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm font-manrope leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-              ) : (
-                <div className="flex-1 bg-[#262626] p-5 rounded-2xl transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:border-[#895AF6]/40 hover:ring-2 hover:ring-[#895AF6]/30 border border-white/5 min-h-[90px] max-w-4xl group">
-                  <h3 className="text-[16px] md:text-xl font-manrope font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-300 text-base font-manrope leading-relaxed group-hover:text-white/90 transition-colors duration-300">
-                    {step.description}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
 
-        {/* Mobile: carrusel táctil scroll-x, sin oscurecer cards */}
+        {/* Mobile: Layout vertical con líneas curvas orgánicas */}
         <div className="md:hidden w-full overflow-x-hidden">
-          <div className="relative z-10 overflow-visible">
-            <div className="w-full flex flex-col items-center pt-4">
-              <div
-                className="w-full overflow-x-auto flex snap-x snap-mandatory gap-6 pb-2 pl-4 pr-4"
-                style={{ scrollbarWidth: 'none' }}
-                ref={carouselRef}
-                onScroll={handleScroll}
-              >
-                {steps.map((step, idx) => (
-                  <div
-                    key={idx}
-                    className="snap-center flex flex-col items-center group transition-transform duration-300 min-w-[90vw] max-w-xs mx-auto pt-8"
-                  >
-                    <div className="w-full min-h-[220px] cyber-card p-6 rounded-xl border border-white/5 flex flex-col items-center pt-6">
-                      <h3 className="text-[16px] md:text-xl font-manrope font-bold text-white mb-4 text-center">
-                        {step.title}
-                      </h3>
-                      <p className="text-gray-300 text-base font-manrope text-center leading-relaxed">
-                        {step.description}
-                      </p>
+          <div className="relative w-full px-4 py-8">
+            {/* SVG para líneas curvas en mobile */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ overflow: 'visible', height: '100%' }}>
+              <defs>
+                <linearGradient id="mobileLineGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#895AF6" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#895AF6" stopOpacity="0.2" />
+                </linearGradient>
+                <linearGradient id="mobileLineGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#895AF6" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#895AF6" stopOpacity="0.2" />
+                </linearGradient>
+                <linearGradient id="mobileLineGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#895AF6" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#895AF6" stopOpacity="0.2" />
+                </linearGradient>
+                <linearGradient id="mobileLineGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#895AF6" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#895AF6" stopOpacity="0.2" />
+                </linearGradient>
+              </defs>
+              
+              {/* Líneas curvas verticales que conectan las cards */}
+              <path
+                d="M 40 80 Q 50 120, 40 160"
+                stroke="url(#mobileLineGradient1)"
+                strokeWidth="2"
+                fill="none"
+                strokeDasharray="6,4"
+              />
+              <path
+                d="M 40 160 Q 50 200, 40 240"
+                stroke="url(#mobileLineGradient2)"
+                strokeWidth="2"
+                fill="none"
+                strokeDasharray="6,4"
+              />
+              <path
+                d="M 40 240 Q 50 280, 40 320"
+                stroke="url(#mobileLineGradient3)"
+                strokeWidth="2"
+                fill="none"
+                strokeDasharray="6,4"
+              />
+              <path
+                d="M 40 320 Q 50 360, 40 400"
+                stroke="url(#mobileLineGradient4)"
+                strokeWidth="2"
+                fill="none"
+                strokeDasharray="6,4"
+              />
+            </svg>
+
+            {/* Cards en layout vertical */}
+            <div className="relative space-y-6">
+              {steps.map((step, idx) => (
+                <div
+                  key={idx}
+                  className="relative group ml-12"
+                >
+                  {/* Indicador decorativo a la izquierda */}
+                  <div className="absolute -left-8 top-6 w-4 h-4">
+                    <div className="w-full h-full rounded-full bg-[#895AF6]/30 border border-[#895AF6]/50 flex items-center justify-center">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#895AF6] animate-pulse" style={{ animationDuration: '2s' }}></div>
                     </div>
                   </div>
-                ))}
-              </div>
-              {/* Indicadores debajo de la card */}
-              <div className="flex gap-2 mt-4">
-                {steps.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`w-2.5 h-2.5 rounded-full border transition-colors duration-200 ${current === i ? 'bg-agaru-purple border-agaru-purple' : 'bg-cyber-grey border-gray-600'}`}
-                    onClick={() => setCurrent(i)}
-                    aria-label={`Paso ${i + 1}`}
-                  />
-                ))}
-              </div>
+
+                  {/* Card */}
+                  <div className="rounded-2xl bg-[#262626] shadow-xl px-5 py-5 flex flex-col items-start transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl hover:ring-2 hover:ring-[#895AF6]/30">
+                    <h3 className="text-[16px] font-manrope font-bold mb-1 transition-colors duration-300 group-hover:text-[#B983FF] text-white">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm font-manrope leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

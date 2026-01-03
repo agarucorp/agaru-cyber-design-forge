@@ -148,10 +148,10 @@ const Footer = ({ lang }: FooterProps) => {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-6 capitalize">{lang === 'ES' ? 'Información de Contacto' : 'Contact Information'}</h3>
+                <h3 className="text-2xl font-bold text-white mb-6">{lang === 'ES' ? 'Información de contacto' : 'Contact Information'}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6]">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6]">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -161,7 +161,7 @@ const Footer = ({ lang }: FooterProps) => {
                   </div>
                   
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6]">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6]">
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -178,12 +178,12 @@ const Footer = ({ lang }: FooterProps) => {
                   </div>
                   
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6]">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#895AF6] border border-[#895AF6] transition-all duration-300 hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6]">
                       <MapPin className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <div className="text-gray-400 text-sm">{lang === 'ES' ? 'Ubicación' : 'Location'}</div>
-                      <div className="text-white font-semibold">{lang === 'ES' ? 'Buenos Aires, Argentina | Presencia global' : 'Buenos Aires, Argentina | Worldwide'}</div>
+                      <div className="text-white font-semibold">Buenos Aires, Argentina</div>
                     </div>
                   </div>
                 </div>
@@ -337,7 +337,7 @@ const Footer = ({ lang }: FooterProps) => {
                   type="submit"
                   variant="cyber"
                   size="lg"
-                  className="group bg-[#895AF6] text-white border border-[#895AF6] hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] hover:shadow-[0_0_30px_0_#895AF6] shadow-[0_0_20px_0_#895AF6] transition-all duration-300 w-full flex items-center justify-center gap-2"
+                  className="group bg-[#895AF6] text-white border border-[#895AF6] hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] transition-all duration-300 w-full flex items-center justify-center gap-2"
                   disabled={!isFormValid}
                 >
                   {lang === 'ES' ? 'Enviar Mensaje' : 'Send Message'}

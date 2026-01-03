@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { Menu, X } from 'lucide-react';
-import LogoNav from './assets/Navbar/Group 47268.svg';
+import LogoNav from './assets/Navbar/cleanlogo.svg';
 
 interface NavbarProps {
   lang: 'ES' | 'EN';
@@ -88,9 +88,9 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           <div className="flex-none">
             <a href="/" className="flex items-center">
               {/* Logo para mobile - alineado a la izquierda */}
-              <img src={LogoNav} alt="AgaruCorp Design" className="w-auto h-[5.1px] md:hidden object-contain" />
+              <img src={LogoNav} alt="AgaruCorp Design" className="w-auto h-[16px] md:hidden object-contain" />
               {/* Logo para desktop - alineado a la izquierda */}
-              <img src={LogoNav} alt="AgaruCorp Design" className="hidden md:block w-auto h-[16.5px] object-contain" />
+              <img src={LogoNav} alt="AgaruCorp Design" className="hidden md:block w-auto h-[25px] object-contain" />
             </a>
           </div>
 
@@ -124,25 +124,26 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
             </div>
           </div>
 
-          {/* Switch de idioma */}
-          <div className="hidden md:flex items-center ml-2">
-            <button
-              onClick={() => setLang('ES')}
-              className={`px-1 py-0.5 rounded-l border border-agaru-purple text-[9px] font-onest font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
-              aria-pressed={lang === 'ES'}
-            >
-              ES
-            </button>
-            <button
-              onClick={() => setLang('EN')}
-              className={`px-1 py-0.5 rounded-r border border-agaru-purple border-l-0 text-[9px] font-onest font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
-              aria-pressed={lang === 'EN'}
-            >
-              EN
-            </button>
-          </div>
-          {/* Contact Button */}
-          <div className="hidden md:block">
+          {/* Switch de idioma y Contact Button - Contenedor con gap reducido */}
+          <div className="hidden md:flex items-center gap-2">
+            {/* Switch de idioma */}
+            <div className="flex items-center">
+              <button
+                onClick={() => setLang('ES')}
+                className={`px-1 py-0.5 rounded-l border border-agaru-purple text-[9px] font-onest font-semibold transition-colors duration-200 ${lang === 'ES' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+                aria-pressed={lang === 'ES'}
+              >
+                ES
+              </button>
+              <button
+                onClick={() => setLang('EN')}
+                className={`px-1 py-0.5 rounded-r border border-agaru-purple border-l-0 text-[9px] font-onest font-semibold transition-colors duration-200 ${lang === 'EN' ? 'bg-agaru-purple text-white' : 'bg-gray-800 text-gray-300'}`}
+                aria-pressed={lang === 'EN'}
+              >
+                EN
+              </button>
+            </div>
+            {/* Contact Button */}
             <a
               href="#contact"
               className="border border-[#895AF6] bg-transparent text-[#895AF6] px-6 py-2 rounded-md font-onest font-medium text-[13px] transition-all duration-300 hover:border-white hover:text-white"

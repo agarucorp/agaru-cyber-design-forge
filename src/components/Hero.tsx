@@ -32,16 +32,16 @@ const Hero = ({ lang = 'ES' }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: false });
     if (!ctx) return;
 
     const isMobile = window.innerWidth < 768;
 
-    // Configuración de la escala de violetas y densidad
+    // Configuración de la escala de violetas y densidad - Optimizado para rendimiento
     configRef.current = {
       color: '#895AF6',
-      count: isMobile ? 40 : 100, // Menos en mobile para fluidez
-      connectionDist: isMobile ? 80 : 150, // Distancia de interacción
+      count: isMobile ? 40 : 60, // Reducido en desktop para mejor rendimiento
+      connectionDist: isMobile ? 80 : 120, // Reducida la distancia en desktop
       nodeSpeed: 0.7 // Velocidad aumentada ligeramente
     };
 
@@ -75,9 +75,9 @@ const Hero = ({ lang = 'ES' }) => {
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = configRef.current.color;
         ctx.fill();
-        // Brillo del nodo
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = configRef.current.color;
+        // Brillo del nodo - removido para mejor rendimiento
+        // ctx.shadowBlur = 10;
+        // ctx.shadowColor = configRef.current.color;
       }
     }
 
@@ -95,14 +95,19 @@ const Hero = ({ lang = 'ES' }) => {
       }
     }
 
-    // Al mover el mouse, los nodos huyen suavemente o se conectan
+    // Al mover el mouse, los nodos huyen suavemente o se conectan - Optimizado
     function mouseInteraction() {
       if (!mouseRef.current.x || !mouseRef.current.y) return;
+      const mouseX = mouseRef.current.x;
+      const mouseY = mouseRef.current.y;
+      const interactionDist = 100;
+      const interactionDistSq = interactionDist * interactionDist; // Usar distancia al cuadrado para evitar sqrt
+      
       particlesRef.current.forEach(p => {
-        const dx = p.x - mouseRef.current.x!;
-        const dy = p.y - mouseRef.current.y!;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {
+        const dx = p.x - mouseX;
+        const dy = p.y - mouseY;
+        const distSq = dx * dx + dy * dy; // Distancia al cuadrado (más rápido)
+        if (distSq < interactionDistSq) {
           p.x += dx * 0.01;
           p.y += dy * 0.01;
         }
@@ -115,21 +120,27 @@ const Hero = ({ lang = 'ES' }) => {
       // Interacción con el mouse
       mouseInteraction();
 
+      const connectionDist = configRef.current.connectionDist;
+      const connectionDistSq = connectionDist * connectionDist; // Distancia al cuadrado para optimización
+
+      // Actualizar y dibujar partículas
       for (let i = 0; i < particlesRef.current.length; i++) {
         const p1 = particlesRef.current[i];
         p1.update();
         p1.draw();
 
-        // Lógica de interacción (Nodos cercanos)
+        // Lógica de interacción (Nodos cercanos) - Optimizado con distancia al cuadrado
         for (let j = i + 1; j < particlesRef.current.length; j++) {
           const p2 = particlesRef.current[j];
           const dx = p1.x - p2.x;
           const dy = p1.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+          const distSq = dx * dx + dy * dy; // Usar distancia al cuadrado (evita sqrt costoso)
 
-          if (dist < configRef.current.connectionDist) {
+          if (distSq < connectionDistSq) {
+            // Calcular distancia real solo cuando es necesario
+            const dist = Math.sqrt(distSq);
             // La opacidad depende de la cercanía
-            const opacity = 1 - (dist / configRef.current.connectionDist);
+            const opacity = 1 - (dist / connectionDist);
             ctx.beginPath();
             ctx.strokeStyle = `rgba(137, 90, 246, ${opacity * 0.5})`;
             ctx.lineWidth = 0.8;
@@ -199,7 +210,7 @@ const Hero = ({ lang = 'ES' }) => {
       />
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-8 mt-8 lg:mt-0 lg:pt-32 lg:pb-16">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 pt-56 pb-8 md:px-6 md:pt-20 lg:mt-0 lg:pt-32 lg:pb-16">
         <div className="flex flex-col items-center justify-center text-center">
           
           {/* Content */}
@@ -222,7 +233,7 @@ const Hero = ({ lang = 'ES' }) => {
                   </>
                 ) : (
                   <>
-                    <span className="sr-only">AgaruCorp - </span><span>Build</span> <span className="text-[#895AF6] lowercase">digital interfaces</span><br /><span className="lowercase">of</span> <span className="bg-gradient-to-r from-[#895AF6] to-[#4DE3FF] bg-clip-text text-transparent lowercase">tomorrow</span>
+                    <span className="sr-only">AgaruCorp - </span><span className="text-[#895AF6]">High-fidelity digital products</span> <span className="text-[#F1F9F4] lowercase">for brands with vision</span>
                   </>
                 )}
               </h1>
@@ -233,7 +244,7 @@ const Hero = ({ lang = 'ES' }) => {
               >
                 {lang === 'ES'
                   ? 'Diseño de sitios web, aplicaciones y branding.'
-                  : 'We develop high-impact websites and brand strategies that eliminate friction, optimize costs, and drive growth.'}
+                  : 'Web design, apps, and branding.'}
               </p>
             </div>
           </div>

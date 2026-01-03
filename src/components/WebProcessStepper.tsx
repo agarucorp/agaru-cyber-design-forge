@@ -115,58 +115,104 @@ export default function WebProcessStepper({ lang }: WebProcessStepperProps) {
             <>Proceso de <span className="text-[#895AF6]">diseño</span></>
           )}
         </h2>
-        {/* Desktop: vertical steps */}
-        <div className="hidden md:flex relative w-full flex-col items-center">
-          <div className="flex flex-col w-full z-10 gap-10">
-            {steps.map((step, idx) => (
-              <div key={idx} className="flex flex-row items-start w-full relative group">
-                {/* Card glassmorphism */}
-                <div className="w-full rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl px-5 py-5 flex flex-col items-start transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-2xl group-hover:border-[#895AF6]/40 hover:ring-2 hover:ring-[#895AF6]/30">
-                  <h3 className="text-[14px] md:text-lg font-manrope font-semibold text-white mb-2 text-left drop-shadow group-hover:text-[#B983FF] transition-colors duration-300">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm md:text-base font-manrope text-left leading-snug group-hover:text-white/90 transition-colors duration-300">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* Mobile: carrusel táctil scroll-x, sin oscurecer cards */}
-        <div className="md:hidden w-full overflow-x-hidden">
-          <div className="w-full flex flex-col items-center">
-            <div
-              className="w-full overflow-x-auto flex snap-x snap-mandatory gap-6 pb-2 pl-4 pr-4"
-              style={{ scrollbarWidth: 'none' }}
-              ref={carouselRef}
-              onScroll={handleScroll}
-            >
-              {steps.map((step, idx) => (
+        {/* Desktop: Mapa de proceso con líneas de conexión */}
+        <div className="hidden md:flex relative w-full min-h-[1400px] items-start justify-center mt-12 mb-12">
+          {/* Contenedor de cards con posicionamiento */}
+          <div className="relative w-full max-w-6xl z-10">
+            {steps.map((step, idx) => {
+              // Posiciones para cada card en el mapa (diseño tipo zigzag)
+              const positions = [
+                { left: '5%', top: '0px', align: 'left' },      // Card 1: Izquierda
+                { left: '55%', top: '0px', align: 'right' },    // Card 2: Derecha (mismo nivel)
+                { left: '5%', top: '220px', align: 'left' },    // Card 3: Izquierda (abajo)
+                { left: '55%', top: '220px', align: 'right' },  // Card 4: Derecha (mismo nivel que 3)
+                { left: '5%', top: '440px', align: 'left' },    // Card 5: Izquierda (más abajo)
+                { left: '55%', top: '440px', align: 'right' },  // Card 6: Derecha (mismo nivel que 5)
+              ];
+
+              const position = positions[idx];
+              const isLeft = position.align === 'left';
+
+              return (
                 <div
                   key={idx}
-                  className="snap-center flex flex-col items-center justify-center group transition-transform duration-300 min-w-[90vw] max-w-xs mx-auto"
+                  className="absolute group"
+                  style={{
+                    left: position.left,
+                    top: position.top,
+                    width: '40%',
+                  }}
                 >
-                  <div className="w-full min-h-[220px] cyber-card p-6 rounded-xl border border-white/5 flex flex-col items-center pt-6">
-                    <h3 className="text-[16px] md:text-xl font-manrope font-bold text-white mb-4 text-center">
+                  {/* Card glassmorphism */}
+                  <div className="relative w-full rounded-2xl bg-[#262626] shadow-xl px-5 py-5 flex flex-col items-start transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-2xl hover:ring-2 hover:ring-[#895AF6]/30">
+                    {/* Número de etapa */}
+                    <div className="absolute -left-4 -top-4 w-10 h-10 rounded-full bg-[#895AF6] border-2 border-black flex items-center justify-center text-white font-bold text-sm z-20 shadow-lg">
+                      {idx + 1}
+                    </div>
+
+                    <h3 className="text-[14px] md:text-lg font-manrope font-semibold text-white mb-2 text-left drop-shadow group-hover:text-[#B983FF] transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-gray-300 text-base font-manrope text-center leading-relaxed">
+                    <p className="text-gray-300 text-sm md:text-sm font-manrope text-left leading-snug group-hover:text-white/90 transition-colors duration-300">
                       {step.description}
                     </p>
                   </div>
                 </div>
-              ))}
-            </div>
-            {/* Indicadores debajo de la card */}
-            <div className="flex gap-2 mt-4">
-              {steps.map((_, i) => (
-                <button
-                  key={i}
-                  className={`w-2.5 h-2.5 rounded-full border transition-colors duration-200 ${current === i ? 'bg-agaru-purple border-agaru-purple' : 'bg-cyber-grey border-gray-600'}`}
-                  onClick={() => setCurrent(i)}
-                  aria-label={`Paso ${i + 1}`}
-                />
+              );
+            })}
+
+            {/* Líneas de conexión usando divs posicionados */}
+            {/* Línea 1 -> 2 (horizontal) */}
+            <div className="absolute top-[60px] left-[45%] w-[10%] h-[2px] bg-[#895AF6] opacity-40 z-0" style={{ background: 'linear-gradient(to right, #895AF6, #895AF6)' }}></div>
+            
+            {/* Línea 2 -> 3 (vertical abajo, luego horizontal izquierda) */}
+            <div className="absolute top-[60px] left-[55%] w-[2px] h-[180px] bg-[#895AF6] opacity-40 z-0"></div>
+            <div className="absolute top-[240px] left-[5%] w-[50%] h-[2px] bg-[#895AF6] opacity-40 z-0"></div>
+            
+            {/* Línea 3 -> 4 (horizontal) */}
+            <div className="absolute top-[280px] left-[45%] w-[10%] h-[2px] bg-[#895AF6] opacity-40 z-0"></div>
+            
+            {/* Línea 4 -> 5 (vertical abajo, luego horizontal izquierda) */}
+            <div className="absolute top-[280px] left-[55%] w-[2px] h-[180px] bg-[#895AF6] opacity-40 z-0"></div>
+            <div className="absolute top-[460px] left-[5%] w-[50%] h-[2px] bg-[#895AF6] opacity-40 z-0"></div>
+            
+            {/* Línea 5 -> 6 (horizontal) */}
+            <div className="absolute top-[500px] left-[45%] w-[10%] h-[2px] bg-[#895AF6] opacity-40 z-0"></div>
+          </div>
+        </div>
+        {/* Mobile: Layout vertical con líneas de conexión */}
+        <div className="md:hidden w-full overflow-x-hidden">
+          <div className="relative w-full px-4 py-8">
+            {/* Línea vertical central que conecta todas las cards */}
+            <div className="absolute left-8 top-12 bottom-12 w-[2px] bg-[#895AF6] opacity-30 z-0"></div>
+
+            {/* Cards en layout vertical */}
+            <div className="relative space-y-8">
+              {steps.map((step, idx) => (
+                <div
+                  key={idx}
+                  className="relative group"
+                >
+                  {/* Número de etapa a la izquierda */}
+                  <div className="absolute -left-2 top-6 w-10 h-10 rounded-full bg-[#895AF6] border-2 border-black flex items-center justify-center text-white font-bold text-sm z-20 shadow-lg">
+                    {idx + 1}
+                  </div>
+
+                  {/* Card */}
+                  <div className="ml-12 rounded-2xl bg-[#262626] shadow-xl px-5 py-5 flex flex-col items-start transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl hover:ring-2 hover:ring-[#895AF6]/30">
+                    <h3 className="text-[16px] font-manrope font-bold text-white mb-2 text-left drop-shadow group-hover:text-[#B983FF] transition-colors duration-300">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm font-manrope text-left leading-snug group-hover:text-white/90 transition-colors duration-300">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  {/* Línea horizontal que conecta con la línea vertical (excepto la última) */}
+                  {idx < steps.length - 1 && (
+                    <div className="absolute left-8 top-[60px] w-4 h-[2px] bg-[#895AF6] opacity-30 z-0"></div>
+                  )}
+                </div>
               ))}
             </div>
           </div>

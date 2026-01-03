@@ -52,7 +52,7 @@ const FAQ = ({ lang }: FAQProps) => {
       ]
     : [
         {
-          category: 'Web Design & Development',
+          category: 'Web design & development',
           questions: [
             {
               question: 'What is your typical timeline for a web design project?',
@@ -69,7 +69,7 @@ const FAQ = ({ lang }: FAQProps) => {
           ]
         },
         {
-          category: 'Branding & Strategy',
+          category: 'Branding & strategy',
           questions: [
             {
               question: 
@@ -134,7 +134,7 @@ const FAQ = ({ lang }: FAQProps) => {
         <div className="space-y-8">
           {faqs.map((category, categoryIndex) => (
             <div key={categoryIndex} className="animate-fade-in" style={{ animationDelay: `${categoryIndex * 0.1}s` }}>
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center capitalize">
+              <h3 className="text-2xl font-manrope font-semibold text-white mb-6 flex items-center">
                 <div className="w-1 h-8 cyber-gradient rounded-full mr-4"></div>
                 {category.category}
               </h3>
@@ -156,7 +156,7 @@ const FAQ = ({ lang }: FAQProps) => {
                         onClick={() => toggleFAQ(categoryIndex, questionIndex)}
                         className="w-full p-6 text-left flex items-center justify-between transition-all duration-300 group hover:shadow-2xl hover:scale-[1.025] hover:bg-[#23243a]/90 hover:text-[#895AF6] focus:outline-none"
                       >
-                        <span className="text-[16px] md:text-xl font-light text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
+                        <span className="text-[16px] md:text-xl font-manrope font-normal text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
                           {faq.question}
                         </span>
                         <div className="text-white flex-shrink-0 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
@@ -167,7 +167,7 @@ const FAQ = ({ lang }: FAQProps) => {
                       {isOpen && (
                         <div className="px-6 pb-6 animate-fade-in">
                           <div className="h-px bg-gradient-to-r from-agaru-purple to-transparent mb-4"></div>
-                          <p className="text-gray-300 leading-relaxed">
+                          <p className="text-gray-300 font-manrope font-light leading-relaxed">
                             {faq.answer}
                           </p>
                         </div>
