@@ -106,7 +106,7 @@ export default function WebProcessStepper({ lang }: WebProcessStepperProps) {
 
   const steps = lang === 'EN' ? stepsEN : stepsES;
   return (
-    <section className="pt-20 pb-20 flex justify-center items-center w-full overflow-x-hidden" style={{ backgroundColor: '#171619' }}>
+    <section className="pt-20 pb-20 flex justify-center items-center w-full overflow-x-hidden" style={{ backgroundColor: '#000000' }}>
       <div className="max-w-5xl w-full flex flex-col items-center px-2">
         <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-4 text-center">
           {lang === 'EN' ? (

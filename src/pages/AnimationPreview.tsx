@@ -160,7 +160,7 @@ const AnimationPreview = () => {
     <div style={{ 
       margin: 0, 
       padding: 0, 
-      backgroundColor: '#080808', 
+      backgroundColor: '#000000', 
       overflow: 'hidden', 
       height: '100vh', 
       width: '100vw' 
@@ -195,7 +195,7 @@ const AnimationPreview = () => {
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'radial-gradient(circle, transparent 20%, #080808 100%)',
+            background: 'radial-gradient(circle, transparent 20%, #000000 100%)',
             zIndex: 2,
             pointerEvents: 'none'
           }}

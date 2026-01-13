@@ -89,7 +89,7 @@ const BrandingApproach = ({ lang }: BrandingApproachProps) => {
     <section
       id="branding-approach"
       className="pt-20 pb-20 overflow-y-hidden md:overflow-y-hidden overflow-x-hidden w-full"
-      style={{ backgroundColor: '#171619' }}
+      style={{ backgroundColor: '#000000' }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-4">

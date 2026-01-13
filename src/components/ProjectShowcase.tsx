@@ -19,9 +19,10 @@ interface ProjectShowcaseProps {
 
 const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   const isMobile = useIsMobile();
-  const [currentPage, setCurrentPage] = useState(1);
   const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
-  const projectsPerPage = 3;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
   const projectsData = [
     {
       image: mockupCalena,
@@ -63,11 +64,11 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
 
   const categories = [
     'Web App',      // 1
-    'Web Design',   // 2
+    'E-commerce',   // 2
     'Web Catalog',  // 3
     'Web Design',   // 4
     'Web Catalog',  // 5
-    'Web Design',   // 6
+    'Landing page', // 6
   ];
 
   const projectCommon = [
@@ -123,10 +124,16 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     link: projectCommon[i].link,
   }));
 
-  const totalPages = Math.ceil(projects.length / projectsPerPage);
-  const startIndex = (currentPage - 1) * projectsPerPage;
-  const endIndex = startIndex + projectsPerPage;
-  const currentProjects = projects.slice(startIndex, endIndex);
+  // Auto-scroll carousel para mobile
+  useEffect(() => {
+    if (!isMobile || projects.length === 0) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isMobile, projects.length]);
 
   const handleFlip = (index: number) => {
     setFlippedCards(prev => {
@@ -140,27 +147,49 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     });
   };
 
+  // Touch handlers para scroll manual
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && currentIndex < projects.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+    if (isRightSwipe && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
   return (
-    <section id="projects" className="py-20 w-full overflow-x-hidden" style={{ backgroundColor: '#171619' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 w-full overflow-x-hidden" style={{ backgroundColor: '#000000' }}>
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-6">
-            {lang === 'ES' ? 'Proyectos ' : 'Featured '}
-            <span className="text-[#895AF6]">{lang === 'ES' ? 'destacados' : 'Projects'}</span>
+          <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
+            {lang === 'ES' ? 'Proyectos' : 'Projects'}
           </h2>
-          <p className="text-[16px] md:text-xl text-gray-300 text-center font-manrope font-light">
+          <p className="text-[16px] md:text-[16px] text-gray-300 text-center font-manrope font-light">
             {lang === 'ES'
               ? 'Descubrí cómo ayudamos a startups y negocios a transformar su presencia digital'
-              : `Discover how we've helped startups and different businesses transform their digital presence and achieve remarkable growth`}
+              : `Discover how we've helped startups and different businesses transform their digital presence`}
           </p>
         </div>
 
-        {/* Desktop: Grilla paginada de 3 en 3 con paginación */}
+        {/* Desktop: Grilla de 3 columnas con todos los proyectos */}
         <div className="hidden md:block">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {currentProjects.slice(0, 3).map((project, index) => (
+            {projects.map((project, index) => (
               <div
-                key={startIndex + index}
+                key={index}
                 className="group cyber-card rounded-xl overflow-hidden animate-fade-in transition-all duration-300 border border-white/5 relative h-96"
                 style={{ animationDelay: `${index * 0.1}s`, perspective: '1200px' }}
               >
@@ -215,37 +244,27 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
               </div>
             ))}
           </div>
-          {/* Paginación */}
-          <div className="flex justify-center mt-8 gap-4 items-center">
-            {[...Array(totalPages)].map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentPage(i + 1)}
-                className="focus:outline-none"
-                aria-label={`Página ${i + 1}`}
-              >
-                <span
-                  className={`block w-12 h-[4px] rounded-full transition-all duration-300 ${
-                    currentPage === i + 1
-                      ? 'bg-[#895AF6]'
-                      : 'bg-[#895AF6]/30 hover:bg-[#895AF6]/50'
-                  }`}
-                ></span>
-              </button>
-            ))}
-          </div>
         </div>
 
-        {/* Mobile: Flip Cards apiladas verticalmente */}
-        <div className="md:hidden space-y-6">
-          {projects.map((project, idx) => {
-            const isFlipped = flippedCards.has(idx);
-            return (
-              <div
-                key={project.title}
-                className="w-full max-w-sm mx-auto"
-                style={{ perspective: '1000px' }}
-              >
+        {/* Mobile: Carrusel horizontal con scroll automático */}
+        <div 
+          className="md:hidden relative overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div 
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {projects.map((project, idx) => {
+              const isFlipped = flippedCards.has(idx);
+              return (
+                <div
+                  key={project.title}
+                  className="w-full flex-shrink-0 px-2"
+                  style={{ perspective: '1000px' }}
+                >
                 <div
                   className="relative h-96 cursor-pointer"
                   onClick={() => handleFlip(idx)}
@@ -310,9 +329,10 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

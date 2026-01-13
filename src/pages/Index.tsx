@@ -2,21 +2,21 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
-import WebProcessStepper from '../components/WebProcessStepper';
-import BrandingApproach from '../components/BrandingApproach';
 import ProjectShowcase from '../components/ProjectShowcase';
+import Process from '../components/Process';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
+import WhatsAppFloat from '../components/WhatsAppFloat';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const Index = () => {
   // Comentario: Configuración SEO dinámica según el idioma seleccionado
-  const [lang, setLang] = useState<'ES' | 'EN'>('ES');
+  const [lang, setLang] = useState<'ES' | 'EN'>('EN');
 
   // SEO optimizado para español únicamente
   const seo = {
-    title: 'AgaruCorp Design', // Título para la pestaña del navegador
+    title: 'AGARUCORP | Design Studio', // Título para la pestaña del navegador
     titleForSharing: 'AgaruCorp | Diseño Web y Estrategia de Marca', // Título para compartir en redes sociales
     description: 'Creamos landing pages, sitios web, catálogos digitales y estrategia de marca para impulsar tu crecimiento online.'
   };
@@ -45,17 +45,15 @@ const Index = () => {
         <meta name="twitter:image:alt" content="AgaruCorp - Diseño Web y Estrategia de Marca" />
       </Helmet>
       {/* Fin configuración SEO dinámica */}
-      <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: '#171619' }}>
+      <div className="min-h-screen w-full overflow-x-hidden relative" style={{ backgroundColor: '#000000' }}>
         <Navbar lang={lang} setLang={setLang} />
         <Hero lang={lang} />
         <Services lang={lang} />
-        <section id="process">
-          <WebProcessStepper lang={lang} />
-          <BrandingApproach lang={lang} />
-        </section>
         <ProjectShowcase lang={lang} />
+        <Process lang={lang} />
         <FAQ lang={lang} />
         <Footer lang={lang} />
+        <WhatsAppFloat />
       </div>
     </>
   );

@@ -73,16 +73,16 @@ const FAQ = ({ lang }: FAQProps) => {
           questions: [
             {
               question: 
-                "Branding vs. Marketing: What's the core difference?",
+                "Branding vs. marketing: what's the core difference?",
               answer: 
                 "Branding builds your brand's identity: who you are, what you represent, and how you're perceived. Marketing involves the actions you take to communicate that identity and promote your products or services. In essence, branding is who you are, and marketing is how you communicate it."
             },
             {
-              question: 'Can My Brand Evolve Over Time?',
-              answer: 'Absolutely. A strong brand is flexible and adaptable. As your business or the market evolves, your brand can and should adjust, always maintaining the core essence that makes you unique.'
+              question: 'Can my brand evolve over time?',
+              answer: 'A strong brand is flexible and adaptable. As your business or the market evolves, your brand can and should adjust, always maintaining the core essence that makes you unique.'
             },
             {
-              question: 'Can You Help Rebrand an Existing Business?',
+              question: 'Can you help rebrand an existing business?',
               answer: 'Yes, we handle both new branding and rebranding projects. We analyze your current brand, identify opportunities, and create a strategic plan to refresh your image without losing brand equity.'
             }
           ]
@@ -122,12 +122,11 @@ const FAQ = ({ lang }: FAQProps) => {
   };
 
   return (
-    <section id="faq" className="py-20 w-full overflow-x-hidden" style={{ backgroundColor: '#171619' }}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-20 w-full overflow-x-hidden" style={{ backgroundColor: '#000000' }}>
+      <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[24px] md:text-5xl font-onest font-bold text-white mb-6">
-            {lang === 'ES' ? 'Preguntas ' : 'Frequently Asked '}
-            <span className="text-[#895AF6]">{lang === 'ES' ? 'frecuentes' : 'Questions'}</span>
+          <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
+            {lang === 'ES' ? 'Preguntas frecuentes' : 'Frequently asked questions'}
           </h2>
         </div>
 
@@ -156,7 +155,7 @@ const FAQ = ({ lang }: FAQProps) => {
                         onClick={() => toggleFAQ(categoryIndex, questionIndex)}
                         className="w-full p-6 text-left flex items-center justify-between transition-all duration-300 group hover:shadow-2xl hover:scale-[1.025] hover:bg-[#23243a]/90 hover:text-[#895AF6] focus:outline-none"
                       >
-                        <span className="text-[16px] md:text-xl font-manrope font-normal text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
+                        <span className="text-[16px] md:text-[18px] font-manrope font-normal text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
                           {faq.question}
                         </span>
                         <div className="text-white flex-shrink-0 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
@@ -167,7 +166,7 @@ const FAQ = ({ lang }: FAQProps) => {
                       {isOpen && (
                         <div className="px-6 pb-6 animate-fade-in">
                           <div className="h-px bg-gradient-to-r from-agaru-purple to-transparent mb-4"></div>
-                          <p className="text-gray-300 font-manrope font-light leading-relaxed">
+                          <p className="text-gray-300 font-manrope font-light text-[16px] leading-relaxed">
                             {faq.answer}
                           </p>
                         </div>
