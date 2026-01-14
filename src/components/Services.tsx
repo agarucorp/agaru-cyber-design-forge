@@ -96,10 +96,9 @@ const Services = ({ lang }: ServicesProps) => {
               >
                 <div className={`max-w-2xl md:max-w-[600px] mx-auto md:mx-0 px-4 md:px-12 ${service.align === 'right' ? 'md:ml-auto' : ''}`}>
                   <h3 
-                    className="font-onest font-black mb-6 text-center md:text-center"
+                    className="font-onest font-black mb-6 text-center md:text-center text-[34px] md:text-[38px]"
                     style={{
                       color: service.titleColor || '#895AF6',
-                      fontSize: 'calc(1.5rem + 14px)', // text-2xl (24px) + 14px = 38px
                     }}
                   >
                     {service.title}
