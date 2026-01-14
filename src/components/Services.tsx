@@ -63,9 +63,9 @@ const Services = ({ lang }: ServicesProps) => {
   ];
 
   return (
-    <section id="services" className="py-20 relative overflow-hidden w-full" style={{ backgroundColor: '#000000' }}>
+    <section id="services" className="py-20 xl:py-16 2xl:py-12 relative overflow-hidden w-full" style={{ backgroundColor: '#000000' }}>
       <div className="mx-auto" style={{ width: 'calc(100% - 1rem)', maxWidth: '1000px' }}>
-        <div className="px-2 sm:px-6 lg:px-8">
+        <div className="px-2 sm:px-6 lg:px-8 xl:px-6 2xl:px-4">
         <ScrollAnimate threshold={0.2}>
           <div className="text-center mb-16">
             <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
@@ -88,7 +88,7 @@ const Services = ({ lang }: ServicesProps) => {
         </ScrollAnimate>
 
         {/* Servicios con texto alternado */}
-        <div className="mt-12 space-y-12 md:space-y-16">
+        <div className="mt-12 space-y-12 md:space-y-16 xl:space-y-12 2xl:space-y-10">
           {services.map((service, idx) => (
             <ScrollAnimate key={idx} delay={idx * 100} threshold={0.15}>
               <div 

@@ -68,7 +68,7 @@ const Process = ({ lang }: ProcessProps) => {
         </svg>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-32 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-6 2xl:px-4 py-16 md:py-32 xl:py-24 2xl:py-20 relative z-10">
         <ScrollAnimate threshold={0.2}>
           <div className="text-center mb-16">
             <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">

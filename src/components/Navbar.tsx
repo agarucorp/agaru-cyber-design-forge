@@ -73,9 +73,9 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
 
   return (
     <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300" style={{ width: 'calc(100% - 2rem)', maxWidth: '1000px' }}>
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div 
-          className="flex items-center justify-between px-6 md:px-8 relative rounded-full w-full"
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-6 2xl:px-4">
+        <div
+          className="flex items-center justify-between px-6 md:px-8 xl:px-6 2xl:px-4 relative rounded-full w-full"
           style={{ 
             backgroundColor: 'rgba(32, 34, 36, 0.3)',
             backdropFilter: 'blur(10px)',

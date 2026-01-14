@@ -121,8 +121,8 @@ const Footer = ({ lang }: FooterProps) => {
   return (
     <footer id="contact" className="w-full overflow-x-hidden" style={{ backgroundColor: '#000000' }}>
       {/* Contact Form Section */}
-      <div className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="py-20 xl:py-16 2xl:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-6 2xl:px-4">
 
           <div className="max-w-md mx-auto">
             {/* Social Links */}
@@ -275,8 +275,8 @@ const Footer = ({ lang }: FooterProps) => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="border-t border-gray-800 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="border-t border-gray-800 py-8 xl:py-6 2xl:py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-6 2xl:px-4">
           <div className="flex flex-col items-center justify-center">
             {/* Copyright */}
             <div className="text-gray-400 text-sm text-center flex items-center justify-center gap-2">

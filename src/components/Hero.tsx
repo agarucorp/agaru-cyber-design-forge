@@ -57,8 +57,8 @@ const Hero = ({ lang = 'ES' }) => {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 pt-36 pb-8 md:pt-20 lg:mt-0 lg:pt-32 lg:pb-16" style={{ width: 'calc(100% - 2rem)', maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto' }}>
-        <div className="px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 pt-36 pb-8 md:pt-20 lg:mt-0 lg:pt-32 lg:pb-16 xl:pt-24 xl:pb-12 2xl:pt-20 2xl:pb-10" style={{ width: 'calc(100% - 2rem)', maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto' }}>
+        <div className="px-4 sm:px-6 lg:px-8 xl:px-6 2xl:px-4">
           <div className="md:pl-6 lg:pl-8">
             <ScrollAnimate threshold={0.1} rootMargin="200px 0px 0px 0px">
               <div className="flex flex-col items-start justify-start text-left">
