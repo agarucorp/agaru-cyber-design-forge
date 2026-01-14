@@ -3,7 +3,7 @@ import { ScrollAnimate } from './ScrollAnimate';
 
 const Hero = ({ lang = 'ES' }) => {
   return (
-    <div className="min-h-screen relative w-full" style={{ backgroundColor: '#000000', overflow: 'visible' }}>
+    <div className="min-h-screen xl:min-h-0 relative w-full" style={{ backgroundColor: '#000000', overflow: 'visible' }}>
       {/* Iluminación violeta oscura en la parte superior */}
       <div 
         className="absolute top-0 left-0 right-0 h-[40%] pointer-events-none z-0"
@@ -53,12 +53,22 @@ const Hero = ({ lang = 'ES' }) => {
               transform: scale(1.51) !important;
             }
           }
+          @media (min-width: 1280px) {
+            img[src="/elemento1.svg"] {
+              transform: scale(1.256) !important;
+              top: -10% !important;
+            }
+            img[src="/elemento2.svg"] {
+              z-index: 1 !important;
+              transform: scale(0.906) !important;
+            }
+          }
         `}</style>
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 pt-36 pb-8 md:pt-20 lg:mt-0 lg:pt-32 lg:pb-16 xl:pt-24 xl:pb-12 2xl:pt-20 2xl:pb-10" style={{ width: 'calc(100% - 2rem)', maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto' }}>
-        <div className="px-4 sm:px-6 lg:px-8 xl:px-6 2xl:px-4">
+      <div className="relative z-10 pt-36 pb-8 md:pt-20 lg:mt-0 lg:pt-32 lg:pb-16 xl:pt-40 xl:pb-12 2xl:pt-44 2xl:pb-16" style={{ width: 'calc(100% - 2rem)', maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto' }}>
+        <div className="px-4 sm:px-6 lg:px-8">
           <div className="md:pl-6 lg:pl-8">
             <ScrollAnimate threshold={0.1} rootMargin="200px 0px 0px 0px">
               <div className="flex flex-col items-start justify-start text-left">

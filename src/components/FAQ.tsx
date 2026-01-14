@@ -122,8 +122,8 @@ const FAQ = ({ lang }: FAQProps) => {
   };
 
   return (
-    <section id="faq" className="py-20 xl:py-16 2xl:py-12 w-full overflow-x-hidden" style={{ backgroundColor: '#000000' }}>
-      <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8 xl:px-6 2xl:px-4">
+    <section id="faq" className="py-20 w-full overflow-x-hidden" style={{ backgroundColor: '#000000' }}>
+      <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
         <ScrollAnimate threshold={0.2}>
           <div className="text-center mb-16">
             <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
