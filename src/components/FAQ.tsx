@@ -20,7 +20,7 @@ const FAQ = ({ lang }: FAQProps) => {
           questions: [
             {
               question: '¿Cuál es el tiempo estimado para un proyecto web?',
-              answer: 'El tiempo de entrega varía según la complejidad del proyecto. Para páginas simples menos de 5 días y sitios web 1/2 semanas. Las aplicaciones web suelen requerir de 1 a 3 meses. Una vez definidos los requisitos específicos, te proporcionaremos un cronograma detallado.'
+              answer: 'El tiempo de entrega depende de la complejidad del proyecto. Las páginas simples suelen desarrollarse en un plazo menor a 5 días hábiles, mientras que los sitios web completos requieren entre 1 y 2 semanas. Las aplicaciones web, por su alcance y funcionalidades, pueden demandar entre 1 y 3 meses de desarrollo. Una vez definidos los requisitos específicos, se entregará un cronograma detallado con los plazos estimados.'
             },
             {
               question: '¿Ofrecen mantenimiento y soporte continuo?',
@@ -56,7 +56,7 @@ const FAQ = ({ lang }: FAQProps) => {
           questions: [
             {
               question: 'What is your typical timeline for a web design project?',
-              answer: 'Delivery time varies based on project complexity. For static websites or landing pages, we estimate 1 to 2 weeks. Web applications, due to their higher complexity and interactive functionalities, typically require 3 weeks or more. Once specific requirements are defined, we\'ll provide a detailed timeline.'
+              answer: 'Delivery times depend on the complexity of the project. Simple pages are usually completed in under 5 business days, while full websites typically require between 1 and 2 weeks. Web applications, due to their scope and functionality, may take between 1 and 3 months to develop. Once the specific requirements are defined, a detailed timeline with estimated deadlines will be provided.'
             },
             {
               question: 'Do you provide ongoing maintenance and support?',

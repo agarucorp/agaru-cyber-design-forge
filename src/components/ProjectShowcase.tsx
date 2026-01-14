@@ -100,19 +100,19 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
 
   const descriptions = lang === 'ES'
     ? [
-        'Web app para gestión de psicólogos y conexión con pacientes.',
+        'Web app para gestión de psicólogos y conexión con pacientes',
         'Landing page + ecommerce para estudio de peluquería',
-        'Catálogo online para empresa de productos industriales.',
-        'Sitio web para empresa productora de extracto de yerba mate, stevia y té.',
-        'Catálogo para importadora de insumos industriales.',
+        'Catálogo online para empresa de productos industriales',
+        'Sitio web para empresa productora de extracto de yerba mate, stevia y té',
+        'Catálogo para importadora de insumos industriales',
         'Landing page para consultorio odontológico',
       ]
     : [
-        "Web app for psychologists' management and patient connection.",
+        "Web app for psychologists' management and patient connection",
         'Landing page + ecommerce for hair salon',
         'Online industrial products catalog',
         'Yerba mate, stevia, and tea extract manufacturer website',
-        'Catalog for industrial supplies importer.',
+        'Catalog for industrial supplies importer',
         'Comprehensive dental services website',
       ];
 
