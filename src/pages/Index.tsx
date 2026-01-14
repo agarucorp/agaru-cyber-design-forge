@@ -33,15 +33,16 @@ const Index = () => {
         {/* Open Graph optimizado */}
         <meta property="og:title" content={seo.titleForSharing} />
         <meta property="og:description" content={seo.description} />
-        <meta property="og:image" content="https://www.agarucorp.com/bannersocials.png" />
+        <meta property="og:image" content="https://www.agarucorp.com/banner%20socials.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="AgaruCorp - Diseño Web y Estrategia de Marca" />
         <meta property="og:locale" content="es_AR" />
         {/* Twitter Cards optimizadas */}
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seo.titleForSharing} />
         <meta name="twitter:description" content={seo.description} />
-        <meta name="twitter:image" content="https://www.agarucorp.com/bannersocials.png" />
+        <meta name="twitter:image" content="https://www.agarucorp.com/banner%20socials.png" />
         <meta name="twitter:image:alt" content="AgaruCorp - Diseño Web y Estrategia de Marca" />
       </Helmet>
       {/* Fin configuración SEO dinámica */}

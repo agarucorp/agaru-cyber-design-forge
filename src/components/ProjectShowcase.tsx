@@ -173,26 +173,28 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   return (
     <section id="projects" className="py-20 w-full overflow-x-hidden" style={{ backgroundColor: '#000000' }}>
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
-            {lang === 'ES' ? 'Proyectos' : 'Projects'}
-          </h2>
-          <p className="text-[16px] md:text-[16px] text-gray-300 text-center font-manrope font-light">
-            {lang === 'ES'
-              ? 'Descubrí cómo ayudamos a startups y negocios a transformar su presencia digital'
-              : `Discover how we've helped startups and different businesses transform their digital presence`}
-          </p>
-        </div>
+        <ScrollAnimate threshold={0.2}>
+          <div className="text-center mb-16">
+            <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
+              {lang === 'ES' ? 'Proyectos' : 'Projects'}
+            </h2>
+            <p className="text-[16px] md:text-[16px] text-gray-300 text-center font-manrope font-light">
+              {lang === 'ES'
+                ? 'Descubrí cómo ayudamos a startups y negocios a transformar su presencia digital'
+                : `Discover how we've helped startups and different businesses transform their digital presence`}
+            </p>
+          </div>
+        </ScrollAnimate>
 
         {/* Desktop: Grilla de 3 columnas con todos los proyectos */}
         <div className="hidden md:block">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <div
-                key={index}
-                className="group cyber-card rounded-xl overflow-hidden animate-fade-in transition-all duration-300 border border-white/5 relative h-96"
-                style={{ animationDelay: `${index * 0.1}s`, perspective: '1200px' }}
-              >
+              <ScrollAnimate key={index} delay={index * 100} threshold={0.15}>
+                <div
+                  className="group cyber-card rounded-xl overflow-hidden transition-all duration-300 border border-white/5 relative h-96"
+                  style={{ perspective: '1200px' }}
+                >
                 {/* Flip Container */}
                 <div className="flip-inner w-full h-full relative transition-transform duration-700" style={{ transformStyle: 'preserve-3d' }}>
                   {/* Front Side */}
@@ -241,7 +243,8 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
                     transform: rotateY(180deg);
                   }
                 `}</style>
-              </div>
+                </div>
+              </ScrollAnimate>
             ))}
           </div>
         </div>

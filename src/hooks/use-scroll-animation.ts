@@ -8,18 +8,18 @@ interface UseScrollAnimationOptions {
 
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
   const { threshold = 0.1, rootMargin = '0px', triggerOnce = true } = options;
-  const [isVisible, setIsVisible] = useState(true); // Cambiar a true por defecto
+  const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = elementRef.current;
     if (!element) return;
 
-    // Verificar si el elemento ya está visible al cargar
+    // Verificar si el elemento ya está visible al cargar (solo para Hero)
     const checkInitialVisibility = () => {
       const rect = element.getBoundingClientRect();
       const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
-      if (isInViewport) {
+      if (isInViewport && rect.top >= 0) {
         setIsVisible(true);
       }
     };

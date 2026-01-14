@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import { ScrollAnimate } from './ScrollAnimate';
 
 interface ProcessProps {
   lang: 'ES' | 'EN';
@@ -68,18 +69,21 @@ const Process = ({ lang }: ProcessProps) => {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-32 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
-            {lang === 'ES' ? 'Proceso' : 'Our process'}
-          </h2>
-          <p className="text-[16px] md:text-[16px] text-gray-300 max-w-3xl mx-auto font-manrope font-light">
-            {lang === 'ES' ? 'Cómo trabajamos' : 'How we work'}
-          </p>
-        </div>
+        <ScrollAnimate threshold={0.2}>
+          <div className="text-center mb-16">
+            <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
+              {lang === 'ES' ? 'Proceso' : 'Our process'}
+            </h2>
+            <p className="text-[16px] md:text-[16px] text-gray-300 max-w-3xl mx-auto font-manrope font-light">
+              {lang === 'ES' ? 'Cómo trabajamos' : 'How we work'}
+            </p>
+          </div>
+        </ScrollAnimate>
 
         <div className="space-y-6">
           {steps.map((step, index) => (
-            <div key={index} className="w-full max-w-3xl mx-auto">
+            <ScrollAnimate key={index} delay={index * 100} threshold={0.15}>
+              <div className="w-full max-w-3xl mx-auto">
               {/* Desktop: Layout horizontal */}
               <div className="hidden md:grid md:grid-cols-[auto_200px_auto_1fr] md:items-center md:gap-8">
                 {/* Pill con número e icono */}
@@ -151,7 +155,8 @@ const Process = ({ lang }: ProcessProps) => {
                   {step.description}
                 </p>
               </div>
-            </div>
+              </div>
+            </ScrollAnimate>
           ))}
         </div>
       </div>

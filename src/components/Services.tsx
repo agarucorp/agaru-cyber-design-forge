@@ -1,3 +1,5 @@
+import { ScrollAnimate } from './ScrollAnimate';
+
 interface ServicesProps {
   lang: 'ES' | 'EN';
 }
@@ -64,48 +66,51 @@ const Services = ({ lang }: ServicesProps) => {
     <section id="services" className="py-20 relative overflow-hidden w-full" style={{ backgroundColor: '#000000' }}>
       <div className="mx-auto" style={{ width: 'calc(100% - 1rem)', maxWidth: '1000px' }}>
         <div className="px-2 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
-            {lang === 'ES' ? (
-              <>
-                <span className="sr-only">AgaruCorp - </span>Explorá nuestros servicios
-              </>
-            ) : (
-              <>
-                <span className="sr-only">AgaruCorp - </span>Browse our services
-              </>
-            )}
-          </h2>
-          <p className="text-[16px] md:text-[16px] text-gray-300 max-w-3xl mx-auto font-manrope font-light">
-            {lang === 'ES'
-              ? 'Nos especializamos en ayudar a PyMEs, startups y profesionales a lanzar sus marcas online'
-              : 'We specialize in helping SMEs, startups, and ambitious professionals to launch and establish their brands online'}
-          </p>
-        </div>
+        <ScrollAnimate threshold={0.2}>
+          <div className="text-center mb-16">
+            <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
+              {lang === 'ES' ? (
+                <>
+                  <span className="sr-only">AgaruCorp - </span>Explorá nuestros servicios
+                </>
+              ) : (
+                <>
+                  <span className="sr-only">AgaruCorp - </span>Browse our services
+                </>
+              )}
+            </h2>
+            <p className="text-[16px] md:text-[16px] text-gray-300 max-w-3xl mx-auto font-manrope font-light">
+              {lang === 'ES'
+                ? 'Nos especializamos en ayudar a PyMEs, startups y profesionales a lanzar sus marcas online'
+                : 'We specialize in helping SMEs, startups, and ambitious professionals to launch and establish their brands online'}
+            </p>
+          </div>
+        </ScrollAnimate>
 
         {/* Servicios con texto alternado */}
         <div className="mt-12 space-y-12 md:space-y-16">
           {services.map((service, idx) => (
-            <div 
-              key={idx}
-              className={`w-full text-center md:text-left`}
-            >
-              <div className={`max-w-2xl md:max-w-[600px] mx-auto md:mx-0 px-4 md:px-12 ${service.align === 'right' ? 'md:ml-auto' : ''}`}>
-                <h3 
-                  className="font-onest font-black mb-6 text-center md:text-center"
-                  style={{
-                    color: service.titleColor || '#895AF6',
-                    fontSize: 'calc(1.5rem + 14px)', // text-2xl (24px) + 14px = 38px
-                  }}
-                >
-                  {service.title}
-                </h3>
-                <p className="font-manrope font-light text-white text-base md:text-[16px] leading-relaxed text-left">
-                  <strong>{service.boldText}</strong>
-                  {service.restText}
-                </p>
+            <ScrollAnimate key={idx} delay={idx * 100} threshold={0.15}>
+              <div 
+                className={`w-full text-center md:text-left`}
+              >
+                <div className={`max-w-2xl md:max-w-[600px] mx-auto md:mx-0 px-4 md:px-12 ${service.align === 'right' ? 'md:ml-auto' : ''}`}>
+                  <h3 
+                    className="font-onest font-black mb-6 text-center md:text-center"
+                    style={{
+                      color: service.titleColor || '#895AF6',
+                      fontSize: 'calc(1.5rem + 14px)', // text-2xl (24px) + 14px = 38px
+                    }}
+                  >
+                    {service.title}
+                  </h3>
+                  <p className="font-manrope font-light text-white text-base md:text-[16px] leading-relaxed text-left">
+                    <strong>{service.boldText}</strong>
+                    {service.restText}
+                  </p>
+                </div>
               </div>
-            </div>
+            </ScrollAnimate>
           ))}
         </div>
         </div>

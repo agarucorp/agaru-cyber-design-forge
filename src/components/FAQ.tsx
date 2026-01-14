@@ -124,15 +124,18 @@ const FAQ = ({ lang }: FAQProps) => {
   return (
     <section id="faq" className="py-20 w-full overflow-x-hidden" style={{ backgroundColor: '#000000' }}>
       <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
-            {lang === 'ES' ? 'Preguntas frecuentes' : 'Frequently asked questions'}
-          </h2>
-        </div>
+        <ScrollAnimate threshold={0.2}>
+          <div className="text-center mb-16">
+            <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
+              {lang === 'ES' ? 'Preguntas frecuentes' : 'Frequently asked questions'}
+            </h2>
+          </div>
+        </ScrollAnimate>
 
         <div className="space-y-8">
           {faqs.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="animate-fade-in" style={{ animationDelay: `${categoryIndex * 0.1}s` }}>
+            <ScrollAnimate key={categoryIndex} delay={categoryIndex * 100} threshold={0.15}>
+              <div>
               <h3 className="text-2xl font-manrope font-semibold text-white mb-6 flex items-center">
                 <div className="w-1 h-8 cyber-gradient rounded-full mr-4"></div>
                 {category.category}
@@ -175,7 +178,8 @@ const FAQ = ({ lang }: FAQProps) => {
                   );
                 })}
               </div>
-            </div>
+              </div>
+            </ScrollAnimate>
           ))}
         </div>
       </div>
