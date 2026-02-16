@@ -4,7 +4,6 @@ import mockupCalena from './assets/ProjectShowcase/calenacard.png';
 import paginaLuMobile from './assets/ProjectShowcase/paginaLuMobile.png';
 import mockuptr from './assets/ProjectShowcase/mockuptr.png';
 import silande from './assets/ProjectShowcase/silande.png';
-import silande1 from './assets/ProjectShowcase/silande1.png';
 import logocannlabs1 from './assets/ProjectShowcase/Logocannlabs1.png';
 import group18 from './assets/ProjectShowcase/Group 18.png';
 import cardtr from './assets/ProjectShowcase/cardtr.png';
@@ -37,9 +36,9 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       github: '#',
     },
     {
-      image: silande1, // Usar silande1.png para la card 4
-      tags: ['Branding', 'Diseño Web', 'Marketing'],
-      link: '#',
+      image: '/frzm.png',
+      tags: ['Landing page', 'Diseño Web', 'Portfolio'],
+      link: 'https://frzm.site',
       github: '#',
     },
     {
@@ -65,8 +64,8 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
   const categories = [
     'Web App',      // 1
     'E-commerce',   // 2
-    'Web Catalog',  // 3
-    'Web Design',   // 4
+    'Landing page', // 3
+    'Website',      // 4
     'Web Catalog',  // 5
     'Landing page', // 6
   ];
@@ -81,8 +80,10 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       link: 'https://tonyruizhairstudio.com/',
     },
     {
-      title: 'SILANDE',
-      link: 'https://silandeargentina.com/',
+      title: 'Portfolio personal',
+      titleEN: 'Personal portfolio',
+      titleES: 'Portfolio personal',
+      link: 'https://frzm.site',
     },
     {
       title: 'CannLabs',
@@ -102,7 +103,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     ? [
         'Web app para gestión de psicólogos y conexión con pacientes',
         'Landing page + ecommerce para estudio de peluquería',
-        'Catálogo online para empresa de productos industriales',
+        'Portfolio de diseño futurista',
         'Sitio web para empresa productora de extracto de yerba mate, stevia y té',
         'Catálogo para importadora de insumos industriales',
         'Landing page para consultorio odontológico',
@@ -110,19 +111,22 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
     : [
         "Web app for psychologists' management and patient connection",
         'Landing page + ecommerce for hair salon',
-        'Online industrial products catalog',
+        'Futuristic design portfolio',
         'Yerba mate, stevia, and tea extract manufacturer website',
         'Catalog for industrial supplies importer',
         'Comprehensive dental services website',
       ];
 
-  const projects = descriptions.map((description, i) => ({
-    description,
-    ...projectsData[i],
-    category: categories[i],
-    title: projectCommon[i].title,
-    link: projectCommon[i].link,
-  }));
+  const projects = descriptions.map((description, i) => {
+    const common = projectCommon[i] as { title: string; titleEN?: string; titleES?: string; link: string };
+    return {
+      description,
+      ...projectsData[i],
+      category: categories[i],
+      title: common.titleEN ? (lang === 'EN' ? common.titleEN : common.titleES) : common.title,
+      link: common.link,
+    };
+  });
 
   // Auto-scroll carousel para mobile
   useEffect(() => {

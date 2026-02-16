@@ -15,7 +15,8 @@ const Process = ({ lang }: ProcessProps) => {
         : 'Understanding core needs and providing strategic consulting to define the project direction.',
       icon: '/Assessment.svg',
       color: '#4DE3FF', // Light blue
-      borderColor: '#4DE3FF'
+      borderColor: '#4DE3FF',
+      markerSvg: '/process1.svg' // Marcador completo que reemplaza el pill para el paso 1
     },
     {
       number: 2,
@@ -25,7 +26,8 @@ const Process = ({ lang }: ProcessProps) => {
         : 'A formal project roadmap outlining sprint-based timelines, scope, and transparent pricing.',
       icon: '/proposal.svg',
       color: '#5A7AF6', // Blue
-      borderColor: '#5A7AF6'
+      borderColor: '#5A7AF6',
+      markerSvg: '/process2.svg'
     },
     {
       number: 3,
@@ -35,7 +37,8 @@ const Process = ({ lang }: ProcessProps) => {
         : 'Research and creative development to translate strategy into visual and functional solutions.',
       icon: '/execution.svg',
       color: '#895AF6', // Purple
-      borderColor: '#895AF6'
+      borderColor: '#895AF6',
+      markerSvg: '/process3.svg'
     },
     {
       number: 4,
@@ -45,7 +48,8 @@ const Process = ({ lang }: ProcessProps) => {
         : 'Progress presentation and collaborative refinement to adjust details before final delivery.',
       icon: '/review.svg',
       color: '#E84C9F', // Pink/Magenta
-      borderColor: '#E84C9F'
+      borderColor: '#E84C9F',
+      markerSvg: '/process4.svg'
     },
     {
       number: 5,
@@ -55,7 +59,8 @@ const Process = ({ lang }: ProcessProps) => {
         : 'Project completion with access transfer, technical documentation, and supporting guidelines.',
       icon: '/delivery.svg',
       color: '#FF6B4A', // Orange/Red
-      borderColor: '#FF6B4A'
+      borderColor: '#FF6B4A',
+      markerSvg: '/process5.svg'
     }
   ];
 
@@ -86,25 +91,27 @@ const Process = ({ lang }: ProcessProps) => {
               <div className="w-full max-w-3xl mx-auto">
               {/* Desktop: Layout horizontal */}
               <div className="hidden md:grid md:grid-cols-[auto_200px_auto_1fr] md:items-center md:gap-8">
-                {/* Pill con número e icono */}
-                <div 
-                  className="flex items-center gap-3 px-8 py-1.5 rounded-full border-2 flex-shrink-0 bg-white"
-                  style={{ 
-                    borderColor: step.borderColor
-                  }}
-                >
-                  <span className="text-[#362462] font-bold text-lg">{step.number}</span>
+                {/* Paso 1: marcador completo process1.svg; resto: pill con número e icono */}
+                {step.markerSvg ? (
+                  <img 
+                    src={step.markerSvg} 
+                    alt={step.title}
+                    className="h-14 w-auto flex-shrink-0 object-contain"
+                  />
+                ) : (
                   <div 
-                    className="w-12 h-12 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: step.color }}
+                    className="flex items-center gap-3 px-8 py-1.5 rounded-full border-2 flex-shrink-0 bg-white"
+                    style={{ borderColor: step.borderColor }}
                   >
-                    <img 
-                      src={step.icon} 
-                      alt={step.title}
-                      className="w-7 h-7"
-                    />
+                    <span className="text-[#362462] font-bold text-lg">{step.number}</span>
+                    <div 
+                      className="w-12 h-12 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: step.color }}
+                    >
+                      <img src={step.icon} alt={step.title} className="w-7 h-7" />
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Título */}
                 <h3 className="text-white font-bold text-xl">{step.title}</h3>
@@ -122,29 +129,31 @@ const Process = ({ lang }: ProcessProps) => {
 
               {/* Mobile: Layout en dos líneas */}
               <div className="md:hidden max-w-[85%] mx-auto">
-                {/* Primera línea: Pill + Título */}
+                {/* Primera línea: Paso 1 = process1.svg como marcador; resto = Pill + Título */}
                 <div className="flex items-center gap-4 mb-2">
-                  <div 
-                    className="flex items-center gap-4 px-10 py-2 rounded-full border-2 flex-shrink-0 bg-white"
-                    style={{ 
-                      borderColor: step.borderColor,
-                      minHeight: '3.5rem'
-                    }}
-                  >
-                    <span className="text-[#362462] font-bold text-lg">{step.number}</span>
+                  {step.markerSvg ? (
+                    <img 
+                      src={step.markerSvg} 
+                      alt={step.title}
+                      className="h-14 w-auto flex-shrink-0 object-contain"
+                    />
+                  ) : (
                     <div 
-                      className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+                      className="flex items-center gap-4 px-10 py-2 rounded-full border-2 flex-shrink-0 bg-white"
                       style={{ 
-                        backgroundColor: step.color
+                        borderColor: step.borderColor,
+                        minHeight: '3.5rem'
                       }}
                     >
-                      <img 
-                        src={step.icon} 
-                        alt={step.title}
-                        className="w-7 h-7"
-                      />
+                      <span className="text-[#362462] font-bold text-lg">{step.number}</span>
+                      <div 
+                        className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+                        style={{ backgroundColor: step.color }}
+                      >
+                        <img src={step.icon} alt={step.title} className="w-7 h-7" />
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   {/* Título */}
                   <h3 className="text-white font-bold text-xl">{step.title}</h3>

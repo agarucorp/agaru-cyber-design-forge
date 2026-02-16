@@ -4,6 +4,15 @@ import { ScrollAnimate } from './ScrollAnimate';
 const Hero = ({ lang = 'ES' }) => {
   return (
     <div className="min-h-screen xl:min-h-0 relative w-full" style={{ backgroundColor: '#000000', overflow: 'visible' }}>
+      {/* Gradiente tenue como fondo (última capa, detrás de todo) */}
+      <div 
+        className="absolute top-0 left-0 right-0 pointer-events-none z-[-1]"
+        style={{
+          bottom: '-1px',
+          height: 'calc(100% + 80px)',
+          background: 'linear-gradient(to bottom, rgba(60, 35, 100, 0.25) 0%, rgba(30, 20, 50, 0.12) 25%, rgba(15, 10, 25, 0.05) 45%, rgba(5, 5, 15, 0.02) 60%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.85) 90%, rgba(0, 0, 0, 1) 100%)',
+        }}
+      />
       {/* Iluminación violeta oscura en la parte superior */}
       <div 
         className="absolute top-0 left-0 right-0 h-[40%] pointer-events-none z-0"
@@ -16,51 +25,58 @@ const Hero = ({ lang = 'ES' }) => {
       <div className="absolute top-0 left-0 right-0 w-full pointer-events-none" style={{ height: '200vh', minHeight: '200vh', zIndex: 1 }}>
         {/* Elemento 1 - Izquierda superior */}
         <img 
-          src="/elemento1.svg" 
+          data-hero-deco="left"
+          src="/frzm1.svg" 
           alt="" 
-          className="absolute w-auto h-auto max-w-[90vw] max-h-[90vh] md:max-w-[90vw] md:max-h-[120vh] md:scale-[1.57]"
+          className="hero-deco-left absolute w-auto h-auto max-w-[90vw] max-h-[90vh] md:max-w-[90vw] md:max-h-[120vh]"
           style={{ 
             top: '-15%',
-            left: '-65%',
+            left: '-18%',
             transformOrigin: 'top left',
             objectFit: 'contain',
             objectPosition: 'left top',
             transform: 'scale(2.25)',
           }}
         />
-        {/* Elemento 2 - Derecha */}
+        {/* Elemento 2 - Derecha (dentro de la hero, 50% más pequeño solo en mobile) */}
         <img 
-          src="/elemento2.svg" 
+          data-hero-deco="right"
+          src="/frzm2.svg" 
           alt="" 
-          className="absolute w-auto h-auto max-w-[90vw] max-h-[90vh] md:max-w-[90vw] md:max-h-[120vh] object-contain md:scale-[1.51]"
+          className="hero-deco-right absolute w-auto h-auto max-w-[85vw] max-h-[85vh] md:max-w-[75vw] md:max-h-[100vh] object-contain"
           style={{ 
-            top: '20%',
-            right: '-40%',
+            top: '10%',
+            right: '0%',
             transformOrigin: 'top right',
-            transform: 'scale(1.72)',
+            transform: 'scale(1)',
           }}
         />
         <style>{`
-          @media (min-width: 768px) {
-            img[src="/elemento1.svg"] {
-              top: -30% !important;
-              left: -30% !important;
-              transform: scale(1.57) !important;
-            }
-            img[src="/elemento2.svg"] {
-              top: -10% !important;
-              right: -25% !important;
-              transform: scale(1.51) !important;
-            }
+          .hero-deco-left {
+            top: -15%;
+            left: -18%;
+            transform: scale(2.25);
+            opacity: 0.5;
           }
-          @media (min-width: 1280px) {
-            img[src="/elemento1.svg"] {
+          .hero-deco-right {
+            top: 10%;
+            right: 0%;
+            transform: scale(1);
+            opacity: 0.5;
+          }
+          @media (min-width: 768px) {
+            .hero-deco-left {
               transform: scale(1.256) !important;
               top: -10% !important;
+              left: -5% !important;
+              opacity: 1 !important;
             }
-            img[src="/elemento2.svg"] {
+            .hero-deco-right {
               z-index: 1 !important;
-              transform: scale(0.906) !important;
+              transform: scale(1.35) !important;
+              right: 0% !important;
+              top: 5% !important;
+              opacity: 1 !important;
             }
           }
         `}</style>

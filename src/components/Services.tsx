@@ -63,7 +63,7 @@ const Services = ({ lang }: ServicesProps) => {
   ];
 
   return (
-    <section id="services" className="pt-20 pb-20 xl:pt-12 2xl:pt-16 relative overflow-hidden w-full" style={{ backgroundColor: '#000000' }}>
+    <section id="services" className="pt-10 md:pt-20 pb-20 xl:pt-12 2xl:pt-16 relative overflow-hidden w-full" style={{ backgroundColor: '#000000' }}>
       <div className="mx-auto relative xl:z-10" style={{ width: 'calc(100% - 1rem)', maxWidth: '1000px', zIndex: 10 }}>
         <div className="px-2 sm:px-6 lg:px-8 xl:px-4 2xl:px-4">
         <ScrollAnimate threshold={0.2}>
