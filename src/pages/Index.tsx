@@ -49,6 +49,8 @@ const Index = () => {
       <div className="min-h-screen w-full overflow-x-hidden relative" style={{ backgroundColor: '#000000' }}>
         <Navbar lang={lang} setLang={setLang} />
         <Hero lang={lang} />
+        {/* Espacio extra solo en anchos típicos de notebook (ver tailwind notebook: breakpoint). */}
+        <div className="hidden notebook:block notebook:h-24 w-full shrink-0 pointer-events-none" aria-hidden />
         <Services lang={lang} />
         <ProjectShowcase lang={lang} />
         <Process lang={lang} />

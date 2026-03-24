@@ -19,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			// Ventanas tipo notebook 13-16" suelen caer en este ancho CSS (no hay unidades físicas en media queries).
+			screens: {
+				notebook: { raw: "(min-width: 1024px) and (max-width: 1920px)" },
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

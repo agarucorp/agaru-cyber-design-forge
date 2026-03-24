@@ -1,5 +1,4 @@
 import { Check } from 'lucide-react';
-import { ScrollAnimate } from './ScrollAnimate';
 
 const Hero = ({ lang = 'ES' }) => {
   return (
@@ -84,63 +83,51 @@ const Hero = ({ lang = 'ES' }) => {
       
       {/* Main Content */}
       <div className="relative z-10 pt-24 pb-8 md:pt-20 lg:mt-0 lg:pt-32 lg:pb-16 xl:pt-40 xl:pb-12 2xl:pt-44 2xl:pb-16" style={{ width: 'calc(100% - 2rem)', maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto' }}>
-        <div className="px-4 sm:px-6 lg:px-8">
+        <div className="px-4 sm:px-6 lg:px-8 notebook:pt-5">
           <div className="md:pl-6 lg:pl-8">
-            <ScrollAnimate threshold={0.1} rootMargin="200px 0px 0px 0px">
-              <div className="flex flex-col items-start justify-start text-left">
-                {/* Hero Header */}
-                <ScrollAnimate delay={100} threshold={0.1} rootMargin="200px 0px 0px 0px">
-                  <h1 className="font-onest font-normal text-white mb-6 md:text-[72px] text-[62px]" style={{ lineHeight: '1.2' }}>
-                    {lang === 'ES' ? 'Más espacio para tus mejores ideas.' : (
-                      <>
-                        <span className="md:hidden">
-                          More<br />
-                          space for<br />
-                          your<br />
-                          biggest<br />
-                          ideas.
-                        </span>
-                        <span className="hidden md:inline">
-                          More space for your<br />biggest ideas.
-                        </span>
-                      </>
-                    )}
-                  </h1>
-                </ScrollAnimate>
-                {/* Subheader */}
-                <ScrollAnimate delay={200} threshold={0.1} rootMargin="200px 0px 0px 0px">
-                  <p className="font-manrope font-normal text-white mb-6 md:max-w-[750px] text-[16px] md:text-[18px]" style={{ lineHeight: '1.5' }}>
-                    {lang === 'ES' 
-                      ? 'Alineamos los objetivos de tu negocio con diseño web a medida, experiencia centrada en el usuario y soluciones digitales de alto rendimiento.'
-                      : 'We align your business goals with custom web design, user-centered experiences, and high-performance digital solutions.'}
-                  </p>
-                </ScrollAnimate>
-                
-                {/* Check Items */}
-                <ScrollAnimate delay={300} threshold={0.1} rootMargin="200px 0px 0px 0px">
-                  <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-                    <div className="flex items-center gap-2">
-                      <Check size={14} className="md:w-[18px] md:h-[18px] text-[#895AF6] flex-shrink-0" style={{ width: '14px', height: '14px' }} />
-                      <span className="font-manrope font-normal text-white text-[14px] md:text-[12px]">
-                        {lang === 'ES' ? 'Sitios web y landing pages a medida' : 'Custom websites & landing pages'}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check size={14} className="md:w-[18px] md:h-[18px] text-[#895AF6] flex-shrink-0" style={{ width: '14px', height: '14px' }} />
-                      <span className="font-manrope font-normal text-white text-[14px] md:text-[12px]">
-                        {lang === 'ES' ? 'Web apps escalables y automatización' : 'Scalable web apps & automation'}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check size={14} className="md:w-[18px] md:h-[18px] text-[#895AF6] flex-shrink-0" style={{ width: '14px', height: '14px' }} />
-                      <span className="font-manrope font-normal text-white text-[14px] md:text-[12px]">
-                        {lang === 'ES' ? 'Branding estratégico y activos visuales' : 'Strategic branding & visual assets'}
-                      </span>
-                    </div>
-                  </div>
-                </ScrollAnimate>
+            <div className="flex flex-col items-start justify-start text-left">
+              <h1 className="font-onest font-normal text-white mb-6 md:text-[72px] text-[62px]" style={{ lineHeight: '1.2' }}>
+                {lang === 'ES' ? 'Más espacio para tus mejores ideas.' : (
+                  <>
+                    <span className="md:hidden">
+                      More<br />
+                      space for<br />
+                      your<br />
+                      biggest<br />
+                      ideas.
+                    </span>
+                    <span className="hidden md:inline">
+                      More space for your<br />biggest ideas.
+                    </span>
+                  </>
+                )}
+              </h1>
+              <p className="font-manrope font-normal text-white mb-6 md:max-w-[750px] text-[16px] md:text-[18px]" style={{ lineHeight: '1.5' }}>
+                {lang === 'ES'
+                  ? 'Alineamos los objetivos de tu negocio con diseño web a medida, experiencia centrada en el usuario y soluciones digitales de alto rendimiento.'
+                  : 'We align your business goals with custom web design, user-centered experiences, and high-performance digital solutions.'}
+              </p>
+              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                <div className="flex items-center gap-2">
+                  <Check size={14} className="md:w-[18px] md:h-[18px] text-[#895AF6] flex-shrink-0" style={{ width: '14px', height: '14px' }} />
+                  <span className="font-manrope font-normal text-white text-[14px] md:text-[12px]">
+                    {lang === 'ES' ? 'Sitios web y landing pages a medida' : 'Custom websites & landing pages'}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check size={14} className="md:w-[18px] md:h-[18px] text-[#895AF6] flex-shrink-0" style={{ width: '14px', height: '14px' }} />
+                  <span className="font-manrope font-normal text-white text-[14px] md:text-[12px]">
+                    {lang === 'ES' ? 'Web apps escalables y automatización' : 'Scalable web apps & automation'}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check size={14} className="md:w-[18px] md:h-[18px] text-[#895AF6] flex-shrink-0" style={{ width: '14px', height: '14px' }} />
+                  <span className="font-manrope font-normal text-white text-[14px] md:text-[12px]">
+                    {lang === 'ES' ? 'Branding estratégico y activos visuales' : 'Strategic branding & visual assets'}
+                  </span>
+                </div>
               </div>
-            </ScrollAnimate>
+            </div>
           </div>
         </div>
       </div>
