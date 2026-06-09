@@ -86,7 +86,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           {/* Logo */}
           <div className="flex-none">
             <a href="/" className="flex items-center">
-              <img src="/logomix.svg" alt="AgaruCorp Design" className="w-auto h-[24.75px] md:h-[22.5px] object-contain" />
+              <img src="/newlogohorizontal.svg" alt="AGARUCORP" className="w-auto h-[24.2px] md:h-[28.8px] object-contain" />
             </a>
           </div>
 

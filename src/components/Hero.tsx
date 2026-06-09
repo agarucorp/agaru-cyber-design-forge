@@ -22,7 +22,6 @@ const Hero = ({ lang = 'ES' }) => {
       
       {/* Elementos SVG de fondo - Solo en la hero */}
       <div className="absolute top-0 left-0 right-0 w-full pointer-events-none" style={{ height: '200vh', minHeight: '200vh', zIndex: 1 }}>
-        {/* Elemento 1 - Izquierda superior */}
         <img 
           data-hero-deco="left"
           src="/frzm1.svg" 
@@ -37,7 +36,6 @@ const Hero = ({ lang = 'ES' }) => {
             transform: 'scale(2.25)',
           }}
         />
-        {/* Elemento 2 - Derecha (dentro de la hero, 50% más pequeño solo en mobile) */}
         <img 
           data-hero-deco="right"
           src="/frzm2.svg" 
@@ -51,6 +49,10 @@ const Hero = ({ lang = 'ES' }) => {
           }}
         />
         <style>{`
+          .hero-deco-left,
+          .hero-deco-right {
+            filter: drop-shadow(0 0 14px rgba(137, 90, 246, 0.22)) drop-shadow(0 0 28px rgba(76, 29, 149, 0.12));
+          }
           .hero-deco-left {
             top: -15%;
             left: -18%;

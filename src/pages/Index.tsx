@@ -16,7 +16,7 @@ const Index = () => {
 
   // SEO optimizado para español únicamente
   const seo = {
-    title: 'AGARUCORP | Design Studio', // Título para la pestaña del navegador
+    title: 'AGARUCORP', // Título para la pestaña del navegador
     titleForSharing: 'AgaruCorp | Diseño Web y Estrategia de Marca', // Título para compartir en redes sociales
     description: 'Creamos landing pages, sitios web, catálogos digitales y estrategia de marca para impulsar tu crecimiento online.'
   };
