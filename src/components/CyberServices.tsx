@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 /**
- * Sección "Servicios" con estética cyberpunk editorial.
- * - Tarjetas rectangulares apiladas verticalmente (full width del contenedor).
- * - Fondo blanco/gris ultra claro sobre el black del sitio.
- * - Detalles técnicos: micro-coordenadas, líneas finas, índice tipo [01/03].
- * - Hover: borde neón animado + glitch sutil en el título.
+ * Sección "Servicios" con estética cyberpunk/futurista.
+ * - Paneles oscuros con esquinas cortadas y borde blanco neón.
+ * - Fondo transparente/negro sobre el black del sitio.
+ * - Detalles técnicos: micro-coordenadas, líneas de cuña, scanlines.
+ * - Hover: borde neón violeta/cian, glow y glitch en el título.
  */
 
 type Service = {
@@ -44,7 +44,7 @@ const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active
     <span className="relative z-10">{text}</span>
     <span
       aria-hidden
-      className={`pointer-events-none absolute left-0 top-0 z-0 text-[#B983FF] mix-blend-screen transition-opacity duration-150 ${
+      className={`pointer-events-none absolute left-0 top-0 z-0 text-cyber-primary mix-blend-screen transition-opacity duration-150 ${
         active ? 'opacity-80 animate-[glitchA_900ms_steps(2,end)_infinite]' : 'opacity-0'
       }`}
     >
@@ -52,7 +52,7 @@ const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active
     </span>
     <span
       aria-hidden
-      className={`pointer-events-none absolute left-0 top-0 z-0 text-[#4DE3FF] mix-blend-screen transition-opacity duration-150 ${
+      className={`pointer-events-none absolute left-0 top-0 z-0 text-cyber-accent mix-blend-screen transition-opacity duration-150 ${
         active ? 'opacity-70 animate-[glitchB_900ms_steps(2,end)_infinite]' : 'opacity-0'
       }`}
     >
@@ -70,7 +70,16 @@ const CyberServices: React.FC = () => {
       aria-label="Servicios"
       className="relative w-full bg-black py-20 md:py-28"
     >
-      <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
+      {/* Textura de scanlines sutil sobre la sección */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.08) 2px, rgba(255,255,255,0.08) 4px)',
+        }}
+      />
+
+      <div className="relative mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
         {/* Encabezado */}
         <div className="mb-12 flex items-end justify-between gap-6 md:mb-16">
           <div>
@@ -83,12 +92,12 @@ const CyberServices: React.FC = () => {
             </h2>
           </div>
           <div className="hidden font-mono text-[11px] uppercase tracking-[0.25em] text-white/35 md:block">
-            STATUS: <span className="text-[#B983FF]">ONLINE</span>
+            STATUS: <span className="text-cyber-primary">ONLINE</span>
           </div>
         </div>
 
-        {/* Stack vertical de tarjetas */}
-        <div className="flex flex-col gap-5 md:gap-6">
+        {/* Stack vertical de paneles */}
+        <div className="flex flex-col gap-6 md:gap-7">
           {SERVICES.map((s, i) => {
             const isActive = hovered === i;
             return (
@@ -96,52 +105,91 @@ const CyberServices: React.FC = () => {
                 key={s.index}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className={`group relative w-full overflow-hidden border bg-white text-black transition-[border-color,transform,box-shadow] duration-300 ease-out ${
+                className={`group relative w-full overflow-hidden text-white transition-[border-color,transform,box-shadow] duration-300 ease-out ${
                   isActive
-                    ? 'border-[#B983FF] shadow-[0_0_0_1px_rgba(185,131,255,0.6),0_0_40px_-4px_rgba(137,90,246,0.55)] -translate-y-[2px]'
-                    : 'border-white/10'
+                    ? 'border-cyber-primary shadow-neon -translate-y-1'
+                    : 'border-white/25'
                 }`}
-                style={{ borderRadius: 2 }}
+                style={{
+                  background:
+                    'linear-gradient(135deg, rgba(10,10,10,0.92) 0%, rgba(20,20,20,0.78) 100%)',
+                  clipPath:
+                    'polygon(28px 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%, 0 28px)',
+                  borderWidth: 1,
+                  borderStyle: 'solid',
+                }}
               >
-                {/* esquinas decorativas */}
-                <span className="pointer-events-none absolute left-0 top-0 h-3 w-3 border-l border-t border-black/40" />
-                <span className="pointer-events-none absolute right-0 top-0 h-3 w-3 border-r border-t border-black/40" />
-                <span className="pointer-events-none absolute bottom-0 left-0 h-3 w-3 border-b border-l border-black/40" />
-                <span className="pointer-events-none absolute bottom-0 right-0 h-3 w-3 border-b border-r border-black/40" />
+                {/* Capa de scanlines interna */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 opacity-[0.06]"
+                  style={{
+                    backgroundImage:
+                      'repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255,255,255,0.1) 1px, rgba(255,255,255,0.1) 2px)',
+                  }}
+                />
 
-                {/* línea neón superior animada en hover */}
+                {/* Brillo de fondo en hover */}
+                <div
+                  aria-hidden
+                  className={`pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyber-primary/15 blur-3xl transition-opacity duration-500 ${
+                    isActive ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+
+                {/* Cuñas decorativas en esquinas */}
+                <span className="pointer-events-none absolute left-0 top-0 h-5 w-5 border-l border-t border-white/40" />
+                <span className="pointer-events-none absolute right-0 top-0 h-5 w-5 border-r border-t border-white/40" />
+                <span className="pointer-events-none absolute bottom-0 left-0 h-5 w-5 border-b border-l border-white/40" />
+                <span className="pointer-events-none absolute bottom-0 right-0 h-5 w-5 border-b border-r border-white/40" />
+
+                {/* Marcas diagonales de "tornillo" en esquinas */}
+                <span className="pointer-events-none absolute left-2 top-2 h-1.5 w-1.5 rounded-full bg-white/25" />
+                <span className="pointer-events-none absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-white/25" />
+                <span className="pointer-events-none absolute bottom-2 left-2 h-1.5 w-1.5 rounded-full bg-white/25" />
+                <span className="pointer-events-none absolute bottom-2 right-2 h-1.5 w-1.5 rounded-full bg-white/25" />
+
+                {/* Línea neón superior animada en hover */}
                 <span
                   aria-hidden
-                  className={`absolute left-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B983FF] to-transparent transition-[width] duration-500 ease-out ${
+                  className={`absolute left-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyber-primary to-cyber-accent transition-[width] duration-500 ease-out ${
                     isActive ? 'w-full' : 'w-0'
                   }`}
                 />
 
-                <div className="grid grid-cols-12 gap-4 px-5 py-7 sm:px-8 sm:py-9 md:px-12 md:py-11">
+                {/* Línea neón derecha animada en hover */}
+                <span
+                  aria-hidden
+                  className={`absolute right-0 top-0 h-0 w-[2px] bg-gradient-to-b from-cyber-accent to-transparent transition-[height] duration-500 ease-out ${
+                    isActive ? 'h-full' : 'h-0'
+                  }`}
+                />
+
+                <div className="relative grid grid-cols-12 gap-4 px-6 py-8 sm:px-10 sm:py-10 md:px-14 md:py-12">
                   {/* Index */}
                   <div className="col-span-12 md:col-span-2">
-                    <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-black/50">
+                    <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-white/50">
                       [{s.index}/03]
                     </div>
-                    <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-black/35">
+                    <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">
                       {s.code}
                     </div>
                   </div>
 
                   {/* Título */}
                   <div className="col-span-12 md:col-span-4">
-                    <h3 className="font-mulish text-[26px] font-semibold leading-[1.05] tracking-tight text-black sm:text-[30px] md:text-[34px]">
+                    <h3 className="font-mulish text-[26px] font-semibold leading-[1.05] tracking-tight text-white sm:text-[30px] md:text-[34px]">
                       <GlitchTitle text={s.title} active={isActive} />
                     </h3>
                   </div>
 
                   {/* Descripción */}
                   <div className="col-span-12 md:col-span-6">
-                    <p className="font-inter text-[14px] leading-relaxed text-black/75 sm:text-[15px]">
+                    <p className="font-inter text-[14px] leading-relaxed text-white/75 sm:text-[15px]">
                       {s.description}
                     </p>
 
-                    <div className="mt-5 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.25em] text-black/55 transition-colors duration-300 group-hover:text-[#5A1FDE]">
+                    <div className="mt-5 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 transition-colors duration-300 group-hover:text-cyber-primary">
                       <span>Explorar</span>
                       <span
                         className={`inline-block transition-transform duration-300 ${
