@@ -1,6 +1,8 @@
 
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import TechMarquee from '../components/TechMarquee';
+import CyberServices from '../components/CyberServices';
 import Services from '../components/Services';
 import ProjectShowcase from '../components/ProjectShowcase';
 import Process from '../components/Process';
@@ -49,6 +51,8 @@ const Index = () => {
       <div className="relative w-full overflow-x-clip" style={{ backgroundColor: '#000000' }}>
         <Navbar lang={lang} setLang={setLang} />
         <Hero lang={lang} />
+        <TechMarquee />
+        <CyberServices />
         <Services lang={lang} />
         <ProjectShowcase lang={lang} />
         <Process lang={lang} />
