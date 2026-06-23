@@ -1,16 +1,19 @@
 
 import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
+import { X, Globe } from 'lucide-react';
 
 interface NavbarProps {
   lang: 'ES' | 'EN';
   setLang: Dispatch<SetStateAction<'ES' | 'EN'>>;
 }
 
+const NAVBAR_BG = 'rgba(32, 34, 36, 0.45)';
+const NAVBAR_MOBILE_BG = 'rgba(0, 0, 0, 0.45)';
+
 // Utilidad para scrollspy
-const getSectionFromScroll = (sections) => {
-  const scrollPos = window.scrollY + 80; // 80px offset for navbar
+const getSectionFromScroll = (sections: { id: string }[]) => {
+  const scrollPos = window.scrollY + 80;
   let current = sections[0].id;
   for (const section of sections) {
     const el = document.getElementById(section.id);
@@ -21,32 +24,23 @@ const getSectionFromScroll = (sections) => {
   return current;
 };
 
-// Función mejorada para scroll suave a secciones
 const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId);
   if (element) {
-    element.scrollIntoView({ 
+    element.scrollIntoView({
       behavior: 'smooth',
-      block: 'start'
+      block: 'start',
     });
   }
 };
 
 const Navbar = ({ lang, setLang }: NavbarProps) => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
-      // Scrollspy
-      const sections = [
-        { id: 'services' },
-        { id: 'projects' },
-      ];
-      // Solo marcar sección si el usuario ha pasado el primer offset (por ejemplo, 120px)
+      const sections = [{ id: 'services' }, { id: 'projects' }];
       const currentSection = getSectionFromScroll(sections);
       if (window.scrollY < 120) {
         setActiveSection(null);
@@ -71,27 +65,39 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
         { name: 'Process', href: '#process' },
       ];
 
+  const contactLabel = lang === 'ES' ? 'Contacto' : 'Contact';
+
+  const handleNavClick = (href: string, closeMobile = false) => (e: React.MouseEvent) => {
+    if (closeMobile) setIsMobileMenuOpen(false);
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      scrollToSection(href.replace('#', ''));
+    }
+  };
+
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300" style={{ width: 'calc(100% - 2rem)', maxWidth: '1000px' }}>
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="pointer-events-none fixed left-0 right-0 top-4 z-50">
+      <div className="pointer-events-auto mx-auto w-full max-w-7xl px-2 sm:px-6 lg:px-8">
         <div
-          className="flex items-center justify-between px-6 md:px-8 relative rounded-full w-full"
-          style={{ 
-            backgroundColor: 'rgba(32, 34, 36, 0.3)',
+          className="flex h-[72px] min-h-[72px] w-full items-center justify-between rounded-full px-6 md:h-[82.8px] md:min-h-[82.8px] md:px-8"
+          style={{
+            backgroundColor: NAVBAR_BG,
             backdropFilter: 'blur(10px)',
-            height: '72px',
-            minHeight: '72px'
           }}
         >
           {/* Logo */}
           <div className="flex-none">
             <a href="/" className="flex items-center">
-              <img src="/newlogohorizontal.svg" alt="AGARUCORP" className="w-auto h-[24.2px] md:h-[28.8px] object-contain" />
+              <img
+                src="/newlogohorizontal.svg"
+                alt="AGARUCORP"
+                className="h-[36.3px] w-auto object-contain md:h-[41.47px]"
+              />
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden items-center space-x-6 md:flex lg:space-x-8">
             {navItems.map((item) => {
               const sectionId = item.href.replace('#', '');
               const isActive = activeSection === sectionId;
@@ -99,33 +105,37 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`relative text-white hover:text-[#B983FF] transition-colors duration-300 px-3 py-2 text-[14px] font-manrope font-light
-                    ${isActive ? 'text-[#895AF6]' : ''}`}
-                  onClick={e => {
-                    if (item.href.startsWith('#')) {
-                      e.preventDefault();
-                      scrollToSection(item.href.replace('#', ''));
-                    }
-                  }}
+                  className={`relative px-3 py-2 font-manrope text-[14px] font-light text-white transition-colors duration-300 hover:text-[#B983FF] ${
+                    isActive ? 'text-[#895AF6]' : ''
+                  }`}
+                  onClick={handleNavClick(item.href)}
                 >
                   {item.name}
                   <span
-                    className={`absolute left-0 -bottom-1 w-full h-[2px] rounded-full transition-all duration-300
-                      ${isActive ? 'bg-[#895AF6]' : 'opacity-0'}`}
-                  ></span>
+                    className={`absolute -bottom-1 left-0 h-[2px] w-full rounded-full transition-all duration-300 ${
+                      isActive ? 'bg-[#895AF6]' : 'opacity-0'
+                    }`}
+                  />
                 </a>
               );
             })}
           </div>
 
-          {/* Switch de idioma */}
-          <div className="hidden md:flex items-center">
+          {/* Desktop: contacto + idioma */}
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href="#contact"
+              onClick={handleNavClick('#contact')}
+              className="rounded-full border border-[#895AF6] bg-[#895AF6] px-4 py-2 font-manrope text-[14px] font-light text-white transition-all duration-300 hover:bg-transparent hover:text-[#895AF6]"
+            >
+              {contactLabel}
+            </a>
             <button
               onClick={() => setLang(lang === 'ES' ? 'EN' : 'ES')}
-              className="flex items-center gap-1 text-white hover:text-[#B983FF] transition-colors duration-300 px-3 py-2 text-[14px] font-manrope font-light"
+              className="flex items-center gap-1 px-3 py-2 font-manrope text-[14px] font-light text-white transition-colors duration-300 hover:text-[#B983FF]"
               aria-label={lang === 'ES' ? 'Cambiar a inglés' : 'Change to Spanish'}
             >
-              <Globe className="w-4 h-4" />
+              <Globe className="h-4 w-4" />
               <span>{lang === 'ES' ? 'EN' : 'ES'}</span>
             </button>
           </div>
@@ -134,7 +144,9 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`h-10 w-10 flex items-center justify-center text-white hover:text-[#B983FF] transition-colors duration-300 focus:outline-none ${!isMobileMenuOpen ? 'animate-bounce-burger' : ''}`}
+              className={`flex h-10 w-10 items-center justify-center text-white transition-colors duration-300 hover:text-[#B983FF] focus:outline-none ${
+                !isMobileMenuOpen ? 'animate-bounce-burger' : ''
+              }`}
               aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             >
               {isMobileMenuOpen ? (
@@ -152,11 +164,11 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div 
-            className="md:hidden rounded-2xl mt-2 p-4 animate-fade-in"
-            style={{ 
-              backgroundColor: 'rgba(0, 0, 0, 0.3)',
-              backdropFilter: 'blur(10px)'
+          <div
+            className="mt-2 animate-fade-in rounded-2xl p-4 md:hidden"
+            style={{
+              backgroundColor: NAVBAR_MOBILE_BG,
+              backdropFilter: 'blur(10px)',
             }}
           >
             <div className="flex flex-col space-y-3">
@@ -167,32 +179,34 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`relative text-white hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-manrope font-light
-                      ${isActive ? 'text-[#895AF6]' : ''}`}
-                    onClick={e => {
-                      setIsMobileMenuOpen(false);
-                      if (item.href.startsWith('#')) {
-                        e.preventDefault();
-                        scrollToSection(item.href.replace('#', ''));
-                      }
-                    }}
+                    className={`relative px-3 py-2 font-manrope text-[12px] font-light text-white transition-colors duration-300 hover:bg-white/10 hover:text-[#B983FF] ${
+                      isActive ? 'text-[#895AF6]' : ''
+                    }`}
+                    onClick={handleNavClick(item.href, true)}
                   >
                     {item.name}
                     <span
-                      className={`absolute left-0 -bottom-1 w-full h-[2px] rounded-full transition-all duration-300
-                        ${isActive ? 'bg-[#895AF6]' : 'opacity-0'}`}
-                    ></span>
+                      className={`absolute -bottom-1 left-0 h-[2px] w-full rounded-full transition-all duration-300 ${
+                        isActive ? 'bg-[#895AF6]' : 'opacity-0'
+                      }`}
+                    />
                   </a>
                 );
               })}
-              {/* Switch de idioma en mobile */}
-              <div className="flex items-center justify-center mt-4">
+              <a
+                href="#contact"
+                onClick={handleNavClick('#contact', true)}
+                className="mt-2 rounded-full border border-[#895AF6] bg-[#895AF6] px-4 py-2 text-center font-manrope text-[12px] font-light text-white transition-all duration-300 hover:bg-transparent hover:text-[#895AF6]"
+              >
+                {contactLabel}
+              </a>
+              <div className="mt-4 flex items-center justify-center">
                 <button
                   onClick={() => setLang(lang === 'ES' ? 'EN' : 'ES')}
-                  className="flex items-center gap-2 text-white hover:text-[#B983FF] hover:bg-white/10 transition-colors duration-300 px-3 py-2 text-[12px] font-manrope font-light"
+                  className="flex items-center gap-2 px-3 py-2 font-manrope text-[12px] font-light text-white transition-colors duration-300 hover:bg-white/10 hover:text-[#B983FF]"
                   aria-label={lang === 'ES' ? 'Cambiar a inglés' : 'Change to Spanish'}
                 >
-                  <Globe className="w-4 h-4" />
+                  <Globe className="h-4 w-4" />
                   <span>{lang === 'ES' ? 'EN' : 'ES'}</span>
                 </button>
               </div>
@@ -200,7 +214,6 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           </div>
         )}
       </div>
-      {/* Animación burger bounce */}
       <style>{`
       @keyframes bounce-burger {
         0% { transform: scale(1); }

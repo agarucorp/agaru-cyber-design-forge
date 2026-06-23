@@ -281,7 +281,7 @@ const Footer = ({ lang }: FooterProps) => {
             {/* Copyright */}
             <div className="text-gray-400 text-sm text-center flex items-center justify-center gap-2">
               <span>Powered by</span>
-              <img src="/typo.svg" alt="AGARUCORP" className="h-[12.32px] w-auto object-contain" />
+              <img src="/typo.svg" alt="AGARUCORP" className="h-[9.24px] w-auto object-contain" />
             </div>
           </div>
         </div>

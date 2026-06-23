@@ -179,7 +179,7 @@ const ProjectShowcase = ({ lang }: ProjectShowcaseProps) => {
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <ScrollAnimate threshold={0.2}>
           <div className="text-center mb-16">
-            <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
+            <h2 className="mb-6 font-onest text-[32px] font-normal leading-[1.15] text-white sm:text-[40px] md:text-[48px] lg:text-[53px]">
               {lang === 'ES' ? 'Proyectos' : 'Projects'}
             </h2>
             <p className="text-[16px] md:text-[16px] text-gray-300 text-center font-manrope font-light">

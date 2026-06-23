@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Index = () => {
   // Comentario: Configuración SEO dinámica según el idioma seleccionado
-  const [lang, setLang] = useState<'ES' | 'EN'>('EN');
+  const [lang, setLang] = useState<'ES' | 'EN'>('ES');
 
   // SEO optimizado para español únicamente
   const seo = {
@@ -46,11 +46,9 @@ const Index = () => {
         <meta name="twitter:image:alt" content="AgaruCorp - Diseño Web y Estrategia de Marca" />
       </Helmet>
       {/* Fin configuración SEO dinámica */}
-      <div className="min-h-screen w-full overflow-x-hidden relative" style={{ backgroundColor: '#000000' }}>
+      <div className="relative w-full overflow-x-clip" style={{ backgroundColor: '#000000' }}>
         <Navbar lang={lang} setLang={setLang} />
         <Hero lang={lang} />
-        {/* Espacio extra solo en anchos típicos de notebook (ver tailwind notebook: breakpoint). */}
-        <div className="hidden notebook:block notebook:h-24 w-full shrink-0 pointer-events-none" aria-hidden />
         <Services lang={lang} />
         <ProjectShowcase lang={lang} />
         <Process lang={lang} />

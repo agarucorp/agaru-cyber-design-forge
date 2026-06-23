@@ -126,7 +126,7 @@ const FAQ = ({ lang }: FAQProps) => {
       <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
         <ScrollAnimate threshold={0.2}>
           <div className="text-center mb-16">
-            <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
+            <h2 className="mb-6 font-onest text-[32px] font-normal leading-[1.15] text-white sm:text-[40px] md:text-[48px] lg:text-[53px]">
               {lang === 'ES' ? 'Preguntas frecuentes' : 'Frequently asked questions'}
             </h2>
           </div>

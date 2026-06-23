@@ -68,7 +68,7 @@ const Services = ({ lang }: ServicesProps) => {
         <div className="px-2 sm:px-6 lg:px-8 xl:px-4 2xl:px-4">
         <ScrollAnimate threshold={0.2}>
         <div className="text-center mb-16">
-            <h2 className="text-[40px] md:text-5xl font-onest font-black text-white mb-6">
+            <h2 className="mb-6 font-onest text-[32px] font-normal leading-[1.15] text-white sm:text-[40px] md:text-[48px] lg:text-[53px]">
             {lang === 'ES' ? (
               <>
                   <span className="sr-only">AgaruCorp - </span>Explorá nuestros servicios
