@@ -78,19 +78,26 @@ const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active
   );
 };
 
-const StatusBar: React.FC<{ active: boolean }> = ({ active }) => (
-  <div aria-hidden className="flex items-center gap-1.5">
-    {Array.from({ length: 5 }).map((_, i) => (
+const SignalIndicator: React.FC<{ active: boolean }> = ({ active }) => (
+  <div aria-hidden className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-white/50">
+    <span className="relative flex h-2 w-2">
       <span
-        key={i}
-        className={`h-1.5 w-4 rounded-sm transition-all duration-300 ${
-          active ? 'bg-white shadow-[0_0_6px_rgba(255,255,255,0.8)]' : 'bg-white/20'
+        className={`absolute inline-flex h-full w-full rounded-full bg-white opacity-60 ${
+          active ? 'animate-ping' : ''
         }`}
-        style={{ transitionDelay: active ? `${i * 40}ms` : '0ms' }}
       />
-    ))}
+      <span
+        className={`relative inline-flex h-2 w-2 rounded-full transition-all duration-300 ${
+          active ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.9)]' : 'bg-white/40'
+        }`}
+      />
+    </span>
+    <span className={active ? 'text-white/80' : 'text-white/40'}>
+      {active ? 'SYS_ACTIVE' : 'SYS_IDLE'}
+    </span>
   </div>
 );
+
 
 const CyberServices: React.FC = () => {
   const [hovered, setHovered] = useState<number | null>(null);
@@ -198,21 +205,28 @@ const CyberServices: React.FC = () => {
                 />
 
                 <div className="relative grid grid-cols-12 gap-6 px-6 py-8 sm:px-10 sm:py-10 md:px-12 md:py-12">
-                  {/* Columna del índice */}
-                  <div className="col-span-12 flex items-start justify-between md:col-span-3 md:flex-col md:justify-between">
-                    <div>
-                      <div
-                        className={`font-mono text-[56px] font-bold leading-none tracking-tighter transition-colors duration-300 md:text-[72px] ${
-                          isActive ? 'text-white/90' : 'text-white/10'
-                        }`}
-                        style={{ WebkitTextStroke: '1px rgba(255,255,255,0.25)' }}
-                      >
-                        {s.index}
+                  {/* Columna lateral decorativa */}
+                  <div className="col-span-12 flex items-start justify-between md:col-span-3 md:flex-col md:justify-between md:gap-8">
+                    <div className="flex flex-col gap-3">
+                      <SignalIndicator active={isActive} />
+                      <div className="hidden md:block">
+                        <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35">
+                          MOD · {s.badge.split(' ')[0].toUpperCase()}
+                        </div>
+                        <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-white/25">
+                          X:{(i + 1) * 42}.{(i + 3) * 7} / Y:{(i + 2) * 31}.{(i + 1) * 9}
+                        </div>
                       </div>
                     </div>
 
-                    <div className="hidden md:block">
-                      <StatusBar active={isActive} />
+                    {/* Línea decorativa de datos */}
+                    <div aria-hidden className="hidden md:flex w-full flex-col gap-1.5">
+                      <div className="h-px w-full bg-white/15" />
+                      <div className="flex items-center gap-1.5">
+                        <span className={`h-px flex-1 transition-all duration-500 ${isActive ? 'bg-white/70' : 'bg-white/15'}`} />
+                        <span className="font-mono text-[9px] text-white/30">[OK]</span>
+                      </div>
+                      <div className="h-px w-2/3 bg-white/10" />
                     </div>
                   </div>
 
@@ -244,10 +258,11 @@ const CyberServices: React.FC = () => {
                     </p>
 
                     <div className="mt-6 flex items-center justify-end md:hidden">
-                      <StatusBar active={isActive} />
+                      <SignalIndicator active={isActive} />
                     </div>
                   </div>
                 </div>
+
               </article>
               </div>
             );
