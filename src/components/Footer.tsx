@@ -2,12 +2,29 @@
 import { useState } from 'react';
 import { Instagram, Linkedin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { Button } from './ui/button';
+import CyberButton from './CyberButton';
 import emailjs from '@emailjs/browser';
 
 interface FooterProps {
   lang: 'ES' | 'EN';
 }
+
+const SUBJECT_OPTIONS = {
+  ES: [
+    'Portfolio/sitio web',
+    'Diseño de marca',
+    'Software/sistema',
+    'Optimización de procesos',
+    'Consultoría',
+  ],
+  EN: [
+    'Portfolio/website',
+    'Brand design',
+    'Software/system',
+    'Process optimization',
+    'Consulting',
+  ],
+} as const;
 
 const Footer = ({ lang }: FooterProps) => {
   const [formData, setFormData] = useState({
@@ -231,10 +248,11 @@ const Footer = ({ lang }: FooterProps) => {
                     className="w-full px-3 py-2 bg-transparent border-b border-gray-600 text-white text-sm focus:border-agaru-purple focus:outline-none transition-colors duration-300"
                   >
                     <option value="" disabled className="bg-gray-900">{lang === 'ES' ? 'Asunto *' : 'Subject *'}</option>
-                    <option value={lang === 'ES' ? 'Diseño UI' : 'UI Design'} className="bg-gray-900">{lang === 'ES' ? 'Diseño UI' : 'UI Design'}</option>
-                    <option value={lang === 'ES' ? 'Diseño Web' : 'Web Design'} className="bg-gray-900">{lang === 'ES' ? 'Diseño Web' : 'Web Design'}</option>
-                    <option value={lang === 'ES' ? 'Desarrollo Web' : 'Web Development'} className="bg-gray-900">{lang === 'ES' ? 'Desarrollo Web' : 'Web Development'}</option>
-                    <option value={lang === 'ES' ? 'Branding' : 'Branding'} className="bg-gray-900">{lang === 'ES' ? 'Branding' : 'Branding'}</option>
+                    {SUBJECT_OPTIONS[lang].map((subject) => (
+                      <option key={subject} value={subject} className="bg-gray-900">
+                        {subject}
+                      </option>
+                    ))}
                   </select>
                   {getError('subject') && (
                     <div className="text-red-500 text-xs mt-1">{getError('subject')}</div>
@@ -257,16 +275,9 @@ const Footer = ({ lang }: FooterProps) => {
                   )}
                 </div>
                 <div className="pt-2">
-                  <Button
-                    type="submit"
-                    variant="cyber"
-                    size="sm"
-                    className="bg-[#895AF6] text-white border border-[#895AF6] hover:bg-transparent hover:text-[#895AF6] hover:border-[#895AF6] transition-all duration-300 w-full flex items-center justify-center text-sm shadow-none"
-                    disabled={!isFormValid}
-                    style={{ boxShadow: 'none !important' }}
-                  >
+                  <CyberButton type="submit" fullWidth disabled={!isFormValid}>
                     {lang === 'ES' ? 'Enviar' : 'Send'}
-                  </Button>
+                  </CyberButton>
                 </div>
               </form>
             </div>

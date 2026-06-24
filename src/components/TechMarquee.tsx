@@ -4,12 +4,12 @@ import React from 'react';
  * Marquee horizontal infinito con logos de herramientas tech.
  * - Loop ultra fluido (duplicamos el track y animamos -50%).
  * - Bordes desvanecidos con mask-image (gradiente lineal a alpha 0).
- * - Logos monocromáticos (currentColor) que se iluminan en hover.
+ * - Logos en escala de grises con hover por opacidad.
  */
 
-type Tool = { name: string; svg: React.ReactNode };
+type Tool = { name: string; svg?: React.ReactNode; iconSrc?: string };
 
-// SVGs simplificados (monocromáticos via currentColor). El usuario puede reemplazarlos por los oficiales.
+// SVGs simplificados (monocromáticos via currentColor). Logos oficiales en /public/banner.
 const TOOLS: Tool[] = [
   {
     name: 'Figma',
@@ -25,31 +25,15 @@ const TOOLS: Tool[] = [
   },
   {
     name: 'Illustrator',
-    svg: (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="4" aria-hidden>
-        <rect x="4" y="4" width="56" height="56" rx="10" />
-        <path d="M20 44 L26 22 L32 44 M22 37 H30" stroke="currentColor" strokeWidth="3" fill="none" />
-        <circle cx="42" cy="24" r="2.5" fill="currentColor" />
-        <path d="M42 30 V44" strokeWidth="3" />
-      </svg>
-    ),
+    iconSrc: '/banner/illustrator.svg',
   },
   {
     name: 'Cursor',
-    svg: (
-      <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden>
-        <path d="M14 6 L52 32 L34 36 L26 56 Z" />
-      </svg>
-    ),
+    iconSrc: '/banner/cursor.svg',
   },
   {
     name: 'Claude',
-    svg: (
-      <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden>
-        <path d="M20 12 L28 12 L40 52 L32 52 L29.5 44 L18.5 44 L16 52 L8 52 Z M20.5 38 H27.5 L24 26 Z" />
-        <path d="M44 12 L52 12 L52 52 L44 52 Z" />
-      </svg>
-    ),
+    iconSrc: '/banner/claude.svg',
   },
   {
     name: 'Supabase',
@@ -69,13 +53,12 @@ const TOOLS: Tool[] = [
   },
   {
     name: 'Shopify',
-    svg: (
-      <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden>
-        <path d="M46 14c-1-3-3-5-6-5-1-2-3-4-6-4-5 0-8 6-9 12-3 1-5 2-5 2L14 56l30 4 8-42s-4-2-6-4ZM34 9c1 0 2 1 3 2-2 0-4 1-6 2 1-2 2-4 3-4Zm-2 12c-3 0-5 2-5 4 0 3 3 4 5 5 2 1 3 2 3 4 0 1-1 3-3 3-3 0-5-2-5-2l-2 7s2 2 7 2c6 0 10-3 10-9 0-5-5-6-7-8-1-1-2-2-2-3 0-1 1-2 3-2 2 0 4 1 4 1l2-6s-2-2-6-2Z" />
-      </svg>
-    ),
+    iconSrc: '/banner/shopify.svg',
   },
 ];
+
+const ICON_HOVER =
+  'h-8 w-8 opacity-80 transition-opacity duration-300 group-hover:opacity-100';
 
 const TechMarquee: React.FC = () => {
   // Duplicamos la lista para lograr el loop continuo sin "saltos".
@@ -84,7 +67,7 @@ const TechMarquee: React.FC = () => {
   return (
     <section
       aria-label="Herramientas que utilizamos"
-      className="relative w-full overflow-hidden border-y border-white/5 bg-black/60 py-8"
+      className="relative w-full overflow-hidden border-y border-white/5 bg-transparent py-8"
       style={{
         // Máscara de bordes desvanecidos (izq/der → alpha 0)
         WebkitMaskImage:
@@ -98,12 +81,25 @@ const TechMarquee: React.FC = () => {
         {items.map((tool, i) => (
           <div
             key={`${tool.name}-${i}`}
-            className="group flex shrink-0 items-center gap-3 text-white/55 transition-colors duration-300 hover:text-[#B983FF]"
+            className="group flex shrink-0 items-center gap-3"
           >
-            <span className="h-8 w-8 [&>svg]:h-8 [&>svg]:w-8 transition-[filter,transform] duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(185,131,255,0.8)]">
-              {tool.svg}
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center">
+              {tool.iconSrc ? (
+                <img
+                  src={tool.iconSrc}
+                  alt=""
+                  aria-hidden
+                  className={`${ICON_HOVER} object-contain`}
+                />
+              ) : (
+                <span
+                  className={`inline-flex items-center justify-center text-[#8C8C8C] ${ICON_HOVER} [&>svg]:h-full [&>svg]:w-full`}
+                >
+                  {tool.svg}
+                </span>
+              )}
             </span>
-            <span className="font-mulish text-base font-medium tracking-wide whitespace-nowrap">
+            <span className="font-mulish text-base font-medium tracking-wide whitespace-nowrap text-white/55 transition-colors duration-300 group-hover:text-[#B983FF]">
               {tool.name}
             </span>
           </div>

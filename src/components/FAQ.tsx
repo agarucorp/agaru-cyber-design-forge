@@ -16,87 +16,39 @@ const FAQ = ({ lang }: FAQProps) => {
   const faqs = lang === 'ES'
     ? [
         {
-          category: 'Diseño & desarrollo web',
-          questions: [
-            {
-              question: '¿Cuál es el tiempo estimado para un proyecto web?',
-              answer: 'El tiempo de entrega depende de la complejidad del proyecto. Las páginas simples suelen desarrollarse en un plazo menor a 5 días hábiles, mientras que los sitios web completos requieren entre 1 y 2 semanas. Las aplicaciones web, por su alcance y funcionalidades, pueden demandar entre 1 y 3 meses de desarrollo. Una vez definidos los requisitos específicos, se entregará un cronograma detallado con los plazos estimados.'
-            },
-            {
-              question: '¿Ofrecen mantenimiento y soporte continuo?',
-              answer: 'Sí, contamos con planes de mantenimiento mensual diseñados para asegurar el óptimo funcionamiento de tu sitio. Estos paquetes incluyen actualizaciones de seguridad, gestión de alojamiento y dominio, monitoreo de rendimiento y soporte técnico continuo.'
-            },
-            {
-              question: '¿Mi sitio será mobile-responsive?',
-              answer: 'Todos nuestros sitios son mobile-first, asegurando óptimo rendimiento y experiencia en cualquier dispositivo. Probamos en varias interfaces antes del lanzamiento.'
-            }
-          ]
+          question: '¿Cuál es el tiempo estimado para un proyecto web?',
+          answer: 'El tiempo de entrega depende de la complejidad del proyecto. Las páginas simples suelen desarrollarse en un plazo menor a 5 días hábiles, mientras que los sitios web completos requieren entre 1 y 2 semanas. Las aplicaciones web, por su alcance y funcionalidades, pueden demandar entre 1 y 3 meses de desarrollo. Una vez definidos los requisitos específicos, se entregará un cronograma detallado con los plazos estimados.'
         },
         {
-          category: 'Marca',
-          questions: [
-            {
-              question: '¿Cúal es la diferencia entre branding y marketing?',
-              answer: 'El Branding construye la identidad de tu marca: quién sos, qué representás y cómo te perciben. El Marketing son las acciones para comunicar esa identidad y promocionar tus productos o servicios. En resumen, el branding es quién sos, y el marketing es cómo lo comunicas.'
-            },
-            {
-              question: '¿Puede mi marca evolucionar con el tiempo?',
-              answer: 'Una marca sólida es flexible y adaptable. A medida que tu negocio o el mercado evolucionan, tu marca puede y debe ajustarse, manteniendo siempre la esencia que te hace único.'
-            },
-            {
-              question: '¿Pueden ayudar a rebrandear un negocio existente?',
-              answer: 'Sí, hacemos tanto branding nuevo como rebranding. Analizamos tu marca actual, detectamos oportunidades y creamos un plan estratégico para renovar tu imagen sin perder valor de marca.'
-            }
-          ]
+          question: '¿Ofrecen mantenimiento y soporte continuo?',
+          answer: 'Sí, contamos con planes de mantenimiento mensual diseñados para asegurar el óptimo funcionamiento de tu sitio. Estos paquetes incluyen actualizaciones de seguridad, gestión de alojamiento y dominio, monitoreo de rendimiento y soporte técnico continuo.'
+        },
+        {
+          question: '¿Mi sitio será mobile-responsive?',
+          answer: 'Todos nuestros sitios son mobile-first, asegurando óptimo rendimiento y experiencia en cualquier dispositivo. Probamos en varias interfaces antes del lanzamiento.'
         }
       ]
     : [
         {
-          category: 'Web design & development',
-          questions: [
-            {
-              question: 'What is your typical timeline for a web design project?',
-              answer: 'Delivery times depend on the complexity of the project. Simple pages are usually completed in under 5 business days, while full websites typically require between 1 and 2 weeks. Web applications, due to their scope and functionality, may take between 1 and 3 months to develop. Once the specific requirements are defined, a detailed timeline with estimated deadlines will be provided.'
-            },
-            {
-              question: 'Do you provide ongoing maintenance and support?',
-              answer: 'Yes, we offer monthly maintenance plans designed to ensure your site\'s optimal performance. These packages include security updates, hosting and domain management, performance monitoring, and continuous technical support.'
-            },
-            {
-              question: 'Will my website be mobile-responsive?',
-              answer: 'Absolutely! All our websites are mobile-first, ensuring optimal performance and experience on any device. We test across various devices before launch to guarantee seamless responsiveness.'
-            }
-          ]
+          question: 'What is your typical timeline for a web design project?',
+          answer: 'Delivery times depend on the complexity of the project. Simple pages are usually completed in under 5 business days, while full websites typically require between 1 and 2 weeks. Web applications, due to their scope and functionality, may take between 1 and 3 months to develop. Once the specific requirements are defined, a detailed timeline with estimated deadlines will be provided.'
         },
         {
-          category: 'Branding & strategy',
-          questions: [
-            {
-              question: 
-                "Branding vs. marketing: what's the core difference?",
-              answer: 
-                "Branding builds your brand's identity: who you are, what you represent, and how you're perceived. Marketing involves the actions you take to communicate that identity and promote your products or services. In essence, branding is who you are, and marketing is how you communicate it."
-            },
-            {
-              question: 'Can my brand evolve over time?',
-              answer: 'A strong brand is flexible and adaptable. As your business or the market evolves, your brand can and should adjust, always maintaining the core essence that makes you unique.'
-            },
-            {
-              question: 'Can you help rebrand an existing business?',
-              answer: 'Yes, we handle both new branding and rebranding projects. We analyze your current brand, identify opportunities, and create a strategic plan to refresh your image without losing brand equity.'
-            }
-          ]
+          question: 'Do you provide ongoing maintenance and support?',
+          answer: 'Yes, we offer monthly maintenance plans designed to ensure your site\'s optimal performance. These packages include security updates, hosting and domain management, performance monitoring, and continuous technical support.'
+        },
+        {
+          question: 'Will my website be mobile-responsive?',
+          answer: 'Absolutely! All our websites are mobile-first, ensuring optimal performance and experience on any device. We test across various devices before launch to guarantee seamless responsiveness.'
         }
       ];
 
   // Inicializar el array de refs con la longitud correcta
   useEffect(() => {
-    const totalFAQs = faqs.reduce((total, category) => total + category.questions.length, 0);
-    faqRefs.current = faqRefs.current.slice(0, totalFAQs);
+    faqRefs.current = faqRefs.current.slice(0, faqs.length);
   }, [faqs]);
 
-  const toggleFAQ = (categoryIndex: number, questionIndex: number) => {
-    const index = categoryIndex * 100 + questionIndex;
+  const toggleFAQ = (index: number) => {
     const wasOpen = openIndex === index;
     const newOpenIndex = wasOpen ? null : index;
     
@@ -132,55 +84,42 @@ const FAQ = ({ lang }: FAQProps) => {
           </div>
         </ScrollAnimate>
 
-        <div className="space-y-8">
-          {faqs.map((category, categoryIndex) => (
-            <ScrollAnimate key={categoryIndex} delay={categoryIndex * 100} threshold={0.15}>
-              <div>
-              <h3 className="text-2xl font-manrope font-semibold text-white mb-6 flex items-center">
-                <div className="w-1 h-8 cyber-gradient rounded-full mr-4"></div>
-                {category.category}
-              </h3>
-              
-              <div className="space-y-4">
-                {category.questions.map((faq, questionIndex) => {
-                  const index = categoryIndex * 100 + questionIndex;
-                  const isOpen = openIndex === index;
-                  
-                  return (
-                    <div 
-                      key={questionIndex} 
-                      className="cyber-card rounded-xl overflow-hidden"
-                      ref={(el) => {
-                        faqRefs.current[index] = el;
-                      }}
-                    >
-                      <button
-                        onClick={() => toggleFAQ(categoryIndex, questionIndex)}
-                        className="w-full p-6 text-left flex items-center justify-between transition-all duration-300 group hover:shadow-2xl hover:scale-[1.025] hover:bg-[#23243a]/90 hover:text-[#895AF6] focus:outline-none"
-                      >
-                        <span className="text-[16px] md:text-[18px] font-manrope font-normal text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
-                          {faq.question}
-                        </span>
-                        <div className="text-white flex-shrink-0 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
-                          {isOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
-                        </div>
-                      </button>
-                      
-                      {isOpen && (
-                        <div className="px-6 pb-6 animate-fade-in">
-                          <div className="h-px bg-gradient-to-r from-agaru-purple to-transparent mb-4"></div>
-                          <p className="text-gray-300 font-manrope font-light text-[16px] leading-relaxed">
-                            {faq.answer}
-                          </p>
-                        </div>
-                      )}
+        <div className="space-y-4">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <ScrollAnimate key={index} delay={index * 100} threshold={0.15}>
+                <div
+                  className="cyber-card rounded-xl overflow-hidden"
+                  ref={(el) => {
+                    faqRefs.current[index] = el;
+                  }}
+                >
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full p-6 text-left flex items-center justify-between transition-all duration-300 group hover:shadow-2xl hover:scale-[1.025] hover:bg-[#23243a]/90 hover:text-[#895AF6] focus:outline-none"
+                  >
+                    <span className="text-[16px] md:text-[18px] font-manrope font-normal text-white pr-8 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
+                      {faq.question}
+                    </span>
+                    <div className="text-white flex-shrink-0 transition-all duration-300 group-hover:text-[#895AF6] group-hover:drop-shadow-[0_0_6px_#895AF6]">
+                      {isOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
                     </div>
-                  );
-                })}
-              </div>
-              </div>
-            </ScrollAnimate>
-          ))}
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-6 pb-6 animate-fade-in">
+                      <div className="h-px bg-gradient-to-r from-agaru-purple to-transparent mb-4"></div>
+                      <p className="text-gray-300 font-manrope font-light text-[16px] leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </ScrollAnimate>
+            );
+          })}
         </div>
       </div>
     </section>

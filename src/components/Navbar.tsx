@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { X, Globe } from 'lucide-react';
+import CyberButton from './CyberButton';
 
 interface NavbarProps {
   lang: 'ES' | 'EN';
@@ -10,6 +11,7 @@ interface NavbarProps {
 
 const NAVBAR_BG = 'rgba(32, 34, 36, 0.45)';
 const NAVBAR_MOBILE_BG = 'rgba(0, 0, 0, 0.45)';
+const NAV_LINK_TYPO = 'font-mono text-[11px] uppercase tracking-[0.2em]';
 
 // Utilidad para scrollspy
 const getSectionFromScroll = (sections: { id: string }[]) => {
@@ -55,12 +57,12 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
 
   const navItems = lang === 'ES'
     ? [
-        { name: 'Servicios', href: '#services' },
+        { name: 'Servicios', href: '#cyber-services' },
         { name: 'Proyectos', href: '#projects' },
         { name: 'Proceso', href: '#process' },
       ]
     : [
-        { name: 'Services', href: '#services' },
+        { name: 'Services', href: '#cyber-services' },
         { name: 'Projects', href: '#projects' },
         { name: 'Process', href: '#process' },
       ];
@@ -105,7 +107,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`relative px-3 py-2 font-manrope text-[14px] font-light text-white transition-colors duration-300 hover:text-[#B983FF] ${
+                  className={`relative px-3 py-2 ${NAV_LINK_TYPO} text-white transition-colors duration-300 hover:text-[#B983FF] ${
                     isActive ? 'text-[#895AF6]' : ''
                   }`}
                   onClick={handleNavClick(item.href)}
@@ -123,13 +125,9 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
 
           {/* Desktop: contacto + idioma */}
           <div className="hidden items-center gap-3 md:flex">
-            <a
-              href="#contact"
-              onClick={handleNavClick('#contact')}
-              className="rounded-full border border-[#895AF6] bg-[#895AF6] px-4 py-2 font-manrope text-[14px] font-light text-white transition-all duration-300 hover:bg-transparent hover:text-[#895AF6]"
-            >
+            <CyberButton href="#contact" onClick={handleNavClick('#contact')}>
               {contactLabel}
-            </a>
+            </CyberButton>
             <button
               onClick={() => setLang(lang === 'ES' ? 'EN' : 'ES')}
               className="flex items-center gap-1 px-3 py-2 font-manrope text-[14px] font-light text-white transition-colors duration-300 hover:text-[#B983FF]"
@@ -179,7 +177,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`relative px-3 py-2 font-manrope text-[12px] font-light text-white transition-colors duration-300 hover:bg-white/10 hover:text-[#B983FF] ${
+                    className={`relative px-3 py-2 ${NAV_LINK_TYPO} text-white transition-colors duration-300 hover:bg-white/10 hover:text-[#B983FF] ${
                       isActive ? 'text-[#895AF6]' : ''
                     }`}
                     onClick={handleNavClick(item.href, true)}
@@ -193,13 +191,9 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
                   </a>
                 );
               })}
-              <a
-                href="#contact"
-                onClick={handleNavClick('#contact', true)}
-                className="mt-2 rounded-full border border-[#895AF6] bg-[#895AF6] px-4 py-2 text-center font-manrope text-[12px] font-light text-white transition-all duration-300 hover:bg-transparent hover:text-[#895AF6]"
-              >
+              <CyberButton href="#contact" className="mt-2 w-full" onClick={handleNavClick('#contact', true)}>
                 {contactLabel}
-              </a>
+              </CyberButton>
               <div className="mt-4 flex items-center justify-center">
                 <button
                   onClick={() => setLang(lang === 'ES' ? 'EN' : 'ES')}

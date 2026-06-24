@@ -1,4 +1,5 @@
 import { HeroTypewriter } from './HeroTypewriter';
+import TechMarquee from './TechMarquee';
 
 // SVG fractal noise as data URI for the grain overlay (no extra HTTP request).
 const NOISE_SVG =
@@ -38,14 +39,17 @@ const Hero = ({ lang = 'ES' }: { lang?: 'ES' | 'EN' }) => {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-full min-w-0 max-w-[1000px] px-4 pt-60 pb-8 sm:px-6 md:pt-28 lg:px-8 lg:pt-44 lg:pb-16 xl:pt-52 xl:pb-12 2xl:pt-56 2xl:pb-16">
-        <div className="notebook:pt-8">
-          <div className="md:pl-2 lg:pl-4">
-            <div className="flex w-full min-w-0 flex-col items-start justify-start text-left">
-              <HeroTypewriter lang={lang} />
-            </div>
-          </div>
+      <div className="relative z-10 mx-auto w-full min-w-0 max-w-[1000px] px-4 pb-28 pt-[calc(1rem+72px+7rem)] sm:px-6 md:pl-2 md:pt-[calc(1rem+82.8px+7rem)] lg:px-8 lg:pl-4">
+        <div className="flex w-full min-w-0 flex-col items-start gap-4 text-left">
+          <p className="inline-block border border-white/30 bg-white/5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-white/65 sm:text-[10px] sm:tracking-[0.2em]">
+            DESIGN, SOFTWARE & BUSINESS AUTOMATION STUDIO
+          </p>
+          <HeroTypewriter lang={lang} className="mb-0" />
         </div>
+      </div>
+
+      <div className="relative z-10">
+        <TechMarquee />
       </div>
     </div>
   );

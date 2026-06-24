@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 /**
  * Sección "Servicios" con estética de HUD de videojuego cyberpunk.
@@ -9,48 +9,74 @@ import React, { useState } from 'react';
 
 type Service = {
   index: string;
-  code: string;
+  badge: string;
   title: string;
   description: string;
+};
+
+const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault();
+  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 
 const SERVICES: Service[] = [
   {
     index: '01',
-    code: 'SYS.CORE // X:042 Y:118',
-    title: 'Sistemas a medida',
+    badge: 'diseño web',
+    title: 'Sitios web y tiendas online',
     description:
-      'Desarrollo e implementación de software empresarial, plataformas backend personalizadas, aplicaciones web y arquitecturas escalables. Diseñamos herramientas que resuelven flujos operativos específicos.',
+      'Diseño de landing pages, portfolios, sitios corporativos y setup/personalización de Shopify, traduciendo las necesidades de tu negocio en una experiencia de usuario intuitiva. Creamos cada interfaz con una arquitectura de información clara, navegación fluida y conceptos visuales armónicos, garantizando un diseño totalmente acorde a tu rubro y objetivos comerciales.',
   },
   {
     index: '02',
-    code: 'WEB.SHOP // X:118 Y:204',
-    title: 'Ecommerce y sitios web',
+    badge: 'software a medida',
+    title: 'Sistemas y automatización de procesos',
     description:
-      'Diseño de landing pages, sitios corporativos y setup de Shopify. Soluciones rápidas, autoadministrables y optimizadas para SEO desde la primera línea de código.',
+      'Desarrollo de software empresarial, plataformas backend personalizadas y aplicaciones web escalables. Diseñamos e implementamos herramientas orientadas a la automatización de flujos de trabajo, eliminación de tareas repetitivas y optimización de tus procesos internos.',
   },
   {
     index: '03',
-    code: 'BRAND.ID // X:204 Y:316',
-    title: 'Identidad de Marca',
+    badge: 'branding y comunicación',
+    title: 'Identidad visual y elementos gráficos',
     description:
-      'Diseñamos identidades visuales desde logotipos, isotipos, hasta la creación de componentes gráficos varios para la comunicación de tu marca.',
+      'Diseño conceptual de logotipos, isotipos, flyers, etiquetas y piezas gráficas esenciales para la comunicación y consistencia visual de tu marca.',
   },
 ];
 
-const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active }) => (
-  <span className="relative inline-block leading-none">
-    <span className="relative z-10">{text}</span>
-    <span
-      aria-hidden
-      className={`pointer-events-none absolute left-0 top-0 z-0 text-white mix-blend-screen transition-opacity duration-150 ${
-        active ? 'opacity-70 animate-[glitchA_700ms_steps(2,end)_infinite]' : 'opacity-0'
-      }`}
-    >
-      {text}
+const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active }) => {
+  const [glitching, setGlitching] = useState(false);
+  const wasActive = useRef(false);
+
+  useEffect(() => {
+    if (active && !wasActive.current) {
+      setGlitching(true);
+      const timer = window.setTimeout(() => setGlitching(false), 1000);
+      wasActive.current = active;
+      return () => window.clearTimeout(timer);
+    }
+
+    wasActive.current = active;
+    if (!active) {
+      setGlitching(false);
+    }
+  }, [active]);
+
+  return (
+    <span className="relative inline-block leading-none">
+      <span className="relative z-10">{text}</span>
+      <span
+        aria-hidden
+        className={`pointer-events-none absolute left-0 top-0 z-0 text-[#B983FF] mix-blend-screen transition-opacity duration-150 ${
+          glitching
+            ? 'opacity-80 animate-[glitchA_1s_steps(2,end)_1_forwards] [text-shadow:0_0_12px_rgba(185,131,255,0.85)]'
+            : 'opacity-0'
+        }`}
+      >
+        {text}
+      </span>
     </span>
-  </span>
-);
+  );
+};
 
 const StatusBar: React.FC<{ active: boolean }> = ({ active }) => (
   <div aria-hidden className="flex items-center gap-1.5">
@@ -89,7 +115,7 @@ const CyberServices: React.FC = () => {
 
       <div className="relative mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
         {/* Encabezado */}
-        <div className="mb-12 flex items-end justify-between gap-6 md:mb-16">
+        <div className="mb-12 md:mb-16">
           <div>
             <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
               <span className="h-px w-8 bg-white/40" />
@@ -99,20 +125,21 @@ const CyberServices: React.FC = () => {
               Servicios
             </h2>
           </div>
-          <div className="hidden font-mono text-[11px] uppercase tracking-[0.25em] text-white/35 md:block">
-            STATUS: <span className="text-white">ONLINE</span>
-          </div>
         </div>
 
         {/* Stack vertical de paneles */}
         <div className="flex flex-col gap-6 md:gap-7">
           {SERVICES.map((s, i) => {
             const isActive = hovered === i;
+
             return (
-              <article
+              <div
                 key={s.index}
+                className="relative w-full"
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
+              >
+              <article
                 className={`group relative w-full overflow-hidden text-white transition-[border-color,transform,box-shadow] duration-300 ease-out ${
                   isActive
                     ? 'border-white shadow-[0_0_30px_rgba(255,255,255,0.18)] -translate-y-1'
@@ -182,9 +209,6 @@ const CyberServices: React.FC = () => {
                       >
                         {s.index}
                       </div>
-                      <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
-                        {s.code}
-                      </div>
                     </div>
 
                     <div className="hidden md:block">
@@ -194,42 +218,38 @@ const CyberServices: React.FC = () => {
 
                   {/* Contenido */}
                   <div className="col-span-12 md:col-span-9">
-                    <div className="mb-4 flex flex-wrap items-center gap-3">
+                    <div className="mb-4">
                       <span className="inline-block border border-white/30 bg-white/5 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/70">
-                        Módulo 0{s.index}
-                      </span>
-                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40">
-                        // {s.title.toUpperCase()}
+                        {s.badge}
                       </span>
                     </div>
 
-                    <h3 className="font-mulish text-[26px] font-semibold leading-[1.05] tracking-tight text-white sm:text-[30px] md:text-[34px]">
-                      <GlitchTitle text={s.title} active={isActive} />
-                    </h3>
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="font-mulish text-[26px] font-semibold leading-[1.05] tracking-tight text-white sm:text-[30px] md:text-[34px]">
+                        <GlitchTitle text={s.title} active={isActive} />
+                      </h3>
+
+                      <a
+                        href="#contact"
+                        onClick={scrollToContact}
+                        aria-label={`Contactar sobre ${s.title}`}
+                        className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/30 bg-white/5 font-mono text-[22px] leading-none text-white/70 transition-all duration-300 hover:border-white hover:bg-white/10 hover:text-white"
+                      >
+                        +
+                      </a>
+                    </div>
 
                     <p className="mt-4 font-inter text-[14px] leading-relaxed text-white/70 sm:text-[15px]">
                       {s.description}
                     </p>
 
-                    <div className="mt-6 flex items-center justify-between">
-                      <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.25em] text-white/60 transition-colors duration-300 group-hover:text-white">
-                        <span>Explorar</span>
-                        <span
-                          className={`inline-block transition-transform duration-300 ${
-                            isActive ? 'translate-x-1' : ''
-                          }`}
-                        >
-                          →
-                        </span>
-                      </div>
-
-                      <div className="md:hidden">
-                        <StatusBar active={isActive} />
-                      </div>
+                    <div className="mt-6 flex items-center justify-end md:hidden">
+                      <StatusBar active={isActive} />
                     </div>
                   </div>
                 </div>
               </article>
+              </div>
             );
           })}
         </div>

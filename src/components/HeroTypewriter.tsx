@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 const PHRASES_ES = [
   'productos digitales',
@@ -80,7 +81,10 @@ export const HeroTypewriter = ({ lang = 'ES', className = '' }: HeroTypewriterPr
 
   return (
     <h1
-      className={`mb-6 w-full min-w-0 max-w-full font-onest text-[clamp(1.375rem,5vw+0.5rem,3.3125rem)] font-normal leading-[1.2] text-white ${className}`}
+      className={cn(
+        'mb-6 w-full min-w-0 max-w-full font-onest text-[clamp(1.375rem,5vw+0.5rem,3.3125rem)] font-normal leading-[1.2] text-white',
+        className
+      )}
     >
       <span className="block break-words">{lineOne}</span>
       <span className="block break-words">
