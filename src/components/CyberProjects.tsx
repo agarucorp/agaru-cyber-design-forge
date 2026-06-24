@@ -111,19 +111,26 @@ const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active
   );
 };
 
-const StatusBar: React.FC<{ active: boolean }> = ({ active }) => (
-  <div aria-hidden className="flex items-center gap-1.5">
-    {Array.from({ length: 5 }).map((_, i) => (
+const SignalIndicator: React.FC<{ active: boolean }> = ({ active }) => (
+  <div aria-hidden className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em]">
+    <span className="relative flex h-2 w-2">
       <span
-        key={i}
-        className={`h-1.5 w-4 rounded-sm transition-all duration-300 ${
-          active ? 'bg-white shadow-[0_0_6px_rgba(255,255,255,0.8)]' : 'bg-white/20'
+        className={`absolute inline-flex h-full w-full rounded-full bg-white opacity-60 ${
+          active ? 'animate-ping' : ''
         }`}
-        style={{ transitionDelay: active ? `${i * 40}ms` : '0ms' }}
       />
-    ))}
+      <span
+        className={`relative inline-flex h-2 w-2 rounded-full transition-all duration-300 ${
+          active ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.9)]' : 'bg-white/40'
+        }`}
+      />
+    </span>
+    <span className={active ? 'text-white/80' : 'text-white/40'}>
+      {active ? 'LIVE' : 'ONLINE'}
+    </span>
   </div>
 );
+
 
 const CyberProjects: React.FC = () => {
   const [hovered, setHovered] = useState<number | null>(null);
@@ -232,20 +239,11 @@ const CyberProjects: React.FC = () => {
                   />
 
                   <div className="relative flex h-full flex-col p-5 sm:p-6">
-                    {/* Header: índice + categoría */}
-                    <div className="mb-4 flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <span
-                          className={`font-mono text-[28px] font-bold leading-none tracking-tighter transition-colors duration-300 ${
-                            isActive ? 'text-white/90' : 'text-white/20'
-                          }`}
-                          style={{ WebkitTextStroke: '1px rgba(255,255,255,0.25)' }}
-                        >
-                          {p.index}
-                        </span>
-                        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
-                          PRJ_{p.slug.toUpperCase()}
-                        </span>
+                    {/* Header: identificador + categoría */}
+                    <div className="mb-4 flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-white/45">
+                        <span className="h-px w-5 bg-white/40" />
+                        <span>PRJ_{p.slug.toUpperCase()}</span>
                       </div>
                       <span className="inline-block border border-white/30 bg-white/5 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/70">
                         {p.category}
@@ -283,10 +281,6 @@ const CyberProjects: React.FC = () => {
                         <span className="pointer-events-none absolute right-1.5 top-1.5 h-3 w-3 border-r border-t border-white/80" />
                         <span className="pointer-events-none absolute bottom-1.5 left-1.5 h-3 w-3 border-b border-l border-white/80" />
                         <span className="pointer-events-none absolute bottom-1.5 right-1.5 h-3 w-3 border-b border-r border-white/80" />
-                        {/* Texto overlay */}
-                        <span className="pointer-events-none absolute bottom-2 right-3 font-mono text-[9px] uppercase tracking-[0.3em] text-white/70">
-                          REC ● {p.index}/06
-                        </span>
                       </div>
                     </div>
 
@@ -300,9 +294,11 @@ const CyberProjects: React.FC = () => {
                       {p.description}
                     </p>
 
-                    {/* Footer: status + CTA */}
+                    {/* Footer: signal + CTA */}
                     <div className="mt-6 flex items-center justify-between gap-4 pt-4">
-                      <StatusBar active={isActive} />
+                      <SignalIndicator active={isActive} />
+
+
 
                       <Link
                         to={`/caso-de-estudio/${p.slug}`}
