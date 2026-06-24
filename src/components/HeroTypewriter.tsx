@@ -4,16 +4,16 @@ import { cn } from '@/lib/utils';
 const PHRASES_ES = [
   'productos digitales',
   'sitios web',
-  'marca e identidad visual',
-  'plataformas y sistemas',
+  'identidad visual',
+  'sistemas',
   'ecommerce',
 ] as const;
 
 const PHRASES_EN = [
   'digital products',
   'websites',
-  'brand & visual identity',
-  'platforms & systems',
+  'visual identity',
+  'systems',
   'ecommerce',
 ] as const;
 
@@ -82,19 +82,15 @@ export const HeroTypewriter = ({ lang = 'ES', className = '' }: HeroTypewriterPr
   return (
     <h1
       className={cn(
-        'mb-6 w-full min-w-0 max-w-full font-onest text-[clamp(1.375rem,5vw+0.5rem,3.3125rem)] font-normal leading-[1.2] text-white',
+        'mb-6 w-full min-w-0 max-w-full font-onest text-[clamp(1.75rem,5vw+0.875rem,3.3125rem)] font-normal leading-[1.2] text-white md:text-[clamp(1.375rem,5vw+0.5rem,3.3125rem)]',
         className
       )}
     >
       <span className="block break-words">{lineOne}</span>
       <span className="block break-words">
         {lineTwoPrefix}
-        <span
-          className="text-[#B794F6]"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          {/* Mobile / tablet: texto fluido con salto de línea natural */}
+        <span className="text-[#B794F6]" aria-live="polite" aria-atomic="true">
+          {/* Mobile: prefijo + typewriter en la misma línea */}
           <span className="inline md:hidden">
             {displayText}
             <TypewriterCursor />

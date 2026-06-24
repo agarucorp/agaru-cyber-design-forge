@@ -39,7 +39,7 @@ const Hero = ({ lang = 'ES' }: { lang?: 'ES' | 'EN' }) => {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-full min-w-0 max-w-[1000px] px-4 pb-28 pt-[calc(1rem+72px+7rem)] sm:px-6 md:pl-2 md:pt-[calc(1rem+82.8px+7rem)] lg:px-8 lg:pl-4">
+      <div className="relative z-10 mx-auto w-full min-w-0 max-w-[1000px] px-4 pb-28 pt-[calc((1rem+72px+9rem)*1.2)] sm:px-6 md:pl-2 md:pt-[calc(1rem+82.8px+7rem)] lg:px-8 lg:pl-4">
         <div className="flex w-full min-w-0 flex-col items-start gap-4 text-left">
           <p className="inline-block border border-white/30 bg-white/5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-white/65 sm:text-[10px] sm:tracking-[0.2em]">
             DESIGN, SOFTWARE & BUSINESS AUTOMATION STUDIO
