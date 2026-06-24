@@ -2,7 +2,7 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import CyberServices from '../components/CyberServices';
-import ProjectShowcase from '../components/ProjectShowcase';
+import CyberProjects from '../components/CyberProjects';
 import Process from '../components/Process';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
@@ -50,7 +50,7 @@ const Index = () => {
         <Navbar lang={lang} setLang={setLang} />
         <Hero lang={lang} />
         <CyberServices />
-        <ProjectShowcase lang={lang} />
+        <CyberProjects />
         <Process lang={lang} />
         <FAQ lang={lang} />
         <Footer lang={lang} />

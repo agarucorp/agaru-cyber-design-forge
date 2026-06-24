@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Fixes from "./pages/Fixes";
 import AnimationPreview from "./pages/AnimationPreview";
+import CaseStudy from "./pages/CaseStudy";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ function App() {
               <Route path="/" element={<Index />} />
               <Route path="/fixes" element={<Fixes />} />
               <Route path="/animation-preview" element={<AnimationPreview />} />
+              <Route path="/caso-de-estudio/:slug" element={<CaseStudy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
