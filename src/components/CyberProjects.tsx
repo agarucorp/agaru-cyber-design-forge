@@ -111,19 +111,26 @@ const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active
   );
 };
 
-const StatusBar: React.FC<{ active: boolean }> = ({ active }) => (
-  <div aria-hidden className="flex items-center gap-1.5">
-    {Array.from({ length: 5 }).map((_, i) => (
+const SignalIndicator: React.FC<{ active: boolean }> = ({ active }) => (
+  <div aria-hidden className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em]">
+    <span className="relative flex h-2 w-2">
       <span
-        key={i}
-        className={`h-1.5 w-4 rounded-sm transition-all duration-300 ${
-          active ? 'bg-white shadow-[0_0_6px_rgba(255,255,255,0.8)]' : 'bg-white/20'
+        className={`absolute inline-flex h-full w-full rounded-full bg-white opacity-60 ${
+          active ? 'animate-ping' : ''
         }`}
-        style={{ transitionDelay: active ? `${i * 40}ms` : '0ms' }}
       />
-    ))}
+      <span
+        className={`relative inline-flex h-2 w-2 rounded-full transition-all duration-300 ${
+          active ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.9)]' : 'bg-white/40'
+        }`}
+      />
+    </span>
+    <span className={active ? 'text-white/80' : 'text-white/40'}>
+      {active ? 'LIVE' : 'ONLINE'}
+    </span>
   </div>
 );
+
 
 const CyberProjects: React.FC = () => {
   const [hovered, setHovered] = useState<number | null>(null);
