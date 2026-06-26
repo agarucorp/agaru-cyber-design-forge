@@ -144,7 +144,6 @@ const Footer = ({ lang }: FooterProps) => {
           <div className="max-w-md mx-auto">
             {/* Social Links */}
             <div className="mb-12">
-              <h4 className="text-[40px] md:text-lg font-onest font-black text-white mb-4 text-center">{lang === 'ES' ? 'Seguinos' : 'Connect'}</h4>
               <div className="flex gap-4 justify-center">
                 <a
                   href="https://www.instagram.com/agarucorp"

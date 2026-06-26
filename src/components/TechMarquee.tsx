@@ -67,7 +67,7 @@ const TechMarquee: React.FC = () => {
   return (
     <section
       aria-label="Herramientas que utilizamos"
-      className="relative w-full overflow-hidden border-y border-white/5 bg-transparent py-8"
+      className="relative w-full overflow-hidden border-y border-white/5 bg-transparent py-6 md:py-8"
       style={{
         // Máscara de bordes desvanecidos (izq/der → alpha 0)
         WebkitMaskImage:

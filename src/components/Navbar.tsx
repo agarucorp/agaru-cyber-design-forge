@@ -9,8 +9,8 @@ interface NavbarProps {
   setLang: Dispatch<SetStateAction<'ES' | 'EN'>>;
 }
 
-const NAVBAR_BG = 'rgba(32, 34, 36, 0.45)';
-const NAVBAR_MOBILE_BG = 'rgba(0, 0, 0, 0.45)';
+const NAVBAR_BG = 'rgba(100, 102, 110, 0.62)';
+const NAVBAR_MOBILE_BG = 'rgba(96, 98, 106, 0.62)';
 const NAV_LINK_TYPO = 'font-mono text-[11px] uppercase tracking-[0.2em]';
 
 // Utilidad para scrollspy

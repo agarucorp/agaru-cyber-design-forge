@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
 
 /**
  * Sección "Servicios" con estética de HUD de videojuego cyberpunk.
@@ -120,13 +121,13 @@ const CyberServices: React.FC = () => {
         }}
       />
 
-      <div className="relative mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8">
+      <div className={SECTION_CONTAINER_CLASS}>
         {/* Encabezado */}
         <div className="mb-12 md:mb-16">
           <div>
             <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
               <span className="h-px w-8 bg-white/40" />
-              <span>// 03 servicios</span>
+              <span>// WHAT WE DO</span>
             </div>
             <h2 className="font-mulish text-[34px] font-normal leading-[1.05] text-white sm:text-[44px] md:text-[56px]">
               Servicios
@@ -211,10 +212,7 @@ const CyberServices: React.FC = () => {
                       <SignalIndicator active={isActive} />
                       <div className="hidden md:block">
                         <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35">
-                          MOD · {s.badge.split(' ')[0].toUpperCase()}
-                        </div>
-                        <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-white/25">
-                          X:{(i + 1) * 42}.{(i + 3) * 7} / Y:{(i + 2) * 31}.{(i + 1) * 9}
+                          MOD · {(() => { const w = s.badge.split(' ')[0].toUpperCase(); return w === 'DISEÑO' ? 'DESIGN' : w; })()}
                         </div>
                       </div>
                     </div>

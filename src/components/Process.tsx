@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { ScrollAnimate } from './ScrollAnimate';
+import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
 
 interface ProcessProps {
   lang: 'ES' | 'EN';
@@ -73,22 +74,26 @@ const Process = ({ lang }: ProcessProps) => {
         </svg>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-32 xl:py-[166px] 2xl:py-[166px] relative z-10">
-        <ScrollAnimate threshold={0.2}>
-          <div className="text-center mb-16">
-            <h2 className="mb-6 font-onest text-[32px] font-normal leading-[1.15] text-white sm:text-[40px] md:text-[48px] lg:text-[53px]">
-              {lang === 'ES' ? 'Proceso' : 'Our process'}
-            </h2>
-            <p className="text-[16px] md:text-[16px] text-gray-300 max-w-3xl mx-auto font-manrope font-light">
-              {lang === 'ES' ? 'Cómo trabajamos' : 'How we work'}
-            </p>
-          </div>
-        </ScrollAnimate>
+      <div className="relative z-10 py-16 md:py-32 xl:py-[166px] 2xl:py-[166px]">
+        <div className={SECTION_CONTAINER_CLASS}>
+          <ScrollAnimate threshold={0.2}>
+            <div className="mb-12 text-left md:mb-16">
+              <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
+                <span className="h-px w-8 bg-white/40" />
+                <span>// HOW WE WORK</span>
+              </div>
+              <h2 className="font-mulish text-[34px] font-normal leading-[1.05] text-white sm:text-[44px] md:text-[56px]">
+                {lang === 'ES' ? 'Proceso' : 'Process'}
+              </h2>
+            </div>
+          </ScrollAnimate>
+        </div>
 
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="space-y-6">
           {steps.map((step, index) => (
             <ScrollAnimate key={index} delay={index * 100} threshold={0.15}>
-              <div className="w-full max-w-3xl mx-auto">
+              <div className="mx-auto w-full max-w-3xl">
               {/* Desktop: Layout horizontal */}
               <div className="hidden md:grid md:grid-cols-[auto_200px_auto_1fr] md:items-center md:gap-8">
                 {/* Paso 1: marcador completo process1.svg; resto: pill con número e icono */}
@@ -128,7 +133,7 @@ const Process = ({ lang }: ProcessProps) => {
               </div>
 
               {/* Mobile: Layout en dos líneas */}
-              <div className="md:hidden max-w-[85%] mx-auto">
+              <div className="mx-auto max-w-[85%] md:hidden">
                 {/* Primera línea: Paso 1 = process1.svg como marcador; resto = Pill + Título */}
                 <div className="flex items-center gap-4 mb-2">
                   {step.markerSvg ? (
@@ -167,6 +172,7 @@ const Process = ({ lang }: ProcessProps) => {
               </div>
             </ScrollAnimate>
           ))}
+        </div>
         </div>
       </div>
 

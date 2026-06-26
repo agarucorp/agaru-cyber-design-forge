@@ -1,5 +1,6 @@
 import { HeroTypewriter } from './HeroTypewriter';
 import TechMarquee from './TechMarquee';
+import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
 
 // SVG fractal noise as data URI for the grain overlay (no extra HTTP request).
 const NOISE_SVG =
@@ -8,7 +9,7 @@ const NOISE_SVG =
 const Hero = ({ lang = 'ES' }: { lang?: 'ES' | 'EN' }) => {
   return (
     <div
-      className="relative w-full min-h-screen overflow-x-clip overflow-y-visible"
+      className="relative w-full overflow-x-clip overflow-y-visible"
       style={{ backgroundColor: '#000000' }}
     >
       {/* Cyber radial gradient background (violet + deep blue) */}
@@ -39,7 +40,9 @@ const Hero = ({ lang = 'ES' }: { lang?: 'ES' | 'EN' }) => {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-full min-w-0 max-w-[1000px] px-4 pb-28 pt-[calc((1rem+72px+9rem)*1.2)] sm:px-6 md:pl-2 md:pt-[calc(1rem+82.8px+7rem)] lg:px-8 lg:pl-4">
+      <div
+        className={`z-10 min-w-0 pb-10 pt-[calc((1rem+72px+9rem)*1.2)] md:pb-14 md:pt-[calc(1rem+82.8px+7rem)] ${SECTION_CONTAINER_CLASS}`}
+      >
         <div className="flex w-full min-w-0 flex-col items-start gap-4 text-left">
           <p className="inline-block border border-white/30 bg-white/5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-white/65 sm:text-[10px] sm:tracking-[0.2em]">
             DESIGN & SOFTWARE STUDIO
