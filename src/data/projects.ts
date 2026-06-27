@@ -2,7 +2,6 @@ import mockupCalena from '../components/assets/ProjectShowcase/calenacard.png';
 import cardtr from '../components/assets/ProjectShowcase/cardtr.png';
 import logocannlabs1 from '../components/assets/ProjectShowcase/Logocannlabs1.png';
 import cardmaxtech from '../components/assets/ProjectShowcase/cardmaxtech.png';
-import group18 from '../components/assets/ProjectShowcase/Group 18.png';
 
 export type CaseStudyMeta = {
   label: string;
@@ -10,10 +9,22 @@ export type CaseStudyMeta = {
   href?: string;
 };
 
+export type CaseStudyItem = {
+  label?: string;
+  text: string;
+};
+
+export type CaseStudyBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'list'; items: CaseStudyItem[] }
+  | { type: 'group'; title: string; intro?: string; text?: string; items?: CaseStudyItem[] };
+
 export type CaseStudySection = {
   tag: string;
   title: string;
-  body: string;
+  body?: string;
+  items?: CaseStudyItem[];
+  blocks?: CaseStudyBlock[];
 };
 
 export type GalleryImage = {
@@ -41,7 +52,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   {
     index: '01',
     slug: 'calena',
-    category: 'Web App',
+    category: 'SaaS',
     title: 'Somos Calena',
     description:
       'Web app para gestión de psicólogos y conexión con pacientes. Diseño UX/UI, frontend en React y arquitectura escalable.',
@@ -50,10 +61,10 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     heroColor: '#3B2064',
     slogan: 'Conectando profesionales de la salud mental con sus pacientes',
     meta: [
-      { label: 'Cliente', value: 'Somos Calena' },
-      { label: 'Servicios', value: 'UX/UI · Desarrollo web · Arquitectura' },
-      { label: 'Fecha', value: '2024' },
-      { label: 'Categoría', value: 'Web app' },
+      { label: 'Cliente', value: 'Calena' },
+      { label: 'Servicios', value: 'Full-stack development / IA automation / Product design' },
+      { label: 'Categoría', value: 'Healthcare technology / SaaS' },
+      { label: 'Fecha', value: '2025' },
     ],
     gallery: [
       { src: mockupCalena, alt: 'Mockup Somos Calena', caption: 'Vista principal de la plataforma' },
@@ -63,24 +74,41 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       {
         tag: '01',
         title: 'Análisis inicial',
-        body: 'Calena necesitaba una plataforma que unificara la gestión de turnos, historiales y comunicación entre psicólogos y pacientes. Mapeamos los flujos críticos del consultorio digital priorizando claridad y accesibilidad.',
+        body: 'El cliente llegó con una validación de mercado sólida (+60 entrevistas) que identificó una fricción crítica en la gestión diaria de los profesionales de la salud mental: la dispersión de canales para turnos, cobros y el riesgo de pérdida de historial clínico.\n\nEl mayor desafío de producto consistió en traducir la simulación manual del flujo (donde se operó como secretario para entender la lógica del negocio) en un sistema automatizado. En lugar de depender de pasarelas de pago tradicionales, se desarrolló una solución a medida para resolver el comportamiento real del mercado: los pacientes pagan mediante transferencia y envían el comprobante por WhatsApp. El sistema procesa esto de forma 100% autónoma, eliminando la carga administrativa y la necesidad de interacción manual entre paciente y profesional para la conciliación de pagos.',
       },
       {
         tag: '02',
         title: 'Arquitectura y diseño',
-        body: 'Construimos la interfaz en React con componentes reutilizables y una arquitectura preparada para escalar. El diseño prioriza legibilidad, jerarquía y confianza en un contexto sensible.',
+        items: [
+          {
+            label: 'Infraestructura de datos y backend',
+            text: 'base de datos para garantizar la integridad del historial de sesiones de los pacientes y la trazabilidad de los cobros, cumpliendo con la privacidad requerida para datos de salud.',
+          },
+          {
+            label: 'Agentes IA',
+            text: 'integración de agentes para la transcripción, estructuración y almacenamiento de notas de sesión, evitando la pérdida de información clínica y optimizando el tiempo administrativo del profesional.',
+          },
+          {
+            label: 'Bot administrativo',
+            text: 'integración con la API de WhatsApp para la recepción de archivos y un pipeline de procesamiento de imágenes/documentos. El bot analiza el comprobante de transferencia extraído, valida la identidad del paciente, detecta el monto y actualiza el estado de la cuenta de forma automática en el sistema general.',
+          },
+          {
+            label: 'Frontend y UX',
+            text: 'interfaz administrativa dual (vista psicólogo / vista paciente para autogestión de turnos). Enfoque en un diseño utilitario, profesional e intuitivo.',
+          },
+        ],
       },
       {
         tag: '03',
         title: 'Resultado',
-        body: 'Una web app funcional que reduce tareas operativas y mejora la experiencia de conexión entre profesional y paciente, lista para crecer con nuevos módulos.',
+        body: 'Transformación de un proceso manual validado en una plataforma de software funcional (SaaS). El desarrollo iterativo basado en testers reales permitió pasar de una solución masiva a un producto enfocado que resuelve la gestión administrativa, la persistencia de datos clínicos mediante agentes de IA y la conciliación autónoma de pagos por transferencia. Se eliminó la fricción financiera de la validación manual de comprobantes, consolidando la base técnica necesaria para soportar el modelo de negocio.',
       },
     ],
   },
   {
     index: '02',
     slug: 'tony-ruiz',
-    category: 'E-commerce',
+    category: 'Ecommerce',
     title: 'Tony Ruiz Hair Studio',
     description:
       'Landing page + ecommerce para estudio de peluquería. Reservas online, catálogo de productos y experiencia mobile-first.',
@@ -90,9 +118,9 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     slogan: 'Estilo, reservas y venta online en una sola experiencia',
     meta: [
       { label: 'Cliente', value: 'Tony Ruiz Hair Studio' },
-      { label: 'Servicios', value: 'Diseño web · Ecommerce · Shopify' },
+      { label: 'Servicios', value: 'Branding / Web design / Ecommerce / SEO' },
+      { label: 'Categoría', value: 'Health & beauty / Website' },
       { label: 'Fecha', value: '2024' },
-      { label: 'Categoría', value: 'Ecommerce' },
     ],
     gallery: [
       { src: cardtr, alt: 'Tony Ruiz Hair Studio', caption: 'Home y catálogo de productos' },
@@ -102,17 +130,83 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       {
         tag: '01',
         title: 'Análisis inicial',
-        body: 'El estudio necesitaba captar clientes online, facilitar reservas y vender productos de cuidado capilar sin depender de mensajes dispersos por redes.',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'El cliente, un estudio profesional especializado en coloración y alisados de alta gama, requería inicialmente actualizar su identidad visual y construir una presencia web, sin un alcance estratégico definido. El negocio presentaba un desafío de escalabilidad: consolidar su sucursal histórica en Buenos Aires y potenciar su expansión internacional con un nuevo local en Punta del Este, Uruguay.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Intervenimos para diagnosticar las necesidades reales, transformando una demanda estética difusa en un ecosistema digital evolutivo que integró branding, SEO local y un canal de venta e-commerce automatizado.',
+          },
+        ],
       },
       {
         tag: '02',
         title: 'Arquitectura y diseño',
-        body: 'Definimos una identidad visual coherente con el salón: elegante, cercana y mobile-first. Personalizamos el tema de Shopify, configuramos catálogo, checkout y flujo de reservas, optimizando tiempos de carga y navegación.',
+        blocks: [
+          {
+            type: 'group',
+            title: 'Branding, landing page y SEO local',
+            items: [
+              {
+                label: 'Rediseño de identidad',
+                text: 'renovación integral del logo y universo visual para alinearlo con una estética sofisticada, limpia y premium.',
+              },
+              {
+                label: 'Landing page institucional',
+                text: 'estructuración de un catálogo claro de servicios profesionales, banner de marcas, botones de redes sociales/WhatsApp y accesibilidad mediante la integración de la API de Google Maps.',
+              },
+              {
+                label: 'Estrategia de posicionamiento local',
+                text: 'configuración, optimización de palabras clave y gestión activa de los perfiles de Google Maps para ambas sucursales, sumando campañas de anuncios geolocalizados para acelerar la apertura en el mercado uruguayo.',
+              },
+            ],
+          },
+          {
+            type: 'group',
+            title: 'Expansión de producto (módulo ecommerce)',
+            items: [
+              {
+                label: 'Navegación fluida',
+                text: 'diseño de una tienda organizada por categorías y filtros dinámicos.',
+              },
+              {
+                label: 'Checkout',
+                text: 'fichas de producto enfocadas en la conversión y un flujo de carrito con baja fricción.',
+              },
+              {
+                label: 'Pasarela de pagos',
+                text: 'integración de la API de Mercado Pago para automatizar el procesamiento seguro de transacciones.',
+              },
+            ],
+          },
+        ],
       },
       {
         tag: '03',
         title: 'Resultado',
-        body: 'Un sitio que combina presencia de marca, conversión y operación diaria del negocio en un solo canal digital.',
+        blocks: [
+          {
+            type: 'group',
+            title: 'Reputación',
+            intro: 'La estrategia de posicionamiento y captura de reviews validó el éxito comercial en ambas plazas físicas:',
+            items: [
+              { label: 'Sucursal Buenos Aires', text: '4.6 ⭐ (192 comentarios).' },
+              { label: 'Sucursal Punta del Este', text: '5.0 ⭐ (123 comentarios).' },
+            ],
+          },
+          {
+            type: 'group',
+            title: 'Nueva unidad de negocio 24/7',
+            text: 'El módulo ecommerce habilitó la venta de productos de forma automatizada. El estudio diversificó sus ingresos con una fuente secundaria que monetiza su stock de manera independiente.',
+          },
+          {
+            type: 'group',
+            title: 'Identidad visual',
+            text: 'El rediseño visual reposicionó al negocio atrayendo a un perfil de cliente de mayor valor.',
+          },
+        ],
       },
     ],
   },
@@ -237,39 +331,144 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   {
     index: '06',
     slug: 'lp-odontologia',
-    category: 'Landing page',
-    title: 'Odontología Lucia Piccardo',
+    category: 'SaaS',
+    title: 'MALDA®',
     description:
-      'Landing page para consultorio odontológico con foco en captación de turnos y comunicación clara de servicios.',
-    cardDescription: 'Landing page para consultorio odontológico',
-    image: group18,
-    heroColor: '#2C3E50',
-    slogan: 'Confianza y claridad para elegir tu próximo turno dental',
+      'Sistema de gestión de agenda y control de pagos para gimnasio de entrenamientos personalizados.',
+    cardDescription:
+      'Sistema de gestión de agenda y control de pagos para gimnasio de entrenamientos personalizados',
+    image: '/portada.png',
+    heroColor: '#1A1A1A',
+    slogan: 'Autogestión de agenda y pagos para entrenamiento personalizado',
     meta: [
-      { label: 'Cliente', value: 'Dra. Lucia Piccardo' },
-      { label: 'Servicios', value: 'Diseño web · Landing page · UX' },
-      { label: 'Fecha', value: '2024' },
-      { label: 'Categoría', value: 'Landing page' },
+      { label: 'Cliente', value: 'MALDA' },
+      { label: 'Servicios', value: 'Full-stack development / UX/UI design / Business automation' },
+      { label: 'Categoría', value: 'Landing page / SaaS / Product design' },
+      { label: 'Fecha', value: '2025' },
     ],
     gallery: [
-      { src: group18, alt: 'Odontología Lucia Piccardo', caption: 'Landing de captación de turnos' },
-      { src: group18, alt: 'Wireframe odontología', caption: 'Jerarquía de servicios y contacto' },
+      { src: '/03_Sistema_Logo_Blanco_Transparente_Malda.png', alt: 'MALDA' },
     ],
     story: [
       {
         tag: '01',
         title: 'Análisis inicial',
-        body: 'Generar confianza y facilitar la solicitud de turnos en un rubro donde la claridad y la cercanía son decisivas.',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'El cliente transitaba una fase crítica de escalabilidad de negocio, la transición de un espacio de entrenamiento doméstico y limitado a un local comercial con mayor capacidad. El modelo de negocio se basa en el entrenamiento personalizado en simultáneo (cupos limitados con rutinas individuales), un formato de alta fidelización pero con una logística compleja.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Previo a la intervención de la agencia, el 100% de la gestión operativa, comercial y administrativa se centralizaba de manera manual a través de WhatsApp. Esto generaba tres fricciones críticas:',
+          },
+          {
+            type: 'list',
+            items: [
+              {
+                label: 'Caos logístico',
+                text: 'mensajes constantes de cancelaciones, cambios de última hora y reprogramaciones cruzadas que saturaban la atención del entrenador.',
+              },
+              {
+                label: 'Incertidumbre de aforo',
+                text: 'falta de previsibilidad en tiempo real sobre la cantidad exacta y la identidad de los alumnos que asistirían a cada franja horaria.',
+              },
+              {
+                label: 'Fuga de ingresos y morosidad',
+                text: 'dificultad para trackear de forma transparente los aumentos de tarifas, los estados de pago individuales y la previsión del flujo de caja mensual.',
+              },
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'Objetivo: focalizar en la organización y la autogestión completa, con el fin de reducir a cero la fricción comunicativa diaria entre el profesional y el alumno, automatizando las reglas de negocio antes de la apertura del nuevo local.',
+          },
+        ],
       },
       {
         tag: '02',
         title: 'Arquitectura y diseño',
-        body: 'Priorizamos servicios, credenciales y CTA visibles desde el primer scroll. Estética limpia, tipografía legible y formulario de contacto integrado, con enfoque mobile-first.',
+        blocks: [
+          {
+            type: 'group',
+            title: 'Panel de administración backoffice',
+            intro: 'Diseñado como el núcleo operativo del negocio para garantizar previsibilidad y control total:',
+            items: [
+              {
+                label: 'Agenda y control',
+                text: 'visualización centralizada en formato calendario de las clases actuales, pasadas y futuras. Permite conocer la carga de alumnos por hora y realizar modificaciones manuales (agregar/quitar alumnos, aplicar ausencias).',
+              },
+              {
+                label: 'Master switch (configuración)',
+                text: 'panel de control global donde el administrador define la cantidad de clases diarias, duración de las mismas, capacidad máxima global y particular por módulo horario, topes de reserva y mínimos de asistencia semanal requeridos.',
+              },
+              {
+                label: 'Gestión de feriados y fines de semana',
+                text: 'interfaz dedicada para anular turnos recurrentes en días festivos (liberando el cupo) y configurar capacidades u horarios específicos para días no habituales (como fines de semana bloqueados por defecto) de forma individual.',
+              },
+            ],
+          },
+          {
+            type: 'group',
+            title: 'Panel de usuario',
+            items: [
+              {
+                label: 'Onboarding y configuración de plan',
+                text: 'en el primer inicio de sesión, el sistema obliga al usuario a parametrizar su esquema de asistencia mensual. Esto registra en la base de datos la frecuencia y automatiza el cálculo de su tarifa correspondiente.',
+              },
+              {
+                label: 'Agenda',
+                text: 'espacio personalizado para visualizar los horarios fijos asignados y gestionar cancelaciones.',
+              },
+            ],
+          },
+          {
+            type: 'group',
+            title: 'Créditos y vacantes',
+            items: [
+              {
+                label: 'Lógica de compensación',
+                text: 'si un usuario cancela una clase, el sistema no altera el dinero a abonar en el mes corriente (evitando cancelaciones malintencionadas de períodos completos). En su lugar, la clase se computa como un "crédito a favor".',
+              },
+              {
+                label: 'Tablero de vacantes dinámico',
+                text: 'las clases canceladas o los cupos remanentes de una clase (ej. 4 de 5 cupos ocupados) se reflejan automáticamente en una vista de calendario mensual para toda la comunidad. Cualquier alumno puede reservar esa vacante para recuperar una sesión o sumar un entrenamiento extra.',
+              },
+            ],
+          },
+          {
+            type: 'group',
+            title: 'UX writing y landing page',
+            text: 'Dado que MALDA funciona en un local a la calle pero bajo un formato no convencional, se diseñó una landing page informativa que actúa como primer filtro. Explica de forma clara y directa la metodología, la obligatoriedad de la agenda fija y la exclusividad del acceso mediante la app, evitando que el coach pierda tiempo de trabajo explicando el sistema a peatones casuales.',
+          },
+        ],
       },
       {
         tag: '03',
         title: 'Resultado',
-        body: 'Una landing enfocada en captación que comunica profesionalismo y reduce barreras para agendar una consulta.',
+        blocks: [
+          {
+            type: 'list',
+            items: [
+              {
+                label: 'Eliminación del trabajo administrativo manual',
+                text: 'reducción prácticamente a cero del tiempo invertido en responder mensajes de coordinación logística. Toda cancelación, reprogramación y reserva de vacantes quedó en manos de los alumnos de manera autónoma.',
+              },
+              {
+                label: 'Transparencia y control financiero',
+                text: 'a través del módulo de gestión de pagos, el administrador obtuvo un balance mensual predictivo. Ahora puede visualizar en tiempo real los ingresos proyectados, los montos percibidos, los saldos pendientes e identificar de forma inmediata a los usuarios morosos.',
+              },
+              {
+                label: 'Optimización de la capacidad',
+                text: 'el tablero de vacantes generó un ecosistema colaborativo donde las horas muertas o canceladas se reaprovechan orgánicamente por otros alumnos, maximizando la rentabilidad del espacio por hora sin intervención del staff.',
+              },
+              {
+                label: 'Filtro',
+                text: 'la landing page resolvió la fricción del local a la calle, educando al cliente ideal antes de su ingreso al sistema y derivando a los usuarios directamente al flujo de registro y selección de plan en la app.',
+              },
+            ],
+          },
+        ],
       },
     ],
   },

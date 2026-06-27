@@ -79,26 +79,6 @@ const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active
   );
 };
 
-const SignalIndicator: React.FC<{ active: boolean }> = ({ active }) => (
-  <div aria-hidden className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-white/50">
-    <span className="relative flex h-2 w-2">
-      <span
-        className={`absolute inline-flex h-full w-full rounded-full bg-white opacity-60 ${
-          active ? 'animate-ping' : ''
-        }`}
-      />
-      <span
-        className={`relative inline-flex h-2 w-2 rounded-full transition-all duration-300 ${
-          active ? 'bg-white shadow-[0_0_8px_rgba(255,255,255,0.9)]' : 'bg-white/40'
-        }`}
-      />
-    </span>
-    <span className={active ? 'text-white/80' : 'text-white/40'}>
-      {active ? 'SYS_ACTIVE' : 'SYS_IDLE'}
-    </span>
-  </div>
-);
-
 
 const CyberServices: React.FC = () => {
   const [hovered, setHovered] = useState<number | null>(null);
@@ -209,7 +189,6 @@ const CyberServices: React.FC = () => {
                   {/* Columna lateral decorativa */}
                   <div className="col-span-12 flex items-start justify-between md:col-span-3 md:flex-col md:justify-between md:gap-8">
                     <div className="flex flex-col gap-3">
-                      <SignalIndicator active={isActive} />
                       <div className="hidden md:block">
                         <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35">
                           MOD · {(() => { const w = s.badge.split(' ')[0].toUpperCase(); return w === 'DISEÑO' ? 'DESIGN' : w; })()}
@@ -222,7 +201,6 @@ const CyberServices: React.FC = () => {
                       <div className="h-px w-full bg-white/15" />
                       <div className="flex items-center gap-1.5">
                         <span className={`h-px flex-1 transition-all duration-500 ${isActive ? 'bg-white/70' : 'bg-white/15'}`} />
-                        <span className="font-mono text-[9px] text-white/30">[OK]</span>
                       </div>
                       <div className="h-px w-2/3 bg-white/10" />
                     </div>
@@ -254,10 +232,6 @@ const CyberServices: React.FC = () => {
                     <p className="mt-4 font-inter text-[14px] leading-relaxed text-white/70 sm:text-[15px]">
                       {s.description}
                     </p>
-
-                    <div className="mt-6 flex items-center justify-end md:hidden">
-                      <SignalIndicator active={isActive} />
-                    </div>
                   </div>
                 </div>
 
