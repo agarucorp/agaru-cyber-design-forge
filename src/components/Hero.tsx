@@ -9,7 +9,7 @@ const NOISE_SVG =
 const Hero = ({ lang = 'ES' }: { lang?: 'ES' | 'EN' }) => {
   return (
     <div
-      className="relative w-full overflow-x-clip overflow-y-visible max-md:flex max-md:min-h-[100svh] max-md:flex-col"
+      className="relative w-full overflow-x-clip overflow-y-visible"
       style={{ backgroundColor: '#000000' }}
     >
       {/* Cyber radial gradient background (violet + deep blue) */}
@@ -40,19 +40,20 @@ const Hero = ({ lang = 'ES' }: { lang?: 'ES' | 'EN' }) => {
         }}
       />
 
-      <div
-        className={`relative z-10 flex min-w-0 max-md:flex-1 max-md:flex-col pb-10 pt-[calc(1rem+72px+3rem)] md:pb-14 md:pt-[calc(1rem+82.8px+7rem)] ${SECTION_CONTAINER_CLASS}`}
-      >
-        <div className="flex w-full min-w-0 flex-col items-start gap-4 text-left max-md:flex-1 max-md:justify-center">
-          <p className="inline-block border border-white/30 bg-white/5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-white/65 sm:text-[10px] sm:tracking-[0.2em]">
-            DESIGN & SOFTWARE STUDIO
-          </p>
-          <HeroTypewriter lang={lang} className="mb-0" />
+      {/* Hero completo: contenido + banner, con padding vertical simétrico en mobile */}
+      <div className="relative z-10 min-w-0 pt-[calc((1rem+72px+9rem)*1.2)] pb-[calc((1rem+72px+9rem)*1.2)] md:pb-14 md:pt-[calc(1rem+82.8px+7rem)]">
+        <div className={SECTION_CONTAINER_CLASS}>
+          <div className="flex w-full min-w-0 flex-col items-start gap-4 text-left">
+            <p className="inline-block border border-white/30 bg-white/5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-white/65 sm:text-[10px] sm:tracking-[0.2em]">
+              DESIGN & SOFTWARE STUDIO
+            </p>
+            <HeroTypewriter lang={lang} className="mb-0" />
+          </div>
         </div>
-      </div>
 
-      <div className="relative z-10 max-md:mt-auto max-md:shrink-0">
-        <TechMarquee />
+        <div className="relative mt-8 w-full md:mt-10">
+          <TechMarquee />
+        </div>
       </div>
     </div>
   );
