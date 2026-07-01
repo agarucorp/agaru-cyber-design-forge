@@ -150,10 +150,10 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
               {isMobileMenuOpen ? (
                 <X size={28} />
               ) : (
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="4" y="8" width="20" height="2" rx="0.5" fill="#895AF6" className="transition-all duration-300" />
-                  <rect x="8" y="15" width="12" height="2" rx="0.5" fill="#895AF6" className="transition-all duration-300" />
-                  <rect x="10" y="22" width="16" height="2" rx="0.5" fill="#895AF6" className="transition-all duration-300" />
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                  <rect x="4" y="8" width="20" height="2" rx="0.5" fill="currentColor" className="transition-all duration-300" />
+                  <rect x="8" y="15" width="12" height="2" rx="0.5" fill="currentColor" className="transition-all duration-300" />
+                  <rect x="10" y="22" width="16" height="2" rx="0.5" fill="currentColor" className="transition-all duration-300" />
                 </svg>
               )}
             </button>

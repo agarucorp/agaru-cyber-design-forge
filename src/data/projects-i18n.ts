@@ -136,61 +136,121 @@ export const PROJECTS_EN: Record<string, ProjectEn> = {
   },
   frzm: {
     cardDescription: 'Design portfolio',
+    description:
+      'Independent portfolio with futuristic/sci-fi aesthetic, interactive navigation, and optimized visual asset loading.',
+    meta: [
+      { label: 'Client', value: 'FRZM' },
+      { label: 'Services', value: 'Web design / Frontend' },
+      { label: 'Date', value: '2026' },
+      { label: 'Category', value: 'Landing page / Portfolio' },
+    ],
     story: [
       {
         tag: '01',
         title: 'Initial assessment',
-        body: 'Create a memorable portfolio that conveys technical expertise and aesthetic sensibility without sacrificing performance or usability.',
+        body: 'Design and development of an independent, self-owned portfolio platform to replace third-party sites (such as Behance). The goal was to create a direct, functional landing page with a futuristic/sci-fi aesthetic.',
       },
       {
         tag: '02',
         title: 'Architecture & design',
-        body: 'We explored a futuristic aesthetic with bold typography and micro-interactions. We implemented animations and 3D effects with a performance focus: lazy loading, asset optimization, and testing across multiple devices.',
+        items: [
+          {
+            text: 'Cyberpunk aesthetic focused on clean, high-impact visual design.',
+          },
+          {
+            text: 'Interactive icon-based navigation system.',
+          },
+          {
+            text: 'Concise project organization in a single interface.',
+          },
+          {
+            text: 'Agile, optimized development to ensure fast loading of visual assets.',
+          },
+        ],
       },
       {
         tag: '03',
         title: 'Outcome',
-        body: 'A landing page that works as a business card and proof of technical and creative capabilities.',
+        body: 'An interactive, personalized web platform that cuts through the noise of traditional networks. It works as a concise digital product that directly showcases the design tools used and the quality of the work.',
       },
     ],
   },
   cannlabs: {
     cardDescription: 'Website for yerba mate, stevia, and tea extract producer',
+    description:
+      'Informative corporate site that clearly synthesizes the agro-industrial value proposition, applied technology, and product catalog for the global market.',
+    meta: [
+      { label: 'Client', value: 'CannLabs' },
+      { label: 'Services', value: 'Branding / Web Design / UX Writing' },
+      { label: 'Date', value: '2024' },
+      { label: 'Category', value: 'Corporate Website' },
+    ],
     story: [
       {
         tag: '01',
         title: 'Initial assessment',
-        body: 'Communicate production processes, sustainability, and natural extract quality to both B2B and end-consumer audiences.',
+        body: 'The goal was to structure an informative, professional, high-trust site that clearly synthesizes the agro-industrial value proposition, applied technology, and product catalog for the global market.',
       },
       {
         tag: '02',
         title: 'Architecture & design',
-        body: 'We organized information in layers: value proposition, process, products, and commercial contact. Organic palette, product photography, and traceability sections that reinforce trust and transparency.',
+        items: [
+          {
+            text: 'Logo design and art direction with a professional minimalist approach, using a chromatic palette based on green and organic tones aligned with the industry.',
+          },
+          {
+            text: 'Scroll reveal animations to smooth content loading, paired with an infinite carousel for fluid display of partner brands.',
+          },
+          {
+            text: 'Direct integration of a contact form, social media links, and a dynamic Google Maps embed for plant location.',
+          },
+        ],
       },
       {
         tag: '03',
         title: 'Outcome',
-        body: 'A site that positions CannLabs as a reference in natural extracts with professional, scalable communication.',
+        body: 'An effective, aesthetically clean corporate digital channel that unifies commercial messaging with the company\'s technical processes. The platform works as a solid institutional tool for B2B client acquisition, reflecting innovation and sustainability.',
       },
     ],
   },
   maxtech: {
     cardDescription: 'Catalog for industrial supplies importer',
+    description:
+      'Corporate digital catalog for an industrial supplies importer, with internal search and direct conversion via WhatsApp and email.',
+    meta: [
+      { label: 'Client', value: 'Maxtech Latam' },
+      { label: 'Services', value: 'UI Layout / Web Design' },
+      { label: 'Date', value: '2024' },
+      { label: 'Category', value: 'Web Catalog' },
+    ],
     story: [
       {
         tag: '01',
         title: 'Initial assessment',
-        body: 'Digitize an extensive industrial supplies catalog with efficient search and autonomous updates by the client.',
+        body: 'Centralize and categorize products for online display, replacing automated sales with a direct conversion strategy toward WhatsApp and email. We built on the client\'s existing identity to structure a clean, professional platform.',
       },
       {
         tag: '02',
         title: 'Architecture & design',
-        body: 'We designed dynamic filters, clear product pages, and inquiry flows for technical and commercial decision-makers. We implemented an accessible backend to load products, categories, and specifications without external support.',
+        items: [
+          {
+            text: 'Manual processing and composition in Figma of the client\'s entire image bank. Resolutions, proportions, and framing were normalized to ensure a symmetric, consistent, professional-looking product grid.',
+          },
+          {
+            text: 'Site color palette configured from the client-provided logo, adapting contrasts and visual hierarchy to industrial sector aesthetic conventions.',
+          },
+          {
+            text: 'Internal search engine paired with a catalog system structured by categories, filters, and product detail pages.',
+          },
+          {
+            text: 'User flow focused on manual quoting, integrating direct contact access (WhatsApp and email forms) instead of a traditional shopping cart.',
+          },
+        ],
       },
       {
         tag: '03',
         title: 'Outcome',
-        body: 'A digital commercial tool that speeds up inquiries and reduces friction in online inventory management.',
+        body: 'A corporate digital catalog that hierarchizes the importer\'s offering. A clean interface that makes it easy to find supplies and speeds up direct commercial contact with the sales team.',
       },
     ],
   },

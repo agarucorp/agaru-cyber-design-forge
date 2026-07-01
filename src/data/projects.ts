@@ -222,16 +222,16 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     category: 'Landing page',
     title: 'Portfolio personal',
     description:
-      'Portfolio de diseño futurista con animaciones avanzadas, interacciones 3D y enfoque en performance.',
+      'Portfolio propio con estética futurista/sci-fi, navegación interactiva y carga optimizada de assets visuales.',
     cardDescription: 'Portfolio de diseño',
     image: '/frzm.png',
     heroColor: '#1C1C2E',
     slogan: 'Un portfolio que demuestra diseño, motion y código en acción',
     meta: [
       { label: 'Cliente', value: 'FRZM' },
-      { label: 'Servicios', value: 'Diseño web · Motion · Frontend' },
-      { label: 'Fecha', value: '2024' },
-      { label: 'Categoría', value: 'Landing page' },
+      { label: 'Servicios', value: 'Diseño web / Frontend' },
+      { label: 'Fecha', value: '2026' },
+      { label: 'Categoría', value: 'Landing page / Portfolio' },
     ],
     gallery: [
       { src: '/frzm.png', alt: 'Portfolio FRZM', caption: 'Vista principal del portfolio' },
@@ -241,27 +241,40 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       {
         tag: '01',
         title: 'Análisis inicial',
-        body: 'Crear un portfolio memorable que transmita dominio técnico y sensibilidad estética, sin sacrificar rendimiento ni usabilidad.',
+        body: 'Diseño y desarrollo de una plataforma de portfolio propia e independiente para reemplazar sitios de terceros (como Behance). El objetivo fue crear una landing page directa y funcional con estética futurista/sci-fi.',
       },
       {
         tag: '02',
         title: 'Arquitectura y diseño',
-        body: 'Exploramos una estética futurista con tipografía contundente y microinteracciones. Implementamos animaciones y efectos 3D con foco en performance: lazy loading, optimización de assets y pruebas en múltiples dispositivos.',
+        items: [
+          {
+            text: 'Estética cyberpunk enfocada en un diseño limpio de alto impacto visual.',
+          },
+          {
+            text: 'Sistema de navegación interactivo con íconos.',
+          },
+          {
+            text: 'Organización concisa de proyectos en una sola interfaz.',
+          },
+          {
+            text: 'Desarrollo ágil y optimizado para asegurar cargas rápidas de los assets visuales.',
+          },
+        ],
       },
       {
         tag: '03',
         title: 'Resultado',
-        body: 'Una landing que funciona como carta de presentación y prueba de capacidades técnicas y creativas.',
+        body: 'Una plataforma web interactiva y personalizada que elimina el ruido de las redes tradicionales. Funciona como un producto digital conciso que expone de forma directa las herramientas de diseño utilizadas y la calidad de los trabajos.',
       },
     ],
   },
   {
     index: '04',
     slug: 'cannlabs',
-    category: 'Website',
+    category: 'Corporate Website',
     title: 'CannLabs',
     description:
-      'Sitio web para empresa productora de extracto de yerba mate, stevia y té. Storytelling, sustentabilidad y trazabilidad.',
+      'Sitio corporativo informativo que sintetiza la propuesta agroindustrial, la tecnología aplicada y el catálogo de productos para el mercado global.',
     cardDescription:
       'Sitio web para empresa productora de extracto de yerba mate, stevia y té',
     image: logocannlabs1,
@@ -269,9 +282,9 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     slogan: 'Del campo al consumidor con trazabilidad y propósito',
     meta: [
       { label: 'Cliente', value: 'CannLabs' },
-      { label: 'Servicios', value: 'Diseño web · Storytelling · UX' },
+      { label: 'Servicios', value: 'Branding / Web Design / UX Writing' },
       { label: 'Fecha', value: '2024' },
-      { label: 'Categoría', value: 'Website' },
+      { label: 'Categoría', value: 'Corporate Website' },
     ],
     gallery: [
       { src: logocannlabs1, alt: 'CannLabs website', caption: 'Home institucional' },
@@ -281,17 +294,27 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       {
         tag: '01',
         title: 'Análisis inicial',
-        body: 'Comunicar procesos productivos, sustentabilidad y calidad de extractos naturales a un público B2B y consumidor final.',
+        body: 'El objetivo fue estructurar un sitio informativo, profesional y de alta confianza que sintetice de manera clara la propuesta de valor agroindustrial, la tecnología aplicada y el catálogo de productos para el mercado global.',
       },
       {
         tag: '02',
         title: 'Arquitectura y diseño',
-        body: 'Organizamos la información en capas: propuesta de valor, proceso, productos y contacto comercial. Paleta orgánica, fotografía de producto y secciones de trazabilidad que refuerzan confianza y transparencia.',
+        items: [
+          {
+            text: 'Diseño de logotipo y dirección de arte con enfoque minimalista profesional, utilizando una paleta cromática basada en tonos verdes y orgánicos alineados a la industria.',
+          },
+          {
+            text: 'Implementación de animaciones por scroll (scroll reveals) para suavizar la carga de contenidos, acompañadas de un carrusel infinito para la exposición fluida de marcas asociadas.',
+          },
+          {
+            text: 'Integración directa de un formulario de contacto, enlaces a redes sociales y mapa dinámico de Google Maps para la localización de la planta.',
+          },
+        ],
       },
       {
         tag: '03',
         title: 'Resultado',
-        body: 'Un sitio que posiciona a CannLabs como referente en extractos naturales con comunicación profesional y escalable.',
+        body: 'Un canal digital corporativo efectivo y estéticamente limpio que unifica el wording comercial con los procesos técnicos de la empresa. La plataforma funciona como una herramienta institucional sólida para la captación de clientes B2B, reflejando innovación y sostenibilidad.',
       },
     ],
   },
@@ -301,16 +324,16 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     category: 'Web Catalog',
     title: 'Maxtech Latam',
     description:
-      'Catálogo para importadora de insumos industriales con búsqueda avanzada, filtros dinámicos y panel autoadministrable.',
+      'Catálogo digital corporativo para importadora de insumos industriales, con búsqueda interna y conversión directa vía WhatsApp y email.',
     cardDescription: 'Catálogo para importadora de insumos industriales',
     image: cardmaxtech,
     heroColor: '#1E2D3D',
     slogan: 'Catálogo industrial con búsqueda inteligente y gestión autónoma',
     meta: [
       { label: 'Cliente', value: 'Maxtech Latam' },
-      { label: 'Servicios', value: 'Diseño web · Catálogo · Panel admin' },
+      { label: 'Servicios', value: 'UI Layout / Web Design' },
       { label: 'Fecha', value: '2024' },
-      { label: 'Categoría', value: 'Web catalog' },
+      { label: 'Categoría', value: 'Web Catalog' },
     ],
     gallery: [
       { src: cardmaxtech, alt: 'Maxtech Latam', caption: 'Catálogo y filtros de producto' },
@@ -320,17 +343,30 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       {
         tag: '01',
         title: 'Análisis inicial',
-        body: 'Digitalizar un catálogo extenso de insumos industriales con búsqueda eficiente y actualización autónoma por parte del cliente.',
+        body: 'Centralizar y categorizar productos para su exhibición online, reemplazando la venta automatizada por una estrategia de conversión directa hacia WhatsApp y email. Se trabajó sobre la identidad preexistente del cliente para estructurar una plataforma limpia y profesional.',
       },
       {
         tag: '02',
         title: 'Arquitectura y diseño',
-        body: 'Diseñamos filtros dinámicos, fichas de producto claras y flujos de consulta orientados a decisores técnicos y comerciales. Implementamos un backend accesible para cargar productos, categorías y especificaciones sin depender de soporte externo.',
+        items: [
+          {
+            text: 'Procesamiento y composición manual en Figma de todo el banco de imágenes del cliente. Se normalizaron resoluciones, proporciones y encuadres para garantizar una grilla de productos simétrica, consistente y de aspecto profesional.',
+          },
+          {
+            text: 'Configuración de la paleta cromática del sitio a partir del logotipo provisto por el cliente, adaptando los contrastes y jerarquías visuales a las convenciones estéticas del rubro industrial.',
+          },
+          {
+            text: 'Implementación de un motor de búsqueda interno acompañado de un sistema de catálogo estructurado por categorías, filtros y páginas de detalle de producto.',
+          },
+          {
+            text: 'Configuración del flujo de usuario enfocado a la cotización manual, integrando accesos directos de contacto (WhatsApp y formularios de email) en lugar de un carrito de compras tradicional.',
+          },
+        ],
       },
       {
         tag: '03',
         title: 'Resultado',
-        body: 'Una herramienta comercial digital que acelera consultas y reduce fricción en la gestión del inventario online.',
+        body: 'Un catálogo digital corporativo que jerarquiza la oferta de la importadora. Una interfaz limpia que facilita la búsqueda de insumos y acelera el contacto comercial directo con el equipo de ventas.',
       },
     ],
   },
