@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
-import { PROJECTS_DATA } from '@/data/projects';
+import { PROJECTS_DATA, type ProjectCaseStudy } from '@/data/projects';
+import { getLocalizedProject, t, type Lang } from '@/lib/i18n';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ScrollAnimate } from './ScrollAnimate';
 
 const PROJECTS = PROJECTS_DATA;
+
+type CyberProjectsProps = {
+  lang: Lang;
+};
 
 const FlipCardStyles = () => (
   <style>{`
@@ -26,22 +31,24 @@ const FlipCardStyles = () => (
   `}</style>
 );
 
-const CyberProjects = () => {
+const CyberProjects = ({ lang }: CyberProjectsProps) => {
   const isMobile = useIsMobile();
   const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
+  const localizedProjects = PROJECTS.map((p) => getLocalizedProject(p, lang));
+
   useEffect(() => {
-    if (!isMobile || PROJECTS.length === 0) return;
+    if (!isMobile || localizedProjects.length === 0) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % PROJECTS.length);
+      setCurrentIndex((prev) => (prev + 1) % localizedProjects.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isMobile]);
+  }, [isMobile, localizedProjects.length]);
 
   const handleFlip = (index: number) => {
     setFlippedCards((prev) => {
@@ -66,7 +73,7 @@ const CyberProjects = () => {
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
 
-    if (isLeftSwipe && currentIndex < PROJECTS.length - 1) {
+    if (isLeftSwipe && currentIndex < localizedProjects.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
     if (isRightSwipe && currentIndex > 0) {
@@ -74,7 +81,7 @@ const CyberProjects = () => {
     }
   };
 
-  const renderCardFront = (project: (typeof PROJECTS)[number]) => (
+  const renderCardFront = (project: ProjectCaseStudy) => (
     <div className="project-flip-front absolute inset-0 z-10 h-full w-full bg-transparent">
       <div className="absolute left-4 top-4 z-20">
         <span className="rounded-full bg-[#4B267A] px-3 py-1 text-xs font-semibold text-white">
@@ -90,7 +97,7 @@ const CyberProjects = () => {
     </div>
   );
 
-  const renderCardBack = (project: (typeof PROJECTS)[number]) => (
+  const renderCardBack = (project: ProjectCaseStudy) => (
     <div className="project-flip-back absolute inset-0 z-20 flex h-full w-full flex-col items-center justify-center rounded-xl bg-[#262626] p-6">
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-center text-center">
         <h3 className="mb-4 font-onest text-xl font-normal text-white sm:text-2xl">
@@ -106,7 +113,7 @@ const CyberProjects = () => {
           className="inline-flex items-center gap-2 border border-white/40 bg-white/5 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-white/80 transition-all duration-300 hover:border-white hover:bg-white/10 hover:text-white"
           onClick={(e) => e.stopPropagation()}
         >
-          Ver caso →
+          {t('projects', 'viewCase', lang)} →
         </Link>
       </div>
     </div>
@@ -115,7 +122,7 @@ const CyberProjects = () => {
   return (
     <section
       id="projects"
-      aria-label="Proyectos"
+      aria-label={t('projects', 'title', lang)}
       className="relative w-full bg-black py-20 md:py-28"
     >
       <div className={SECTION_CONTAINER_CLASS}>
@@ -125,14 +132,13 @@ const CyberProjects = () => {
             <span>// CASES</span>
           </div>
           <h2 className="font-mulish text-[34px] font-normal leading-[1.05] text-white sm:text-[44px] md:text-[56px]">
-            Proyectos
+            {t('projects', 'title', lang)}
           </h2>
         </div>
 
-        {/* Desktop: flip al hover */}
         <div className="hidden md:block">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {PROJECTS.map((project, index) => (
+            {localizedProjects.map((project, index) => (
               <ScrollAnimate key={project.slug} delay={index * 100} threshold={0.15}>
                 <div
                   className="project-flip-card group relative h-96 overflow-hidden rounded-xl border border-white/5 transition-all duration-300"
@@ -148,7 +154,6 @@ const CyberProjects = () => {
           </div>
         </div>
 
-        {/* Mobile: carrusel + tap para flip */}
         <div
           className="relative overflow-hidden md:hidden"
           onTouchStart={handleTouchStart}
@@ -159,7 +164,7 @@ const CyberProjects = () => {
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {PROJECTS.map((project, index) => {
+            {localizedProjects.map((project, index) => {
               const isFlipped = flippedCards.has(index);
 
               return (
@@ -183,7 +188,7 @@ const CyberProjects = () => {
                         {renderCardFront(project)}
                         <div className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2">
                           <p className="rounded-full bg-black/50 px-3 py-1 text-center font-manrope text-xs text-white">
-                            Toca para ver más
+                            {t('projects', 'tapMore', lang)}
                           </p>
                         </div>
                       </div>

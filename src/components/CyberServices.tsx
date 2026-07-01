@@ -1,48 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
-
-/**
- * Sección "Servicios" con estética de HUD de videojuego cyberpunk.
- * - Paneles negros con esquinas cortadas y marco blanco.
- * - Hover: borde y glow blanco sutil, sin colores adicionales.
- * - Detalles técnicos: índice grande, códigos, barras de estado y marcas de esquina.
- */
-
-type Service = {
-  index: string;
-  badge: string;
-  title: string;
-  description: string;
-};
-
-const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
-  e.preventDefault();
-  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-};
-
-const SERVICES: Service[] = [
-  {
-    index: '01',
-    badge: 'diseño web',
-    title: 'Sitios web y tiendas online',
-    description:
-      'Diseño de landing pages, portfolios, sitios corporativos y setup/personalización de Shopify, traduciendo las necesidades de tu negocio en una experiencia de usuario intuitiva. Creamos cada interfaz con una arquitectura de información clara, navegación fluida y conceptos visuales armónicos, garantizando un diseño totalmente acorde a tu rubro y objetivos comerciales.',
-  },
-  {
-    index: '02',
-    badge: 'software a medida',
-    title: 'Sistemas y automatización de procesos',
-    description:
-      'Desarrollo de software empresarial, plataformas backend personalizadas y aplicaciones web escalables. Diseñamos e implementamos herramientas orientadas a la automatización de flujos de trabajo, eliminación de tareas repetitivas y optimización de tus procesos internos.',
-  },
-  {
-    index: '03',
-    badge: 'branding y comunicación',
-    title: 'Identidad visual y elementos gráficos',
-    description:
-      'Diseño conceptual de logotipos, isotipos, flyers, etiquetas y piezas gráficas esenciales para la comunicación y consistencia visual de tu marca.',
-  },
-];
+import { getServices, getModLabel } from '@/data/services';
+import { t, type Lang } from '@/lib/i18n';
 
 const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active }) => {
   const [glitching, setGlitching] = useState(false);
@@ -80,8 +39,18 @@ const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active
 };
 
 
-const CyberServices: React.FC = () => {
+const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault();
+  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+type CyberServicesProps = {
+  lang: Lang;
+};
+
+const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const services = getServices(lang);
 
   const panelClip =
     'polygon(36px 0, 100% 0, 100% calc(100% - 36px), calc(100% - 36px) 100%, 0 100%, 0 36px)';
@@ -89,7 +58,7 @@ const CyberServices: React.FC = () => {
   return (
     <section
       id="cyber-services"
-      aria-label="Servicios"
+      aria-label={lang === 'EN' ? 'Services' : 'Servicios'}
       className="relative w-full bg-black py-20 md:py-28"
     >
       {/* Textura de scanlines sutil */}
@@ -110,14 +79,14 @@ const CyberServices: React.FC = () => {
               <span>// WHAT WE DO</span>
             </div>
             <h2 className="font-mulish text-[34px] font-normal leading-[1.05] text-white sm:text-[44px] md:text-[56px]">
-              Servicios
+              {t('services', 'title', lang)}
             </h2>
           </div>
         </div>
 
         {/* Stack vertical de paneles */}
         <div className="flex flex-col gap-6 md:gap-7">
-          {SERVICES.map((s, i) => {
+          {services.map((s, i) => {
             const isActive = hovered === i;
 
             return (
@@ -191,7 +160,7 @@ const CyberServices: React.FC = () => {
                     <div className="flex flex-col gap-3">
                       <div className="hidden md:block">
                         <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35">
-                          MOD · {(() => { const w = s.badge.split(' ')[0].toUpperCase(); return w === 'DISEÑO' ? 'DESIGN' : w; })()}
+                          MOD · {getModLabel(s.badge, lang)}
                         </div>
                       </div>
                     </div>
@@ -222,7 +191,7 @@ const CyberServices: React.FC = () => {
                       <a
                         href="#contact"
                         onClick={scrollToContact}
-                        aria-label={`Contactar sobre ${s.title}`}
+                        aria-label={lang === 'EN' ? `Contact about ${s.title}` : `Contactar sobre ${s.title}`}
                         className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/30 bg-white/5 font-mono text-[22px] leading-none text-white/70 transition-all duration-300 hover:border-white hover:bg-white/10 hover:text-white"
                       >
                         +

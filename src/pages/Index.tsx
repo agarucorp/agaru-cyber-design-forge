@@ -7,12 +7,16 @@ import Process from '../components/Process';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
 import WhatsAppFloat from '../components/WhatsAppFloat';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { getStoredLang, storeLang, type Lang } from '@/lib/i18n';
 
 const Index = () => {
-  // Comentario: Configuración SEO dinámica según el idioma seleccionado
-  const [lang, setLang] = useState<'ES' | 'EN'>('ES');
+  const [lang, setLang] = useState<Lang>(() => getStoredLang());
+
+  useEffect(() => {
+    storeLang(lang);
+  }, [lang]);
 
   // SEO optimizado para español únicamente
   const seo = {
@@ -49,8 +53,8 @@ const Index = () => {
       <div className="relative w-full overflow-x-clip" style={{ backgroundColor: '#000000' }}>
         <Navbar lang={lang} setLang={setLang} />
         <Hero lang={lang} />
-        <CyberServices />
-        <CyberProjects />
+        <CyberServices lang={lang} />
+        <CyberProjects lang={lang} />
         <Process lang={lang} />
         <FAQ lang={lang} />
         <Footer lang={lang} />

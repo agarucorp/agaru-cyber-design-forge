@@ -46,6 +46,12 @@ export type ProjectCaseStudy = {
   meta: CaseStudyMeta[];
   gallery: GalleryImage[];
   story: CaseStudySection[];
+  en?: {
+    cardDescription?: string;
+    description?: string;
+    meta?: CaseStudyMeta[];
+    story?: CaseStudySection[];
+  };
 };
 
 export const PROJECTS_DATA: ProjectCaseStudy[] = [

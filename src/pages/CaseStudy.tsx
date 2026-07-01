@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useEffect, useState } from 'react';
 import { PROJECTS_DATA, type CaseStudyItem } from '@/data/projects';
 import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
+import { getLocalizedProject, getStoredLang, t, type Lang } from '@/lib/i18n';
 import CaseStudyRelated from '@/components/CaseStudyRelated';
 import Footer from '@/components/Footer';
 
@@ -22,8 +23,9 @@ const StoryItemList = ({ items }: { items: CaseStudyItem[] }) => (
 
 const CaseStudy = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [lang] = useState<'ES' | 'EN'>('ES');
-  const project = PROJECTS_DATA.find((p) => p.slug === slug);
+  const [lang] = useState<Lang>(() => getStoredLang());
+  const rawProject = PROJECTS_DATA.find((p) => p.slug === slug);
+  const project = rawProject ? getLocalizedProject(rawProject, lang) : undefined;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,12 +36,12 @@ const CaseStudy = () => {
       <div className="flex min-h-screen items-center justify-center bg-black text-white">
         <div className="text-center">
           <p className="font-mono text-sm uppercase tracking-[0.25em] text-white/60">// ERROR_404</p>
-          <h1 className="mt-3 font-onest text-3xl">Caso de estudio no encontrado</h1>
+          <h1 className="mt-3 font-onest text-3xl">{t('caseStudy', 'notFound', lang)}</h1>
           <Link
             to="/"
             className="mt-6 inline-block border border-white/40 px-4 py-2 font-mono text-xs uppercase tracking-[0.25em] text-white/80 hover:border-white hover:text-white"
           >
-            ← Volver
+            {t('caseStudy', 'back', lang)}
           </Link>
         </div>
       </div>
@@ -49,7 +51,7 @@ const CaseStudy = () => {
   return (
     <>
       <Helmet>
-        <title>{`${project.title} · Caso de estudio | AGARUCORP`}</title>
+        <title>{`${project.title} · ${t('caseStudy', 'caseStudyTitle', lang)} | AGARUCORP`}</title>
         <meta name="description" content={project.description} />
       </Helmet>
 
@@ -68,7 +70,7 @@ const CaseStudy = () => {
               to="/#projects"
               className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 transition-colors hover:text-white sm:text-[11px]"
             >
-              ← Proyectos
+              {t('caseStudy', 'projects', lang)}
             </Link>
           </div>
         </header>
@@ -210,7 +212,7 @@ const CaseStudy = () => {
           </div>
         </section>
 
-        <CaseStudyRelated currentSlug={project.slug} />
+        <CaseStudyRelated currentSlug={project.slug} lang={lang} />
         <Footer lang={lang} />
       </div>
     </>

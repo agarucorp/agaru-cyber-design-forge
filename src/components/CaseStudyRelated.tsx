@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom';
 import { PROJECTS_DATA } from '@/data/projects';
 import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
+import { getLocalizedProject, t, type Lang } from '@/lib/i18n';
 
 type CaseStudyRelatedProps = {
   currentSlug: string;
+  lang: Lang;
 };
 
-const CaseStudyRelated = ({ currentSlug }: CaseStudyRelatedProps) => {
-  const related = PROJECTS_DATA.filter((p) => p.slug !== currentSlug).slice(0, 4);
+const CaseStudyRelated = ({ currentSlug, lang }: CaseStudyRelatedProps) => {
+  const related = PROJECTS_DATA.filter((p) => p.slug !== currentSlug)
+    .slice(0, 4)
+    .map((p) => getLocalizedProject(p, lang));
 
   const panelClip =
     'polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)';
@@ -21,7 +25,7 @@ const CaseStudyRelated = ({ currentSlug }: CaseStudyRelatedProps) => {
             <span>// MORE CASES</span>
           </div>
           <h2 className="font-mulish text-[28px] font-normal leading-[1.05] text-white sm:text-[36px] md:text-[44px]">
-            Otros proyectos
+            {t('caseStudy', 'moreCases', lang)}
           </h2>
         </div>
 
@@ -53,7 +57,8 @@ const CaseStudyRelated = ({ currentSlug }: CaseStudyRelatedProps) => {
                   {project.title}
                 </h3>
                 <span className="mt-3 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 transition-colors group-hover:text-white">
-                  Ver caso <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                  {t('projects', 'viewCase', lang)}{' '}
+                  <span className="transition-transform group-hover:translate-x-0.5">→</span>
                 </span>
               </div>
             </Link>
