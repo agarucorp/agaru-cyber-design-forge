@@ -3,14 +3,15 @@ import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { X, Globe } from 'lucide-react';
 import CyberButton from './CyberButton';
+import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
 
 interface NavbarProps {
   lang: 'ES' | 'EN';
   setLang: Dispatch<SetStateAction<'ES' | 'EN'>>;
 }
 
-const NAVBAR_BG = 'rgba(100, 102, 110, 0.62)';
-const NAVBAR_MOBILE_BG = 'rgba(96, 98, 106, 0.62)';
+const NAVBAR_BG = 'rgba(28, 28, 32, 0.82)';
+const NAVBAR_MOBILE_BG = 'rgba(24, 24, 28, 0.88)';
 const NAV_LINK_TYPO = 'font-mono text-[11px] uppercase tracking-[0.2em]';
 
 // Utilidad para scrollspy
@@ -79,7 +80,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
 
   return (
     <nav className="pointer-events-none fixed left-0 right-0 top-4 z-50">
-      <div className="pointer-events-auto mx-auto w-full max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className={`pointer-events-auto ${SECTION_CONTAINER_CLASS}`}>
         <div
           className="flex h-[72px] min-h-[72px] w-full items-center justify-between rounded-full px-6 md:h-[82.8px] md:min-h-[82.8px] md:px-8"
           style={{
@@ -91,9 +92,9 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
           <div className="flex-none">
             <a href="/" className="flex items-center">
               <img
-                src="/newlogohorizontal.svg"
+                src="/MAIN_HORIZONTAL1.svg"
                 alt="AGARUCORP"
-                className="h-[36.3px] w-auto object-contain md:h-[41.47px]"
+                className="h-[25.3px] w-auto object-contain brightness-0 invert md:h-[29.9px]"
               />
             </a>
           </div>
