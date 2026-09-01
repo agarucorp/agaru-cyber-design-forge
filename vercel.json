@@ -64,6 +64,11 @@
       "source": "/caso-de-estudio/lp-odontologia",
       "destination": "/caso-de-estudio/maldagym",
       "permanent": true
+    },
+    {
+      "source": "/caso-de-estudio/frzm",
+      "destination": "/caso-de-estudio/cecile",
+      "permanent": true
     }
   ]
 } 

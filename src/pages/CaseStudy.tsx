@@ -27,6 +27,9 @@ const CaseStudy = () => {
   const [lang] = useState<Lang>(() => getStoredLang());
   const rawProject = PROJECTS_DATA.find((p) => p.slug === slug);
   const project = rawProject ? getLocalizedProject(rawProject, lang) : undefined;
+  const prototypeHref =
+    project &&
+    (lang === 'EN' && project.prototypeUrlEn ? project.prototypeUrlEn : project.prototypeUrl);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -88,11 +91,11 @@ const CaseStudy = () => {
             <h1 className="font-onest text-[clamp(1.75rem,4vw+0.5rem,2.5rem)] font-normal leading-[1.15] text-white">
               {project.title}
             </h1>
-            {(project.prototypeUrl || project.siteUrl) && (
+            {(prototypeHref || project.siteUrl) && (
               <div className="mt-8 flex flex-wrap gap-3">
-                {project.prototypeUrl && (
+                {prototypeHref && (
                   <CyberButton
-                    href={project.prototypeUrl}
+                    href={prototypeHref}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -141,15 +144,15 @@ const CaseStudy = () => {
                       )}
                     </div>
                   ))}
-                  {(project.prototypeUrl || project.siteUrl) && (
+                  {(prototypeHref || project.siteUrl) && (
                     <div className="space-y-6 border-t border-white/10 pt-8">
-                      {project.prototypeUrl && (
+                      {prototypeHref && (
                         <div>
                           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
                             {lang === 'EN' ? 'Prototype' : 'Prototipo'}
                           </p>
                           <CyberButton
-                            href={project.prototypeUrl}
+                            href={prototypeHref}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="mt-3"

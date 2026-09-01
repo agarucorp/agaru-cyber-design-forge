@@ -134,44 +134,105 @@ export const PROJECTS_EN: Record<string, ProjectEn> = {
       },
     ],
   },
-  frzm: {
-    cardDescription: 'Design portfolio',
+  cecile: {
+    cardDescription:
+      'Online clinic for managing and centralizing information between nutritionist and patient',
     description:
-      'Independent portfolio with futuristic/sci-fi aesthetic, interactive navigation, and optimized visual asset loading.',
+      'Online clinic for managing and centralizing information between nutritionist and patient.',
     meta: [
-      { label: 'Client', value: 'FRZM' },
-      { label: 'Services', value: 'Web design / Frontend' },
-      { label: 'Date', value: '2026' },
-      { label: 'Category', value: 'Landing page / Portfolio' },
+      { label: 'Client', value: 'Cécile (own product)' },
+      {
+        label: 'Services',
+        value: 'Product design / UX·UI / Full-stack development / AI integration',
+      },
+      { label: 'Category', value: 'SaaS / Product design / Health tech' },
+      { label: 'Date', value: '2025–2026' },
     ],
     story: [
       {
         tag: '01',
         title: 'Initial assessment',
-        body: 'Design and development of an independent, self-owned portfolio platform to replace third-party sites (such as Behance). The goal was to create a direct, functional landing page with a futuristic/sci-fi aesthetic.',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'After interviewing nutritionists and patients, a clear pattern emerged: the clinical relationship runs almost entirely through WhatsApp. Diet plans, supplement protocols and progress notes live scattered across chat threads with no structure between appointments.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Platforms addressing this exist, but none have reached critical mass — the professionals interviewed were unaware of them or had abandoned them. The gap was not a lack of solutions. It was a lack of adoption.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Three frictions defined the problem:',
+          },
+          {
+            type: 'list',
+            items: [
+              {
+                label: 'Information loss',
+                text: 'clinical decisions disappear into informal channels with no reliable reference for the patient.',
+              },
+              {
+                label: 'No visibility',
+                text: 'the nutritionist has no way to track adherence between consultations.',
+              },
+              {
+                label: 'No continuity',
+                text: 'every appointment starts from scratch instead of building on an accessible history.',
+              },
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'Goal: a private, invitation-only platform that centralizes the patient-nutritionist relationship.',
+          },
+        ],
       },
       {
         tag: '02',
         title: 'Architecture & design',
-        items: [
+        blocks: [
           {
-            text: 'Cyberpunk aesthetic focused on clean, high-impact visual design.',
+            type: 'paragraph',
+            text: 'The system operates on two roles from a single access point.',
           },
           {
-            text: 'Interactive icon-based navigation system.',
+            type: 'group',
+            title: 'Nutritionist panel',
+            text: 'patient directory with goal tracking and priority flags, monthly appointment calendar with direct file access, and a full patient file holding clinical notes, uploaded documents, supplements, activity routines and anthropometric data.',
           },
           {
-            text: 'Concise project organization in a single interface.',
+            type: 'group',
+            title: 'Patient portal',
+            text: 'access by private link — no public registration. The patient sees their goal progress, a shopping list prescribed by their nutritionist, and an AI-generated meal plan with three recipe options per meal. A shared comment thread replaces informal messaging: neither party can delete the other\'s messages.',
           },
           {
-            text: 'Agile, optimized development to ensure fast loading of visual assets.',
+            type: 'paragraph',
+            text: 'Visual identity designed against clinical software conventions: warm earth tones, serif typography and soft rounded components.',
           },
         ],
       },
       {
         tag: '03',
         title: 'Outcome',
-        body: 'An interactive, personalized web platform that cuts through the noise of traditional networks. It works as a concise digital product that directly showcases the design tools used and the quality of the work.',
+        items: [
+          {
+            label: 'Centralized record',
+            text: 'all clinical information lives in one place, replacing WhatsApp as the default channel.',
+          },
+          {
+            label: 'Adherence support',
+            text: 'recipe variety removes the most common barrier to plan compliance.',
+          },
+          {
+            label: 'Permanent trail',
+            text: 'the shared thread protects both professional and patient with an undeletable record.',
+          },
+          {
+            label: 'Invitation-only',
+            text: 'the platform only serves established clinical relationships, with no marketplace friction.',
+          },
+        ],
       },
     ],
   },

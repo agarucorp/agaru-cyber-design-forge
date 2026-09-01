@@ -48,6 +48,8 @@ export type ProjectCaseStudy = {
   story: CaseStudySection[];
   /** URL a un prototipo / explorador visual (HTML estático u otra página). */
   prototypeUrl?: string;
+  /** Versión en inglés del explorador visual (si difiere del default en español). */
+  prototypeUrlEn?: string;
   /** URL del sitio / landing en producción. */
   siteUrl?: string;
   en?: {
@@ -224,54 +226,115 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     index: '03',
-    slug: 'frzm',
-    category: 'Landing page',
-    title: 'Portfolio personal',
+    slug: 'cecile',
+    category: 'SaaS',
+    title: 'Cécile App',
     description:
-      'Portfolio propio con estética futurista/sci-fi, navegación interactiva y carga optimizada de assets visuales.',
-    cardDescription: 'Portfolio de diseño',
-    image: '/frzm.png',
-    heroColor: '#1C1C2E',
-    slogan: 'Un portfolio que demuestra diseño, motion y código en acción',
-    siteUrl: 'https://www.frzm.site',
+      'Consultorio online para gestión y centralización de información entre nutricionista y paciente.',
+    cardDescription:
+      'Consultorio online para gestión y centralización de información entre nutricionista y paciente',
+    image: '/cecile-cover.png',
+    heroColor: '#8B452D',
+    slogan: 'Portal privado entre nutricionista y paciente',
+    prototypeUrl: '/prototypes/cecile-visor.html',
+    prototypeUrlEn: '/prototypes/cecile-visor-eng.html',
     meta: [
-      { label: 'Cliente', value: 'FRZM' },
-      { label: 'Servicios', value: 'Diseño web / Frontend' },
-      { label: 'Fecha', value: '2026' },
-      { label: 'Categoría', value: 'Landing page / Portfolio' },
+      { label: 'Cliente', value: 'Cécile (producto propio)' },
+      {
+        label: 'Servicios',
+        value: 'Product design / UX·UI / Full-stack development / AI integration',
+      },
+      { label: 'Categoría', value: 'SaaS / Product design / Health tech' },
+      { label: 'Fecha', value: '2025–2026' },
     ],
     gallery: [
-      { src: '/frzm.png', alt: 'Portfolio FRZM', caption: 'Vista principal del portfolio' },
-      { src: '/frzm.png', alt: 'Wireframe FRZM', caption: 'Layout y jerarquía de secciones' },
+      { src: '/cecile-cover.png', alt: 'Cécile App', caption: 'Identidad visual' },
     ],
     story: [
       {
         tag: '01',
         title: 'Análisis inicial',
-        body: 'Diseño y desarrollo de una plataforma de portfolio propia e independiente para reemplazar sitios de terceros (como Behance). El objetivo fue crear una landing page directa y funcional con estética futurista/sci-fi.',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Tras entrevistar a nutricionistas y pacientes, surgió un patrón claro: la relación clínica transcurre casi por completo a través de WhatsApp. Los planes alimentarios, protocolos de suplementos y notas de progreso viven dispersos en hilos de chat, sin estructura entre consultas.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Existen plataformas que abordan esto, pero ninguna alcanzó masa crítica: los profesionales entrevistados no las conocían o las habían abandonado. La brecha no era la falta de soluciones. Era la falta de adopción.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Tres fricciones definieron el problema:',
+          },
+          {
+            type: 'list',
+            items: [
+              {
+                label: 'Pérdida de información',
+                text: 'las decisiones clínicas desaparecen en canales informales, sin una referencia confiable para el paciente.',
+              },
+              {
+                label: 'Sin visibilidad',
+                text: 'el nutricionista no puede hacer seguimiento de la adherencia entre consultas.',
+              },
+              {
+                label: 'Sin continuidad',
+                text: 'cada consulta empieza de cero en lugar de apoyarse en un historial accesible.',
+              },
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'Objetivo: una plataforma privada, solo por invitación, que centralice la relación paciente-nutricionista.',
+          },
+        ],
       },
       {
         tag: '02',
         title: 'Arquitectura y diseño',
-        items: [
+        blocks: [
           {
-            text: 'Estética cyberpunk enfocada en un diseño limpio de alto impacto visual.',
+            type: 'paragraph',
+            text: 'El sistema opera con dos roles desde un único punto de acceso.',
           },
           {
-            text: 'Sistema de navegación interactivo con íconos.',
+            type: 'group',
+            title: 'Panel del nutricionista',
+            text: 'directorio de pacientes con seguimiento de objetivos y banderas de prioridad, calendario mensual de turnos con acceso directo a fichas, y expediente completo por paciente con notas clínicas, documentos cargados, suplementos, rutinas de actividad y datos antropométricos.',
           },
           {
-            text: 'Organización concisa de proyectos en una sola interfaz.',
+            type: 'group',
+            title: 'Portal del paciente',
+            text: 'acceso por link privado, sin registro público. El paciente ve su progreso hacia el objetivo, una lista de compras prescrita por su nutricionista y un plan de comidas generado por IA con tres opciones de receta por comida. Un hilo de comentarios compartido reemplaza la mensajería informal: ninguna de las partes puede borrar los mensajes de la otra.',
           },
           {
-            text: 'Desarrollo ágil y optimizado para asegurar cargas rápidas de los assets visuales.',
+            type: 'paragraph',
+            text: 'Identidad visual diseñada en contraste con el software clínico convencional: tonos tierra cálidos, tipografía serif y componentes redondeados suaves.',
           },
         ],
       },
       {
         tag: '03',
         title: 'Resultado',
-        body: 'Una plataforma web interactiva y personalizada que elimina el ruido de las redes tradicionales. Funciona como un producto digital conciso que expone de forma directa las herramientas de diseño utilizadas y la calidad de los trabajos.',
+        items: [
+          {
+            label: 'Registro centralizado',
+            text: 'toda la información clínica vive en un solo lugar, reemplazando a WhatsApp como canal por defecto.',
+          },
+          {
+            label: 'Apoyo a la adherencia',
+            text: 'la variedad de recetas elimina la barrera más común al cumplimiento del plan.',
+          },
+          {
+            label: 'Trazabilidad permanente',
+            text: 'el hilo compartido protege a profesional y paciente con un registro que no se puede borrar.',
+          },
+          {
+            label: 'Solo por invitación',
+            text: 'la plataforma atiende relaciones clínicas ya establecidas, sin fricción de marketplace.',
+          },
+        ],
       },
     ],
   },
