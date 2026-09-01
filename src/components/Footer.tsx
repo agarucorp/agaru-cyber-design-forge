@@ -291,7 +291,7 @@ const Footer = ({ lang }: FooterProps) => {
             {/* Copyright */}
             <div className="text-gray-400 text-sm text-center flex items-center justify-center gap-2">
               <span>Powered by</span>
-              <img src="/MAIN_HORIZONTAL2.svg" alt="AGARUCORP" className="h-[13px] w-auto object-contain brightness-0 invert" />
+              <img src="/MAIN_HORIZONTAL2.svg" alt="AGARUCORP" className="h-[15px] w-auto object-contain brightness-0 invert" />
             </div>
           </div>
         </div>

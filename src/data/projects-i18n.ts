@@ -254,7 +254,7 @@ export const PROJECTS_EN: Record<string, ProjectEn> = {
       },
     ],
   },
-  'lp-odontologia': {
+  maldagym: {
     cardDescription:
       'Scheduling and payment management system for a personalized training gym',
     description:

@@ -46,6 +46,10 @@ export type ProjectCaseStudy = {
   meta: CaseStudyMeta[];
   gallery: GalleryImage[];
   story: CaseStudySection[];
+  /** URL a un prototipo / explorador visual (HTML estático u otra página). */
+  prototypeUrl?: string;
+  /** URL del sitio / landing en producción. */
+  siteUrl?: string;
   en?: {
     cardDescription?: string;
     description?: string;
@@ -66,6 +70,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     image: mockupCalena,
     heroColor: '#3B2064',
     slogan: 'Conectando profesionales de la salud mental con sus pacientes',
+    siteUrl: 'https://calena.la/',
     meta: [
       { label: 'Cliente', value: 'Calena' },
       { label: 'Servicios', value: 'Full-stack development / IA automation / Product design' },
@@ -122,6 +127,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     image: cardtr,
     heroColor: '#4A2820',
     slogan: 'Estilo, reservas y venta online en una sola experiencia',
+    siteUrl: 'https://www.tonyruizhairstudio.com',
     meta: [
       { label: 'Cliente', value: 'Tony Ruiz Hair Studio' },
       { label: 'Servicios', value: 'Branding / Web design / Ecommerce / SEO' },
@@ -227,6 +233,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     image: '/frzm.png',
     heroColor: '#1C1C2E',
     slogan: 'Un portfolio que demuestra diseño, motion y código en acción',
+    siteUrl: 'https://www.frzm.site',
     meta: [
       { label: 'Cliente', value: 'FRZM' },
       { label: 'Servicios', value: 'Diseño web / Frontend' },
@@ -280,6 +287,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     image: logocannlabs1,
     heroColor: '#2A3D2A',
     slogan: 'Del campo al consumidor con trazabilidad y propósito',
+    siteUrl: 'https://www.canadiannlabs.com',
     meta: [
       { label: 'Cliente', value: 'CannLabs' },
       { label: 'Servicios', value: 'Branding / Web Design / UX Writing' },
@@ -329,6 +337,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     image: cardmaxtech,
     heroColor: '#1E2D3D',
     slogan: 'Catálogo industrial con búsqueda inteligente y gestión autónoma',
+    siteUrl: 'https://maxtechlatam.com/',
     meta: [
       { label: 'Cliente', value: 'Maxtech Latam' },
       { label: 'Servicios', value: 'UI Layout / Web Design' },
@@ -372,7 +381,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     index: '06',
-    slug: 'lp-odontologia',
+    slug: 'maldagym',
     category: 'SaaS',
     title: 'MALDA®',
     description:
@@ -382,6 +391,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     image: '/portada.png',
     heroColor: '#1A1A1A',
     slogan: 'Autogestión de agenda y pagos para entrenamiento personalizado',
+    prototypeUrl: '/prototypes/maldagym.html',
     meta: [
       { label: 'Cliente', value: 'MALDA' },
       { label: 'Servicios', value: 'Full-stack development / UX/UI design / Business automation' },

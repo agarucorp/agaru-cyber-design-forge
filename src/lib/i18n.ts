@@ -79,6 +79,8 @@ export const UI = {
     projects: { ES: '← Proyectos', EN: '← Projects' },
     caseStudyTitle: { ES: 'Caso de estudio', EN: 'Case study' },
     moreCases: { ES: 'Otros proyectos', EN: 'More projects' },
+    viewPrototype: { ES: 'Explorar prototipo', EN: 'Explore prototype' },
+    visitSite: { ES: 'Ir al sitio', EN: 'Visit site' },
   },
 } as const;
 

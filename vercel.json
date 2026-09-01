@@ -59,6 +59,11 @@
       "source": "/home",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/caso-de-estudio/lp-odontologia",
+      "destination": "/caso-de-estudio/maldagym",
+      "permanent": true
     }
   ]
 } 

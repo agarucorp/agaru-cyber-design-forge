@@ -5,6 +5,7 @@ import { PROJECTS_DATA, type CaseStudyItem } from '@/data/projects';
 import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
 import { getLocalizedProject, getStoredLang, t, type Lang } from '@/lib/i18n';
 import CaseStudyRelated from '@/components/CaseStudyRelated';
+import CyberButton from '@/components/CyberButton';
 import Footer from '@/components/Footer';
 
 const StoryItemList = ({ items }: { items: CaseStudyItem[] }) => (
@@ -61,9 +62,9 @@ const CaseStudy = () => {
           <div className={`flex items-center justify-between py-4 ${SECTION_CONTAINER_CLASS}`}>
             <Link to="/" className="flex items-center">
               <img
-                src="/newlogohorizontal.svg"
+                src="/MAIN_HORIZONTAL1.svg"
                 alt="AGARUCORP"
-                className="h-8 w-auto object-contain md:h-9"
+                className="h-[25.3px] w-auto object-contain brightness-0 invert md:h-[29.9px]"
               />
             </Link>
             <Link
@@ -87,6 +88,28 @@ const CaseStudy = () => {
             <h1 className="font-onest text-[clamp(1.75rem,4vw+0.5rem,2.5rem)] font-normal leading-[1.15] text-white">
               {project.title}
             </h1>
+            {(project.prototypeUrl || project.siteUrl) && (
+              <div className="mt-8 flex flex-wrap gap-3">
+                {project.prototypeUrl && (
+                  <CyberButton
+                    href={project.prototypeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('caseStudy', 'viewPrototype', lang)} →
+                  </CyberButton>
+                )}
+                {project.siteUrl && (
+                  <CyberButton
+                    href={project.siteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('caseStudy', 'visitSite', lang)} →
+                  </CyberButton>
+                )}
+              </div>
+            )}
           </div>
         </section>
 
@@ -118,6 +141,40 @@ const CaseStudy = () => {
                       )}
                     </div>
                   ))}
+                  {(project.prototypeUrl || project.siteUrl) && (
+                    <div className="space-y-6 border-t border-white/10 pt-8">
+                      {project.prototypeUrl && (
+                        <div>
+                          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+                            {lang === 'EN' ? 'Prototype' : 'Prototipo'}
+                          </p>
+                          <CyberButton
+                            href={project.prototypeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3"
+                          >
+                            {t('caseStudy', 'viewPrototype', lang)} →
+                          </CyberButton>
+                        </div>
+                      )}
+                      {project.siteUrl && (
+                        <div>
+                          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+                            {lang === 'EN' ? 'Website' : 'Sitio web'}
+                          </p>
+                          <CyberButton
+                            href={project.siteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3"
+                          >
+                            {t('caseStudy', 'visitSite', lang)} →
+                          </CyberButton>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </aside>
 
