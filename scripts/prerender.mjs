@@ -77,6 +77,25 @@ async function prerenderRoute(browser, route) {
   }
 }
 
+async function launchBrowser() {
+  if (process.env.VERCEL === '1') {
+    const chromium = (await import('@sparticuz/chromium')).default;
+    const puppeteer = await import('puppeteer-core');
+    return puppeteer.default.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    });
+  }
+
+  const puppeteer = await import('puppeteer');
+  return puppeteer.default.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
+}
+
 async function main() {
   if (process.env.SKIP_PRERENDER === '1') {
     console.log('Prerender omitido (SKIP_PRERENDER=1)');
@@ -90,15 +109,11 @@ async function main() {
   const routes = getPrerenderRoutes();
   console.log(`Pre-renderizando ${routes.length} rutas…`);
 
-  const puppeteer = await import('puppeteer');
   const { child, ready, stderr } = await startPreviewServer();
 
   try {
     await ready;
-    const browser = await puppeteer.default.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
+    const browser = await launchBrowser();
 
     try {
       for (const route of routes) {
