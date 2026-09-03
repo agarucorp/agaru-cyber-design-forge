@@ -37,7 +37,7 @@ const SERVICES_EN: Service[] = [
     badge: 'web design',
     title: 'Websites & online stores',
     description:
-      'Landing pages, portfolios, corporate sites, and Shopify setup/customization—translating your business needs into an intuitive user experience. We build each interface with clear information architecture, smooth navigation, and cohesive visual concepts aligned with your industry and commercial goals.',
+      'Landing pages, portfolios, corporate sites, and ecommerce/Shopify setup, translating your business needs into an intuitive user experience. We build each interface with clear information architecture, smooth navigation, and cohesive visual concepts aligned with your industry and commercial goals.',
   },
   {
     index: '02',

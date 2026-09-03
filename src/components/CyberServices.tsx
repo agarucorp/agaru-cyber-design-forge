@@ -1,7 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Globe, Cpu, Palette, Plus, type LucideIcon } from 'lucide-react';
 import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
 import { getServices, getModLabel } from '@/data/services';
 import { t, type Lang } from '@/lib/i18n';
+import { ScrollAnimate } from './ScrollAnimate';
+
+const ACCENT = '#B983FF';
+
+// Un ícono por servicio, mapeado por índice (no depende del idioma del texto).
+const SERVICE_ICONS: Record<string, LucideIcon> = {
+  '01': Globe,
+  '02': Cpu,
+  '03': Palette,
+};
 
 const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active }) => {
   const [glitching, setGlitching] = useState(false);
@@ -72,26 +83,29 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
 
       <div className={SECTION_CONTAINER_CLASS}>
         {/* Encabezado */}
-        <div className="mb-12 md:mb-16">
-          <div>
-            <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
-              <span className="h-px w-8 bg-white/40" />
-              <span>// WHAT WE DO</span>
+        <ScrollAnimate threshold={0.2}>
+          <div className="mb-12 md:mb-16">
+            <div>
+              <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
+                <span className="h-px w-8 bg-white/40" />
+                <span>// WHAT WE DO</span>
+              </div>
+              <h2 className="font-mulish text-[34px] font-normal leading-[1.05] text-white sm:text-[44px] md:text-[56px]">
+                {t('services', 'title', lang)}
+              </h2>
             </div>
-            <h2 className="font-mulish text-[34px] font-normal leading-[1.05] text-white sm:text-[44px] md:text-[56px]">
-              {t('services', 'title', lang)}
-            </h2>
           </div>
-        </div>
+        </ScrollAnimate>
 
         {/* Stack vertical de paneles */}
         <div className="flex flex-col gap-6 md:gap-7">
           {services.map((s, i) => {
             const isActive = hovered === i;
+            const Icon = SERVICE_ICONS[s.index] ?? Globe;
 
             return (
+              <ScrollAnimate key={s.index} delay={i * 100} threshold={0.15}>
               <div
-                key={s.index}
                 className="relative w-full"
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
@@ -99,7 +113,7 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
               <article
                 className={`group relative w-full overflow-hidden text-white transition-[border-color,transform,box-shadow] duration-300 ease-out ${
                   isActive
-                    ? 'border-white shadow-[0_0_30px_rgba(255,255,255,0.18)] -translate-y-1'
+                    ? '-translate-y-1 border-[#B983FF]/70 shadow-[0_0_36px_rgba(185,131,255,0.22)]'
                     : 'border-white/60'
                 }`}
                 style={{
@@ -127,41 +141,69 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
                   }}
                 />
 
+                {/* Numeral fantasma — identidad tipográfica del panel, solo desktop */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute bottom-0 right-0 hidden select-none overflow-hidden md:block"
+                  style={{ width: '38%', height: '100%' }}
+                >
+                  <span
+                    className={`absolute bottom-0 right-6 font-mulish font-black leading-none transition-colors duration-500 ${
+                      isActive ? 'text-[#B983FF]/[0.14]' : 'text-white/[0.05]'
+                    }`}
+                    style={{ fontSize: 'clamp(96px, 11vw, 168px)' }}
+                  >
+                    {s.index}
+                  </span>
+                </div>
+
                 {/* Marcas de esquina tipo triángulo */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute left-0 top-0 h-0 w-0 border-b-[10px] border-l-[10px] border-t-0 border-solid border-white/70 border-b-transparent border-r-transparent"
-                  style={{ transform: 'rotate(0deg)' }}
+                  className={`pointer-events-none absolute left-0 top-0 h-0 w-0 border-b-[10px] border-l-[10px] border-t-0 border-solid border-b-transparent border-r-transparent transition-colors duration-300 ${isActive ? 'border-l-[#B983FF]' : 'border-l-white/70'}`}
                 />
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute right-0 top-0 h-0 w-0 border-b-[10px] border-r-[10px] border-t-0 border-solid border-white/70 border-b-transparent border-l-transparent"
+                  className={`pointer-events-none absolute right-0 top-0 h-0 w-0 border-b-[10px] border-r-[10px] border-t-0 border-solid border-b-transparent border-l-transparent transition-colors duration-300 ${isActive ? 'border-r-[#B983FF]' : 'border-r-white/70'}`}
                 />
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute bottom-0 left-0 h-0 w-0 border-l-[10px] border-t-[10px] border-b-0 border-solid border-white/70 border-t-transparent border-r-transparent"
+                  className={`pointer-events-none absolute bottom-0 left-0 h-0 w-0 border-l-[10px] border-t-[10px] border-b-0 border-solid border-t-transparent border-r-transparent transition-colors duration-300 ${isActive ? 'border-l-[#B983FF]' : 'border-l-white/70'}`}
                 />
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute bottom-0 right-0 h-0 w-0 border-r-[10px] border-t-[10px] border-b-0 border-solid border-white/70 border-t-transparent border-l-transparent"
+                  className={`pointer-events-none absolute bottom-0 right-0 h-0 w-0 border-r-[10px] border-t-[10px] border-b-0 border-solid border-t-transparent border-l-transparent transition-colors duration-300 ${isActive ? 'border-r-[#B983FF]' : 'border-r-white/70'}`}
                 />
 
                 {/* Línea de estado superior que se ilumina en hover */}
                 <span
                   aria-hidden
-                  className={`absolute left-0 top-0 h-[2px] bg-white transition-[width] duration-500 ease-out ${
-                    isActive ? 'w-full shadow-[0_0_10px_rgba(255,255,255,0.8)]' : 'w-0'
+                  className={`absolute left-0 top-0 h-[2px] transition-[width] duration-500 ease-out ${
+                    isActive ? 'w-full shadow-[0_0_12px_rgba(185,131,255,0.7)]' : 'w-0'
                   }`}
+                  style={{
+                    background: isActive
+                      ? 'linear-gradient(90deg, rgba(185,131,255,0.9), rgba(255,255,255,0.95), rgba(185,131,255,0.9))'
+                      : '#ffffff',
+                  }}
                 />
 
                 <div className="relative grid grid-cols-12 gap-6 px-6 py-8 sm:px-10 sm:py-10 md:px-12 md:py-12">
                   {/* Columna lateral decorativa */}
-                  <div className="col-span-12 flex items-start justify-between md:col-span-3 md:flex-col md:justify-between md:gap-8">
-                    <div className="flex flex-col gap-3">
-                      <div className="hidden md:block">
-                        <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35">
-                          MOD · {getModLabel(s.badge, lang)}
-                        </div>
+                  <div className="col-span-12 flex items-center gap-4 md:col-span-3 md:flex-col md:items-start md:justify-between md:gap-8">
+                    <div
+                      className={`flex h-12 w-12 shrink-0 items-center justify-center border transition-all duration-300 ${
+                        isActive
+                          ? 'border-[#B983FF]/70 bg-[#B983FF]/10 text-[#B983FF] shadow-[0_0_16px_rgba(185,131,255,0.25)]'
+                          : 'border-white/25 bg-white/5 text-white/60'
+                      }`}
+                    >
+                      <Icon className="h-5 w-5" strokeWidth={1.5} />
+                    </div>
+
+                    <div className="hidden md:block">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35">
+                        MOD · {getModLabel(s.badge, lang)}
                       </div>
                     </div>
 
@@ -169,7 +211,7 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
                     <div aria-hidden className="hidden md:flex w-full flex-col gap-1.5">
                       <div className="h-px w-full bg-white/15" />
                       <div className="flex items-center gap-1.5">
-                        <span className={`h-px flex-1 transition-all duration-500 ${isActive ? 'bg-white/70' : 'bg-white/15'}`} />
+                        <span className={`h-px flex-1 transition-all duration-500 ${isActive ? 'bg-[#B983FF]/70' : 'bg-white/15'}`} />
                       </div>
                       <div className="h-px w-2/3 bg-white/10" />
                     </div>
@@ -177,7 +219,8 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
 
                   {/* Contenido */}
                   <div className="col-span-12 md:col-span-9">
-                    <div className="mb-4">
+                    <div className="mb-4 flex items-center gap-3">
+                      <span className="font-mono text-[11px] text-white/30 md:hidden">{s.index}</span>
                       <span className="inline-block border border-white/30 bg-white/5 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/70">
                         {s.badge}
                       </span>
@@ -192,13 +235,17 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
                         href="#contact"
                         onClick={scrollToContact}
                         aria-label={lang === 'EN' ? `Contact about ${s.title}` : `Contactar sobre ${s.title}`}
-                        className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/30 bg-white/5 font-mono text-[22px] leading-none text-white/70 transition-all duration-300 hover:border-white hover:bg-white/10 hover:text-white"
+                        className={`flex h-10 w-10 shrink-0 items-center justify-center border transition-all duration-300 ${
+                          isActive
+                            ? 'rotate-45 border-[#B983FF] bg-[#B983FF] text-black shadow-[0_0_16px_rgba(185,131,255,0.5)]'
+                            : 'border-white/30 bg-white/5 text-white/70'
+                        }`}
                       >
-                        +
+                        <Plus className="h-4 w-4" strokeWidth={2} />
                       </a>
                     </div>
 
-                    <p className="mt-4 font-inter text-[14px] leading-relaxed text-white/70 sm:text-[15px]">
+                    <p className="mt-4 max-w-[58ch] font-inter text-[14px] leading-relaxed text-white/70 sm:text-[15px]">
                       {s.description}
                     </p>
                   </div>
@@ -206,6 +253,7 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
 
               </article>
               </div>
+              </ScrollAnimate>
             );
           })}
         </div>

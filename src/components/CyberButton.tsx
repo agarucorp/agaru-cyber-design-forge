@@ -5,12 +5,15 @@ const BUTTON_CLIP =
   'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)';
 
 const buttonClasses =
-  'group relative inline-flex items-center justify-center border border-white/60 bg-white/[0.04] px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-[border-color,background-color,box-shadow,color] duration-300 hover:border-white hover:bg-white/[0.08] hover:text-white hover:shadow-[0_0_24px_rgba(185,131,255,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B983FF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-white/60 disabled:hover:bg-white/[0.04] disabled:hover:text-white disabled:hover:shadow-none';
+  'group relative inline-flex items-center justify-center border border-white/60 bg-white/[0.04] px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-[border-color,background-color,box-shadow,color] duration-300 hover:border-[#B983FF] hover:bg-[#B983FF]/10 hover:text-white hover:shadow-[0_0_24px_rgba(185,131,255,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B983FF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-white/60 disabled:hover:bg-white/[0.04] disabled:hover:text-white disabled:hover:shadow-none';
 
 const HoverLine = () => (
   <span
     aria-hidden
-    className="pointer-events-none absolute left-0 top-0 h-[2px] w-0 bg-white transition-[width] duration-300 group-hover:w-full group-disabled:w-0 group-hover:shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+    className="pointer-events-none absolute left-0 top-0 h-[2px] w-0 transition-[width] duration-300 group-hover:w-full group-hover:shadow-[0_0_8px_rgba(185,131,255,0.7)] group-disabled:w-0"
+    style={{
+      background: 'linear-gradient(90deg, rgba(185,131,255,0.9), rgba(255,255,255,0.95), rgba(185,131,255,0.9))',
+    }}
   />
 );
 

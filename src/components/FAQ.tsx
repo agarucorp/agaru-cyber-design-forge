@@ -127,10 +127,10 @@ const FAQ = ({ lang }: FAQProps) => {
                   ref={(el) => {
                     faqRefs.current[index] = el;
                   }}
-                  className={`overflow-hidden border transition-[border-color,box-shadow] duration-300 ${
+                  className={`group relative overflow-hidden border transition-[border-color,box-shadow] duration-300 ${
                     isOpen
-                      ? 'border-white shadow-[0_0_24px_rgba(255,255,255,0.14)]'
-                      : 'border-white/50'
+                      ? 'border-[#B983FF]/70 shadow-[0_0_28px_rgba(185,131,255,0.25)]'
+                      : 'border-white/50 hover:border-[#B983FF]/50 hover:shadow-[0_0_20px_rgba(185,131,255,0.14)]'
                   }`}
                   style={{
                     background:
@@ -138,6 +138,18 @@ const FAQ = ({ lang }: FAQProps) => {
                     clipPath: panelClip,
                   }}
                 >
+                  {/* Línea de estado superior, consistente con las cards de servicios */}
+                  <span
+                    aria-hidden
+                    className={`pointer-events-none absolute left-0 top-0 h-[2px] transition-[width] duration-500 ease-out ${
+                      isOpen ? 'w-full shadow-[0_0_12px_rgba(185,131,255,0.6)]' : 'w-0 group-hover:w-full'
+                    }`}
+                    style={{
+                      background:
+                        'linear-gradient(90deg, rgba(185,131,255,0.9), rgba(255,255,255,0.95), rgba(185,131,255,0.9))',
+                    }}
+                  />
+
                   <button
                     type="button"
                     onClick={() => toggleFAQ(index)}
@@ -151,8 +163,8 @@ const FAQ = ({ lang }: FAQProps) => {
                       aria-hidden
                       className={`flex h-10 w-10 shrink-0 items-center justify-center border bg-white/5 font-mono text-[22px] leading-none transition-all duration-300 ${
                         isOpen
-                          ? 'rotate-45 border-white text-white shadow-[0_0_12px_rgba(255,255,255,0.2)]'
-                          : 'border-white/30 text-white/70'
+                          ? 'rotate-45 border-[#B983FF] bg-[#B983FF] text-black shadow-[0_0_16px_rgba(185,131,255,0.5)]'
+                          : 'border-white/30 text-white/70 group-hover:border-[#B983FF]/60 group-hover:text-[#B983FF]'
                       }`}
                     >
                       +
