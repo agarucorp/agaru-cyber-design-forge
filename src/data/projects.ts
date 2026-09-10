@@ -455,6 +455,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     heroColor: '#1A1A1A',
     slogan: 'Autogestión de agenda y pagos para entrenamiento personalizado',
     prototypeUrl: '/prototypes/maldagym.html',
+    prototypeUrlEn: '/prototypes/maldagym-en.html',
     meta: [
       { label: 'Cliente', value: 'MALDA' },
       { label: 'Servicios', value: 'Full-stack development / UX/UI design / Business automation' },
