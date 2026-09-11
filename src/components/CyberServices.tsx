@@ -5,12 +5,10 @@ import { getServices, getModLabel } from '@/data/services';
 import { t, type Lang } from '@/lib/i18n';
 import { ScrollAnimate } from './ScrollAnimate';
 
-const ACCENT = '#B983FF';
-
 // Un ícono por servicio, mapeado por índice (no depende del idioma del texto).
 const SERVICE_ICONS: Record<string, LucideIcon> = {
-  '01': Globe,
-  '02': Cpu,
+  '01': Cpu,
+  '02': Globe,
   '03': Palette,
 };
 
@@ -50,17 +48,13 @@ const GlitchTitle: React.FC<{ text: string; active: boolean }> = ({ text, active
 };
 
 
-const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
-  e.preventDefault();
-  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-};
-
 type CyberServicesProps = {
   lang: Lang;
 };
 
 const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState<number | null>(null);
   const services = getServices(lang);
 
   const panelClip =
@@ -100,7 +94,9 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
         {/* Stack vertical de paneles */}
         <div className="flex flex-col gap-6 md:gap-7">
           {services.map((s, i) => {
-            const isActive = hovered === i;
+            const isActive = hovered === i || expanded === i;
+            const isExpanded = expanded === i;
+            const hasDetails = Boolean(s.details?.length);
             const Icon = SERVICE_ICONS[s.index] ?? Globe;
 
             return (
@@ -231,23 +227,60 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
                         <GlitchTitle text={s.title} active={isActive} />
                       </h3>
 
-                      <a
-                        href="#contact"
-                        onClick={scrollToContact}
-                        aria-label={lang === 'EN' ? `Contact about ${s.title}` : `Contactar sobre ${s.title}`}
-                        className={`flex h-10 w-10 shrink-0 items-center justify-center border transition-all duration-300 ${
-                          isActive
-                            ? 'rotate-45 border-[#B983FF] bg-[#B983FF] text-black shadow-[0_0_16px_rgba(185,131,255,0.5)]'
-                            : 'border-white/30 bg-white/5 text-white/70'
-                        }`}
-                      >
-                        <Plus className="h-4 w-4" strokeWidth={2} />
-                      </a>
+                      {hasDetails && (
+                        <button
+                          type="button"
+                          aria-expanded={isExpanded}
+                          aria-label={
+                            isExpanded
+                              ? lang === 'EN'
+                                ? `Collapse ${s.title}`
+                                : `Cerrar ${s.title}`
+                              : lang === 'EN'
+                                ? `Expand ${s.title}`
+                                : `Abrir ${s.title}`
+                          }
+                          onClick={() => setExpanded(isExpanded ? null : i)}
+                          className={`flex h-10 w-10 shrink-0 items-center justify-center border transition-all duration-300 ${
+                            isExpanded
+                              ? 'rotate-45 border-[#B983FF] bg-[#B983FF] text-black shadow-[0_0_16px_rgba(185,131,255,0.5)]'
+                              : isActive
+                                ? 'border-[#B983FF]/70 bg-[#B983FF]/10 text-[#B983FF]'
+                                : 'border-white/30 bg-white/5 text-white/70'
+                          }`}
+                        >
+                          <Plus className="h-4 w-4" strokeWidth={2} />
+                        </button>
+                      )}
                     </div>
 
                     <p className="mt-4 max-w-[58ch] font-inter text-[14px] leading-relaxed text-white/70 sm:text-[15px]">
                       {s.description}
                     </p>
+
+                    {hasDetails && (
+                      <div
+                        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                          isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                        }`}
+                      >
+                        <div className="overflow-hidden">
+                          <ul className="mt-6 space-y-3 border-t border-white/10 pt-6">
+                            {s.details!.map((item) => (
+                              <li key={item} className="flex gap-3">
+                                <span
+                                  aria-hidden
+                                  className="mt-[0.65em] h-px w-3 shrink-0 bg-[#B983FF]/70"
+                                />
+                                <p className="font-inter text-[14px] leading-relaxed text-white/75 sm:text-[15px]">
+                                  {item}
+                                </p>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 

@@ -51,10 +51,6 @@ const TOOLS: Tool[] = [
       </svg>
     ),
   },
-  {
-    name: 'Shopify',
-    iconSrc: '/banner/shopify.svg',
-  },
 ];
 
 const ICON_HOVER =
