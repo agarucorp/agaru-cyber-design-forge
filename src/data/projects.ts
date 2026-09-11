@@ -237,7 +237,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     heroColor: '#8B452D',
     slogan: 'Portal privado entre nutricionista y paciente',
     prototypeUrl: '/prototypes/cecile-visor.html',
-    prototypeUrlEn: '/prototypes/cecile-visor-eng.html',
+    prototypeUrlEn: '/prototypes/cecile-visor-en.html',
     meta: [
       { label: 'Cliente', value: 'Cécile (producto propio)' },
       {
