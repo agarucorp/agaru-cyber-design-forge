@@ -15,9 +15,9 @@ const Process = ({ lang }: ProcessProps) => {
         ? 'Análisis de necesidades clave y consultoría estratégica para definir la dirección del proyecto.'
         : 'Understanding core needs and providing strategic consulting to define the project direction.',
       icon: '/Assessment.svg',
-      color: '#4DE3FF', // Light blue
+      color: '#4DE3FF',
       borderColor: '#4DE3FF',
-      markerSvg: '/process1.svg' // Marcador completo que reemplaza el pill para el paso 1
+      markerSvg: '/process1.svg'
     },
     {
       number: 2,
@@ -26,7 +26,7 @@ const Process = ({ lang }: ProcessProps) => {
         ? 'Propuesta comercial formal del proyecto que detalla tiempos por sprints, alcance y costos de forma transparente.'
         : 'A formal project roadmap outlining sprint-based timelines, scope, and transparent pricing.',
       icon: '/proposal.svg',
-      color: '#5A7AF6', // Blue
+      color: '#5A7AF6',
       borderColor: '#5A7AF6',
       markerSvg: '/process2.svg'
     },
@@ -37,7 +37,7 @@ const Process = ({ lang }: ProcessProps) => {
         ? 'Investigación y desarrollo creativo para transformar la estrategia en soluciones visuales y funcionales.'
         : 'Research and creative development to translate strategy into visual and functional solutions.',
       icon: '/execution.svg',
-      color: '#895AF6', // Purple
+      color: '#895AF6',
       borderColor: '#895AF6',
       markerSvg: '/process3.svg'
     },
@@ -48,7 +48,7 @@ const Process = ({ lang }: ProcessProps) => {
         ? 'Presentación de avances y ajustes colaborativos para afinar detalles antes de la entrega final.'
         : 'Progress presentation and collaborative refinement to adjust details before final delivery.',
       icon: '/review.svg',
-      color: '#E84C9F', // Pink/Magenta
+      color: '#E84C9F',
       borderColor: '#E84C9F',
       markerSvg: '/process4.svg'
     },
@@ -59,7 +59,7 @@ const Process = ({ lang }: ProcessProps) => {
         ? 'Finalización del proyecto con transferencia de accesos, documentación técnica y guías de soporte.'
         : 'Project completion with access transfer, technical documentation, and supporting guidelines.',
       icon: '/delivery.svg',
-      color: '#FF6B4A', // Orange/Red
+      color: '#FF6B4A',
       borderColor: '#FF6B4A',
       markerSvg: '/process5.svg'
     }
@@ -89,7 +89,6 @@ const Process = ({ lang }: ProcessProps) => {
               <div className="mx-auto w-full max-w-3xl">
               {/* Desktop: Layout horizontal */}
               <div className="hidden md:grid md:grid-cols-[auto_200px_auto_1fr] md:items-center md:gap-8">
-                {/* Paso 1: marcador completo process1.svg; resto: pill con número e icono */}
                 {step.markerSvg ? (
                   <img 
                     src={step.markerSvg} 
@@ -111,15 +110,12 @@ const Process = ({ lang }: ProcessProps) => {
                   </div>
                 )}
 
-                {/* Título */}
                 <h3 className="text-white font-bold text-xl">{step.title}</h3>
 
-                {/* Flecha - alineada con el contenido, más larga y fina */}
                 <div className="flex items-start justify-center pt-1 pr-10 -ml-8">
                   <ArrowRight className="w-12 h-6 text-white" strokeWidth={1.5} />
                 </div>
 
-                {/* Descripción */}
                 <p className="text-gray-300 text-sm md:text-[14px] font-manrope font-light pt-1">
                   {step.description}
                 </p>
@@ -127,7 +123,6 @@ const Process = ({ lang }: ProcessProps) => {
 
               {/* Mobile: Layout en dos líneas */}
               <div className="mx-auto max-w-[85%] md:hidden">
-                {/* Primera línea: Paso 1 = process1.svg como marcador; resto = Pill + Título */}
                 <div className="flex items-center gap-4 mb-2">
                   {step.markerSvg ? (
                     <img 
@@ -153,11 +148,9 @@ const Process = ({ lang }: ProcessProps) => {
                     </div>
                   )}
 
-                  {/* Título */}
                   <h3 className="text-white font-bold text-xl">{step.title}</h3>
                 </div>
 
-                {/* Segunda línea: Contenido */}
                 <p className="text-gray-300 text-sm font-manrope font-light">
                   {step.description}
                 </p>

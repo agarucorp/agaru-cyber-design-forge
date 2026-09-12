@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
 import { PROJECTS_DATA, type ProjectCaseStudy } from '@/data/projects';
 import { getLocalizedProject, t, type Lang } from '@/lib/i18n';
-import { useIsMobile } from '@/hooks/use-mobile';
 import { ScrollAnimate } from './ScrollAnimate';
 
 const PROJECTS = PROJECTS_DATA;
@@ -32,23 +31,8 @@ const FlipCardStyles = () => (
 );
 
 const CyberProjects = ({ lang }: CyberProjectsProps) => {
-  const isMobile = useIsMobile();
   const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
-
   const localizedProjects = PROJECTS.map((p) => getLocalizedProject(p, lang));
-
-  useEffect(() => {
-    if (!isMobile || localizedProjects.length === 0) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % localizedProjects.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [isMobile, localizedProjects.length]);
 
   const handleFlip = (index: number) => {
     setFlippedCards((prev) => {
@@ -57,28 +41,6 @@ const CyberProjects = ({ lang }: CyberProjectsProps) => {
       else next.add(index);
       return next;
     });
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe && currentIndex < localizedProjects.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-    if (isRightSwipe && currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
   };
 
   const renderCardFront = (project: ProjectCaseStudy) => (
@@ -136,12 +98,15 @@ const CyberProjects = ({ lang }: CyberProjectsProps) => {
           </h2>
         </div>
 
-        <div className="hidden md:block">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {localizedProjects.map((project, index) => (
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {localizedProjects.map((project, index) => {
+            const isFlipped = flippedCards.has(index);
+
+            return (
               <ScrollAnimate key={project.slug} delay={index * 100} threshold={0.15}>
+                {/* Desktop: flip al hover */}
                 <div
-                  className="project-flip-card group relative h-96 overflow-hidden rounded-xl border border-white/5 transition-all duration-300"
+                  className="project-flip-card group relative hidden h-96 overflow-hidden rounded-xl border border-white/5 transition-all duration-300 md:block"
                   style={{ perspective: '1200px' }}
                 >
                   <div className="project-flip-inner relative h-full w-full transition-transform duration-700">
@@ -149,56 +114,34 @@ const CyberProjects = ({ lang }: CyberProjectsProps) => {
                     {renderCardBack(project)}
                   </div>
                 </div>
-              </ScrollAnimate>
-            ))}
-          </div>
-        </div>
 
-        <div
-          className="relative overflow-hidden md:hidden"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {localizedProjects.map((project, index) => {
-              const isFlipped = flippedCards.has(index);
-
-              return (
+                {/* Mobile: stack vertical + tap para flip */}
                 <div
-                  key={project.slug}
-                  className="w-full flex-shrink-0 px-1"
+                  className="relative h-96 cursor-pointer overflow-hidden rounded-xl border border-white/5 md:hidden"
                   style={{ perspective: '1000px' }}
+                  onClick={() => handleFlip(index)}
                 >
                   <div
-                    className="relative h-96 cursor-pointer"
-                    onClick={() => handleFlip(index)}
+                    className="relative h-full w-full transition-transform duration-700"
+                    style={{
+                      transformStyle: 'preserve-3d',
+                      transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                    }}
                   >
-                    <div
-                      className="relative h-full w-full transition-transform duration-700"
-                      style={{
-                        transformStyle: 'preserve-3d',
-                        transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                      }}
-                    >
-                      <div className="absolute inset-0 overflow-hidden rounded-xl">
-                        {renderCardFront(project)}
-                        <div className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2">
-                          <p className="rounded-full bg-black/50 px-3 py-1 text-center font-manrope text-xs text-white">
-                            {t('projects', 'tapMore', lang)}
-                          </p>
-                        </div>
+                    <div className="absolute inset-0 overflow-hidden rounded-xl">
+                      {renderCardFront(project)}
+                      <div className="absolute bottom-4 left-1/2 z-20 -translate-x-1/2">
+                        <p className="rounded-full bg-black/50 px-3 py-1 text-center font-manrope text-xs text-white">
+                          {t('projects', 'tapMore', lang)}
+                        </p>
                       </div>
-                      {renderCardBack(project)}
                     </div>
+                    {renderCardBack(project)}
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </ScrollAnimate>
+            );
+          })}
         </div>
       </div>
 
