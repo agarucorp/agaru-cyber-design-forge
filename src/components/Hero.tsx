@@ -11,8 +11,8 @@ const Hero = ({ lang = 'ES' }: { lang?: 'ES' | 'EN' }) => {
     <div
       className="relative w-full overflow-x-clip overflow-y-visible bg-transparent"
     >
-      {/* Hero completo: contenido + banner, con padding vertical simétrico en mobile */}
-      <div className="relative z-10 min-w-0 pt-[calc((1rem+72px+9rem)*1.2)] pb-[calc((1rem+72px+9rem)*1.2)] md:pb-14 md:pt-[calc(1rem+82.8px+7rem)]">
+      {/* Hero: en mobile, solo el offset de la navbar + el mismo ritmo vertical que el resto de secciones */}
+      <div className="relative z-10 min-w-0 pt-[calc(1rem+72px+1.25rem)] pb-20 md:pb-14 md:pt-[calc(1rem+82.8px+7rem)]">
         <div className={SECTION_CONTAINER_CLASS}>
           <div className="flex w-full min-w-0 flex-col items-start gap-4 text-left">
             <p className="inline-block border border-white/30 bg-white/5 px-2.5 py-1 font-manrope text-[9px] uppercase tracking-[0.18em] text-white/65 sm:text-[10px] sm:tracking-[0.2em]">
