@@ -8,11 +8,10 @@ const HERO_HEADLINE = {
 
 const Hero = ({ lang = 'ES' }: { lang?: 'ES' | 'EN' }) => {
   return (
-    <div
-      className="relative w-full overflow-x-clip overflow-y-visible bg-transparent"
-    >
-      {/* Hero: offset de la navbar + padding visible (menor que el original) */}
-      <div className="relative z-10 min-w-0 pt-[calc(1rem+72px+5.5rem)] pb-20 md:pb-14 md:pt-[calc(1rem+82.8px+7rem)]">
+    <div className="relative flex min-h-[100vh] w-full flex-col overflow-x-clip overflow-y-visible bg-transparent supports-[height:100svh]:min-h-[100svh] md:block md:min-h-0">
+      {/* Reserva la navbar fija para centrar el hero en el área visible (mobile). */}
+      <div className="pointer-events-none h-[calc(1rem+72px)] shrink-0 md:hidden" aria-hidden />
+      <div className="relative z-10 flex min-w-0 flex-1 flex-col justify-center py-10 md:block md:flex-none md:py-0 md:pb-14 md:pt-[calc(1rem+82.8px+7rem)]">
         <div className={SECTION_CONTAINER_CLASS}>
           <div className="flex w-full min-w-0 flex-col items-start gap-4 text-left">
             <p className="inline-block border border-white/30 bg-white/5 px-2.5 py-1 font-manrope text-[9px] uppercase tracking-[0.18em] text-white/65 sm:text-[10px] sm:tracking-[0.2em]">
