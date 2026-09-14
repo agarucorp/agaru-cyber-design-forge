@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
 import { PROJECTS_DATA, type ProjectCaseStudy } from '@/data/projects';
 import { getLocalizedProject, t, type Lang } from '@/lib/i18n';
@@ -71,7 +70,6 @@ const CyberProjects = ({ lang }: CyberProjectsProps) => {
         </p>
         <CyberButton
           href={`/caso-de-estudio/${project.slug}`}
-          to={`/caso-de-estudio/${project.slug}`}
           target="_blank"
           rel="noopener noreferrer"
           className="px-4"
