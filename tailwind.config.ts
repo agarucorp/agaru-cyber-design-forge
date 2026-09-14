@@ -89,6 +89,7 @@ export default {
 				'altroned': ['Altroned Trial', 'sans-serif'],
 				'onest': ['Onest', 'sans-serif'],
 				'manrope': ['Manrope', 'sans-serif'],
+				'orbitron': ['Orbitron', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

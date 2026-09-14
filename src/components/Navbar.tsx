@@ -72,7 +72,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
               <img
                 src="/MAIN_HORIZONTAL1.svg"
                 alt="AGARUCORP"
-                className="h-[25.3px] w-auto object-contain brightness-0 invert md:h-[29.9px]"
+                className="h-[27.83px] w-auto object-contain brightness-0 invert md:h-[29.9px]"
               />
             </a>
           </div>

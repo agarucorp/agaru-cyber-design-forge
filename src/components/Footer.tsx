@@ -185,7 +185,7 @@ const Footer = ({ lang }: FooterProps) => {
                   className="h-12 w-auto object-contain brightness-0 invert md:h-16"
                 />
               </a>
-              <p className="mt-4 font-onest text-[16px] font-normal tracking-wide text-white/70 md:text-[18px]">
+              <p className="mt-4 font-orbitron text-[15px] font-semibold tracking-[0.06em] text-white md:text-[17px]">
                 Designing what's next
               </p>
 

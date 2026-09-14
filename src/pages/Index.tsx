@@ -57,7 +57,7 @@ const Index = () => {
           aria-hidden
           decoding="async"
           draggable={false}
-          className="pointer-events-none fixed left-1/2 top-[56vh] z-0 w-[min(117.6vw,1071px)] max-w-none"
+          className="pointer-events-none fixed left-1/2 top-1/2 z-0 w-[min(129.4vw,1178px)] max-w-none md:top-[56vh] md:w-[min(117.6vw,1071px)]"
           style={{ transform: 'translate3d(-50%, -50%, 0)' }}
         />
         <div className="relative z-10 overflow-x-clip">
