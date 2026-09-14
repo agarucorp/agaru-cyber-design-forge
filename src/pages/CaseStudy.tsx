@@ -13,7 +13,7 @@ const StoryItemList = ({ items }: { items: CaseStudyItem[] }) => (
     {items.map((item, i) => (
       <li key={i} className="flex gap-3">
         <span aria-hidden className="mt-[0.6em] h-px w-3 shrink-0 bg-white/40" />
-        <p className="font-manrope text-[15px] font-light leading-relaxed text-white/65 sm:text-[16px]">
+        <p className="font-manrope text-[15px] font-normal leading-relaxed text-white/85 sm:text-[16px]">
           {item.label && <span className="font-normal text-white">{item.label}: </span>}
           {item.text}
         </p>
@@ -39,11 +39,11 @@ const CaseStudy = () => {
     return (
       <div className="flex min-h-screen items-center justify-center bg-black text-white">
         <div className="text-center">
-          <p className="font-mono text-sm uppercase tracking-[0.25em] text-white/60">// ERROR_404</p>
+          <p className="font-manrope text-sm uppercase tracking-[0.25em] text-white/60">// ERROR_404</p>
           <h1 className="mt-3 font-onest text-3xl">{t('caseStudy', 'notFound', lang)}</h1>
           <Link
             to="/"
-            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-secondary px-5 py-2.5 font-inter text-sm font-medium text-secondary-foreground transition-colors hover:border-primary/50 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-secondary px-5 py-2.5 font-manrope text-sm font-semibold text-secondary-foreground transition-colors hover:border-primary/50 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {t('caseStudy', 'back', lang)}
           </Link>
@@ -55,7 +55,7 @@ const CaseStudy = () => {
   return (
     <>
       <Helmet>
-        <title>{`${project.title} · ${t('caseStudy', 'caseStudyTitle', lang)} | AGARUCORP`}</title>
+        <title>{`${project.title} · ${t('caseStudy', 'caseStudyTitle', lang)} | AgaruCorp`}</title>
         <meta name="description" content={project.description} />
       </Helmet>
 
@@ -72,7 +72,7 @@ const CaseStudy = () => {
             </Link>
             <Link
               to="/#projects"
-              className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 transition-colors hover:text-white sm:text-[11px]"
+              className="font-manrope text-sm font-medium text-white/70 transition-colors hover:text-white"
             >
               {t('caseStudy', 'projects', lang)}
             </Link>
@@ -85,7 +85,7 @@ const CaseStudy = () => {
           style={{ backgroundColor: project.heroColor }}
         >
           <div className={`${SECTION_CONTAINER_CLASS} text-left`}>
-            <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/55 sm:text-[11px]">
+            <p className="mb-3 font-manrope text-[10px] uppercase tracking-[0.3em] text-white/55 sm:text-[11px]">
               // {project.category}
             </p>
             <h1 className="font-onest text-[clamp(1.75rem,4vw+0.5rem,2.5rem)] font-normal leading-[1.15] text-white">
@@ -125,7 +125,7 @@ const CaseStudy = () => {
                 <div className="space-y-8 border-t border-white/10 pt-6 md:border-t-0 md:pt-0">
                   {project.meta.map((item) => (
                     <div key={item.label}>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+                      <p className="font-manrope text-[10px] uppercase tracking-[0.25em] text-white/40">
                         {item.label}
                       </p>
                       {item.href ? (
@@ -148,7 +148,7 @@ const CaseStudy = () => {
                     <div className="space-y-6 border-t border-white/10 pt-8">
                       {prototypeHref && (
                         <div>
-                          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+                          <p className="font-manrope text-[10px] uppercase tracking-[0.25em] text-white/40">
                             {lang === 'EN' ? 'Prototype' : 'Prototipo'}
                           </p>
                           <CyberButton
@@ -163,7 +163,7 @@ const CaseStudy = () => {
                       )}
                       {project.siteUrl && (
                         <div>
-                          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+                          <p className="font-manrope text-[10px] uppercase tracking-[0.25em] text-white/40">
                             {lang === 'EN' ? 'Website' : 'Sitio web'}
                           </p>
                           <CyberButton
@@ -200,7 +200,7 @@ const CaseStudy = () => {
                       )}
 
                       <div className="mb-4 flex items-center gap-4 md:mb-5 md:gap-0">
-                        <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center border border-white/30 bg-black font-mono text-[10px] uppercase tracking-[0.1em] text-white/70 md:absolute md:left-0 md:top-0">
+                        <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center border border-white/30 bg-black font-manrope text-[10px] uppercase tracking-[0.1em] text-white/70 md:absolute md:left-0 md:top-0">
                           {section.tag}
                         </span>
                         <h2 className="font-onest text-[22px] font-normal leading-[1.2] text-white sm:text-[26px]">
@@ -212,7 +212,7 @@ const CaseStudy = () => {
                           {section.body.split('\n\n').map((para, i) => (
                             <p
                               key={i}
-                              className="font-manrope text-[15px] font-light leading-relaxed text-white/65 sm:text-[16px]"
+                              className="font-manrope text-[15px] font-normal leading-relaxed text-white/85 sm:text-[16px]"
                             >
                               {para}
                             </p>
@@ -233,7 +233,7 @@ const CaseStudy = () => {
                               return (
                                 <p
                                   key={i}
-                                  className="font-manrope text-[15px] font-light leading-relaxed text-white/65 sm:text-[16px]"
+                                  className="font-manrope text-[15px] font-normal leading-relaxed text-white/85 sm:text-[16px]"
                                 >
                                   {block.text}
                                 </p>
@@ -248,12 +248,12 @@ const CaseStudy = () => {
                                   {block.title}
                                 </h3>
                                 {block.intro && (
-                                  <p className="font-manrope text-[15px] font-light leading-relaxed text-white/65 sm:text-[16px]">
+                                  <p className="font-manrope text-[15px] font-normal leading-relaxed text-white/85 sm:text-[16px]">
                                     {block.intro}
                                   </p>
                                 )}
                                 {block.text && (
-                                  <p className="font-manrope text-[15px] font-light leading-relaxed text-white/65 sm:text-[16px]">
+                                  <p className="font-manrope text-[15px] font-normal leading-relaxed text-white/85 sm:text-[16px]">
                                     {block.text}
                                   </p>
                                 )}

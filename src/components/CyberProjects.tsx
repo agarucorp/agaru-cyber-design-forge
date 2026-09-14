@@ -65,7 +65,7 @@ const CyberProjects = ({ lang }: CyberProjectsProps) => {
         <h3 className="mb-4 font-onest text-xl font-normal text-white sm:text-2xl">
           {project.title}
         </h3>
-        <p className="mb-6 max-w-[280px] font-manrope text-sm font-light leading-relaxed text-gray-300">
+        <p className="mb-6 max-w-[280px] font-manrope text-[15px] font-normal leading-relaxed text-white/85">
           {project.cardDescription}
         </p>
         <CyberButton
@@ -85,15 +85,14 @@ const CyberProjects = ({ lang }: CyberProjectsProps) => {
     <section
       id="projects"
       aria-label={t('projects', 'title', lang)}
-      className="relative w-full bg-black py-20 md:py-28"
+      className="relative w-full bg-transparent py-20 md:py-28"
     >
       <div className={SECTION_CONTAINER_CLASS}>
         <div className="mb-12 md:mb-16">
-          <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
-            <span className="h-px w-8 bg-white/40" />
-            <span>// CASES</span>
+          <div className="mb-3 font-manrope text-[11px] uppercase tracking-[0.25em] text-white/40">
+            // CASES
           </div>
-          <h2 className="font-mulish text-[34px] font-normal leading-[1.05] text-white sm:text-[44px] md:text-[56px]">
+          <h2 className="font-mulish text-[22px] font-normal leading-[1.15] text-white sm:text-[28px] md:text-[32px]">
             {t('projects', 'title', lang)}
           </h2>
         </div>

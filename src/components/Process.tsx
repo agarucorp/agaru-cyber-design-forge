@@ -66,16 +66,15 @@ const Process = ({ lang }: ProcessProps) => {
   ];
 
   return (
-    <section id="process" className="relative w-full overflow-hidden bg-black">
+    <section id="process" className="relative w-full overflow-hidden bg-transparent">
       <div className="relative z-10 py-16 md:py-32 xl:py-[166px] 2xl:py-[166px]">
         <div className={SECTION_CONTAINER_CLASS}>
           <ScrollAnimate threshold={0.2}>
             <div className="mb-12 text-left md:mb-16">
-              <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
-                <span className="h-px w-8 bg-white/40" />
-                <span>// HOW WE WORK</span>
+              <div className="mb-3 font-manrope text-[11px] uppercase tracking-[0.25em] text-white/40">
+                // HOW WE WORK
               </div>
-              <h2 className="font-mulish text-[34px] font-normal leading-[1.05] text-white sm:text-[44px] md:text-[56px]">
+              <h2 className="font-mulish text-[22px] font-normal leading-[1.15] text-white sm:text-[28px] md:text-[32px]">
                 {lang === 'ES' ? 'Proceso' : 'Process'}
               </h2>
             </div>
@@ -116,7 +115,7 @@ const Process = ({ lang }: ProcessProps) => {
                   <ArrowRight className="w-12 h-6 text-white" strokeWidth={1.5} />
                 </div>
 
-                <p className="text-gray-300 text-sm md:text-[14px] font-manrope font-light pt-1">
+                <p className="pt-1 font-manrope text-[15px] font-normal leading-relaxed text-white/85">
                   {step.description}
                 </p>
               </div>
@@ -151,7 +150,7 @@ const Process = ({ lang }: ProcessProps) => {
                   <h3 className="text-white font-bold text-xl">{step.title}</h3>
                 </div>
 
-                <p className="text-gray-300 text-sm font-manrope font-light">
+                <p className="font-manrope text-[15px] font-normal leading-relaxed text-white/85">
                   {step.description}
                 </p>
               </div>

@@ -25,7 +25,7 @@
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 95%;
     --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted-foreground: 0 0% 80%;
     --accent: 259 100% 39%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
@@ -57,7 +57,7 @@
     @apply font-mulish;
   }
   p {
-    @apply font-inter;
+    @apply font-manrope;
   }
 }
 
@@ -67,7 +67,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground font-manrope;
     background: #000000;
   }
 
@@ -256,4 +256,35 @@
 .gradient-animate {
   background-size: 200% 200%;
   animation: gradientShift 3s ease infinite;
+}
+
+@keyframes wa-bubble-bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.72);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.08);
+  }
+  65% {
+    transform: translateY(5px) scale(0.96);
+  }
+  82% {
+    transform: translateY(-3px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.wa-bubble {
+  animation: wa-bubble-bounce 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-bubble {
+    animation: none;
+  }
 }

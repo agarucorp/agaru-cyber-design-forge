@@ -20,11 +20,10 @@ const CaseStudyRelated = ({ currentSlug, lang }: CaseStudyRelatedProps) => {
     <section className="border-t border-white/10 bg-black py-16 md:py-24">
       <div className={SECTION_CONTAINER_CLASS}>
         <div className="mb-10 md:mb-14">
-          <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
-            <span className="h-px w-8 bg-white/40" />
-            <span>// MORE CASES</span>
+          <div className="mb-3 font-manrope text-[11px] font-medium uppercase tracking-[0.16em] text-white/40">
+            // MORE CASES
           </div>
-          <h2 className="font-mulish text-[28px] font-normal leading-[1.05] text-white sm:text-[36px] md:text-[44px]">
+          <h2 className="font-mulish text-[22px] font-normal leading-[1.15] text-white sm:text-[28px] md:text-[32px]">
             {t('caseStudy', 'moreCases', lang)}
           </h2>
         </div>
@@ -50,13 +49,13 @@ const CaseStudyRelated = ({ currentSlug, lang }: CaseStudyRelatedProps) => {
                 />
               </div>
               <div className="p-4">
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/45">
+                <p className="font-manrope text-xs font-medium text-white/55">
                   {project.category}
                 </p>
                 <h3 className="mt-2 font-onest text-[17px] font-normal leading-snug text-white">
                   {project.title}
                 </h3>
-                <span className="mt-3 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/60 transition-colors group-hover:text-white">
+                <span className="mt-3 inline-flex items-center gap-1 font-manrope text-sm font-semibold text-white/80 transition-colors group-hover:text-white">
                   {t('projects', 'viewCase', lang)}{' '}
                   <span className="transition-transform group-hover:translate-x-0.5">→</span>
                 </span>

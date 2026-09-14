@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import { Globe, Cpu, Palette, Plus, type LucideIcon } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
-import { getServices } from '@/data/services';
+import { getServices, getIncludedItems } from '@/data/services';
 import { t, type Lang } from '@/lib/i18n';
 import { ScrollAnimate } from './ScrollAnimate';
-
-// Un ícono por servicio, mapeado por índice (no depende del idioma del texto).
-const SERVICE_ICONS: Record<string, LucideIcon> = {
-  '01': Cpu,
-  '02': Globe,
-  '03': Palette,
-};
 
 type CyberServicesProps = {
   lang: Lang;
@@ -19,23 +12,23 @@ type CyberServicesProps = {
 const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
   const [expanded, setExpanded] = useState<number | null>(null);
   const services = getServices(lang);
+  const included = getIncludedItems(lang);
 
   return (
     <section
       id="cyber-services"
       aria-label={lang === 'EN' ? 'Services' : 'Servicios'}
-      className="relative w-full bg-black py-20 md:py-28"
+      className="relative w-full bg-transparent py-20 md:py-28"
     >
       <div className={SECTION_CONTAINER_CLASS}>
         {/* Encabezado */}
         <ScrollAnimate threshold={0.2}>
           <div className="mb-12 md:mb-16">
             <div>
-              <div className="mb-3 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-white/40">
-                <span className="h-px w-8 bg-white/40" />
-                <span>// WHAT WE DO</span>
+              <div className="mb-3 font-manrope text-[11px] uppercase tracking-[0.25em] text-white/40">
+                // WHAT WE DO
               </div>
-              <h2 className="font-mulish text-[34px] font-normal leading-[1.05] text-white sm:text-[44px] md:text-[56px]">
+              <h2 className="font-mulish text-[22px] font-normal leading-[1.15] text-white sm:text-[28px] md:text-[32px]">
                 {t('services', 'title', lang)}
               </h2>
             </div>
@@ -47,27 +40,19 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
           {services.map((s, i) => {
             const isExpanded = expanded === i;
             const hasDetails = Boolean(s.details?.length);
-            const Icon = SERVICE_ICONS[s.index] ?? Globe;
 
             return (
               <ScrollAnimate key={s.index} delay={i * 100} threshold={0.15}>
               <article className="group relative w-full overflow-hidden rounded-lg border border-border bg-card text-card-foreground transition-[border-color,background-color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent/40 motion-reduce:transform-none">
-                <div className="relative grid grid-cols-12 gap-6 px-6 py-8 sm:px-8 sm:py-9 md:px-10 md:py-10">
-                  <div className="col-span-12 md:col-span-2">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-border bg-secondary text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
-                      <Icon className="h-5 w-5" strokeWidth={1.5} />
-                    </div>
-                  </div>
-
-                  <div className="col-span-12 md:col-span-10">
+                <div className="relative px-6 py-8 sm:px-8 sm:py-9 md:px-10 md:py-10">
                     <div className="mb-4">
-                      <span className="inline-block rounded-md border border-border bg-secondary px-2.5 py-1 font-inter text-xs font-medium text-muted-foreground">
+                      <span className="inline-block rounded-md border border-border bg-secondary px-2.5 py-1 font-manrope text-xs font-medium text-muted-foreground">
                         {s.badge}
                       </span>
                     </div>
 
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="font-mulish text-[26px] font-semibold leading-[1.1] text-foreground sm:text-[30px] md:text-[34px]">
+                      <h3 className="font-mulish text-[20px] font-semibold leading-[1.15] text-foreground sm:text-[22px] md:text-[24px]">
                         {s.title}
                       </h3>
 
@@ -96,34 +81,27 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
                       )}
                     </div>
 
-                    <p className="mt-4 max-w-[62ch] font-inter text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
+                    <p className="mt-4 w-full font-manrope text-[15px] font-normal leading-relaxed text-white/85 sm:text-[16px]">
                       {s.description}
                     </p>
 
-                    {hasDetails && (
-                      <div
-                        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
-                          isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                        }`}
-                      >
-                        <div className="overflow-hidden">
-                          <ul className="mt-6 space-y-3 border-t border-border pt-6">
-                            {s.details?.map((item) => (
-                              <li key={item} className="flex gap-3">
-                                <span
-                                  aria-hidden
-                                  className="mt-[0.65em] h-px w-3 shrink-0 bg-primary/70"
-                                />
-                                <p className="font-inter text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
-                                  {item}
-                                </p>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                    {hasDetails && isExpanded && (
+                      <div className="animate-fade-in">
+                        <ul className="mt-6 space-y-3 border-t border-border pt-6">
+                          {s.details?.map((item) => (
+                            <li key={item} className="flex gap-3">
+                              <span
+                                aria-hidden
+                                className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80"
+                              />
+                              <p className="font-manrope text-[15px] font-normal leading-relaxed text-white/85 sm:text-[16px]">
+                                {item}
+                              </p>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     )}
-                  </div>
                 </div>
 
               </article>
@@ -131,6 +109,32 @@ const CyberServices: React.FC<CyberServicesProps> = ({ lang }) => {
             );
           })}
         </div>
+
+        <ScrollAnimate threshold={0.2}>
+          <div className="mt-20 border-t border-border pt-14 md:mt-24 md:pt-16">
+            <div className="mb-10 md:mb-12">
+              <h3 className="font-mulish text-[22px] font-normal leading-[1.15] text-white sm:text-[26px] md:text-[28px]">
+                {t('services', 'includesTitle', lang)}
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {included.map((item) => (
+                <article
+                  key={item.title}
+                  className="rounded-lg border border-border bg-card p-6 text-card-foreground transition-[border-color,background-color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent/40 motion-reduce:transform-none sm:p-7"
+                >
+                  <h4 className="font-onest text-[17px] font-normal text-foreground sm:text-[18px]">
+                    {item.title}
+                  </h4>
+                  <p className="mt-3 font-manrope text-[15px] font-normal leading-relaxed text-white/85 sm:text-[16px]">
+                    {item.body}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </ScrollAnimate>
       </div>
     </section>
   );

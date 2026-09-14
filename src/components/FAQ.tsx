@@ -1,5 +1,6 @@
 
 import { useState, useRef, useEffect } from 'react';
+import { Plus } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
 import { ScrollAnimate } from './ScrollAnimate';
 
@@ -18,9 +19,6 @@ const FAQ = ({ lang }: FAQProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const isMobile = useIsMobile();
   const faqRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const panelClip =
-    'polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)';
 
   const faqs: FAQEntry[] =
     lang === 'ES'
@@ -107,11 +105,11 @@ const FAQ = ({ lang }: FAQProps) => {
   };
 
   return (
-    <section id="faq" className="w-full overflow-x-hidden bg-black py-20 md:py-28">
+    <section id="faq" className="w-full overflow-x-hidden bg-transparent py-20 md:py-28">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <ScrollAnimate threshold={0.2}>
           <div className="mb-12 text-center md:mb-16">
-            <h2 className="font-mulish text-[34px] font-normal leading-[1.05] text-white sm:text-[44px] md:text-[56px]">
+            <h2 className="font-mulish text-[22px] font-normal leading-[1.15] text-white sm:text-[28px] md:text-[32px]">
               {lang === 'ES' ? 'Preguntas frecuentes' : 'Frequently asked questions'}
             </h2>
           </div>
@@ -127,53 +125,36 @@ const FAQ = ({ lang }: FAQProps) => {
                   ref={(el) => {
                     faqRefs.current[index] = el;
                   }}
-                  className={`group relative overflow-hidden border transition-[border-color,box-shadow] duration-300 ${
+                  className={`group relative overflow-hidden rounded-lg border bg-card text-card-foreground transition-[border-color,background-color,transform] duration-200 motion-reduce:transform-none ${
                     isOpen
-                      ? 'border-[#B983FF]/70 shadow-[0_0_28px_rgba(185,131,255,0.25)]'
-                      : 'border-white/50 hover:border-[#B983FF]/50 hover:shadow-[0_0_20px_rgba(185,131,255,0.14)]'
+                      ? 'border-primary/40 bg-accent/40'
+                      : 'border-border hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent/40'
                   }`}
-                  style={{
-                    background:
-                      'linear-gradient(135deg, rgba(6,6,6,0.96) 0%, rgba(14,14,14,0.92) 100%)',
-                    clipPath: panelClip,
-                  }}
                 >
-                  {/* Línea de estado superior, consistente con las cards de servicios */}
-                  <span
-                    aria-hidden
-                    className={`pointer-events-none absolute left-0 top-0 h-[2px] transition-[width] duration-500 ease-out ${
-                      isOpen ? 'w-full shadow-[0_0_12px_rgba(185,131,255,0.6)]' : 'w-0 group-hover:w-full'
-                    }`}
-                    style={{
-                      background:
-                        'linear-gradient(90deg, rgba(185,131,255,0.9), rgba(255,255,255,0.95), rgba(185,131,255,0.9))',
-                    }}
-                  />
-
                   <button
                     type="button"
                     onClick={() => toggleFAQ(index)}
-                    className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition-colors duration-300 focus:outline-none sm:px-6 sm:py-6"
+                    className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-6 sm:py-6"
                     aria-expanded={isOpen}
                   >
-                    <span className="font-mulish text-[16px] font-medium leading-snug text-white sm:text-[17px] md:text-[18px]">
+                    <span className="font-mulish text-[16px] font-medium leading-snug text-foreground sm:text-[17px] md:text-[18px]">
                       {faq.question}
                     </span>
                     <span
                       aria-hidden
-                      className={`flex h-10 w-10 shrink-0 items-center justify-center border bg-white/5 font-mono text-[22px] leading-none transition-all duration-300 ${
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-md border transition-[background-color,border-color,color,transform] duration-200 ${
                         isOpen
-                          ? 'rotate-45 border-[#B983FF] bg-[#B983FF] text-black shadow-[0_0_16px_rgba(185,131,255,0.5)]'
-                          : 'border-white/30 text-white/70 group-hover:border-[#B983FF]/60 group-hover:text-[#B983FF]'
+                          ? 'rotate-45 border-primary/50 bg-primary text-primary-foreground'
+                          : 'border-border bg-secondary text-muted-foreground group-hover:border-primary/40 group-hover:text-foreground'
                       }`}
                     >
-                      +
+                      <Plus className="h-4 w-4" strokeWidth={2} />
                     </span>
                   </button>
 
                   {isOpen && (
-                    <div className="animate-fade-in border-t border-white/10 px-5 pb-5 sm:px-6 sm:pb-6">
-                      <div className="pt-4 font-manrope text-[15px] font-light leading-relaxed text-white/70 sm:text-[16px]">
+                    <div className="animate-fade-in border-t border-border px-5 pb-5 sm:px-6 sm:pb-6">
+                      <div className="pt-4 font-manrope text-[15px] font-normal leading-relaxed text-white/85 sm:text-[16px]">
                         {faq.intro && <p>{faq.intro}</p>}
                         {faq.bullets && (
                           <ul className={`space-y-2 ${faq.intro ? 'mt-3' : ''}`}>
@@ -181,7 +162,7 @@ const FAQ = ({ lang }: FAQProps) => {
                               <li key={item} className="flex gap-3">
                                 <span
                                   aria-hidden
-                                  className="mt-[0.55em] h-px w-3 shrink-0 bg-white/50"
+                                  className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80"
                                 />
                                 <span>{item}</span>
                               </li>

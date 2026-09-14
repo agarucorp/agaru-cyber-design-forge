@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { X, Globe } from 'lucide-react';
 import CyberButton from './CyberButton';
@@ -10,22 +10,19 @@ interface NavbarProps {
   setLang: Dispatch<SetStateAction<'ES' | 'EN'>>;
 }
 
-const NAVBAR_BG = 'rgba(28, 28, 32, 0.82)';
-const NAVBAR_MOBILE_BG = 'rgba(24, 24, 28, 0.88)';
-const NAV_LINK_TYPO = 'font-mono text-[11px] uppercase tracking-[0.2em]';
+const NAVBAR_GLASS = {
+  backgroundColor: 'rgba(255, 255, 255, 0.08)',
+  backdropFilter: 'blur(20px) saturate(160%)',
+  WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+  border: '1px solid rgba(255, 255, 255, 0.16)',
+} as const;
 
-// Utilidad para scrollspy
-const getSectionFromScroll = (sections: { id: string }[]) => {
-  const scrollPos = window.scrollY + 80;
-  let current = sections[0].id;
-  for (const section of sections) {
-    const el = document.getElementById(section.id);
-    if (el && el.offsetTop <= scrollPos) {
-      current = section.id;
-    }
-  }
-  return current;
-};
+const NAVBAR_MOBILE_GLASS = {
+  ...NAVBAR_GLASS,
+  backgroundColor: 'rgba(255, 255, 255, 0.10)',
+} as const;
+
+const NAV_LINK_TYPO = 'font-manrope text-sm font-medium';
 
 const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId);
@@ -39,22 +36,6 @@ const scrollToSection = (sectionId: string) => {
 
 const Navbar = ({ lang, setLang }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = [{ id: 'services' }, { id: 'projects' }];
-      const currentSection = getSectionFromScroll(sections);
-      if (window.scrollY < 120) {
-        setActiveSection(null);
-      } else {
-        setActiveSection(currentSection);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navItems = lang === 'ES'
     ? [
@@ -83,10 +64,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
       <div className={`pointer-events-auto ${SECTION_CONTAINER_CLASS}`}>
         <div
           className="flex h-[72px] min-h-[72px] w-full items-center justify-between rounded-full px-6 md:h-[82.8px] md:min-h-[82.8px] md:px-8"
-          style={{
-            backgroundColor: NAVBAR_BG,
-            backdropFilter: 'blur(10px)',
-          }}
+          style={NAVBAR_GLASS}
         >
           {/* Logo */}
           <div className="flex-none">
@@ -101,27 +79,16 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
 
           {/* Desktop Navigation */}
           <div className="hidden items-center space-x-6 md:flex lg:space-x-8">
-            {navItems.map((item) => {
-              const sectionId = item.href.replace('#', '');
-              const isActive = activeSection === sectionId;
-              return (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`relative px-3 py-2 ${NAV_LINK_TYPO} text-white transition-colors duration-300 hover:text-[#B983FF] ${
-                    isActive ? 'text-[#895AF6]' : ''
-                  }`}
-                  onClick={handleNavClick(item.href)}
-                >
-                  {item.name}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-[2px] w-full rounded-full transition-all duration-300 ${
-                      isActive ? 'bg-[#895AF6]' : 'opacity-0'
-                    }`}
-                  />
-                </a>
-              );
-            })}
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`px-3 py-2 ${NAV_LINK_TYPO} text-white transition-colors duration-300 hover:text-[#B983FF]`}
+                onClick={handleNavClick(item.href)}
+              >
+                {item.name}
+              </a>
+            ))}
           </div>
 
           {/* Desktop: contacto + idioma */}
@@ -131,7 +98,7 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
             </CyberButton>
             <button
               onClick={() => setLang(lang === 'ES' ? 'EN' : 'ES')}
-              className="flex items-center gap-1 px-3 py-2 font-manrope text-[14px] font-light text-white transition-colors duration-300 hover:text-[#B983FF]"
+              className="flex items-center gap-1 px-3 py-2 font-manrope text-sm font-medium text-white transition-colors duration-300 hover:text-[#B983FF]"
               aria-label={lang === 'ES' ? 'Cambiar a inglés' : 'Change to Spanish'}
             >
               <Globe className="h-4 w-4" />
@@ -165,40 +132,26 @@ const Navbar = ({ lang, setLang }: NavbarProps) => {
         {isMobileMenuOpen && (
           <div
             className="mt-2 animate-fade-in rounded-2xl p-4 md:hidden"
-            style={{
-              backgroundColor: NAVBAR_MOBILE_BG,
-              backdropFilter: 'blur(10px)',
-            }}
+            style={NAVBAR_MOBILE_GLASS}
           >
             <div className="flex flex-col space-y-3">
-              {navItems.map((item) => {
-                const sectionId = item.href.replace('#', '');
-                const isActive = activeSection === sectionId;
-                return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={`relative px-3 py-2 ${NAV_LINK_TYPO} text-white transition-colors duration-300 hover:bg-white/10 hover:text-[#B983FF] ${
-                      isActive ? 'text-[#895AF6]' : ''
-                    }`}
-                    onClick={handleNavClick(item.href, true)}
-                  >
-                    {item.name}
-                    <span
-                      className={`absolute -bottom-1 left-0 h-[2px] w-full rounded-full transition-all duration-300 ${
-                        isActive ? 'bg-[#895AF6]' : 'opacity-0'
-                      }`}
-                    />
-                  </a>
-                );
-              })}
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={`px-3 py-2 ${NAV_LINK_TYPO} text-white transition-colors duration-300 hover:bg-white/10 hover:text-[#B983FF]`}
+                  onClick={handleNavClick(item.href, true)}
+                >
+                  {item.name}
+                </a>
+              ))}
               <CyberButton href="#contact" className="mt-2 w-full" onClick={handleNavClick('#contact', true)}>
                 {contactLabel}
               </CyberButton>
               <div className="mt-4 flex items-center justify-center">
                 <button
                   onClick={() => setLang(lang === 'ES' ? 'EN' : 'ES')}
-                  className="flex items-center gap-2 px-3 py-2 font-manrope text-[12px] font-light text-white transition-colors duration-300 hover:bg-white/10 hover:text-[#B983FF]"
+                  className="flex items-center gap-2 px-3 py-2 font-manrope text-sm font-medium text-white transition-colors duration-300 hover:bg-white/10 hover:text-[#B983FF]"
                   aria-label={lang === 'ES' ? 'Cambiar a inglés' : 'Change to Spanish'}
                 >
                   <Globe className="h-4 w-4" />

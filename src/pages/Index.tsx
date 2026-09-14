@@ -20,7 +20,7 @@ const Index = () => {
 
   // SEO optimizado para español únicamente
   const seo = {
-    title: 'AGARUCORP', // Título para la pestaña del navegador
+    title: 'AgaruCorp', // Título para la pestaña del navegador
     titleForSharing: 'AgaruCorp | Diseño Web y Estrategia de Marca', // Título para compartir en redes sociales
     description: 'Creamos landing pages, sitios web, catálogos digitales y estrategia de marca para impulsar tu crecimiento online.'
   };
@@ -50,15 +50,26 @@ const Index = () => {
         <meta name="twitter:image:alt" content="AgaruCorp - Diseño Web y Estrategia de Marca" />
       </Helmet>
       {/* Fin configuración SEO dinámica */}
-      <div className="relative w-full overflow-x-clip" style={{ backgroundColor: '#000000' }}>
-        <Navbar lang={lang} setLang={setLang} />
-        <Hero lang={lang} />
-        <CyberServices lang={lang} />
-        <CyberProjects lang={lang} />
-        <Process lang={lang} />
-        <FAQ lang={lang} />
-        <Footer lang={lang} />
-        <WhatsAppFloat />
+      <div className="relative w-full bg-black">
+        <img
+          src="/Group1-bg.svg"
+          alt=""
+          aria-hidden
+          decoding="async"
+          draggable={false}
+          className="pointer-events-none fixed left-1/2 top-[56vh] z-0 w-[min(117.6vw,1071px)] max-w-none"
+          style={{ transform: 'translate3d(-50%, -50%, 0)' }}
+        />
+        <div className="relative z-10 overflow-x-clip">
+          <Navbar lang={lang} setLang={setLang} />
+          <Hero lang={lang} />
+          <CyberServices lang={lang} />
+          <CyberProjects lang={lang} />
+          <Process lang={lang} />
+          <FAQ lang={lang} />
+          <Footer lang={lang} />
+          <WhatsAppFloat lang={lang} />
+        </div>
       </div>
     </>
   );

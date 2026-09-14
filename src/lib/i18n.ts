@@ -66,6 +66,7 @@ export const UI = {
   services: {
     eyebrow: '// WHAT WE DO',
     title: { ES: 'Servicios', EN: 'Services' },
+    includesTitle: { ES: 'Qué incluye cada proyecto', EN: 'What every project includes' },
   },
   projects: {
     eyebrow: '// CASES',
