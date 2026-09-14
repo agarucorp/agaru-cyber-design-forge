@@ -43,7 +43,7 @@ const CaseStudy = () => {
           <h1 className="mt-3 font-onest text-3xl">{t('caseStudy', 'notFound', lang)}</h1>
           <Link
             to="/"
-            className="mt-6 inline-block border border-white/40 px-4 py-2 font-mono text-xs uppercase tracking-[0.25em] text-white/80 hover:border-white hover:text-white"
+            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-secondary px-5 py-2.5 font-inter text-sm font-medium text-secondary-foreground transition-colors hover:border-primary/50 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {t('caseStudy', 'back', lang)}
           </Link>

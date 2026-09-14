@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { SECTION_CONTAINER_CLASS } from '@/lib/sectionLayout';
 import { PROJECTS_DATA, type ProjectCaseStudy } from '@/data/projects';
 import { getLocalizedProject, t, type Lang } from '@/lib/i18n';
 import { ScrollAnimate } from './ScrollAnimate';
+import CyberButton from './CyberButton';
 
 const PROJECTS = PROJECTS_DATA;
 
@@ -68,15 +68,15 @@ const CyberProjects = ({ lang }: CyberProjectsProps) => {
         <p className="mb-6 max-w-[280px] font-manrope text-sm font-light leading-relaxed text-gray-300">
           {project.cardDescription}
         </p>
-        <Link
-          to={`/caso-de-estudio/${project.slug}`}
+        <CyberButton
+          href={`/caso-de-estudio/${project.slug}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 border border-white/40 bg-white/5 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-white/80 transition-all duration-300 hover:border-white hover:bg-white/10 hover:text-white"
+          className="px-4"
           onClick={(e) => e.stopPropagation()}
         >
           {t('projects', 'viewCase', lang)} →
-        </Link>
+        </CyberButton>
       </div>
     </div>
   );
